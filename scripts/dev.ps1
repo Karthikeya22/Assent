@@ -6,8 +6,23 @@ $root = Split-Path $PSScriptRoot -Parent
 Set-Location $root
 
 switch ($Cmd) {
-  'up'      { docker compose -f infra/docker-compose.yml up -d --wait }
-  'down'    { docker compose -f infra/docker-compose.yml down }
+  # Native Postgres 16 + pgvector (conda-forge) and portable Redis, all under D:\DevTools. No Docker/WSL
+  # needed on this 7 GB laptop; infra/docker-compose.yml is the equivalent for CI/other machines.
+  'up'      {
+    $pg = 'D:\DevTools\pg16\Library\bin'
+    if (-not (& "$pg\pg_isready.exe" -h localhost -q; $LASTEXITCODE -eq 0)) {
+      # Start-Process so pg_ctl doesn't hold this shell's stdout open.
+      Start-Process "$pg\pg_ctl.exe" -ArgumentList '-D', 'D:\DevTools\pgdata', '-l', 'D:\DevTools\pgdata\server.log', 'start' -WindowStyle Hidden -Wait
+    }
+    if (-not (Get-Process redis-server -ErrorAction SilentlyContinue)) {
+      Start-Process D:\DevTools\redis\redis-server.exe -ArgumentList '--port', '6379', '--maxmemory', '128mb', '--save', '""', '--appendonly', 'no' -WindowStyle Hidden
+    }
+    & "$pg\pg_isready.exe" -h localhost; D:\DevTools\redis\redis-cli.exe ping
+  }
+  'down'    {
+    & 'D:\DevTools\pg16\Library\bin\pg_ctl.exe' -D D:\DevTools\pgdata stop -m fast
+    D:\DevTools\redis\redis-cli.exe shutdown nosave
+  }
   'migrate' { uv run --directory apps/api alembic upgrade head }
   'seed'    { uv run python -m assent_api.seed }
   'api'     { uv run uvicorn assent_api.main:app --reload --port 8000 }

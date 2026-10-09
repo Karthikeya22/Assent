@@ -38,11 +38,14 @@ dev = [
 [tool.ruff]
 line-length = 100
 target-version = "py312"
-extend-exclude = ["apps/web"]
+extend-exclude = ["apps/web", "**/migrations/versions"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "ASYNC", "S", "RUF"]
 ignore = ["S101"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["assent_api", "assent_worker", "assent_agents", "assent_retrieval", "assent_fhir", "assent_phi", "assent_evals"]
 
 [tool.mypy]
 strict = true

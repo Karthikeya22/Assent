@@ -1,0 +1,150 @@
+{
+ "split": "test",
+ "facts": {
+  "case_id": "esi-028",
+  "difficulty": "missing",
+  "order_date": "2026-09-15",
+  "patient": {
+   "fhir_id": "0d97c922-486e-b83d-a7cd-5cad399366f7",
+   "name": "Lance Morar",
+   "sex": "male",
+   "birth_date": "1954-12-28"
+  },
+  "condition": "radic",
+  "region": "cervical",
+  "level": "C5-C6",
+  "side": "right",
+  "cpt": "64479",
+  "icd10": "M54.12",
+  "onset_date": "2026-04-07",
+  "pain_weeks": 23,
+  "pt_start": "2026-04-21",
+  "pt_weeks": 4,
+  "nsaid": "naproxen 500 mg BID",
+  "scale_name": "NRS",
+  "scale_value": "8/10",
+  "imaging_date": "2026-09-02",
+  "imaging_modality": "MRI",
+  "prior_esi_dates": [
+   "2025-11-12",
+   "2026-01-16"
+  ],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "not_met",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "insufficient",
+   "freq": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "Impression: right-sided cervical radiculopathy secondary to C5-C6 disc herniation causing foraminal stenosis.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dx.pls",
+    "gold": "not_met",
+    "text": "Past surgical history: no prior spine surgery.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "MRI cervical spine 09/02/2026: C5-C6 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Pain limits walking to about one block and has forced the patient to stop volunteering; sleep is disrupted most nights.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Baseline NRS prior to any intervention: 8/10.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "Symptoms began on 04/07/2026, 23 weeks before this visit.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "Completed physical therapy from 04/21/2026 to 05/19/2026 (4 weeks) with no lasting benefit, and failed naproxen 500 mg BID.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "Continues the daily home exercise program taught in PT.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "Epidural steroid injection history: 2 cervical injections in the past 12 months (11/12/2025, 01/16/2026).",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-04-16",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 04/16/2026\nPatient: Lance Morar, 72-year-old male\nAuthor: Primary care physician\n\nPast surgical history: no prior spine surgery.\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
+   "source": "template"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-05-19",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 05/19/2026\nPatient: Lance Morar, 72-year-old male\nAuthor: Physical therapist\n\nCompleted physical therapy from 04/21/2026 to 05/19/2026 (4 weeks) with no lasting benefit, and failed naproxen 500 mg BID.\nTreatment included manual therapy, core stabilization and gait training.\nPatient attended sessions as scheduled.\nGoals reviewed with patient.\n",
+   "source": "template"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-09-02",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 09/02/2026\nPatient: Lance Morar, 72-year-old male\nAuthor: Radiologist\n\nMRI cervical spine 09/02/2026: C5-C6 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\n",
+   "source": "template"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-13",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/13/2026\nPatient: Lance Morar, 72-year-old male\nAuthor: Pain medicine physician\n\nEpidural steroid injection history: 2 cervical injections in the past 12 months (11/12/2025, 01/16/2026).\nContinues the daily home exercise program taught in PT.\nSymptoms began on 04/07/2026, 23 weeks before this visit.\nBaseline NRS prior to any intervention: 8/10.\nPain limits walking to about one block and has forced the patient to stop volunteering; sleep is disrupted most nights.\nImpression: right-sided cervical radiculopathy secondary to C5-C6 disc herniation causing foraminal stenosis.\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\n",
+   "source": "template"
+  }
+ ]
+}

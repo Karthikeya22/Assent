@@ -1,0 +1,150 @@
+{
+ "split": "test",
+ "facts": {
+  "case_id": "esi-044",
+  "difficulty": "buried",
+  "order_date": "2026-09-27",
+  "patient": {
+   "fhir_id": "5a1715ff-f3e1-47a1-ab36-743ba8fd4194",
+   "name": "Stan Bednar",
+   "sex": "male",
+   "birth_date": "1956-05-10"
+  },
+  "condition": "radic",
+  "region": "lumbar",
+  "level": "L3-L4",
+  "side": "right",
+  "cpt": "64483",
+  "icd10": "M54.16",
+  "onset_date": "2026-06-28",
+  "pain_weeks": 13,
+  "pt_start": "2026-07-07",
+  "pt_weeks": 8,
+  "nsaid": "ibuprofen 600 mg TID",
+  "scale_name": "ODI",
+  "scale_value": "54%",
+  "imaging_date": "2026-09-04",
+  "imaging_modality": "MRI",
+  "prior_esi_dates": [
+   "2026-02-19",
+   "2026-03-09"
+  ],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "insufficient",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "A/P: R L radic 2/2 L3-L4 HNP w/ foraminal stenosis.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "MRI lumbar spine 09/04/2026: L3-L4 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Fx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Initial ODI 54%.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "LBP x13 wks w/ radiation to R LE.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "D/C from PT after 8 wks (07/07/2026-09/01/2026), sx unchanged. Failed ibuprofen 600 mg TID.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "HEP daily, compliant.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "ROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "Epidural steroid injection history: 2 lumbar injections in the past 12 months (02/19/2026, 03/09/2026).",
+    "slot": "pcp",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-07-07",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 07/07/2026\nPatient: Stan Bednar, 70-year-old male\nAuthor: Primary care physician\n\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.\nHypertension stable on current regimen.\nA/P: R L radic 2/2 L3-L4 HNP w/ foraminal stenosis.\nEpidural steroid injection history: 2 lumbar injections in the past 12 months (02/19/2026, 03/09/2026).\nReturn in 3 months for chronic care.\n",
+   "source": "template"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-09-01",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 09/01/2026\nPatient: Stan Bednar, 70-year-old male\nAuthor: Physical therapist\n\nTreatment included manual therapy, core stabilization and gait training.\nPatient attended sessions as scheduled.\nHEP daily, compliant.\nD/C from PT after 8 wks (07/07/2026-09/01/2026), sx unchanged. Failed ibuprofen 600 mg TID.\nFx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.\nInitial ODI 54%.\nGoals reviewed with patient.\n",
+   "source": "template"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-09-04",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 09/04/2026\nPatient: Stan Bednar, 70-year-old male\nAuthor: Radiologist\n\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\nMRI lumbar spine 09/04/2026: L3-L4 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.\n",
+   "source": "template"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-25",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/25/2026\nPatient: Stan Bednar, 70-year-old male\nAuthor: Pain medicine physician\n\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\nLBP x13 wks w/ radiation to R LE.\n",
+   "source": "template"
+  }
+ ]
+}

@@ -1,0 +1,142 @@
+{
+ "split": "dev",
+ "facts": {
+  "case_id": "esi-021",
+  "difficulty": "missing",
+  "order_date": "2026-09-03",
+  "patient": {
+   "fhir_id": "815526ec-e243-0f24-e29f-5540d3c21511",
+   "name": "Giovanni Murphy",
+   "sex": "male",
+   "birth_date": "1939-12-01"
+  },
+  "condition": "radic",
+  "region": "lumbar",
+  "level": "L5-S1",
+  "side": "right",
+  "cpt": "64483",
+  "icd10": "M54.16",
+  "onset_date": "2026-07-16",
+  "pain_weeks": 7,
+  "pt_start": "2026-07-25",
+  "pt_weeks": 5,
+  "nsaid": "naproxen 500 mg BID",
+  "scale_name": "ODI",
+  "scale_value": "60%",
+  "imaging_date": "2026-08-14",
+  "imaging_modality": "CT",
+  "prior_esi_dates": [
+   "2025-12-08"
+  ],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "insufficient",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "insufficient",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "Impression: right-sided lumbar radiculopathy secondary to L5-S1 disc herniation causing foraminal stenosis.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "CT lumbar spine 08/14/2026: L5-S1 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Baseline ODI prior to any intervention: 60%.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "Symptoms began on 07/16/2026, 7 weeks before this visit.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "PT discharge summary: completed 5 weeks of physical therapy (07/25/2026 to 08/29/2026) without meaningful improvement; naproxen 500 mg BID for the same period without relief.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "Continues the daily home exercise program taught in PT.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Denies fever, chills, weight loss, or bowel or bladder changes; no history of cancer.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "Epidural steroid injection history: 1 lumbar injection in the past 12 months (12/08/2025).",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-07-25",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 07/25/2026\nPatient: Giovanni Murphy, 87-year-old male\nAuthor: Primary care physician\n\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
+   "source": "template"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-08-29",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 08/29/2026\nPatient: Giovanni Murphy, 87-year-old male\nAuthor: Physical therapist\n\nPT discharge summary: completed 5 weeks of physical therapy (07/25/2026 to 08/29/2026) without meaningful improvement; naproxen 500 mg BID for the same period without relief.\nTreatment included manual therapy, core stabilization and gait training.\nPatient attended sessions as scheduled.\nGoals reviewed with patient.\n",
+   "source": "template"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-14",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/14/2026\nPatient: Giovanni Murphy, 87-year-old male\nAuthor: Radiologist\n\nCT lumbar spine 08/14/2026: L5-S1 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\n",
+   "source": "template"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-01",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/01/2026\nPatient: Giovanni Murphy, 87-year-old male\nAuthor: Pain medicine physician\n\nEpidural steroid injection history: 1 lumbar injection in the past 12 months (12/08/2025).\nDenies fever, chills, weight loss, or bowel or bladder changes; no history of cancer.\nContinues the daily home exercise program taught in PT.\nSymptoms began on 07/16/2026, 7 weeks before this visit.\nBaseline ODI prior to any intervention: 60%.\nImpression: right-sided lumbar radiculopathy secondary to L5-S1 disc herniation causing foraminal stenosis.\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\n",
+   "source": "template"
+  }
+ ]
+}

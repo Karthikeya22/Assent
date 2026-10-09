@@ -1,0 +1,147 @@
+{
+ "split": "test",
+ "facts": {
+  "case_id": "esi-006",
+  "difficulty": "buried",
+  "order_date": "2026-09-18",
+  "patient": {
+   "fhir_id": "bfc9945a-0277-0b39-6d0f-cea74f9dbeef",
+   "name": "Samara Runolfsdottir",
+   "sex": "female",
+   "birth_date": "1947-09-25"
+  },
+  "condition": "pls",
+  "region": "lumbar",
+  "level": "L5-S1",
+  "side": "left",
+  "cpt": "64483",
+  "icd10": "M96.1",
+  "onset_date": "2026-04-24",
+  "pain_weeks": 21,
+  "pt_start": "2026-05-01",
+  "pt_weeks": 8,
+  "nsaid": "ibuprofen 600 mg TID",
+  "scale_name": "ODI",
+  "scale_value": "37%",
+  "imaging_date": "2026-08-12",
+  "imaging_modality": "CT",
+  "prior_esi_dates": [],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "insufficient",
+   "dx.pls": "met",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "dx.pls",
+    "gold": "met",
+    "text": "Assessment: post-laminectomy syndrome, s/p L5-S1 laminectomy in 2023, with persistent back and left leg pain.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "CT lumbar spine 08/12/2026: postoperative changes at L5-S1 with epidural fibrosis and recurrent left foraminal stenosis.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Fx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Initial ODI 37%.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "LBP x21 wks w/ radiation to L LE.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "D/C from PT after 8 wks (05/01/2026-06/26/2026), sx unchanged. Failed ibuprofen 600 mg TID.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "HEP daily, compliant.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "ROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "No prior ESI.",
+    "slot": "pcp",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-05-03",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 05/03/2026\nPatient: Samara Runolfsdottir, 79-year-old female\nAuthor: Primary care physician\n\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.\nReturn in 3 months for chronic care.\nNo prior ESI.\n",
+   "source": "template"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-06-26",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 06/26/2026\nPatient: Samara Runolfsdottir, 79-year-old female\nAuthor: Physical therapist\n\nTreatment included manual therapy, core stabilization and gait training.\nHEP daily, compliant.\nPatient attended sessions as scheduled.\nInitial ODI 37%.\nD/C from PT after 8 wks (05/01/2026-06/26/2026), sx unchanged. Failed ibuprofen 600 mg TID.\nGoals reviewed with patient.\nFx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.\n",
+   "source": "template"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-12",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/12/2026\nPatient: Samara Runolfsdottir, 79-year-old female\nAuthor: Radiologist\n\nTechnique: multiplanar sequences without contrast.\nCT lumbar spine 08/12/2026: postoperative changes at L5-S1 with epidural fibrosis and recurrent left foraminal stenosis.\nComparison: none available.\nVertebral body heights are maintained.\n",
+   "source": "template"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-16",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/16/2026\nPatient: Samara Runolfsdottir, 79-year-old female\nAuthor: Pain medicine physician\n\nReferred by primary care for evaluation of spine-related pain.\nAssessment: post-laminectomy syndrome, s/p L5-S1 laminectomy in 2023, with persistent back and left leg pain.\nMedications and allergies reviewed.\nLBP x21 wks w/ radiation to L LE.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\n",
+   "source": "template"
+  }
+ ]
+}

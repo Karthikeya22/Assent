@@ -1,0 +1,164 @@
+{
+ "split": "dev",
+ "facts": {
+  "case_id": "esi-022",
+  "difficulty": "contradictory",
+  "order_date": "2026-09-29",
+  "patient": {
+   "fhir_id": "31e0e1f2-6a63-fcee-b192-7a1f17dbd379",
+   "name": "Earnest Schimmel",
+   "sex": "male",
+   "birth_date": "1956-03-04"
+  },
+  "condition": "radic",
+  "region": "lumbar",
+  "level": "L4-L5",
+  "side": "left",
+  "cpt": "64483",
+  "icd10": "M54.16",
+  "onset_date": "2026-06-09",
+  "pain_weeks": 16,
+  "pt_start": "2026-06-19",
+  "pt_weeks": 8,
+  "nsaid": "ibuprofen 600 mg TID",
+  "scale_name": "VAS",
+  "scale_value": "84 mm",
+  "imaging_date": "2026-09-10",
+  "imaging_modality": "MRI",
+  "prior_esi_dates": [
+   "2026-04-18",
+   "2026-07-25"
+  ],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "not_met",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "Impression: left-sided lumbar radiculopathy secondary to L4-L5 disc herniation causing foraminal stenosis.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dx.pls",
+    "gold": "not_met",
+    "text": "Past surgical history: no prior spine surgery.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "MRI lumbar spine 09/10/2026: L4-L5 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Function: unable to stand long enough to cook a meal, has stopped driving because of the pain.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "VAS at baseline today: 84 mm.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "Symptoms began on 06/09/2026, 16 weeks before this visit.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "PT discharge summary: completed 8 weeks of physical therapy (06/19/2026 to 08/14/2026) without meaningful improvement; ibuprofen 600 mg TID for the same period without relief.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "Continues the daily home exercise program taught in PT.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No red flags: afebrile, no unexplained weight loss, no history of malignancy, no saddle anesthesia.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "Epidural steroid injection history: 2 lumbar injections in the past 12 months (04/18/2026, 07/25/2026).",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "Pt reports onset of the radiating pain only 1 week ago.",
+    "slot": "pt",
+    "stale": true
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-06-18",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 06/18/2026\nPatient: Earnest Schimmel, 70-year-old male\nAuthor: Primary care physician\n\nPast surgical history: no prior spine surgery.\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
+   "source": "template"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-08-14",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 08/14/2026\nPatient: Earnest Schimmel, 70-year-old male\nAuthor: Physical therapist\n\nPt reports onset of the radiating pain only 1 week ago.\nPT discharge summary: completed 8 weeks of physical therapy (06/19/2026 to 08/14/2026) without meaningful improvement; ibuprofen 600 mg TID for the same period without relief.\nTreatment included manual therapy, core stabilization and gait training.\nPatient attended sessions as scheduled.\nGoals reviewed with patient.\n",
+   "source": "template"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-09-10",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 09/10/2026\nPatient: Earnest Schimmel, 70-year-old male\nAuthor: Radiologist\n\nMRI lumbar spine 09/10/2026: L4-L5 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\n",
+   "source": "template"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-27",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/27/2026\nPatient: Earnest Schimmel, 70-year-old male\nAuthor: Pain medicine physician\n\nEpidural steroid injection history: 2 lumbar injections in the past 12 months (04/18/2026, 07/25/2026).\nNo red flags: afebrile, no unexplained weight loss, no history of malignancy, no saddle anesthesia.\nContinues the daily home exercise program taught in PT.\nSymptoms began on 06/09/2026, 16 weeks before this visit.\nVAS at baseline today: 84 mm.\nFunction: unable to stand long enough to cook a meal, has stopped driving because of the pain.\nImpression: left-sided lumbar radiculopathy secondary to L4-L5 disc herniation causing foraminal stenosis.\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\n",
+   "source": "template"
+  }
+ ]
+}

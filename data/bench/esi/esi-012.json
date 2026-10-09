@@ -1,0 +1,149 @@
+{
+ "split": "dev",
+ "facts": {
+  "case_id": "esi-012",
+  "difficulty": "buried",
+  "order_date": "2026-09-28",
+  "patient": {
+   "fhir_id": "d2e8c6b6-d849-8f98-f4b2-f4e97422fb3b",
+   "name": "Russel Bernier",
+   "sex": "male",
+   "birth_date": "1954-09-24"
+  },
+  "condition": "nonspecific",
+  "region": "lumbar",
+  "level": "L5-S1",
+  "side": "right",
+  "cpt": "64483",
+  "icd10": "M54.50",
+  "onset_date": "2026-08-03",
+  "pain_weeks": 8,
+  "pt_start": "2026-08-15",
+  "pt_weeks": 5,
+  "nsaid": "meloxicam 15 mg daily",
+  "scale_name": "ODI",
+  "scale_value": "47%",
+  "imaging_date": "2026-08-19",
+  "imaging_modality": "MRI",
+  "prior_esi_dates": [
+   "2025-11-19"
+  ],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "not_met",
+   "dx.pls": "insufficient",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "not_met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "not_met",
+    "text": "Exam: axial low back pain without radicular features; straight leg raise negative bilaterally.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "not_met",
+    "text": "MRI lumbar spine 08/19/2026: mild multilevel spondylosis without central or foraminal stenosis.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Fx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Initial ODI 47%.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "LBP x8 wks w/ radiation to R LE.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "D/C from PT after 5 wks (08/15/2026-09/19/2026), sx unchanged. Failed meloxicam 15 mg daily.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "HEP daily, compliant.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "ROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "Epidural steroid injection history: 1 lumbar injection in the past 12 months (11/19/2025).",
+    "slot": "pcp",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-08-12",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 08/12/2026\nPatient: Russel Bernier, 72-year-old male\nAuthor: Primary care physician\n\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\nROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.\nEpidural steroid injection history: 1 lumbar injection in the past 12 months (11/19/2025).\n",
+   "source": "template"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-09-19",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 09/19/2026\nPatient: Russel Bernier, 72-year-old male\nAuthor: Physical therapist\n\nTreatment included manual therapy, core stabilization and gait training.\nPatient attended sessions as scheduled.\nD/C from PT after 5 wks (08/15/2026-09/19/2026), sx unchanged. Failed meloxicam 15 mg daily.\nHEP daily, compliant.\nFx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.\nInitial ODI 47%.\nGoals reviewed with patient.\n",
+   "source": "template"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-19",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/19/2026\nPatient: Russel Bernier, 72-year-old male\nAuthor: Radiologist\n\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nMRI lumbar spine 08/19/2026: mild multilevel spondylosis without central or foraminal stenosis.\nVertebral body heights are maintained.\n",
+   "source": "template"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-26",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/26/2026\nPatient: Russel Bernier, 72-year-old male\nAuthor: Pain medicine physician\n\nReferred by primary care for evaluation of spine-related pain.\nExam: axial low back pain without radicular features; straight leg raise negative bilaterally.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\nLBP x8 wks w/ radiation to R LE.\n",
+   "source": "template"
+  }
+ ]
+}

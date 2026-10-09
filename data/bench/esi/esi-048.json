@@ -1,0 +1,154 @@
+{
+ "split": "dev",
+ "facts": {
+  "case_id": "esi-048",
+  "difficulty": "buried",
+  "order_date": "2026-09-17",
+  "patient": {
+   "fhir_id": "f6d01ac3-e719-307b-475e-b0f713dc04b2",
+   "name": "Mar\u00eda Teresa Salcedo",
+   "sex": "female",
+   "birth_date": "1952-09-02"
+  },
+  "condition": "radic",
+  "region": "cervical",
+  "level": "C5-C6",
+  "side": "left",
+  "cpt": "64479",
+  "icd10": "M54.12",
+  "onset_date": "2026-07-09",
+  "pain_weeks": 10,
+  "pt_start": "2026-07-18",
+  "pt_weeks": 8,
+  "nsaid": "naproxen 500 mg BID",
+  "scale_name": "NRS",
+  "scale_value": "6/10",
+  "imaging_date": "2026-08-17",
+  "imaging_modality": "MRI",
+  "prior_esi_dates": [],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "not_met",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "A/P: L C radic 2/2 C5-C6 HNP w/ foraminal stenosis.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.pls",
+    "gold": "not_met",
+    "text": "PSH: no spinal surgery.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "MRI cervical spine 08/17/2026: C5-C6 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Fx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Initial NRS 6/10.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "Neck pain x10 wks w/ radiation to L UE.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "D/C from PT after 8 wks (07/18/2026-09/12/2026), sx unchanged. Failed naproxen 500 mg BID.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "HEP daily, compliant.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "ROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "No prior ESI.",
+    "slot": "pcp",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-07-18",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 07/18/2026\nPatient: Mar\u00eda Teresa Salcedo, 74-year-old female\nAuthor: Primary care physician\n\nVitals: BP 134/80, HR 74, T 36.8 C.\nPSH: no spinal surgery.\nMedications reconciled.\nNo prior ESI.\nROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.\nA/P: L C radic 2/2 C5-C6 HNP w/ foraminal stenosis.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
+   "source": "template"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-09-12",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 09/12/2026\nPatient: Mar\u00eda Teresa Salcedo, 74-year-old female\nAuthor: Physical therapist\n\nTreatment included manual therapy, core stabilization and gait training.\nFx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.\nHEP daily, compliant.\nInitial NRS 6/10.\nPatient attended sessions as scheduled.\nGoals reviewed with patient.\nD/C from PT after 8 wks (07/18/2026-09/12/2026), sx unchanged. Failed naproxen 500 mg BID.\n",
+   "source": "template"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-17",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/17/2026\nPatient: Mar\u00eda Teresa Salcedo, 74-year-old female\nAuthor: Radiologist\n\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nMRI cervical spine 08/17/2026: C5-C6 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.\nVertebral body heights are maintained.\n",
+   "source": "template"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-15",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/15/2026\nPatient: Mar\u00eda Teresa Salcedo, 74-year-old female\nAuthor: Pain medicine physician\n\nReferred by primary care for evaluation of spine-related pain.\nNeck pain x10 wks w/ radiation to L UE.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\n",
+   "source": "template"
+  }
+ ]
+}

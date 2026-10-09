@@ -1,0 +1,159 @@
+{
+ "split": "test",
+ "facts": {
+  "case_id": "esi-023",
+  "difficulty": "buried",
+  "order_date": "2026-09-03",
+  "patient": {
+   "fhir_id": "bb0f1798-a377-3418-41f5-a58c8c6ed14d",
+   "name": "Darron Hegmann",
+   "sex": "male",
+   "birth_date": "1954-03-21"
+  },
+  "condition": "radic",
+  "region": "lumbar",
+  "level": "L5-S1",
+  "side": "left",
+  "cpt": "64483",
+  "icd10": "M54.16",
+  "onset_date": "2026-07-16",
+  "pain_weeks": 7,
+  "pt_start": "2026-07-04",
+  "pt_weeks": 8,
+  "nsaid": "ibuprofen 600 mg TID",
+  "scale_name": "VAS",
+  "scale_value": "75 mm",
+  "imaging_date": "2026-07-31",
+  "imaging_modality": "MRI",
+  "prior_esi_dates": [
+   "2025-12-14",
+   "2025-12-28",
+   "2025-12-30",
+   "2026-05-08"
+  ],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "not_met",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "not_met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "A/P: L L radic 2/2 L5-S1 HNP w/ foraminal stenosis.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.pls",
+    "gold": "not_met",
+    "text": "PSH: no spinal surgery.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "MRI lumbar spine 07/31/2026: L5-S1 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Fx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Initial VAS 75 mm.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "LBP x7 wks w/ radiation to L LE.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "D/C from PT after 8 wks (07/04/2026-08/29/2026), sx unchanged. Failed ibuprofen 600 mg TID.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "HEP daily, compliant.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "ROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "not_met",
+    "text": "Epidural steroid injection history: 4 lumbar injections in the past 12 months (12/14/2025, 12/28/2025, 12/30/2025, 05/08/2026).",
+    "slot": "pcp",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-07-25",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 07/25/2026\nPatient: Darron Hegmann, 72-year-old male\nAuthor: Primary care physician\n\nVitals: BP 134/80, HR 74, T 36.8 C.\nPSH: no spinal surgery.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\nEpidural steroid injection history: 4 lumbar injections in the past 12 months (12/14/2025, 12/28/2025, 12/30/2025, 05/08/2026).\nA/P: L L radic 2/2 L5-S1 HNP w/ foraminal stenosis.\nROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.\n",
+   "source": "template"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-08-29",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 08/29/2026\nPatient: Darron Hegmann, 72-year-old male\nAuthor: Physical therapist\n\nTreatment included manual therapy, core stabilization and gait training.\nInitial VAS 75 mm.\nFx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.\nPatient attended sessions as scheduled.\nD/C from PT after 8 wks (07/04/2026-08/29/2026), sx unchanged. Failed ibuprofen 600 mg TID.\nHEP daily, compliant.\nGoals reviewed with patient.\n",
+   "source": "template"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-07-31",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 07/31/2026\nPatient: Darron Hegmann, 72-year-old male\nAuthor: Radiologist\n\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nMRI lumbar spine 07/31/2026: L5-S1 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.\nVertebral body heights are maintained.\n",
+   "source": "template"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-01",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/01/2026\nPatient: Darron Hegmann, 72-year-old male\nAuthor: Pain medicine physician\n\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\nLBP x7 wks w/ radiation to L LE.\n",
+   "source": "template"
+  }
+ ]
+}

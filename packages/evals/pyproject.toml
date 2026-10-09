@@ -2,7 +2,7 @@
 name = "assent-evals"
 version = "0.0.0"
 requires-python = ">=3.12,<3.13"
-dependencies = []
+dependencies = ["assent-agents", "assent-api", "pydantic>=2.9"]
 
 [build-system]
 requires = ["hatchling"]

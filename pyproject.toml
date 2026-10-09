@@ -46,7 +46,9 @@ select = ["E", "F", "I", "B", "UP", "ASYNC", "S", "RUF"]
 ignore = ["S101"]
 
 [tool.ruff.lint.per-file-ignores]
-"**/tests/**" = ["S105", "S106"]
+"**/tests/**" = ["S105", "S106", "S311"]
+"packages/evals/**" = ["S311"]
+"**/synth/phrases.py" = ["E501"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["assent_api", "assent_worker", "assent_agents", "assent_retrieval", "assent_fhir", "assent_phi", "assent_evals"]
@@ -56,7 +58,7 @@ strict = true
 python_version = "3.12"
 plugins = ["pydantic.mypy"]
 mypy_path = "$MYPY_CONFIG_FILE_DIR/apps/api/src:$MYPY_CONFIG_FILE_DIR/apps/worker/src"
-files = ["apps/api/src", "apps/worker/src", "packages"]
+files = ["apps/api/src", "apps/worker/src", "packages/*/src"]
 exclude = ["migrations/"]
 
 [[tool.mypy.overrides]]

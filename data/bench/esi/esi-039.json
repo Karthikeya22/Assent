@@ -1,0 +1,134 @@
+{
+ "split": "dev",
+ "facts": {
+  "case_id": "esi-039",
+  "difficulty": "missing",
+  "order_date": "2026-09-13",
+  "patient": {
+   "fhir_id": "1a7850ea-f964-43e0-15d2-9db3d3bc3065",
+   "name": "Natalie Boehm",
+   "sex": "female",
+   "birth_date": "1943-09-27"
+  },
+  "condition": "radic",
+  "region": "lumbar",
+  "level": "L4-L5",
+  "side": "left",
+  "cpt": "64483",
+  "icd10": "M54.16",
+  "onset_date": "2026-06-14",
+  "pain_weeks": 13,
+  "pt_start": "2026-06-28",
+  "pt_weeks": 4,
+  "nsaid": "meloxicam 15 mg daily",
+  "scale_name": "VAS",
+  "scale_value": "75 mm",
+  "imaging_date": "2026-08-16",
+  "imaging_modality": "CT",
+  "prior_esi_dates": [
+   "2025-12-23"
+  ],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "insufficient",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "insufficient",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "Assessment: left lumbar radiculopathy at L4-L5 due to disc herniation with foraminal stenosis.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Pain limits walking to about one block and has forced the patient to stop volunteering; sleep is disrupted most nights.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "VAS at baseline today: 75 mm.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "Symptoms began on 06/14/2026, 13 weeks before this visit.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "Completed physical therapy from 06/28/2026 to 07/26/2026 (4 weeks) with no lasting benefit, and failed meloxicam 15 mg daily.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "Continues the daily home exercise program taught in PT.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Denies fever, chills, weight loss, or bowel or bladder changes; no history of cancer.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "Epidural steroid injection history: 1 lumbar injection in the past 12 months (12/23/2025).",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-06-23",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 06/23/2026\nPatient: Natalie Boehm, 83-year-old female\nAuthor: Primary care physician\n\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
+   "source": "template"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-07-26",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 07/26/2026\nPatient: Natalie Boehm, 83-year-old female\nAuthor: Physical therapist\n\nCompleted physical therapy from 06/28/2026 to 07/26/2026 (4 weeks) with no lasting benefit, and failed meloxicam 15 mg daily.\nTreatment included manual therapy, core stabilization and gait training.\nPatient attended sessions as scheduled.\nGoals reviewed with patient.\n",
+   "source": "template"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-11",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/11/2026\nPatient: Natalie Boehm, 83-year-old female\nAuthor: Pain medicine physician\n\nEpidural steroid injection history: 1 lumbar injection in the past 12 months (12/23/2025).\nDenies fever, chills, weight loss, or bowel or bladder changes; no history of cancer.\nContinues the daily home exercise program taught in PT.\nSymptoms began on 06/14/2026, 13 weeks before this visit.\nVAS at baseline today: 75 mm.\nPain limits walking to about one block and has forced the patient to stop volunteering; sleep is disrupted most nights.\nAssessment: left lumbar radiculopathy at L4-L5 due to disc herniation with foraminal stenosis.\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\n",
+   "source": "template"
+  }
+ ]
+}

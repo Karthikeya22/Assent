@@ -1,0 +1,157 @@
+{
+ "split": "dev",
+ "facts": {
+  "case_id": "esi-038",
+  "difficulty": "buried",
+  "order_date": "2026-09-16",
+  "patient": {
+   "fhir_id": "016280d2-d2bb-d608-2b26-08eb58346bfd",
+   "name": "Vertie Rutherford",
+   "sex": "female",
+   "birth_date": "1956-06-17"
+  },
+  "condition": "radic",
+  "region": "lumbar",
+  "level": "L5-S1",
+  "side": "right",
+  "cpt": "64483",
+  "icd10": "M54.16",
+  "onset_date": "2026-05-13",
+  "pain_weeks": 18,
+  "pt_start": "2026-05-25",
+  "pt_weeks": 5,
+  "nsaid": "naproxen 500 mg BID",
+  "scale_name": "NRS",
+  "scale_value": "8/10",
+  "imaging_date": "2026-08-21",
+  "imaging_modality": "MRI",
+  "prior_esi_dates": [
+   "2026-03-06",
+   "2026-04-04"
+  ],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "not_met",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "A/P: R L radic 2/2 L5-S1 HNP w/ foraminal stenosis.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.pls",
+    "gold": "not_met",
+    "text": "PSH: no spinal surgery.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "MRI lumbar spine 08/21/2026: L5-S1 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Fx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Initial NRS 8/10.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "LBP x18 wks w/ radiation to R LE.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "D/C from PT after 5 wks (05/25/2026-06/29/2026), sx unchanged. Failed naproxen 500 mg BID.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "HEP daily, compliant.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "ROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "Epidural steroid injection history: 2 lumbar injections in the past 12 months (03/06/2026, 04/04/2026).",
+    "slot": "pcp",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-05-22",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 05/22/2026\nPatient: Vertie Rutherford, 70-year-old female\nAuthor: Primary care physician\n\nVitals: BP 134/80, HR 74, T 36.8 C.\nROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.\nMedications reconciled.\nPSH: no spinal surgery.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\nA/P: R L radic 2/2 L5-S1 HNP w/ foraminal stenosis.\nEpidural steroid injection history: 2 lumbar injections in the past 12 months (03/06/2026, 04/04/2026).\n",
+   "source": "template"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-06-29",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 06/29/2026\nPatient: Vertie Rutherford, 70-year-old female\nAuthor: Physical therapist\n\nTreatment included manual therapy, core stabilization and gait training.\nHEP daily, compliant.\nPatient attended sessions as scheduled.\nGoals reviewed with patient.\nFx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.\nD/C from PT after 5 wks (05/25/2026-06/29/2026), sx unchanged. Failed naproxen 500 mg BID.\nInitial NRS 8/10.\n",
+   "source": "template"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-21",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/21/2026\nPatient: Vertie Rutherford, 70-year-old female\nAuthor: Radiologist\n\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\nMRI lumbar spine 08/21/2026: L5-S1 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.\n",
+   "source": "template"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-14",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/14/2026\nPatient: Vertie Rutherford, 70-year-old female\nAuthor: Pain medicine physician\n\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nLBP x18 wks w/ radiation to R LE.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\n",
+   "source": "template"
+  }
+ ]
+}

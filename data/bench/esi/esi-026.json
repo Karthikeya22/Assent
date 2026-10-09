@@ -1,0 +1,143 @@
+{
+ "split": "test",
+ "facts": {
+  "case_id": "esi-026",
+  "difficulty": "missing",
+  "order_date": "2026-09-07",
+  "patient": {
+   "fhir_id": "c6b31718-a0ab-ba00-16e4-7d786b4ec07c",
+   "name": "Adrian Wintheiser",
+   "sex": "male",
+   "birth_date": "1937-07-05"
+  },
+  "condition": "radic",
+  "region": "lumbar",
+  "level": "L4-L5",
+  "side": "right",
+  "cpt": "64483",
+  "icd10": "M54.16",
+  "onset_date": "2026-04-06",
+  "pain_weeks": 22,
+  "pt_start": "2026-04-18",
+  "pt_weeks": 5,
+  "nsaid": "ibuprofen 600 mg TID",
+  "scale_name": "NRS",
+  "scale_value": "7/10",
+  "imaging_date": "2026-08-05",
+  "imaging_modality": "CT",
+  "prior_esi_dates": [
+   "2026-03-05",
+   "2026-05-14"
+  ],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "insufficient",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "insufficient",
+   "freq": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "Assessment: right lumbar radiculopathy at L4-L5 due to disc herniation with foraminal stenosis.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "CT lumbar spine 08/05/2026: L4-L5 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Pain limits walking to about one block and has forced the patient to stop volunteering; sleep is disrupted most nights.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Baseline NRS prior to any intervention: 7/10.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "Symptoms began on 04/06/2026, 22 weeks before this visit.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "Completed physical therapy from 04/18/2026 to 05/23/2026 (5 weeks) with no lasting benefit, and failed ibuprofen 600 mg TID.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "Continues the daily home exercise program taught in PT.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "Epidural steroid injection history: 2 lumbar injections in the past 12 months (03/05/2026, 05/14/2026).",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-04-15",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 04/15/2026\nPatient: Adrian Wintheiser, 89-year-old male\nAuthor: Primary care physician\n\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
+   "source": "template"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-05-23",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 05/23/2026\nPatient: Adrian Wintheiser, 89-year-old male\nAuthor: Physical therapist\n\nCompleted physical therapy from 04/18/2026 to 05/23/2026 (5 weeks) with no lasting benefit, and failed ibuprofen 600 mg TID.\nTreatment included manual therapy, core stabilization and gait training.\nPatient attended sessions as scheduled.\nGoals reviewed with patient.\n",
+   "source": "template"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-05",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/05/2026\nPatient: Adrian Wintheiser, 89-year-old male\nAuthor: Radiologist\n\nCT lumbar spine 08/05/2026: L4-L5 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\n",
+   "source": "template"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-05",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/05/2026\nPatient: Adrian Wintheiser, 89-year-old male\nAuthor: Pain medicine physician\n\nEpidural steroid injection history: 2 lumbar injections in the past 12 months (03/05/2026, 05/14/2026).\nContinues the daily home exercise program taught in PT.\nSymptoms began on 04/06/2026, 22 weeks before this visit.\nBaseline NRS prior to any intervention: 7/10.\nPain limits walking to about one block and has forced the patient to stop volunteering; sleep is disrupted most nights.\nAssessment: right lumbar radiculopathy at L4-L5 due to disc herniation with foraminal stenosis.\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\n",
+   "source": "template"
+  }
+ ]
+}

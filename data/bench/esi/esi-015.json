@@ -1,0 +1,159 @@
+{
+ "split": "test",
+ "facts": {
+  "case_id": "esi-015",
+  "difficulty": "clean",
+  "order_date": "2026-09-15",
+  "patient": {
+   "fhir_id": "66d5fab8-965d-d654-e97d-db0b3b256f73",
+   "name": "Valentine Altenwerth",
+   "sex": "male",
+   "birth_date": "1939-09-08"
+  },
+  "condition": "radic",
+  "region": "cervical",
+  "level": "C5-C6",
+  "side": "left",
+  "cpt": "64479",
+  "icd10": "M54.12",
+  "onset_date": "2026-07-28",
+  "pain_weeks": 7,
+  "pt_start": "2026-08-06",
+  "pt_weeks": 5,
+  "nsaid": "naproxen 500 mg BID",
+  "scale_name": "ODI",
+  "scale_value": "57%",
+  "imaging_date": "2026-08-13",
+  "imaging_modality": "CT",
+  "prior_esi_dates": [
+   "2026-01-31",
+   "2026-04-30",
+   "2026-06-07",
+   "2026-07-31"
+  ],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "not_met",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "not_met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "Impression: left-sided cervical radiculopathy secondary to C5-C6 disc herniation causing foraminal stenosis.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dx.pls",
+    "gold": "not_met",
+    "text": "Past surgical history: no prior spine surgery.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "CT cervical spine 08/13/2026: C5-C6 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Function: unable to stand long enough to cook a meal, has stopped driving because of the pain.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Baseline ODI prior to any intervention: 57%.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "Symptoms began on 07/28/2026, 7 weeks before this visit.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "Completed physical therapy from 08/06/2026 to 09/10/2026 (5 weeks) with no lasting benefit, and failed naproxen 500 mg BID.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "Continues the daily home exercise program taught in PT.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No red flags: afebrile, no unexplained weight loss, no history of malignancy, no saddle anesthesia.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "not_met",
+    "text": "Epidural steroid injection history: 4 cervical injections in the past 12 months (01/31/2026, 04/30/2026, 06/07/2026, 07/31/2026).",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-08-06",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 08/06/2026\nPatient: Valentine Altenwerth, 87-year-old male\nAuthor: Primary care physician\n\nPast surgical history: no prior spine surgery.\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
+   "source": "template"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-09-10",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 09/10/2026\nPatient: Valentine Altenwerth, 87-year-old male\nAuthor: Physical therapist\n\nCompleted physical therapy from 08/06/2026 to 09/10/2026 (5 weeks) with no lasting benefit, and failed naproxen 500 mg BID.\nTreatment included manual therapy, core stabilization and gait training.\nPatient attended sessions as scheduled.\nGoals reviewed with patient.\n",
+   "source": "template"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-13",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/13/2026\nPatient: Valentine Altenwerth, 87-year-old male\nAuthor: Radiologist\n\nCT cervical spine 08/13/2026: C5-C6 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\n",
+   "source": "template"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-13",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/13/2026\nPatient: Valentine Altenwerth, 87-year-old male\nAuthor: Pain medicine physician\n\nEpidural steroid injection history: 4 cervical injections in the past 12 months (01/31/2026, 04/30/2026, 06/07/2026, 07/31/2026).\nNo red flags: afebrile, no unexplained weight loss, no history of malignancy, no saddle anesthesia.\nContinues the daily home exercise program taught in PT.\nSymptoms began on 07/28/2026, 7 weeks before this visit.\nBaseline ODI prior to any intervention: 57%.\nFunction: unable to stand long enough to cook a meal, has stopped driving because of the pain.\nImpression: left-sided cervical radiculopathy secondary to C5-C6 disc herniation causing foraminal stenosis.\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\n",
+   "source": "template"
+  }
+ ]
+}

@@ -230,6 +230,18 @@ requires-dist = [
 name = "assent-evals"
 version = "0.0.0"
 source = { editable = "packages/evals" }
+dependencies = [
+    { name = "assent-agents" },
+    { name = "assent-api" },
+    { name = "pydantic" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "assent-agents", editable = "packages/agents" },
+    { name = "assent-api", editable = "apps/api" },
+    { name = "pydantic", specifier = ">=2.9" },
+]
 
 [[package]]
 name = "assent-fhir"

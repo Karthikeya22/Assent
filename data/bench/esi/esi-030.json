@@ -1,0 +1,139 @@
+{
+ "split": "dev",
+ "facts": {
+  "case_id": "esi-030",
+  "difficulty": "clean",
+  "order_date": "2026-09-11",
+  "patient": {
+   "fhir_id": "384e818e-b695-39d9-c66d-bdce4ea9de58",
+   "name": "Debby Berge",
+   "sex": "female",
+   "birth_date": "1959-11-30"
+  },
+  "condition": "zoster",
+  "region": "lumbar",
+  "level": "L4-L5",
+  "side": "left",
+  "cpt": "64483",
+  "icd10": "B02.29",
+  "onset_date": "2026-08-21",
+  "pain_weeks": 3,
+  "pt_start": "2026-07-26",
+  "pt_weeks": 6,
+  "nsaid": "ibuprofen 600 mg TID",
+  "scale_name": "NRS",
+  "scale_value": "8/10",
+  "imaging_date": "2026-08-23",
+  "imaging_modality": "MRI",
+  "prior_esi_dates": [],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "insufficient",
+   "dx.pls": "insufficient",
+   "dx.zoster": "met",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "not_met",
+   "dur.conservative": "insufficient",
+   "dur.zoster": "met",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "dx.zoster",
+    "gold": "met",
+    "text": "Assessment: acute herpes zoster in a left L1 dermatomal distribution with associated pain; vesicular rash first noted 08/23/2026.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "MRI thoracolumbar spine 08/23/2026: no compressive lesion; enhancement of the left L1 nerve root consistent with zoster radiculitis.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Pain limits walking to about one block and has forced the patient to stop volunteering; sleep is disrupted most nights.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "NRS at baseline today: 8/10.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "not_met",
+    "text": "Reports low back pain radiating to the left leg for 3 weeks.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.zoster",
+    "gold": "met",
+    "text": "Pain persists despite valacyclovir and gabapentin titrated to 900 mg daily; refractory to conservative management.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "Remains engaged in a home exercise program five days a week.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Denies fever, chills, weight loss, or bowel or bladder changes; no history of cancer.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "No prior epidural steroid injections.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-08-30",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 08/30/2026\nPatient: Debby Berge, 67-year-old female\nAuthor: Primary care physician\n\nAssessment: acute herpes zoster in a left L1 dermatomal distribution with associated pain; vesicular rash first noted 08/23/2026.\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
+   "source": "template"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-23",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/23/2026\nPatient: Debby Berge, 67-year-old female\nAuthor: Radiologist\n\nMRI thoracolumbar spine 08/23/2026: no compressive lesion; enhancement of the left L1 nerve root consistent with zoster radiculitis.\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\n",
+   "source": "template"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-09",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/09/2026\nPatient: Debby Berge, 67-year-old female\nAuthor: Pain medicine physician\n\nNo prior epidural steroid injections.\nDenies fever, chills, weight loss, or bowel or bladder changes; no history of cancer.\nRemains engaged in a home exercise program five days a week.\nPain persists despite valacyclovir and gabapentin titrated to 900 mg daily; refractory to conservative management.\nReports low back pain radiating to the left leg for 3 weeks.\nNRS at baseline today: 8/10.\nPain limits walking to about one block and has forced the patient to stop volunteering; sleep is disrupted most nights.\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\n",
+   "source": "template"
+  }
+ ]
+}

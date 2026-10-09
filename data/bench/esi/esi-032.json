@@ -1,0 +1,157 @@
+{
+ "split": "test",
+ "facts": {
+  "case_id": "esi-032",
+  "difficulty": "clean",
+  "order_date": "2026-09-27",
+  "patient": {
+   "fhir_id": "bee141fe-6f93-c958-007a-a3c68da5c52d",
+   "name": "Ela Adams",
+   "sex": "female",
+   "birth_date": "1952-07-19"
+  },
+  "condition": "radic",
+  "region": "lumbar",
+  "level": "L3-L4",
+  "side": "right",
+  "cpt": "64483",
+  "icd10": "M54.16",
+  "onset_date": "2026-08-16",
+  "pain_weeks": 6,
+  "pt_start": "2026-08-04",
+  "pt_weeks": 7,
+  "nsaid": "naproxen 500 mg BID",
+  "scale_name": "ODI",
+  "scale_value": "50%",
+  "imaging_date": "2026-08-18",
+  "imaging_modality": "MRI",
+  "prior_esi_dates": [
+   "2026-05-20",
+   "2026-07-02"
+  ],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "not_met",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "Impression: right-sided lumbar radiculopathy secondary to L3-L4 disc herniation causing foraminal stenosis.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dx.pls",
+    "gold": "not_met",
+    "text": "Past surgical history: no prior spine surgery.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "MRI lumbar spine 08/18/2026: L3-L4 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Pain limits walking to about one block and has forced the patient to stop volunteering; sleep is disrupted most nights.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "ODI at baseline today: 50%.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "Reports low back pain radiating to the right leg for 6 weeks.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "PT discharge summary: completed 7 weeks of physical therapy (08/04/2026 to 09/22/2026) without meaningful improvement; naproxen 500 mg BID for the same period without relief.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "Continues the daily home exercise program taught in PT.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No red flags: afebrile, no unexplained weight loss, no history of malignancy, no saddle anesthesia.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "Epidural steroid injection history: 2 lumbar injections in the past 12 months (05/20/2026, 07/02/2026).",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-08-25",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 08/25/2026\nPatient: Ela Adams, 74-year-old female\nAuthor: Primary care physician\n\nPast surgical history: no prior spine surgery.\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
+   "source": "template"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-09-22",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 09/22/2026\nPatient: Ela Adams, 74-year-old female\nAuthor: Physical therapist\n\nPT discharge summary: completed 7 weeks of physical therapy (08/04/2026 to 09/22/2026) without meaningful improvement; naproxen 500 mg BID for the same period without relief.\nTreatment included manual therapy, core stabilization and gait training.\nPatient attended sessions as scheduled.\nGoals reviewed with patient.\n",
+   "source": "template"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-18",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/18/2026\nPatient: Ela Adams, 74-year-old female\nAuthor: Radiologist\n\nMRI lumbar spine 08/18/2026: L3-L4 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\n",
+   "source": "template"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-25",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/25/2026\nPatient: Ela Adams, 74-year-old female\nAuthor: Pain medicine physician\n\nEpidural steroid injection history: 2 lumbar injections in the past 12 months (05/20/2026, 07/02/2026).\nNo red flags: afebrile, no unexplained weight loss, no history of malignancy, no saddle anesthesia.\nContinues the daily home exercise program taught in PT.\nReports low back pain radiating to the right leg for 6 weeks.\nODI at baseline today: 50%.\nPain limits walking to about one block and has forced the patient to stop volunteering; sleep is disrupted most nights.\nImpression: right-sided lumbar radiculopathy secondary to L3-L4 disc herniation causing foraminal stenosis.\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\n",
+   "source": "template"
+  }
+ ]
+}

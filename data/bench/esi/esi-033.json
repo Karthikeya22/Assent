@@ -1,0 +1,134 @@
+{
+ "split": "dev",
+ "facts": {
+  "case_id": "esi-033",
+  "difficulty": "missing",
+  "order_date": "2026-09-06",
+  "patient": {
+   "fhir_id": "98ec8999-16e4-0159-a4ac-fc193a8f02d1",
+   "name": "Thomas Goyette",
+   "sex": "male",
+   "birth_date": "1943-04-14"
+  },
+  "condition": "radic",
+  "region": "lumbar",
+  "level": "L4-L5",
+  "side": "left",
+  "cpt": "64483",
+  "icd10": "M54.16",
+  "onset_date": "2026-07-19",
+  "pain_weeks": 7,
+  "pt_start": "2026-07-28",
+  "pt_weeks": 5,
+  "nsaid": "meloxicam 15 mg daily",
+  "scale_name": "NRS",
+  "scale_value": "7/10",
+  "imaging_date": "2026-08-17",
+  "imaging_modality": "CT",
+  "prior_esi_dates": [
+   "2025-11-28"
+  ],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "insufficient",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "insufficient",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "Assessment: left lumbar radiculopathy at L4-L5 due to disc herniation with foraminal stenosis.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "CT lumbar spine 08/17/2026: L4-L5 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Function: unable to stand long enough to cook a meal, has stopped driving because of the pain.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Baseline NRS prior to any intervention: 7/10.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "Reports low back pain radiating to the left leg for 7 weeks.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "Remains engaged in a home exercise program five days a week.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No red flags: afebrile, no unexplained weight loss, no history of malignancy, no saddle anesthesia.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "Epidural steroid injection history: 1 lumbar injection in the past 12 months (11/28/2025).",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-07-28",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 07/28/2026\nPatient: Thomas Goyette, 83-year-old male\nAuthor: Primary care physician\n\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
+   "source": "template"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-17",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/17/2026\nPatient: Thomas Goyette, 83-year-old male\nAuthor: Radiologist\n\nCT lumbar spine 08/17/2026: L4-L5 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\n",
+   "source": "template"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-04",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/04/2026\nPatient: Thomas Goyette, 83-year-old male\nAuthor: Pain medicine physician\n\nEpidural steroid injection history: 1 lumbar injection in the past 12 months (11/28/2025).\nNo red flags: afebrile, no unexplained weight loss, no history of malignancy, no saddle anesthesia.\nRemains engaged in a home exercise program five days a week.\nReports low back pain radiating to the left leg for 7 weeks.\nBaseline NRS prior to any intervention: 7/10.\nFunction: unable to stand long enough to cook a meal, has stopped driving because of the pain.\nAssessment: left lumbar radiculopathy at L4-L5 due to disc herniation with foraminal stenosis.\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\n",
+   "source": "template"
+  }
+ ]
+}

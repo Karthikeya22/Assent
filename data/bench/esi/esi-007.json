@@ -1,0 +1,146 @@
+{
+ "split": "dev",
+ "facts": {
+  "case_id": "esi-007",
+  "difficulty": "contradictory",
+  "order_date": "2026-09-30",
+  "patient": {
+   "fhir_id": "a0ebb089-527f-ec89-3309-8c10a36a2cc1",
+   "name": "Gaston Durgan",
+   "sex": "male",
+   "birth_date": "1939-10-30"
+  },
+  "condition": "radic",
+  "region": "lumbar",
+  "level": "L4-L5",
+  "side": "left",
+  "cpt": "64483",
+  "icd10": "M54.16",
+  "onset_date": "2026-09-09",
+  "pain_weeks": 3,
+  "pt_start": "2026-06-03",
+  "pt_weeks": 5,
+  "nsaid": "meloxicam 15 mg daily",
+  "scale_name": "NRS",
+  "scale_value": "7/10",
+  "imaging_date": "2026-09-06",
+  "imaging_modality": "MRI",
+  "prior_esi_dates": [],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "insufficient",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "not_met",
+   "dur.conservative": "not_met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "Assessment: left lumbar radiculopathy at L4-L5 due to disc herniation with foraminal stenosis.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "MRI lumbar spine 09/06/2026: L4-L5 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Pain limits walking to about one block and has forced the patient to stop volunteering; sleep is disrupted most nights.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "NRS at baseline today: 7/10.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Denies fever, chills, weight loss, or bowel or bladder changes; no history of cancer.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "No prior epidural steroid injections.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "not_met",
+    "text": "On re-interview, the leg pain began 3 weeks ago; the earlier history was inaccurate.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "not_met",
+    "text": "Reports radiating leg pain for about 3 months.",
+    "slot": "pcp",
+    "stale": true
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "not_met",
+    "text": "Has not yet started physical therapy or anti-inflammatory medication for this episode.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "Remains engaged in a home exercise program five days a week.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-09-18",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 09/18/2026\nPatient: Gaston Durgan, 87-year-old male\nAuthor: Primary care physician\n\nReports radiating leg pain for about 3 months.\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
+   "source": "template"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-09-06",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 09/06/2026\nPatient: Gaston Durgan, 87-year-old male\nAuthor: Radiologist\n\nMRI lumbar spine 09/06/2026: L4-L5 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\n",
+   "source": "template"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-28",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/28/2026\nPatient: Gaston Durgan, 87-year-old male\nAuthor: Pain medicine physician\n\nRemains engaged in a home exercise program five days a week.\nHas not yet started physical therapy or anti-inflammatory medication for this episode.\nOn re-interview, the leg pain began 3 weeks ago; the earlier history was inaccurate.\nNo prior epidural steroid injections.\nDenies fever, chills, weight loss, or bowel or bladder changes; no history of cancer.\nNRS at baseline today: 7/10.\nPain limits walking to about one block and has forced the patient to stop volunteering; sleep is disrupted most nights.\nAssessment: left lumbar radiculopathy at L4-L5 due to disc herniation with foraminal stenosis.\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\n",
+   "source": "template"
+  }
+ ]
+}

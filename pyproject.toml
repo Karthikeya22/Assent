@@ -38,7 +38,7 @@ dev = [
 [tool.ruff]
 line-length = 100
 target-version = "py312"
-extend-exclude = ["apps/web", "**/migrations/versions"]
+extend-exclude = ["apps/web", "**/migrations/versions", "*.md"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "ASYNC", "S", "RUF"]

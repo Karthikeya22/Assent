@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+/* Design tokens: FRONTEND.md §2. Paper and ink, one signal color. Values are exact; don't drift. */
+:root {
+  --paper: #f6f4ef;
+  --paper-raised: #ffffff;
+  --ink: #14171a;
+  --ink-2: #4a5058;
+  --ink-3: #8a9097;
+  --rule: #e2ded6;
+  --signal: #0f6e5c;
+  --signal-soft: #dcefea;
+  --gap: #b26b00;
+  --fail: #b3261e;
+  --adversary: #5b3fa8; /* Payer Adversary voice only: the only purple in the product */
+  --focus: #1f5fd1;
+
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-1: 120ms;
+  --dur-2: 220ms;
+  --dur-3: 420ms;
+  --dur-4: 900ms;
+
+  --shadow-float: 0 12px 32px -12px rgb(0 0 0 / 0.25);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0e1012;
+    --paper-raised: #16191c;
+    --ink: #e9e7e2;
+    --ink-2: #a4a9af;
+    --ink-3: #6b7178;
+    --rule: #24282c;
+    --signal: #3fbf9f;
+    --signal-soft: #123a32;
+    --gap: #f0a93b;
+    --fail: #f2766b;
+    --adversary: #a992f0;
+    --focus: #7aa8ff;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #0e1012;
+  --paper-raised: #16191c;
+  --ink: #e9e7e2;
+  --ink-2: #a4a9af;
+  --ink-3: #6b7178;
+  --rule: #24282c;
+  --signal: #3fbf9f;
+  --signal-soft: #123a32;
+  --gap: #f0a93b;
+  --fail: #f2766b;
+  --adversary: #a992f0;
+  --focus: #7aa8ff;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-rule: var(--rule);
+  --color-signal: var(--signal);
+  --color-signal-soft: var(--signal-soft);
+  --color-gap: var(--gap);
+  --color-fail: var(--fail);
+  --color-adversary: var(--adversary);
+  --color-focus: var(--focus);
+
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* Type scale (rem): 0.75 / 0.8125 / 0.875 / 1 / 1.25 / 1.75 / 2.5 / 4 / 6 */
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.5rem;
+  --text-3xl: 4rem;
+  --text-hero: 6rem;
+
+  --radius-control: 6px;
+  --radius-panel: 10px;
+}
+
+@layer base {
+  html,
+  body {
+    background: var(--paper);
+    color: var(--ink);
+  }
+  /* Raw next/font vars here: `@theme inline` values aren't emitted as CSS variables. */
+  body {
+    font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.875rem;
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility display {
+  font-family: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}

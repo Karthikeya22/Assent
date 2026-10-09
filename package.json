@@ -15,5 +15,8 @@
   "devDependencies": {
     "turbo": "^2.3.0",
     "prettier": "^3.4.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "sharp", "unrs-resolver"]
   }
 }

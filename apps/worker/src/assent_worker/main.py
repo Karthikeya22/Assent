@@ -1,4 +1,7 @@
-"""arq worker: runs agent graphs off the request path. `uv run arq assent_worker.main.WorkerSettings`"""
+"""arq worker: runs agent graphs off the request path.
+
+Run: `uv run arq assent_worker.main.WorkerSettings`
+"""
 
 import logging
 from typing import Any, ClassVar

@@ -10,9 +10,11 @@ switch ($Cmd) {
   # needed on this 7 GB laptop; infra/docker-compose.yml is the equivalent for CI/other machines.
   'up'      {
     $pg = 'D:\DevTools\pg16\Library\bin'
-    if (-not (& "$pg\pg_isready.exe" -h localhost -q; $LASTEXITCODE -eq 0)) {
-      # Start-Process so pg_ctl doesn't hold this shell's stdout open.
-      Start-Process "$pg\pg_ctl.exe" -ArgumentList '-D', 'D:\DevTools\pgdata', '-l', 'D:\DevTools\pgdata\server.log', 'start' -WindowStyle Hidden -Wait
+    & "$pg\pg_isready.exe" -h localhost -q
+    if ($LASTEXITCODE -ne 0) {
+      # Start-Process (no -Wait: that would wait on the long-lived server child too), then poll.
+      Start-Process "$pg\pg_ctl.exe" -ArgumentList '-D', 'D:\DevTools\pgdata', '-l', 'D:\DevTools\pgdata\server.log', 'start' -WindowStyle Hidden
+      foreach ($i in 1..30) { & "$pg\pg_isready.exe" -h localhost -q; if ($LASTEXITCODE -eq 0) { break }; Start-Sleep -Milliseconds 500 }
     }
     if (-not (Get-Process redis-server -ErrorAction SilentlyContinue)) {
       Start-Process D:\DevTools\redis\redis-server.exe -ArgumentList '--port', '6379', '--maxmemory', '128mb', '--save', '""', '--appendonly', 'no' -WindowStyle Hidden

@@ -14,11 +14,15 @@ pnpm install
 .\scripts\dev.ps1 all        # postgres+redis, migrate, seed, api, worker, web
 ```
 
+One-time machine setup (already done on the dev laptop, everything on D:): Postgres 16 + pgvector via
+`micromamba create -p D:\DevTools\pg16 -c conda-forge postgresql=16 pgvector`, `initdb -D D:\DevTools\pgdata -U assent`,
+portable Redis in `D:\DevTools\redis`, Node 22 via fnm in `D:\DevTools\fnm`, Python 3.12 via `uv python install`.
+
 Log in at http://localhost:3000/login as `coordinator@assent.dev` / `assent-dev`.
 
 | Command | What it does |
 |---|---|
-| `.\scripts\dev.ps1 up` / `down` | Postgres 16 + pgvector and Redis 7 (Docker) |
+| `.\scripts\dev.ps1 up` / `down` | Postgres 16 + pgvector and Redis, run natively from `D:\DevTools` (no Docker/WSL; `infra/docker-compose.yml` is the equivalent elsewhere) |
 | `.\scripts\dev.ps1 migrate` | Alembic upgrade head |
 | `.\scripts\dev.ps1 seed` | Demo org + one user per role |
 | `.\scripts\dev.ps1 test` | pytest + vitest |

@@ -1,5 +1,11 @@
 from datetime import UTC, datetime
 
+import pytest
+from sqlalchemy import text
+from sqlalchemy.exc import DBAPIError
+
+from assent_api.db import SessionLocal
+from assent_api.services import audit
 from assent_api.services.audit import GENESIS, find_break, row_hash
 
 
@@ -51,3 +57,24 @@ def test_deleted_row_is_detected_at_the_next_row() -> None:
     rows = _chain(3)
     del rows[1]
     assert find_break(rows) == 3
+
+
+async def test_db_append_chains_and_verifies() -> None:
+    async with SessionLocal() as s:
+        for i in range(3):
+            await audit.append(
+                s, actor_id=None, action="test", entity="case", entity_id=str(i), after={"i": i}
+            )
+        await s.commit()
+        assert await audit.verify_chain(s) is None
+
+
+async def test_db_rejects_audit_mutation() -> None:
+    async with SessionLocal() as s:
+        await audit.append(s, actor_id=None, action="test", entity="case", entity_id="1")
+        await s.commit()
+        with pytest.raises(DBAPIError, match="append-only"):
+            await s.execute(text("UPDATE audit_log SET action = 'tampered'"))
+        await s.rollback()
+        with pytest.raises(DBAPIError, match="append-only"):
+            await s.execute(text("DELETE FROM audit_log"))

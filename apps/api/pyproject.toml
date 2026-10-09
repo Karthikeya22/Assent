@@ -13,7 +13,6 @@ dependencies = [
   "pgvector>=0.3.6",
   "pyjwt>=2.10",
   "redis>=5.2",
-  "email-validator>=2.2",
 ]
 
 [build-system]

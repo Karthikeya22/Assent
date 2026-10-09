@@ -1,0 +1,33 @@
+# Lean dev stack (laptop has ~7 GB RAM). The full documented stack is in docker-compose.full.yml.
+name: assent
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: assent
+      POSTGRES_PASSWORD: assent
+      POSTGRES_DB: assent
+    command: ["postgres", "-c", "shared_buffers=128MB", "-c", "max_connections=50"]
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U assent -d assent"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    mem_limit: 512m
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--save", "", "--appendonly", "no", "--maxmemory", "128mb"]
+    ports: ["6379:6379"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    mem_limit: 160m
+
+volumes:
+  pgdata:

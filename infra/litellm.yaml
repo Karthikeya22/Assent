@@ -1,0 +1,25 @@
+# Model routing. Code asks for a tier name, never a model ID (ARCHITECTURE §6.4).
+# Loaded by assent_agents via litellm.Router in dev; same file works for the LiteLLM proxy.
+model_list:
+  - model_name: reasoning
+    litellm_params: { model: openai/gpt-4.1, temperature: 0 }
+  - model_name: fast
+    litellm_params: { model: openai/gpt-4.1-mini, temperature: 0.2 }
+  # shortcut: adversary is a different OpenAI family until a second vendor key exists.
+  # Spec wants a different vendor (ARCHITECTURE §6.4); swap to the Gemini entry below once GEMINI_API_KEY is set.
+  - model_name: adversary
+    litellm_params: { model: openai/o4-mini }
+  # - model_name: adversary
+  #   litellm_params: { model: gemini/gemini-2.5-pro, temperature: 0.3 }
+  # - model_name: reasoning
+  #   litellm_params: { model: anthropic/claude-sonnet-5-5, temperature: 0 }
+
+router_settings:
+  num_retries: 2
+  timeout: 60
+  fallbacks:
+    - reasoning: [fast]
+
+litellm_settings:
+  max_budget: 20.0       # USD, dev-wide hard cap
+  budget_duration: 30d

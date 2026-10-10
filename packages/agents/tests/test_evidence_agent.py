@@ -110,7 +110,7 @@ async def test_search_then_duration_then_answer() -> None:
         ),
         answer("met", ("c1", "16 weeks before this visit")),
     )
-    v, texts, trace = await run_evidence(CRIT, CTX, search, llm)
+    _, texts, trace = await run_evidence(CRIT, CTX, search, llm)
     assert trace == [
         "search_chart: physical therapy dates",
         "compute_duration: 06/09/2026",

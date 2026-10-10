@@ -103,7 +103,8 @@ async def run_evidence(
         {
             "role": "user",
             "content": (
-                f"Criterion: {criterion.label}\nEvidence type: {criterion.evidence_type}{threshold}\n"
+                f"Criterion: {criterion.label}\n"
+                f"Evidence type: {criterion.evidence_type}{threshold}\n"
                 f"Policy text: {criterion.source_quote or '(n/a)'}\n\n"
                 f"Request: {ctx.service}, CPT {ctx.cpt}, ICD-10 {ctx.icd10}. "
                 f"Today (date of request): {ctx.order_date:%m/%d/%Y}.\n\n"

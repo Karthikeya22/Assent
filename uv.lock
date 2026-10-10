@@ -179,6 +179,9 @@ name = "assent-agents"
 version = "0.0.0"
 source = { editable = "packages/agents" }
 dependencies = [
+    { name = "assent-fhir" },
+    { name = "assent-phi" },
+    { name = "assent-retrieval" },
     { name = "langgraph" },
     { name = "litellm" },
     { name = "pydantic" },
@@ -187,6 +190,9 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "assent-fhir", editable = "packages/fhir" },
+    { name = "assent-phi", editable = "packages/phi" },
+    { name = "assent-retrieval", editable = "packages/retrieval" },
     { name = "langgraph", specifier = ">=0.2.50" },
     { name = "litellm", specifier = ">=1.55" },
     { name = "pydantic", specifier = ">=2.9" },
@@ -253,6 +259,7 @@ name = "assent-phi"
 version = "0.0.0"
 source = { editable = "packages/phi" }
 dependencies = [
+    { name = "en-core-web-sm" },
     { name = "presidio-analyzer" },
     { name = "presidio-anonymizer" },
     { name = "spacy" },
@@ -260,6 +267,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "en-core-web-sm", url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl" },
     { name = "presidio-analyzer", specifier = ">=2.2" },
     { name = "presidio-anonymizer", specifier = ">=2.2" },
     { name = "spacy", specifier = ">=3.8" },
@@ -270,13 +278,17 @@ name = "assent-retrieval"
 version = "0.0.0"
 source = { editable = "packages/retrieval" }
 dependencies = [
+    { name = "assent-fhir" },
     { name = "sentence-transformers" },
+    { name = "sqlalchemy", extra = ["asyncio"] },
     { name = "torch" },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "assent-fhir", editable = "packages/fhir" },
     { name = "sentence-transformers", specifier = ">=3.3" },
+    { name = "sqlalchemy", extras = ["asyncio"], specifier = ">=2.0.36" },
     { name = "torch", specifier = ">=2.5" },
 ]
 
@@ -687,6 +699,14 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/fc/f8/98eea607f65de6527f8a2e8885fc8015d3e6f5775df186e443e0964a11c3/distro-1.9.0.tar.gz", hash = "sha256:2fa77c6fd8940f116ee1d6b94a2f90b13b5ea8d019b98bc8bafdcabcdd9bdbed", size = 60722, upload-time = "2023-12-24T09:54:32.31Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/12/b3/231ffd4ab1fc9d679809f356cebee130ac7daa00d6d6f3206dd4fd137e9e/distro-1.9.0-py3-none-any.whl", hash = "sha256:7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2", size = 20277, upload-time = "2023-12-24T09:54:30.421Z" },
+]
+
+[[package]]
+name = "en-core-web-sm"
+version = "3.8.0"
+source = { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl" }
+wheels = [
+    { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl", hash = "sha256:1932429db727d4bff3deed6b34cfc05df17794f4a52eeb26cf8928f7c1a0fb85" },
 ]
 
 [[package]]

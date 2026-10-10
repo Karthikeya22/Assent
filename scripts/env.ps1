@@ -10,3 +10,4 @@ $env:npm_config_cache = 'D:\.cache\npm'
 $env:PLAYWRIGHT_BROWSERS_PATH = 'D:\Projects\.playwright'
 $env:PRE_COMMIT_HOME = 'D:\.cache\pre-commit'
 $env:NEXT_TELEMETRY_DISABLED = '1'
+$env:HF_HUB_OFFLINE = '1'  # models are cached on D:; set to 0 to download a new one

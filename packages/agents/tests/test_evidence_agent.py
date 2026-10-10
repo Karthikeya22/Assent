@@ -65,7 +65,7 @@ def answer(verdict: str, *cites: tuple[str, str]) -> AgentStep:
             verdict=verdict,
             confidence=0.9,
             rationale="r",  # type: ignore[arg-type]
-            citations=[CitationOut(chunk_id=c, quote=q) for c, q in cites],
+            citations=[CitationOut(chunk_id=c, quote=q, claim=q) for c, q in cites],
         ),
     )
 
@@ -148,7 +148,7 @@ async def test_injection_obeyed_by_model_is_caught_by_verifier() -> None:
         # A real NLI model: a claim about "every criterion" does not entail a 4-week duration.
         return {"entailment": 0.2, "contradiction": 0.05, "neutral": 0.75}
 
-    checked = verify(v, texts, CRIT.label, nli)
+    checked = verify(v, texts, nli)
     assert checked.verdict == "insufficient" and checked.original == "met"  # ...the gate didn't
 
 

@@ -144,6 +144,7 @@ async def run_evidence(
             if c.chunk_id in reg.by_short
             else c.chunk_id,
             quote=c.quote,
+            claim=c.claim,
         )
         for c in out.citations
     ]

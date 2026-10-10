@@ -10,6 +10,7 @@ class CitationOut(BaseModel):
 
     chunk_id: str
     quote: str = Field(description="Exact substring copied from the chunk")
+    claim: str = Field(description="One plain sentence: the fact this quote establishes")
 
 
 class VerdictOut(BaseModel):
@@ -24,10 +25,11 @@ class VerdictOut(BaseModel):
 class Citation(BaseModel):
     chunk_id: str
     quote: str
+    claim: str = ""
     start: int | None = None  # offsets into the chunk text, once located
     end: int | None = None
     verbatim_ok: bool = False
-    support: float | None = None  # NLI P(entail) for met, P(contradict) for not_met
+    support: float | None = None  # NLI P(quote entails claim); 0 if from flagged text
 
 
 class Verdict(BaseModel):

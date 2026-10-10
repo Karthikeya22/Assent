@@ -16,6 +16,7 @@ from langgraph.graph import END, START, StateGraph
 from langgraph.types import Send
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
+from assent_agents.events import Emit, event, no_emit
 from assent_agents.evidence.agent import CaseContext, run_evidence
 from assent_agents.evidence.models import Verdict
 from assent_agents.llm import StructuredLLM
@@ -100,13 +101,18 @@ def build_graph(
     llm: StructuredLLM,
     nli: NLI = models.nli,
     concurrency: int = 4,
+    emit: Emit = no_emit,
 ) -> Any:
     gate = asyncio.Semaphore(concurrency)
     t0: dict[str, float] = {}
 
+    def ms(since: float) -> int:
+        return round((time.perf_counter() - since) * 1000)
+
     async def load_and_index(state: _State) -> dict[str, Any]:
         inp = state["inp"]
         t0["start"] = time.perf_counter()
+        await emit(event("node_started", node="chart_loader"))
         until = inp.ctx.order_date
         events = to_timeline(
             source.everything(inp.chart_ref),
@@ -118,6 +124,15 @@ def build_graph(
             chunks = await index_case(s, inp.case_id, events, deid.deidentify)
             await s.commit()
         t0["indexed"] = time.perf_counter()
+        await emit(
+            event(
+                "node_finished",
+                node="deidentify_and_index",
+                chunks=len(chunks),
+                events=len(events),
+                latency_ms=ms(t0["start"]),
+            )
+        )
         return {"n_chunks": len(chunks)}
 
     def fan_out(state: _State) -> list[Send]:
@@ -133,19 +148,76 @@ def build_graph(
 
         async def search(queries: list[str]) -> Any:
             async with sessions() as s:
-                return await hybrid_search(s, inp.case_id, queries, since=since)
+                hits = await hybrid_search(s, inp.case_id, queries, since=since)
+            await emit(
+                event(
+                    "retrieval",
+                    criterion_id=leaf.key,
+                    chunks=[
+                        {
+                            "id": str(h.chunk_id),
+                            "score": round(h.score, 3),
+                            "resource_id": h.resource_id,
+                        }
+                        for h in hits
+                    ],
+                )
+            )
+            return hits
 
         async with gate:
             t = time.perf_counter()
+            await emit(event("node_started", node="evidence_agent", criterion_id=leaf.key))
             guarded = phi_guard(llm, inp.patient_names)
             raw, texts, trace = await run_evidence(leaf, inp.ctx, search, guarded)
             checked = await asyncio.to_thread(verify, raw, texts, nli)
+            await emit(
+                event(
+                    "verdict",
+                    criterion_id=leaf.key,
+                    verdict=checked.verdict,
+                    confidence=checked.confidence,
+                    rationale=checked.rationale,
+                    downgraded=checked.downgraded,
+                    citations=[
+                        {
+                            "chunk_id": c.chunk_id,
+                            "start": c.start,
+                            "end": c.end,
+                            "quote": c.quote,
+                            "verified": c.verbatim_ok and (c.support or 0) >= 0.7,
+                        }
+                        for c in checked.citations
+                    ],
+                )
+            )
+            await emit(
+                event(
+                    "node_finished",
+                    node="evidence_agent",
+                    criterion_id=leaf.key,
+                    latency_ms=ms(t),
+                    steps=len(trace),
+                )
+            )
             return {"leaves": [(leaf.key, LeafRun(checked, trace, time.perf_counter() - t))]}
 
-    def logic(state: _State) -> dict[str, Any]:
+    async def logic(state: _State) -> dict[str, Any]:
         inp = state["inp"]
         runs = dict(state.get("leaves", []))
         result = evaluate(inp.tree.root, {k: r.verdict.verdict for k, r in runs.items()})
+        for n in reversed(inp.tree.nodes()):  # children before parents: the UI fills bottom-up
+            if n.kind != "LEAF":
+                await emit(event("logic_update", node_id=n.key, state=result.states[n.key]))
+        await emit(
+            event(
+                "run_finished",
+                state=result.state,
+                deciding=result.deciding,
+                readiness=readiness(inp.tree, result),
+                denial_risk=None,
+            )
+        )
         end = time.perf_counter()
         return {
             "result": CaseResult(
@@ -175,7 +247,8 @@ async def run_case(
     source: FhirSource,
     llm: StructuredLLM,
     nli: NLI = models.nli,
+    emit: Emit = no_emit,
 ) -> CaseResult:
-    out = await build_graph(sessions, source, llm, nli).ainvoke({"inp": inp})
+    out = await build_graph(sessions, source, llm, nli, emit=emit).ainvoke({"inp": inp})
     result: CaseResult = out["result"]
     return result

@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from assent_api.routers import auth, cases, health, policies
+from assent_api.routers import auth, cases, health, policies, runs
 from assent_api.settings import get_settings
 
 
@@ -13,7 +13,7 @@ def create_app() -> FastAPI:
         allow_methods=["*"],
         allow_headers=["Authorization", "Content-Type"],
     )
-    for r in (health.router, auth.router, cases.router, policies.router):
+    for r in (health.router, auth.router, cases.router, policies.router, runs.router):
         app.include_router(r)
     return app
 

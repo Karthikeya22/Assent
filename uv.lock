@@ -205,6 +205,7 @@ version = "0.0.0"
 source = { editable = "apps/api" }
 dependencies = [
     { name = "alembic" },
+    { name = "arq" },
     { name = "assent-agents" },
     { name = "asyncpg" },
     { name = "fastapi" },
@@ -220,6 +221,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "alembic", specifier = ">=1.14" },
+    { name = "arq", specifier = ">=0.26" },
     { name = "assent-agents", editable = "packages/agents" },
     { name = "asyncpg", specifier = ">=0.30" },
     { name = "fastapi", specifier = ">=0.115" },
@@ -298,13 +300,17 @@ version = "0.0.0"
 source = { editable = "apps/worker" }
 dependencies = [
     { name = "arq" },
+    { name = "assent-agents" },
     { name = "assent-api" },
+    { name = "assent-evals" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "arq", specifier = ">=0.26" },
+    { name = "assent-agents", editable = "packages/agents" },
     { name = "assent-api", editable = "apps/api" },
+    { name = "assent-evals", editable = "packages/evals" },
 ]
 
 [[package]]

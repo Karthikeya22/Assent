@@ -2,7 +2,7 @@
 name = "assent-worker"
 version = "0.0.0"
 requires-python = ">=3.12,<3.13"
-dependencies = ["assent-api", "arq>=0.26"]
+dependencies = ["assent-api", "assent-agents", "assent-evals", "arq>=0.26"]
 
 [build-system]
 requires = ["hatchling"]

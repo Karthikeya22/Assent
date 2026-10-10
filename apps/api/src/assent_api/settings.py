@@ -15,6 +15,10 @@ class Settings(BaseSettings):
     jwt_ttl_minutes: int = 15
     embed_dim: int = 384
     cors_origins: list[str] = ["http://localhost:3000"]
+    # Agent LLM for worker runs: "openai" (real, cassette-backed) or "oracle" (benchmark patients
+    # only: answers from gold, for demos and pipeline checks without an API key).
+    agent_llm: str = "openai"
+    chart_dir: Path = REPO_ROOT / ".data" / "bench"  # FileFhirSource root (HAPI from Phase 6)
 
 
 @lru_cache

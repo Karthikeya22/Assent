@@ -28,16 +28,14 @@ async def persist(
     *,
     trigger: str = "manual",
     model: str | None = None,
+    run: Run | None = None,
 ) -> Run:
+    """Fill `run` (created when the job was enqueued) or a new Run with the graph's results."""
     now = datetime.now(UTC)
-    run = Run(
-        case_id=case_id,
-        trigger=trigger,
-        graph_version=GRAPH_VERSION,
-        status="finished",
-        finished_at=now,
-    )
-    s.add(run)
+    if run is None:
+        run = Run(case_id=case_id, trigger=trigger, graph_version=GRAPH_VERSION, status="running")
+        s.add(run)
+    run.status, run.finished_at, run.graph_version = "finished", now, GRAPH_VERSION
     await s.flush()
     node_ids = dict(
         (

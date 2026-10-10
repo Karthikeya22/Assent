@@ -104,6 +104,58 @@ async def replace_tree(
         )
 
 
+async def load_tree(s: AsyncSession, pv: PolicyVersion) -> CriteriaTree:
+    """Rebuild the approved CriteriaTree for a version from criteria_nodes."""
+    rows = (
+        await s.scalars(
+            select(CriteriaNode)
+            .where(CriteriaNode.policy_version_id == pv.id)
+            .order_by(CriteriaNode.order_index)
+        )
+    ).all()
+    kids: dict[uuid.UUID | None, list[CriteriaNode]] = {}
+    for r in rows:
+        kids.setdefault(r.parent_id, []).append(r)
+
+    def build(r: CriteriaNode) -> Node:
+        quote = (
+            pv.raw_text[r.policy_span_start : r.policy_span_end]
+            if r.policy_span_start is not None and r.policy_span_end is not None
+            else None
+        )
+        return Node(
+            key=r.key,
+            kind=r.kind.value,
+            label=r.label,
+            n_required=r.n_required,
+            evidence_type=r.evidence_type,
+            threshold=r.threshold_json,
+            lookback_days=r.lookback_days,
+            source_quote=quote,
+            children=[build(c) for c in kids.get(r.id, [])],
+        )
+
+    policy = await s.get(Policy, pv.policy_id)
+    assert policy is not None  # FK
+    return CriteriaTree(
+        source_id=policy.source_id, version=int(pv.version), root=build(kids[None][0])
+    )
+
+
+async def approved_version_for(s: AsyncSession, service_family: str) -> PolicyVersion | None:
+    # shortcut: picks the first approved LCD for the service family; real routing maps the
+    # patient's MAC jurisdiction (state) to its LCD (ARCHITECTURE §6.3 policy_resolver).
+    return await s.scalar(
+        select(PolicyVersion)
+        .join(Policy)
+        .where(
+            Policy.service_family == service_family, PolicyVersion.status == VersionStatus.approved
+        )
+        .order_by(Policy.source_id.desc())
+        .limit(1)
+    )
+
+
 def _mdy(s: str) -> datetime | None:
     try:
         return datetime.strptime(s, "%m/%d/%Y").replace(tzinfo=UTC)

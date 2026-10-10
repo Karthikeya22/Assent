@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 // Placeholder for rail sections not built yet. Real routes are static segments, which take
 // precedence over this dynamic one, so each is replaced automatically when its phase lands.
 const upcoming: Record<string, { title: string; phase: string }> = {
-  policies: { title: "Policies", phase: "Phase 1" },
   analytics: { title: "Analytics", phase: "Phase 5" },
   evals: { title: "Evals", phase: "Phase 5" },
   audit: { title: "Audit", phase: "Phase 4" },

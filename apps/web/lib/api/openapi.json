@@ -120,6 +120,114 @@
         "title": "CaseStatus",
         "type": "string"
       },
+      "CriterionOut": {
+        "properties": {
+          "children": {
+            "items": {
+              "$ref": "#/components/schemas/CriterionOut"
+            },
+            "title": "Children",
+            "type": "array"
+          },
+          "evidence_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Evidence Type"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "lookback_days": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lookback Days"
+          },
+          "n_required": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "N Required"
+          },
+          "span": {
+            "anyOf": [
+              {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ],
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Span"
+          },
+          "threshold": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Threshold"
+          }
+        },
+        "required": [
+          "id",
+          "key",
+          "kind",
+          "label",
+          "n_required",
+          "evidence_type",
+          "threshold",
+          "lookback_days",
+          "span",
+          "children"
+        ],
+        "title": "CriterionOut",
+        "type": "object"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -179,6 +287,125 @@
           "next_cursor"
         ],
         "title": "Page[CaseOut]",
+        "type": "object"
+      },
+      "PolicyOut": {
+        "properties": {
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "latest_version": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/VersionSummary"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "payer": {
+            "title": "Payer",
+            "type": "string"
+          },
+          "service_family": {
+            "title": "Service Family",
+            "type": "string"
+          },
+          "source_id": {
+            "title": "Source Id",
+            "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "source_id",
+          "title",
+          "payer",
+          "service_family",
+          "latest_version"
+        ],
+        "title": "PolicyOut",
+        "type": "object"
+      },
+      "PolicyVersionOut": {
+        "properties": {
+          "approved_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Approved At"
+          },
+          "criteria": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CriterionOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "effective_date": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Effective Date"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "policy": {
+            "$ref": "#/components/schemas/PolicyOut"
+          },
+          "raw_text": {
+            "title": "Raw Text",
+            "type": "string"
+          },
+          "source_url": {
+            "title": "Source Url",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/VersionStatus"
+          },
+          "version": {
+            "title": "Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "policy",
+          "version",
+          "status",
+          "effective_date",
+          "approved_at",
+          "source_url",
+          "raw_text",
+          "criteria"
+        ],
+        "title": "PolicyVersionOut",
         "type": "object"
       },
       "Role": {
@@ -298,6 +525,51 @@
           "type"
         ],
         "title": "ValidationError",
+        "type": "object"
+      },
+      "VersionStatus": {
+        "enum": [
+          "draft",
+          "approved",
+          "retired"
+        ],
+        "title": "VersionStatus",
+        "type": "string"
+      },
+      "VersionSummary": {
+        "properties": {
+          "effective_date": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Effective Date"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/VersionStatus"
+          },
+          "version": {
+            "title": "Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "version",
+          "status",
+          "effective_date"
+        ],
+        "title": "VersionSummary",
         "type": "object"
       }
     },
@@ -450,6 +722,84 @@
         "summary": "List Cases",
         "tags": [
           "cases"
+        ]
+      }
+    },
+    "/api/v1/policies": {
+      "get": {
+        "operationId": "list_policies_api_v1_policies_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PolicyOut"
+                  },
+                  "title": "Response List Policies Api V1 Policies Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "List Policies",
+        "tags": [
+          "policies"
+        ]
+      }
+    },
+    "/api/v1/policy-versions/{version_id}": {
+      "get": {
+        "operationId": "get_policy_version_api_v1_policy_versions__version_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "version_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyVersionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Policy Version",
+        "tags": [
+          "policies"
         ]
       }
     },

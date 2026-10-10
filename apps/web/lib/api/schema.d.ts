@@ -38,6 +38,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/policies": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Policies */
+        get: operations["list_policies_api_v1_policies_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/policy-versions/{version_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Policy Version */
+        get: operations["get_policy_version_api_v1_policy_versions__version_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/healthz": {
         parameters: {
             query?: never;
@@ -98,6 +132,37 @@ export interface components {
          * @enum {string}
          */
         CaseStatus: "new" | "running" | "needs_review" | "ready" | "submitted" | "approved" | "denied" | "appealed";
+        /** CriterionOut */
+        CriterionOut: {
+            /** Children */
+            children: components["schemas"]["CriterionOut"][];
+            /** Evidence Type */
+            evidence_type: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Key */
+            key: string;
+            /** Kind */
+            kind: string;
+            /** Label */
+            label: string;
+            /** Lookback Days */
+            lookback_days: number | null;
+            /** N Required */
+            n_required: number | null;
+            /** Span */
+            span: [
+                number,
+                number
+            ] | null;
+            /** Threshold */
+            threshold: {
+                [key: string]: unknown;
+            } | null;
+        };
         /** HTTPValidationError */
         HTTPValidationError: {
             /** Detail */
@@ -116,6 +181,44 @@ export interface components {
             items: components["schemas"]["CaseOut"][];
             /** Next Cursor */
             next_cursor: string | null;
+        };
+        /** PolicyOut */
+        PolicyOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            latest_version: components["schemas"]["VersionSummary"] | null;
+            /** Payer */
+            payer: string;
+            /** Service Family */
+            service_family: string;
+            /** Source Id */
+            source_id: string;
+            /** Title */
+            title: string;
+        };
+        /** PolicyVersionOut */
+        PolicyVersionOut: {
+            /** Approved At */
+            approved_at: string | null;
+            criteria: components["schemas"]["CriterionOut"] | null;
+            /** Effective Date */
+            effective_date: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            policy: components["schemas"]["PolicyOut"];
+            /** Raw Text */
+            raw_text: string;
+            /** Source Url */
+            source_url: string;
+            status: components["schemas"]["VersionStatus"];
+            /** Version */
+            version: string;
         };
         /**
          * Role
@@ -170,6 +273,24 @@ export interface components {
             msg: string;
             /** Error Type */
             type: string;
+        };
+        /**
+         * VersionStatus
+         * @enum {string}
+         */
+        VersionStatus: "draft" | "approved" | "retired";
+        /** VersionSummary */
+        VersionSummary: {
+            /** Effective Date */
+            effective_date: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            status: components["schemas"]["VersionStatus"];
+            /** Version */
+            version: string;
         };
     };
     responses: never;
@@ -234,6 +355,57 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Page_CaseOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_policies_api_v1_policies_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PolicyOut"][];
+                };
+            };
+        };
+    };
+    get_policy_version_api_v1_policy_versions__version_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PolicyVersionOut"];
                 };
             };
             /** @description Validation Error */

@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import type { ReactNode } from "react";
 import { auth, signOut } from "@/auth";
 import { AppShell } from "@/components/shell/AppShell";
+import { Breadcrumb } from "@/components/shell/Breadcrumb";
 
 export default async function AppLayout({ children }: { children: ReactNode }) {
   const session = await auth();
@@ -16,7 +17,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
     <AppShell
       user={{ name: session.user.name ?? "User", role: session.user.role }}
       signOut={doSignOut}
-      breadcrumb={<span className="text-ink">Worklist</span>}
+      breadcrumb={<Breadcrumb />}
     >
       {children}
     </AppShell>

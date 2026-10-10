@@ -119,6 +119,41 @@
   }
 }
 
+/* Evidence agent working on a criterion: a rotating dashed outline, CSS only (FRONTEND §6.3). */
+@property --spin {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+.leaf-node.is-running {
+  border-color: transparent;
+  background:
+    linear-gradient(var(--paper-raised), var(--paper-raised)) padding-box,
+    repeating-conic-gradient(from var(--spin), var(--signal) 0 10deg, transparent 10deg 20deg) border-box;
+  animation: leaf-spin 2.4s linear infinite;
+}
+@keyframes leaf-spin {
+  to {
+    --spin: 360deg;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .leaf-node.is-running {
+    animation: none;
+  }
+}
+
+/* Cited span inside the note viewer: its width grows in from the left (dur-2). */
+.cite-mark {
+  background: linear-gradient(var(--signal-soft), var(--signal-soft)) no-repeat left / 100% 100%;
+  animation: cite-in var(--dur-2) var(--ease-out);
+}
+@keyframes cite-in {
+  from {
+    background-size: 0% 100%;
+  }
+}
+
 @utility tabular {
   font-variant-numeric: tabular-nums;
 }

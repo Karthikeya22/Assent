@@ -42,6 +42,7 @@ class CaseOut(BaseModel):
     readiness_score: float | None
     denial_risk: float | None
     created_at: datetime
+    patient_name: str = ""
 
 
 class Page[T](BaseModel):

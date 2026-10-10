@@ -7,7 +7,7 @@ from fastapi import APIRouter, HTTPException, Query, status
 from sqlalchemy import select, tuple_
 
 from assent_api.deps import CurrentUser, Session
-from assent_api.models import Case, CaseStatus
+from assent_api.models import Case, CaseStatus, Patient
 from assent_api.schemas import CaseOut, Page
 
 router = APIRouter(prefix="/api/v1/cases", tags=["cases"])
@@ -22,7 +22,11 @@ async def list_cases(
     cursor: str | None = None,
     limit: Annotated[int, Query(ge=1, le=200)] = 50,
 ) -> Page[CaseOut]:
-    q = select(Case).where(Case.org_id == user.org)  # org scoping on every query
+    q = (
+        select(Case, Patient.display_name_synthetic)
+        .join(Patient, Patient.id == Case.patient_id)
+        .where(Case.org_id == user.org)  # org scoping on every query
+    )
     if status_:
         q = q.where(Case.status == status_)
     if service:
@@ -31,12 +35,13 @@ async def list_cases(
         ts, cid = _decode_cursor(cursor)
         q = q.where(tuple_(Case.created_at, Case.id) < tuple_(ts, cid))
     rows = (
-        await session.scalars(q.order_by(Case.created_at.desc(), Case.id.desc()).limit(limit + 1))
+        await session.execute(q.order_by(Case.created_at.desc(), Case.id.desc()).limit(limit + 1))
     ).all()
     more = len(rows) > limit
     rows = rows[:limit]
-    nxt = _encode_cursor(rows[-1].created_at, rows[-1].id) if more else None
-    return Page[CaseOut](items=[CaseOut.model_validate(r) for r in rows], next_cursor=nxt)
+    nxt = _encode_cursor(rows[-1][0].created_at, rows[-1][0].id) if more else None
+    items = [CaseOut.model_validate(c).model_copy(update={"patient_name": n}) for c, n in rows]
+    return Page[CaseOut](items=items, next_cursor=nxt)
 
 
 def _encode_cursor(ts: datetime, cid: uuid.UUID) -> str:

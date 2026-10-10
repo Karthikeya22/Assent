@@ -1,0 +1,45 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { CaseWorkspace } from "@/components/case/CaseWorkspace";
+import { api } from "@/lib/api/client";
+
+export const metadata: Metadata = { title: "Case" };
+
+export default async function CasePage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const client = await api();
+  const { data: detail, response } = await client.GET("/api/v1/cases/{case_id}", {
+    params: { path: { case_id: id } },
+  });
+  if (response.status === 404 || response.status === 422) notFound();
+  if (!detail) throw new Error(`case ${id}: ${response.status}`);
+
+  // The case's resolved policy, or the approved one for its service family before the first run.
+  let versionId = detail.policy?.version_id;
+  if (!versionId) {
+    const { data: pols } = await client.GET("/api/v1/policies");
+    versionId = pols?.find((p) => p.service_family === detail.service_family && p.latest_version?.status === "approved")
+      ?.latest_version?.id;
+  }
+  if (!versionId) throw new Error(`no approved policy for ${detail.service_family}`);
+
+  const [pv, timeline, verdicts] = await Promise.all([
+    client.GET("/api/v1/policy-versions/{version_id}", { params: { path: { version_id: versionId } } }),
+    client.GET("/api/v1/cases/{case_id}/timeline", { params: { path: { case_id: id } } }),
+    detail.latest_run?.status === "finished"
+      ? client.GET("/api/v1/runs/{run_id}/verdicts", { params: { path: { run_id: detail.latest_run.id } } })
+      : Promise.resolve({ data: [] }),
+  ]);
+  if (!pv.data?.criteria) throw new Error("policy has no criteria tree");
+
+  return (
+    <CaseWorkspace
+      key={detail.latest_run?.id ?? "none"}
+      detail={detail}
+      root={pv.data.criteria}
+      policy={{ sourceId: pv.data.policy.source_id, version: pv.data.version, title: pv.data.policy.title }}
+      chunks={timeline.data ?? []}
+      verdicts={verdicts.data ?? []}
+    />
+  );
+}

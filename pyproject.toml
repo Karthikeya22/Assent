@@ -7,7 +7,7 @@ requires-python = ">=3.12,<3.13"
 package = false
 
 [tool.uv.workspace]
-members = ["apps/api", "apps/worker", "packages/*"]
+members = ["apps/api", "apps/worker", "apps/mock_payer", "apps/cds", "packages/*"]
 
 [tool.uv.sources]
 assent-api = { workspace = true }
@@ -17,6 +17,8 @@ assent-retrieval = { workspace = true }
 assent-fhir = { workspace = true }
 assent-phi = { workspace = true }
 assent-evals = { workspace = true }
+assent-mock-payer = { workspace = true }
+assent-cds = { workspace = true }
 
 [dependency-groups]
 dev = [
@@ -57,8 +59,8 @@ known-first-party = ["assent_api", "assent_worker", "assent_agents", "assent_ret
 strict = true
 python_version = "3.12"
 plugins = ["pydantic.mypy"]
-mypy_path = "$MYPY_CONFIG_FILE_DIR/apps/api/src:$MYPY_CONFIG_FILE_DIR/apps/worker/src"
-files = ["apps/api/src", "apps/worker/src", "packages/*/src"]
+mypy_path = "$MYPY_CONFIG_FILE_DIR/apps/api/src:$MYPY_CONFIG_FILE_DIR/apps/worker/src:$MYPY_CONFIG_FILE_DIR/apps/mock_payer/src:$MYPY_CONFIG_FILE_DIR/apps/cds/src"
+files = ["apps/api/src", "apps/worker/src", "apps/mock_payer/src", "apps/cds/src", "packages/*/src"]
 exclude = ["migrations/"]
 
 [[tool.mypy.overrides]]

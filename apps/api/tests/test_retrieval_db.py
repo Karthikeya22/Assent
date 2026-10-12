@@ -69,6 +69,10 @@ async def test_index_and_hybrid_search_finds_the_pt_sentence(users: dict[str, Us
         assert pt_sentence in hits[0].text
         assert hits[0].resource_type == "DocumentReference"
 
+        # Ablation switches: dense-only, no cross-encoder keeps RRF order with rank scores.
+        plain = await hybrid_search(s, case.id, ["physical therapy"], k=5, fts=False, rerank=False)
+        assert plain and [h.score for h in plain] == [1 / (1 + i) for i in range(len(plain))]
+
         # The lookback filter drops everything older than `since`.
         future = await hybrid_search(
             s,

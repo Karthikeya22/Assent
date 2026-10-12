@@ -11,16 +11,17 @@ from pydantic import BaseModel
 
 from assent_agents import prompts
 from assent_agents.llm import StructuredLLM
-from assent_evals.synth.facts import EsiFacts, Slot
+from assent_evals.synth import hgns, pva
+from assent_evals.synth.case import Facts
 from assent_evals.synth.phrases import AVOID
 
-TITLES: dict[Slot, tuple[str, str]] = {
+TITLES: dict[str, tuple[str, str]] = {
     "pcp": ("Primary Care Progress Note", "Primary care physician"),
     "pt": ("Physical Therapy Discharge Summary", "Physical therapist"),
     "radiology": ("Radiology Report", "Radiologist"),
     "consult": ("Pain Management Consultation", "Pain medicine physician"),
 }
-FILLER: dict[Slot, list[str]] = {
+FILLER: dict[str, list[str]] = {
     "pcp": [
         "Vitals: BP 134/80, HR 74, T 36.8 C.",
         "Medications reconciled.",
@@ -47,7 +48,7 @@ FILLER: dict[Slot, list[str]] = {
 
 
 class Note(BaseModel):
-    slot: Slot
+    slot: str
     date: date
     title: str
     author: str
@@ -59,25 +60,34 @@ class _NoteText(BaseModel):
     text: str
 
 
-def slots_for(f: EsiFacts) -> list[Slot]:
+# family -> (note slots oldest-first, titles, filler, topics to avoid per insufficient leaf)
+SPECS: dict[
+    str, tuple[list[str], dict[str, tuple[str, str]], dict[str, list[str]], dict[str, str]]
+] = {
+    "esi": (["pcp", "pt", "radiology", "consult"], TITLES, FILLER, AVOID),
+    "hgns": (hgns.SLOTS, hgns.TITLES, hgns.FILLER, hgns.AVOID),
+    "pva": (pva.SLOTS, pva.TITLES, pva.FILLER, pva.AVOID),
+}
+
+
+def slots_for(f: Facts) -> list[str]:
     used = {s.slot for s in f.statements}
-    return [
-        s for s in ("pcp", "pt", "radiology", "consult") if s in used or s in ("pcp", "consult")
-    ]
+    return [s for s in SPECS[f.family][0] if s in used or s in ("pcp", "consult", "ent")]
 
 
-def _required(f: EsiFacts, slot: Slot) -> list[str]:
+def _required(f: Facts, slot: str) -> list[str]:
     req = [s.text for s in f.statements if s.slot == slot]
     if f.injection and slot == "pcp":
         req.append(f.injection)
     return req
 
 
-def template_note(f: EsiFacts, slot: Slot, rng: random.Random) -> Note:
-    title, author = TITLES[slot]
+def template_note(f: Facts, slot: str, rng: random.Random) -> Note:
+    _, titles, filler, _ = SPECS[f.family]
+    title, author = titles[slot]
     when = f.slot_dates()[slot]
     req = _required(f, slot)
-    body = FILLER[slot][:]
+    body = filler[slot][:]
     for sentence in req:
         # Buried facts go mid-note between filler, clean ones lead the note.
         pos = rng.randint(1, len(body)) if f.difficulty == "buried" else 0
@@ -97,11 +107,12 @@ def template_note(f: EsiFacts, slot: Slot, rng: random.Random) -> Note:
     )
 
 
-async def llm_note(f: EsiFacts, slot: Slot, rng: random.Random, llm: StructuredLLM) -> Note:
-    title, author = TITLES[slot]
+async def llm_note(f: Facts, slot: str, rng: random.Random, llm: StructuredLLM) -> Note:
+    _, titles, _, avoid_topics = SPECS[f.family]
+    title, author = titles[slot]
     when = f.slot_dates()[slot]
     req = _required(f, slot)
-    avoid = [AVOID[k] for k, v in f.gold.items() if v == "insufficient"]
+    avoid = [avoid_topics[k] for k, v in f.gold.items() if v == "insufficient"]
     style = (
         "terse, heavy abbreviations, facts scattered mid-note"
         if f.difficulty == "buried"
@@ -131,7 +142,7 @@ async def llm_note(f: EsiFacts, slot: Slot, rng: random.Random, llm: StructuredL
     return template_note(f, slot, rng)
 
 
-def check_notes(f: EsiFacts, notes: list[Note]) -> list[str]:
+def check_notes(f: Facts, notes: list[Note]) -> list[str]:
     """Every fact sentence must be present verbatim in its own slot's note."""
     by_slot = {n.slot: n.text for n in notes}
     return [

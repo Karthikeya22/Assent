@@ -54,10 +54,16 @@ async def hybrid_search(
     since: date | None = None,
     k: int = 8,
     per_list: int = 30,
+    fts: bool = True,
+    rerank: bool = True,
 ) -> list[Hit]:
+    """`fts=False` / `rerank=False` exist for the ablations (dense-only, no cross-encoder)."""
     rankings: list[list[uuid.UUID]] = []
     for q in queries:
-        rankings.append(list(await s.scalars(text(_FTS), {"q": q, "c": case_id, "n": per_list})))
+        if fts:
+            rankings.append(
+                list(await s.scalars(text(_FTS), {"q": q, "c": case_id, "n": per_list}))
+            )
         vec = str(models.embed_query(q))
         rankings.append(
             list(await s.scalars(text(_DENSE), {"v": vec, "c": case_id, "n": per_list}))
@@ -79,7 +85,11 @@ async def hybrid_search(
         for r in rows
         if since is None or r.effective_date is None or r.effective_date.date() >= since
     ]  # lookback filter before rerank
-    scores = models.rerank(queries[0], [r.text_deid for r in rows])
+    if rerank:
+        scores = models.rerank(queries[0], [r.text_deid for r in rows])
+    else:  # keep the fused order
+        pos = {cid: i for i, cid in enumerate(fused)}
+        scores = [1.0 / (1 + pos[r.id]) for r in rows]
     hits = [
         Hit(
             r.id,

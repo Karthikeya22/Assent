@@ -5,6 +5,7 @@ import uuid
 from datetime import date, timedelta
 from typing import Any
 
+from assent_evals.synth.case import CaseFacts, Facts
 from assent_evals.synth.facts import EsiFacts
 from assent_evals.synth.notes import Note
 
@@ -131,6 +132,54 @@ def case_resources(f: EsiFacts, notes: list[Note], patient_ref: str) -> list[dic
                 },
             )
 
+    _add_notes(add, notes)
+    return out
+
+
+def generic_resources(f: CaseFacts, notes: list[Note], patient_ref: str) -> list[dict[str, Any]]:
+    """HGNS/PVA: the order, then (clean cases only) the coded diagnosis and numeric facts."""
+    subj = {"reference": patient_ref}
+    out: list[dict[str, Any]] = []
+
+    def add(kind: str, res: dict[str, Any]) -> None:
+        out.append(_entry(f.case_id, kind, len(out), {**res, "subject": subj}))
+
+    add(
+        "ServiceRequest",
+        {
+            "status": "active",
+            "intent": "order",
+            "authoredOn": f.order_date.isoformat(),
+            "code": _code(CPT, f.cpt, f.cpt_text),
+            "reasonCode": [_code(ICD10, f.icd10, f.icd10_text)],
+        },
+    )
+    if f.structured:
+        add(
+            "Condition",
+            {
+                "clinicalStatus": _code(
+                    "http://terminology.hl7.org/CodeSystem/condition-clinical", "active", "Active"
+                ),
+                "code": _code(ICD10, f.icd10, f.icd10_text),
+                "recordedDate": f.order_date.isoformat(),
+            },
+        )
+        for o in f.observations:
+            add(
+                "Observation",
+                {
+                    "status": "final",
+                    "effectiveDateTime": o.date.isoformat(),
+                    "code": _code(o.system, o.code, o.display),
+                    "valueQuantity": {"value": o.value, "unit": o.unit},
+                },
+            )
+    _add_notes(add, notes)
+    return out
+
+
+def _add_notes(add: Any, notes: list[Note]) -> None:
     for note in notes:
         add(
             "DocumentReference",
@@ -150,12 +199,17 @@ def case_resources(f: EsiFacts, notes: list[Note], patient_ref: str) -> list[dic
                 ],
             },
         )
-    return out
 
 
-def inject(bundle: dict[str, Any], f: EsiFacts, notes: list[Note]) -> dict[str, Any]:
+def inject(bundle: dict[str, Any], f: Facts, notes: list[Note]) -> dict[str, Any]:
     patient = next(e for e in bundle["entry"] if e["resource"]["resourceType"] == "Patient")
-    return {**bundle, "entry": bundle["entry"] + case_resources(f, notes, patient["fullUrl"])}
+    ref = patient["fullUrl"]
+    extra = (
+        case_resources(f, notes, ref)
+        if isinstance(f, EsiFacts)
+        else generic_resources(f, notes, ref)
+    )
+    return {**bundle, "entry": bundle["entry"] + extra}
 
 
 def age_on(birth: date, on: date) -> int:

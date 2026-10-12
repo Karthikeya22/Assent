@@ -14,21 +14,21 @@ from assent_agents import llm as llm_mod
 from assent_agents.case_graph import CaseInput, run_case
 from assent_agents.cassette import Cassette
 from assent_agents.evidence.agent import CaseContext
-from assent_agents.policy.tree import CriteriaTree
 from assent_api.db import SessionLocal
 from assent_api.models import Policy, PolicyVersion
 from assent_api.services import runs
-from assent_evals.bench import CASSETTES, _case_row
+from assent_evals.bench import _case_row, cassettes_for
 from assent_evals.oracle import make_oracle
-from assent_evals.synth.build import BENCH, BUNDLES, GOLD_TREE
+from assent_evals.synth.build import family_of
 from assent_fhir.source import FileFhirSource
 
 GLYPH = {"met": "✓", "not_met": "✕", "insufficient": "○"}
 
 
 async def main(case_id: str, which: str) -> None:
-    tree = CriteriaTree.model_validate_json(GOLD_TREE.read_text("utf-8"))
-    facts = json.loads((BENCH / f"{case_id}.json").read_text("utf-8"))["facts"]
+    fam = family_of(case_id)
+    tree = fam.tree
+    facts = json.loads((fam.bench / f"{case_id}.json").read_text("utf-8"))["facts"]
     case_uuid = await _case_row(case_id, facts)
     async with SessionLocal() as s:
         pv_id = await s.scalar(
@@ -38,7 +38,11 @@ async def main(case_id: str, which: str) -> None:
         )
     if pv_id is None:
         raise SystemExit("policy not loaded; run `python -m assent_api.policy_load` first")
-    llm = Cassette(CASSETTES, llm_mod.structured) if which == "openai" else make_oracle(facts, tree)
+    llm = (
+        Cassette(cassettes_for(fam.name), llm_mod.structured)
+        if which == "openai"
+        else make_oracle(facts, tree)
+    )
     inp = CaseInput(
         case_id=case_uuid,
         chart_ref=case_id,
@@ -46,12 +50,12 @@ async def main(case_id: str, which: str) -> None:
         patient_names=[facts["patient"]["name"]],
         ctx=CaseContext(
             order_date=date.fromisoformat(facts["order_date"]),
-            service="Epidural steroid injection",
+            service=fam.service,
             cpt=facts["cpt"],
             icd10=facts["icd10"],
         ),
     )
-    res = await run_case(inp, SessionLocal, FileFhirSource(BUNDLES), llm)
+    res = await run_case(inp, SessionLocal, FileFhirSource(fam.bundles), llm)
     async with SessionLocal() as s:
         run = await runs.persist(s, case_uuid, pv_id, res, model=which)
         await s.commit()

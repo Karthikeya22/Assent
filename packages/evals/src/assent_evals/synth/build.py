@@ -1,6 +1,6 @@
-"""Build the ESI benchmark: fact sheets + notes (committed) and FHIR bundles (regenerable).
+"""Build a family's benchmark: fact sheets + notes (committed) and FHIR bundles (regenerable).
 
-Run: `uv run python -m assent_evals.synth.build --n 50 --seed 7 --notes template|llm`
+Run: `uv run python -m assent_evals.synth.build --family esi|hgns|pva --n 50 --seed 7 --notes llm`
 Needs the Synthea population first: `.\\scripts\\synthea.ps1`.
 """
 
@@ -9,6 +9,8 @@ import asyncio
 import json
 import random
 import re
+from collections.abc import Callable
+from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 from typing import Any
@@ -16,8 +18,9 @@ from typing import Any
 from assent_agents import llm as llm_mod
 from assent_agents.policy.ingest import POLICY_DIR
 from assent_agents.policy.tree import CriteriaTree
-from assent_evals.synth import fhir_build
-from assent_evals.synth.facts import EsiFacts, Patient, difficulty_plan, make_esi_case
+from assent_evals.synth import fhir_build, hgns, pva
+from assent_evals.synth.case import Facts
+from assent_evals.synth.facts import Patient, difficulty_plan, make_esi_case
 from assent_evals.synth.notes import Note, check_notes, llm_note, slots_for, template_note
 
 REPO = Path(__file__).resolve().parents[5]
@@ -26,6 +29,52 @@ BENCH = REPO / "data" / "bench" / "esi"  # committed: facts, notes, gold
 BUNDLES = REPO / ".data" / "bench" / "esi"  # regenerable: multi-MB FHIR bundles
 GOLD_TREE = POLICY_DIR / "gold" / "L39240-v15.tree.json"
 AS_OF = date(2026, 9, 1)
+
+
+@dataclass(frozen=True)
+class Family:
+    name: str
+    policy: str  # the gold tree the benchmark is labelled against
+    service: str  # what the agent is told is being requested
+    make: Callable[..., Facts]
+    test_frac: float
+
+    @property
+    def bench(self) -> Path:
+        return REPO / "data" / "bench" / self.name
+
+    @property
+    def bundles(self) -> Path:
+        return REPO / ".data" / "bench" / self.name
+
+    @property
+    def tree(self) -> CriteriaTree:
+        return CriteriaTree.model_validate_json(
+            (POLICY_DIR / "gold" / f"{self.policy}.tree.json").read_text("utf-8")
+        )
+
+
+FAMILIES = {
+    "esi": Family("esi", "L39240-v15", "Epidural steroid injection", make_esi_case, 0.32),
+    "hgns": Family(
+        "hgns",
+        "L38307-v14",
+        "Hypoglossal nerve stimulation for obstructive sleep apnea",
+        hgns.make_case,
+        0.34,
+    ),
+    "pva": Family(
+        "pva",
+        "L34228-v54",
+        "Percutaneous vertebral augmentation (kyphoplasty)",
+        pva.make_case,
+        0.34,
+    ),
+}
+
+
+def family_of(case_id: str) -> Family:
+    return FAMILIES[case_id.split("-")[0]]
 
 
 def synthea_patients(folder: Path = SYNTHEA) -> list[tuple[Patient, Path]]:
@@ -50,9 +99,9 @@ def synthea_patients(folder: Path = SYNTHEA) -> list[tuple[Patient, Path]]:
 
 async def build_case(
     case_id: str, seed: int, difficulty: Any, patient: Patient, tree: CriteriaTree, mode: str
-) -> tuple[EsiFacts, list[Note]]:
+) -> tuple[Facts, list[Note]]:
     rng = random.Random(f"{seed}/{case_id}")
-    facts = make_esi_case(rng, case_id, difficulty, patient, tree)
+    facts = family_of(case_id).make(rng, case_id, difficulty, patient, tree)
     nrng = random.Random(f"{seed}/{case_id}/notes")
     notes = [
         await llm_note(facts, s, nrng, llm_mod.structured)
@@ -65,18 +114,19 @@ async def build_case(
     return facts, notes
 
 
-async def main(n: int, seed: int, mode: str, test_frac: float = 0.32) -> None:
-    tree = CriteriaTree.model_validate_json(GOLD_TREE.read_text("utf-8"))
-    rng = random.Random(seed)
+async def main(n: int, seed: int, mode: str, family: str) -> None:
+    fam = FAMILIES[family]
+    tree, bench, bundles = fam.tree, fam.bench, fam.bundles
+    rng = random.Random(seed if family == "esi" else f"{seed}/{family}")
     pool = synthea_patients()
     if len(pool) < n:
         raise SystemExit(f"need {n} Medicare-age Synthea patients, have {len(pool)}")
     rng.shuffle(pool)
     plan = difficulty_plan(n, rng)
-    ids = [f"esi-{i + 1:03d}" for i in range(n)]
-    test = set(rng.sample(ids, round(n * test_frac)))
-    BENCH.mkdir(parents=True, exist_ok=True)
-    BUNDLES.mkdir(parents=True, exist_ok=True)
+    ids = [f"{family}-{i + 1:03d}" for i in range(n)]
+    test = set(rng.sample(ids, round(n * fam.test_frac)))
+    bench.mkdir(parents=True, exist_ok=True)
+    bundles.mkdir(parents=True, exist_ok=True)
     manifest = []
     for cid, diff, (patient, src) in zip(ids, plan, pool, strict=False):
         facts, notes = await build_case(cid, seed, diff, patient, tree, mode)
@@ -86,9 +136,9 @@ async def main(n: int, seed: int, mode: str, test_frac: float = 0.32) -> None:
             "facts": facts.model_dump(mode="json"),
             "notes": [x.model_dump(mode="json") for x in notes],
         }
-        (BENCH / f"{cid}.json").write_text(json.dumps(record, indent=1) + "\n", "utf-8")
+        (bench / f"{cid}.json").write_text(json.dumps(record, indent=1) + "\n", "utf-8")
         bundle = fhir_build.inject(json.loads(src.read_text("utf-8")), facts, notes)
-        (BUNDLES / f"{cid}.bundle.json").write_text(json.dumps(bundle), "utf-8")
+        (bundles / f"{cid}.bundle.json").write_text(json.dumps(bundle), "utf-8")
         manifest.append(
             {
                 "case_id": cid,
@@ -99,13 +149,14 @@ async def main(n: int, seed: int, mode: str, test_frac: float = 0.32) -> None:
             }
         )
         print(f"{cid} {split:4} {diff:13} {facts.condition:11} {facts.decision}")
-    (BENCH / "manifest.json").write_text(json.dumps(manifest, indent=1) + "\n", "utf-8")
+    (bench / "manifest.json").write_text(json.dumps(manifest, indent=1) + "\n", "utf-8")
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
+    ap.add_argument("--family", choices=FAMILIES, default="esi")
     ap.add_argument("--n", type=int, default=50)
     ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("--notes", choices=["template", "llm"], default="llm")
     a = ap.parse_args()
-    asyncio.run(main(a.n, a.seed, a.notes))
+    asyncio.run(main(a.n, a.seed, a.notes, a.family))

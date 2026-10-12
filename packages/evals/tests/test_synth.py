@@ -1,3 +1,4 @@
+import json
 import random
 from collections import Counter
 from datetime import date
@@ -80,3 +81,15 @@ def test_build_is_deterministic() -> None:
 
 def _notes(cases: list[tuple[EsiFacts, list[Note]]], cid: str) -> list[Note]:
     return next(n for f, n in cases if f.case_id == cid)
+
+
+def test_committed_esi_benchmark_regenerates_byte_identical() -> None:
+    """Family refactors must not move ESI gold: rebuild every committed fact sheet from its seed."""
+    from assent_evals.synth.build import BENCH
+    from assent_evals.synth.facts import make_esi_case
+
+    for m in json.loads((BENCH / "manifest.json").read_text("utf-8")):
+        want = json.loads((BENCH / f"{m['case_id']}.json").read_text("utf-8"))["facts"]
+        rng = random.Random(f"7/{m['case_id']}")
+        got = make_esi_case(rng, m["case_id"], m["difficulty"], Patient(**want["patient"]), TREE)
+        assert got.model_dump(mode="json") == want, m["case_id"]

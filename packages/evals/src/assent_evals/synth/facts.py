@@ -6,7 +6,7 @@ appear verbatim in a named note; an `insufficient` leaf is simply never mentione
 
 import random
 from datetime import date, timedelta
-from typing import Literal
+from typing import ClassVar, Literal
 
 from pydantic import BaseModel
 
@@ -57,7 +57,7 @@ class Statement(BaseModel):
     leaf: str
     gold: State
     text: str
-    slot: Slot
+    slot: str  # a family's note slot (ESI: Slot)
     stale: bool = False  # contradictory cases: older statement superseded by a newer one
 
 
@@ -69,6 +69,7 @@ class Patient(BaseModel):
 
 
 class EsiFacts(BaseModel):
+    family: ClassVar[str] = "esi"  # ClassVar: kept out of the committed JSON
     case_id: str
     difficulty: Difficulty
     order_date: date
@@ -96,7 +97,7 @@ class EsiFacts(BaseModel):
     injection: str | None = None
     structured: bool = True  # buried cases put facts in notes only, no coded FHIR resources
 
-    def slot_dates(self) -> dict[Slot, date]:
+    def slot_dates(self) -> dict[str, date]:
         return {
             "pcp": self.onset_date + timedelta(days=9),
             "pt": self.pt_start + timedelta(weeks=self.pt_weeks),

@@ -52,6 +52,15 @@ def phi_guard(llm: StructuredLLM, names: list[str]) -> StructuredLLM:
     return guarded
 
 
+@dataclass(frozen=True)
+class Variant:
+    """Pipeline switches for the ablation study; the product always runs the defaults."""
+
+    hybrid: bool = True  # False: dense retrieval only
+    rerank: bool = True  # False: RRF order, no cross-encoder
+    verify: bool = True  # False: citations are still checked (for the report) but never downgrade
+
+
 @dataclass
 class CaseInput:
     case_id: uuid.UUID
@@ -102,6 +111,23 @@ def readiness(tree: CriteriaTree, logic: LogicResult) -> float:
     return round(sum(logic.states.get(k.key) == "met" for k in kids) / len(kids), 3)
 
 
+async def index_chart(
+    inp: CaseInput, sessions: async_sessionmaker[AsyncSession], source: FhirSource
+) -> tuple[int, int]:
+    """Chart -> timeline -> de-identified, embedded chunks. Returns (chunks, events)."""
+    until = inp.ctx.order_date
+    events = to_timeline(
+        source.everything(inp.chart_ref),
+        since=until - timedelta(days=inp.lookback_days),
+        until=until,
+    )
+    deid = Deidentifier(known_names=inp.patient_names)
+    async with sessions() as s:
+        chunks = await index_case(s, inp.case_id, events, deid.deidentify)
+        await s.commit()
+    return len(chunks), len(events)
+
+
 def build_graph(
     sessions: async_sessionmaker[AsyncSession],
     source: FhirSource,
@@ -110,6 +136,7 @@ def build_graph(
     concurrency: int = 4,
     emit: Emit = no_emit,
     review: bool = False,
+    variant: Variant = Variant(),  # noqa: B008  (frozen, so a shared default is safe)
 ) -> Any:
     gate = asyncio.Semaphore(concurrency)
     t0: dict[str, float] = {}
@@ -121,27 +148,18 @@ def build_graph(
         inp = state["inp"]
         t0["start"] = time.perf_counter()
         await emit(event("node_started", node="chart_loader"))
-        until = inp.ctx.order_date
-        events = to_timeline(
-            source.everything(inp.chart_ref),
-            since=until - timedelta(days=inp.lookback_days),
-            until=until,
-        )
-        deid = Deidentifier(known_names=inp.patient_names)
-        async with sessions() as s:
-            chunks = await index_case(s, inp.case_id, events, deid.deidentify)
-            await s.commit()
+        chunks, events = await index_chart(inp, sessions, source)
         t0["indexed"] = time.perf_counter()
         await emit(
             event(
                 "node_finished",
                 node="deidentify_and_index",
-                chunks=len(chunks),
-                events=len(events),
+                chunks=chunks,
+                events=events,
                 latency_ms=ms(t0["start"]),
             )
         )
-        return {"n_chunks": len(chunks)}
+        return {"n_chunks": chunks}
 
     def fan_out(state: _State) -> list[Send]:
         return [
@@ -158,7 +176,14 @@ def build_graph(
 
         async def search(queries: list[str]) -> Any:
             async with sessions() as s:
-                hits = await hybrid_search(s, inp.case_id, queries, since=since)
+                hits = await hybrid_search(
+                    s,
+                    inp.case_id,
+                    queries,
+                    since=since,
+                    fts=variant.hybrid,
+                    rerank=variant.rerank,
+                )
             headers.update(
                 {
                     str(h.chunk_id): f"{h.resource_type} {h.date:%m/%d/%Y}"
@@ -189,7 +214,12 @@ def build_graph(
             guarded = phi_guard(llm, inp.patient_names)
             raw, texts, trace = await run_evidence(leaf, inp.ctx, search, guarded)
             checked = await asyncio.to_thread(verify, raw, texts, nli, headers=headers)
-            checked = await judge_downgrade(checked, texts, guarded, headers)
+            if variant.verify:
+                checked = await judge_downgrade(checked, texts, guarded, headers)
+            else:
+                checked = checked.model_copy(
+                    update={"verdict": raw.verdict, "downgraded": None, "original": None}
+                )
             await emit(
                 event(
                     "verdict",
@@ -355,8 +385,9 @@ async def run_case(
     nli: NLI = models.nli,
     emit: Emit = no_emit,
     review: bool = False,
+    variant: Variant = Variant(),  # noqa: B008
 ) -> CaseResult:
-    graph = build_graph(sessions, source, llm, nli, emit=emit, review=review)
+    graph = build_graph(sessions, source, llm, nli, emit=emit, review=review, variant=variant)
     out = await graph.ainvoke({"inp": inp})
     result: CaseResult = out["result"]
     return result

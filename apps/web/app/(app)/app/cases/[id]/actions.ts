@@ -67,3 +67,48 @@ export async function setGapStatus(caseId: string, gapId: string, status: "open"
   if (response.ok) revalidatePath(`/app/cases/${caseId}`);
   return response.ok ? {} : { error: await detail(response) };
 }
+
+// --- packets, payer, appeals (Phase 6) ---------------------------------------------------------
+
+async function done(caseId: string, response: Response): Promise<Result> {
+  if (response.ok) {
+    revalidatePath(`/app/cases/${caseId}`);
+    return {};
+  }
+  return { error: await detail(response) };
+}
+
+export async function buildPacket(caseId: string, runId: string): Promise<Result> {
+  const { response } = await (await api()).POST("/api/v1/runs/{run_id}/packet", { params: { path: { run_id: runId } } });
+  return done(caseId, response);
+}
+
+export async function approvePacket(caseId: string, packetId: string): Promise<Result> {
+  const { response } = await (await api()).POST("/api/v1/packets/{packet_id}/approve", { params: { path: { packet_id: packetId } } });
+  return done(caseId, response);
+}
+
+export async function submitPacket(caseId: string, packetId: string): Promise<Result> {
+  const { response } = await (await api()).POST("/api/v1/packets/{packet_id}/submit", { params: { path: { packet_id: packetId } } });
+  return done(caseId, response);
+}
+
+export async function startAppeal(caseId: string, submissionId: string): Promise<Result> {
+  const { response } = await (await api()).POST("/api/v1/submissions/{submission_id}/appeal", {
+    params: { path: { submission_id: submissionId } },
+  });
+  return done(caseId, response);
+}
+
+export async function editAppeal(caseId: string, appealId: string, draftText: string): Promise<Result> {
+  const { response } = await (await api()).PATCH("/api/v1/appeals/{appeal_id}", {
+    params: { path: { appeal_id: appealId } },
+    body: { draft_text: draftText },
+  });
+  return done(caseId, response);
+}
+
+export async function sendAppeal(caseId: string, appealId: string): Promise<Result> {
+  const { response } = await (await api()).POST("/api/v1/appeals/{appeal_id}/send", { params: { path: { appeal_id: appealId } } });
+  return done(caseId, response);
+}

@@ -1,3 +1,3 @@
 export { auth as middleware } from "@/auth";
 
-export const config = { matcher: ["/app/:path*"] };
+export const config = { matcher: ["/app/:path*", "/ehr-sim"] };

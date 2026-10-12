@@ -23,7 +23,7 @@ async def list_cases(
     limit: Annotated[int, Query(ge=1, le=200)] = 50,
 ) -> Page[CaseOut]:
     q = (
-        select(Case, Patient.display_name_synthetic)
+        select(Case, Patient.display_name_synthetic, Patient.fhir_id)
         .join(Patient, Patient.id == Case.patient_id)
         .where(Case.org_id == user.org)  # org scoping on every query
     )
@@ -40,7 +40,10 @@ async def list_cases(
     more = len(rows) > limit
     rows = rows[:limit]
     nxt = _encode_cursor(rows[-1][0].created_at, rows[-1][0].id) if more else None
-    items = [CaseOut.model_validate(c).model_copy(update={"patient_name": n}) for c, n in rows]
+    items = [
+        CaseOut.model_validate(c).model_copy(update={"patient_name": n, "patient_fhir_id": f})
+        for c, n, f in rows
+    ]
     return Page[CaseOut](items=items, next_cursor=nxt)
 
 

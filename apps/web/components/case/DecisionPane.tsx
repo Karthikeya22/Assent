@@ -8,6 +8,7 @@ import type { ObjectionState, Verdict } from "@/lib/run/reducer";
 import { gapKeys } from "@/lib/run/logic";
 import { useRunStore } from "@/lib/run/store";
 import { VerdictChip } from "@/components/ui/VerdictChip";
+import { PacketPanel } from "./PacketPanel";
 
 type Criterion = components["schemas"]["CriterionOut"];
 
@@ -126,6 +127,7 @@ export function DecisionPane({
   selected,
   onSelect,
   onCite,
+  packets,
 }: {
   caseId: string;
   runId: string | null;
@@ -135,6 +137,7 @@ export function DecisionPane({
   selected: string | null;
   onSelect: (key: string) => void;
   onCite: (chunkId: string, key: string) => void;
+  packets: components["schemas"]["PacketOut"][];
 }) {
   const router = useRouter();
   const run = useRunStore((s) => s.run);
@@ -150,7 +153,7 @@ export function DecisionPane({
   const [error, setError] = useState<string | null>(null);
   const [pending, start] = useTransition();
   const finished = run.status === "finished" && runId;
-  const decided = caseStatus === "ready" || caseStatus === "submitted" || caseStatus === "approved";
+  const decided = ["ready", "submitted", "approved", "denied", "appealed"].includes(caseStatus);
 
   function act(decision: "approve" | "reject", acknowledge = false) {
     setError(null);
@@ -264,6 +267,8 @@ export function DecisionPane({
           {run.gaps.length === 0 && <li className="text-sm text-ink-3">{run.status === "finished" ? "None." : "Planned after the evidence pass."}</li>}
         </ul>
       </section>
+
+      {decided && <PacketPanel caseId={caseId} runId={runId} caseStatus={caseStatus} packets={packets} />}
 
       <div className="mt-auto space-y-2 pt-4">
         {error && <p role="alert" className="text-xs text-fail">{error}</p>}

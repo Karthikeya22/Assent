@@ -4,6 +4,44 @@
  */
 
 export interface paths {
+    "/api/v1/appeals/{appeal_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Appeal */
+        get: operations["get_appeal_api_v1_appeals__appeal_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** Edit Appeal */
+        patch: operations["edit_appeal_api_v1_appeals__appeal_id__patch"];
+        trace?: never;
+    };
+    "/api/v1/appeals/{appeal_id}/send": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Send Appeal
+         * @description Resubmit: original evidence + the appeal's verified excerpts + the appeal letter.
+         */
+        post: operations["send_appeal_api_v1_appeals__appeal_id__send_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/auth/token": {
         parameters: {
             query?: never;
@@ -72,6 +110,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/cases/{case_id}/packets": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Case Packets */
+        get: operations["case_packets_api_v1_cases__case_id__packets_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/cases/{case_id}/runs": {
         parameters: {
             query?: never;
@@ -121,6 +176,57 @@ export interface paths {
         head?: never;
         /** Update Gap */
         patch: operations["update_gap_api_v1_gaps__gap_id__patch"];
+        trace?: never;
+    };
+    "/api/v1/packets/{packet_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Packet */
+        get: operations["get_packet_api_v1_packets__packet_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/packets/{packet_id}/approve": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Approve Packet */
+        post: operations["approve_packet_api_v1_packets__packet_id__approve_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/packets/{packet_id}/submit": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Submit Packet */
+        post: operations["submit_packet_api_v1_packets__packet_id__submit_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
         trace?: never;
     };
     "/api/v1/policies": {
@@ -191,6 +297,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/runs/{run_id}/packet": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Build Packet */
+        post: operations["build_packet_api_v1_runs__run_id__packet_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/runs/{run_id}/resume": {
         parameters: {
             query?: never;
@@ -245,6 +368,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/submissions/{submission_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Submission */
+        get: operations["get_submission_api_v1_submissions__submission_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/submissions/{submission_id}/appeal": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Start Appeal */
+        post: operations["start_appeal_api_v1_submissions__submission_id__appeal_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/verdicts/{verdict_id}": {
         parameters: {
             query?: never;
@@ -286,6 +443,36 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /** AppealOut */
+        AppealOut: {
+            /** Citations */
+            citations: {
+                [key: string]: {
+                    [key: string]: unknown;
+                }[];
+            };
+            /** Draft Text */
+            draft_text: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Sent At */
+            sent_at: string | null;
+            /** Status */
+            status: string;
+            /**
+             * Submission Id
+             * Format: uuid
+             */
+            submission_id: string;
+        };
+        /** AppealPatch */
+        AppealPatch: {
+            /** Draft Text */
+            draft_text: string;
+        };
         /** CaseDetail */
         CaseDetail: {
             /** Cpt Codes */
@@ -333,6 +520,11 @@ export interface components {
              * Format: uuid
              */
             id: string;
+            /**
+             * Patient Fhir Id
+             * @default
+             */
+            patient_fhir_id: string;
             /**
              * Patient Id
              * Format: uuid
@@ -426,6 +618,26 @@ export interface components {
                 [key: string]: unknown;
             } | null;
         };
+        /** DenialOut */
+        DenialOut: {
+            /** Criterion Key */
+            criterion_key: string;
+            /** Reason */
+            reason: string;
+        };
+        /** EvidenceOut */
+        EvidenceOut: {
+            /** Criterion Key */
+            criterion_key: string;
+            /** Criterion Label */
+            criterion_label: string;
+            /** Quote */
+            quote: string;
+            /** Source Date */
+            source_date: string | null;
+            /** Source Type */
+            source_type: string;
+        };
         /** GapOut */
         GapOut: {
             /** Assignee Role */
@@ -483,6 +695,39 @@ export interface components {
             status: string;
             /** Text */
             text: string;
+        };
+        /** PacketOut */
+        PacketOut: {
+            /** Approved At */
+            approved_at: string | null;
+            /**
+             * Case Id
+             * Format: uuid
+             */
+            case_id: string;
+            /** Created At */
+            created_at?: string | null;
+            /** Evidence */
+            evidence: components["schemas"]["EvidenceOut"][];
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Letter */
+            letter: string;
+            /**
+             * Run Id
+             * Format: uuid
+             */
+            run_id: string;
+            /**
+             * Submissions
+             * @default []
+             */
+            submissions: components["schemas"]["SubmissionOut"][];
+            /** Validation Errors */
+            validation_errors: string[];
         };
         /** Page[CaseOut] */
         Page_CaseOut_: {
@@ -651,6 +896,33 @@ export interface components {
             /** Status */
             status: string;
         };
+        /** SubmissionOut */
+        SubmissionOut: {
+            appeal?: components["schemas"]["AppealOut"] | null;
+            /** Denials */
+            denials: components["schemas"]["DenialOut"][];
+            /** Disposition */
+            disposition: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Packet Id
+             * Format: uuid
+             */
+            packet_id: string;
+            /** Pre Auth Ref */
+            pre_auth_ref: string | null;
+            /** Status */
+            status: string;
+            /**
+             * Submitted At
+             * Format: date-time
+             */
+            submitted_at: string;
+        };
         /** TokenOut */
         TokenOut: {
             /** Access Token */
@@ -762,6 +1034,103 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    get_appeal_api_v1_appeals__appeal_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                appeal_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AppealOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    edit_appeal_api_v1_appeals__appeal_id__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                appeal_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AppealPatch"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AppealOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    send_appeal_api_v1_appeals__appeal_id__send_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                appeal_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SubmissionOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     login_api_v1_auth_token_post: {
         parameters: {
             query?: never;
@@ -891,6 +1260,37 @@ export interface operations {
             };
         };
     };
+    case_packets_api_v1_cases__case_id__packets_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                case_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PacketOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     start_run_api_v1_cases__case_id__runs_post: {
         parameters: {
             query?: never;
@@ -979,6 +1379,101 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["GapOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_packet_api_v1_packets__packet_id__get: {
+        parameters: {
+            query?: {
+                format?: string;
+            };
+            header?: never;
+            path: {
+                packet_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    approve_packet_api_v1_packets__packet_id__approve_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                packet_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PacketOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    submit_packet_api_v1_packets__packet_id__submit_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                packet_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SubmissionOut"];
                 };
             };
             /** @description Validation Error */
@@ -1105,6 +1600,37 @@ export interface operations {
             };
         };
     };
+    build_packet_api_v1_runs__run_id__packet_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                run_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PacketOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     resume_run_api_v1_runs__run_id__resume_post: {
         parameters: {
             query?: never;
@@ -1187,6 +1713,68 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["VerdictOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_submission_api_v1_submissions__submission_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                submission_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SubmissionOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    start_appeal_api_v1_submissions__submission_id__appeal_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                submission_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AppealOut"];
                 };
             };
             /** @description Validation Error */

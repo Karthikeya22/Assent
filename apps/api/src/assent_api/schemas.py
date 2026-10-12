@@ -43,6 +43,7 @@ class CaseOut(BaseModel):
     denial_risk: float | None
     created_at: datetime
     patient_name: str = ""
+    patient_fhir_id: str = ""  # what an EHR / CDS client knows the patient by
 
 
 class Page[T](BaseModel):

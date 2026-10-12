@@ -1,6 +1,76 @@
 {
   "components": {
     "schemas": {
+      "AppealOut": {
+        "properties": {
+          "citations": {
+            "additionalProperties": {
+              "items": {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "title": "Citations",
+            "type": "object"
+          },
+          "draft_text": {
+            "title": "Draft Text",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "sent_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sent At"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "submission_id": {
+            "format": "uuid",
+            "title": "Submission Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "submission_id",
+          "status",
+          "draft_text",
+          "citations",
+          "sent_at"
+        ],
+        "title": "AppealOut",
+        "type": "object"
+      },
+      "AppealPatch": {
+        "properties": {
+          "draft_text": {
+            "maxLength": 20000,
+            "minLength": 20,
+            "title": "Draft Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "draft_text"
+        ],
+        "title": "AppealPatch",
+        "type": "object"
+      },
       "CaseDetail": {
         "properties": {
           "cpt_codes": {
@@ -156,6 +226,11 @@
           "id": {
             "format": "uuid",
             "title": "Id",
+            "type": "string"
+          },
+          "patient_fhir_id": {
+            "default": "",
+            "title": "Patient Fhir Id",
             "type": "string"
           },
           "patient_id": {
@@ -440,6 +515,65 @@
         "title": "CriterionOut",
         "type": "object"
       },
+      "DenialOut": {
+        "properties": {
+          "criterion_key": {
+            "title": "Criterion Key",
+            "type": "string"
+          },
+          "reason": {
+            "title": "Reason",
+            "type": "string"
+          }
+        },
+        "required": [
+          "criterion_key",
+          "reason"
+        ],
+        "title": "DenialOut",
+        "type": "object"
+      },
+      "EvidenceOut": {
+        "properties": {
+          "criterion_key": {
+            "title": "Criterion Key",
+            "type": "string"
+          },
+          "criterion_label": {
+            "title": "Criterion Label",
+            "type": "string"
+          },
+          "quote": {
+            "title": "Quote",
+            "type": "string"
+          },
+          "source_date": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Date"
+          },
+          "source_type": {
+            "title": "Source Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "criterion_key",
+          "criterion_label",
+          "quote",
+          "source_type",
+          "source_date"
+        ],
+        "title": "EvidenceOut",
+        "type": "object"
+      },
       "GapOut": {
         "properties": {
           "assignee_role": {
@@ -597,6 +731,86 @@
           "rebuttal_chunk_ids"
         ],
         "title": "ObjectionOut",
+        "type": "object"
+      },
+      "PacketOut": {
+        "properties": {
+          "approved_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Approved At"
+          },
+          "case_id": {
+            "format": "uuid",
+            "title": "Case Id",
+            "type": "string"
+          },
+          "created_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Created At"
+          },
+          "evidence": {
+            "items": {
+              "$ref": "#/components/schemas/EvidenceOut"
+            },
+            "title": "Evidence",
+            "type": "array"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "letter": {
+            "title": "Letter",
+            "type": "string"
+          },
+          "run_id": {
+            "format": "uuid",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "submissions": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/SubmissionOut"
+            },
+            "title": "Submissions",
+            "type": "array"
+          },
+          "validation_errors": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Validation Errors",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "case_id",
+          "run_id",
+          "approved_at",
+          "letter",
+          "evidence",
+          "validation_errors"
+        ],
+        "title": "PacketOut",
         "type": "object"
       },
       "Page_CaseOut_": {
@@ -1003,6 +1217,72 @@
         "title": "StepOut",
         "type": "object"
       },
+      "SubmissionOut": {
+        "properties": {
+          "appeal": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AppealOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "denials": {
+            "items": {
+              "$ref": "#/components/schemas/DenialOut"
+            },
+            "title": "Denials",
+            "type": "array"
+          },
+          "disposition": {
+            "title": "Disposition",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "packet_id": {
+            "format": "uuid",
+            "title": "Packet Id",
+            "type": "string"
+          },
+          "pre_auth_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pre Auth Ref"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "submitted_at": {
+            "format": "date-time",
+            "title": "Submitted At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "packet_id",
+          "submitted_at",
+          "status",
+          "disposition",
+          "pre_auth_ref",
+          "denials"
+        ],
+        "title": "SubmissionOut",
+        "type": "object"
+      },
       "TokenOut": {
         "properties": {
           "access_token": {
@@ -1254,6 +1534,159 @@
   },
   "openapi": "3.1.0",
   "paths": {
+    "/api/v1/appeals/{appeal_id}": {
+      "get": {
+        "operationId": "get_appeal_api_v1_appeals__appeal_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appeal_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Appeal Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppealOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Appeal",
+        "tags": [
+          "packets"
+        ]
+      },
+      "patch": {
+        "operationId": "edit_appeal_api_v1_appeals__appeal_id__patch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appeal_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Appeal Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppealPatch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppealOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Edit Appeal",
+        "tags": [
+          "packets"
+        ]
+      }
+    },
+    "/api/v1/appeals/{appeal_id}/send": {
+      "post": {
+        "description": "Resubmit: original evidence + the appeal's verified excerpts + the appeal letter.",
+        "operationId": "send_appeal_api_v1_appeals__appeal_id__send_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appeal_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Appeal Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmissionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Send Appeal",
+        "tags": [
+          "packets"
+        ]
+      }
+    },
     "/api/v1/auth/token": {
       "post": {
         "operationId": "login_api_v1_auth_token_post",
@@ -1493,6 +1926,58 @@
         ]
       }
     },
+    "/api/v1/cases/{case_id}/packets": {
+      "get": {
+        "operationId": "case_packets_api_v1_cases__case_id__packets_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "case_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Case Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PacketOut"
+                  },
+                  "title": "Response Case Packets Api V1 Cases  Case Id  Packets Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Case Packets",
+        "tags": [
+          "packets"
+        ]
+      }
+    },
     "/api/v1/cases/{case_id}/runs": {
       "post": {
         "operationId": "start_run_api_v1_cases__case_id__runs_post",
@@ -1658,6 +2143,158 @@
         "summary": "Update Gap",
         "tags": [
           "runs"
+        ]
+      }
+    },
+    "/api/v1/packets/{packet_id}": {
+      "get": {
+        "operationId": "get_packet_api_v1_packets__packet_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "packet_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Packet Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "format",
+            "required": false,
+            "schema": {
+              "default": "json",
+              "title": "Format",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Packet",
+        "tags": [
+          "packets"
+        ]
+      }
+    },
+    "/api/v1/packets/{packet_id}/approve": {
+      "post": {
+        "operationId": "approve_packet_api_v1_packets__packet_id__approve_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "packet_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Packet Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PacketOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Approve Packet",
+        "tags": [
+          "packets"
+        ]
+      }
+    },
+    "/api/v1/packets/{packet_id}/submit": {
+      "post": {
+        "operationId": "submit_packet_api_v1_packets__packet_id__submit_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "packet_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Packet Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmissionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Submit Packet",
+        "tags": [
+          "packets"
         ]
       }
     },
@@ -1839,6 +2476,54 @@
         ]
       }
     },
+    "/api/v1/runs/{run_id}/packet": {
+      "post": {
+        "operationId": "build_packet_api_v1_runs__run_id__packet_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Run Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PacketOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Build Packet",
+        "tags": [
+          "packets"
+        ]
+      }
+    },
     "/api/v1/runs/{run_id}/resume": {
       "post": {
         "description": "The human-review interrupt: nothing is submitted without this (PRODUCT \u00a74.9).",
@@ -1988,6 +2673,102 @@
         "summary": "Run Verdicts",
         "tags": [
           "runs"
+        ]
+      }
+    },
+    "/api/v1/submissions/{submission_id}": {
+      "get": {
+        "operationId": "get_submission_api_v1_submissions__submission_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "submission_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Submission Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmissionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Get Submission",
+        "tags": [
+          "packets"
+        ]
+      }
+    },
+    "/api/v1/submissions/{submission_id}/appeal": {
+      "post": {
+        "operationId": "start_appeal_api_v1_submissions__submission_id__appeal_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "submission_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Submission Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppealOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Start Appeal",
+        "tags": [
+          "packets"
         ]
       }
     },

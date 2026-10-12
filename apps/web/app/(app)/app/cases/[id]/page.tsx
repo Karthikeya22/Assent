@@ -27,13 +27,14 @@ export default async function CasePage({ params }: { params: Promise<{ id: strin
 
   const finished = detail.latest_run?.status === "finished" ? detail.latest_run.id : null;
   const run = { params: { path: { run_id: finished ?? "" } } };
-  const [pv, timeline, verdicts, objections, gaps, runDetail] = await Promise.all([
+  const [pv, timeline, verdicts, objections, gaps, runDetail, packets] = await Promise.all([
     client.GET("/api/v1/policy-versions/{version_id}", { params: { path: { version_id: versionId } } }),
     client.GET("/api/v1/cases/{case_id}/timeline", { params: { path: { case_id: id } } }),
     finished ? client.GET("/api/v1/runs/{run_id}/verdicts", run) : Promise.resolve({ data: [] }),
     finished ? client.GET("/api/v1/runs/{run_id}/objections", run) : Promise.resolve({ data: [] }),
     client.GET("/api/v1/cases/{case_id}/gaps", { params: { path: { case_id: id } } }),
     finished ? client.GET("/api/v1/runs/{run_id}", run) : Promise.resolve({ data: null }),
+    client.GET("/api/v1/cases/{case_id}/packets", { params: { path: { case_id: id } } }),
   ]);
   if (!pv.data?.criteria) throw new Error("policy has no criteria tree");
   const reviewStep = runDetail.data?.steps.find((s) => s.node === "review")?.payload as
@@ -47,6 +48,7 @@ export default async function CasePage({ params }: { params: Promise<{ id: strin
       root={pv.data.criteria}
       policy={{ sourceId: pv.data.policy.source_id, version: pv.data.version, title: pv.data.policy.title }}
       chunks={timeline.data ?? []}
+      packets={packets.data ?? []}
       verdicts={verdicts.data ?? []}
       review={{
         objections: objections.data ?? [],

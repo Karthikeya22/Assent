@@ -64,6 +64,7 @@ export function CaseWorkspace({
   chunks,
   verdicts,
   review,
+  packets,
 }: {
   detail: S["CaseDetail"];
   root: S["CriterionOut"];
@@ -71,6 +72,7 @@ export function CaseWorkspace({
   chunks: S["ChunkOut"][];
   verdicts: S["VerdictOut"][];
   review: Review;
+  packets: S["PacketOut"][];
 }) {
   const router = useRouter();
   const leaves = useMemo(() => leavesOf(root), [root]);
@@ -186,7 +188,7 @@ export function CaseWorkspace({
           <CriteriaGraph2D root={root} sourceId={policy.sourceId} title={policy.title} selected={selected} onSelect={select} />
         </section>
         <section className="min-h-0 border-l border-rule" aria-label="Decision">
-          <DecisionPane caseId={detail.id} runId={detail.latest_run?.status === "finished" ? detail.latest_run.id : null} caseStatus={detail.status} root={root} leaves={leaves} selected={selected} onSelect={select} onCite={cite} />
+          <DecisionPane caseId={detail.id} runId={detail.latest_run?.status === "finished" ? detail.latest_run.id : null} caseStatus={detail.status} root={root} leaves={leaves} selected={selected} onSelect={select} onCite={cite} packets={packets} />
         </section>
       </div>
       <TraceStepper total={leaves.length} />

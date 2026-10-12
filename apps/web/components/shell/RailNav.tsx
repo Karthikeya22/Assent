@@ -41,7 +41,8 @@ export function RailNav() {
       </Link>
       <ul className="flex flex-1 flex-col gap-0.5 py-2">
         {items.map(({ href, label, icon: Icon }) => {
-          const active = pathname.startsWith(href);
+          const active =
+            pathname.startsWith(href) || (href === "/app/worklist" && pathname.startsWith("/app/cases"));
           return (
             <li key={href}>
               <Link

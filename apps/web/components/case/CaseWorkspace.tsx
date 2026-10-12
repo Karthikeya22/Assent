@@ -154,7 +154,7 @@ export function CaseWorkspace({
           <CriteriaGraph2D root={root} sourceId={policy.sourceId} title={policy.title} selected={selected} onSelect={select} />
         </section>
         <section className="min-h-0 border-l border-rule" aria-label="Decision">
-          <DecisionPane leaves={leaves} selected={selected} onSelect={select} onCite={cite} />
+          <DecisionPane root={root} leaves={leaves} selected={selected} onSelect={select} onCite={cite} />
         </section>
       </div>
       <TraceStepper total={leaves.length} />

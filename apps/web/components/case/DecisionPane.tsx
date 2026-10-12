@@ -2,6 +2,7 @@
 
 import type { components } from "@/lib/api/schema";
 import type { Verdict } from "@/lib/run/reducer";
+import { gapKeys } from "@/lib/run/logic";
 import { useRunStore } from "@/lib/run/store";
 import { VerdictChip } from "@/components/ui/VerdictChip";
 
@@ -32,21 +33,22 @@ function ReadinessDial({ value }: { value: number | null }) {
 }
 
 export function DecisionPane({
+  root,
   leaves,
   selected,
   onSelect,
   onCite,
 }: {
+  root: Criterion;
   leaves: Criterion[];
   selected: string | null;
   onSelect: (key: string) => void;
   onCite: (chunkId: string, key: string) => void;
 }) {
   const run = useRunStore((s) => s.run);
-  const gaps = leaves.filter((l) => {
-    const v = run.leaves[l.key]?.verdict;
-    return v && v !== "met";
-  });
+  const states = { ...run.logic, ...Object.fromEntries(Object.entries(run.leaves).map(([k, l]) => [k, l.verdict])) };
+  const gapSet = new Set(gapKeys(root, states));
+  const gaps = leaves.filter((l) => gapSet.has(l.key));
   const sel = selected ? leaves.find((l) => l.key === selected) : null;
   const sv = sel ? run.leaves[sel.key] : null;
 

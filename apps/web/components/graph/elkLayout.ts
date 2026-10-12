@@ -13,6 +13,7 @@ export async function layout(nodes: Node[], edges: Edge[]): Promise<Node[]> {
       "elk.layered.spacing.nodeNodeBetweenLayers": "56",
       "elk.spacing.nodeNode": "20",
       "elk.layered.nodePlacement.strategy": "BRANDES_KOEPF",
+      "elk.layered.nodePlacement.bk.fixedAlignment": "BALANCED", // parents centred over children
     },
     children: nodes.map((n) => ({ id: n.id, width: n.width ?? 200, height: n.height ?? 60 })),
     // Rendered edges run child → parent (evidence flows up); ELK needs parent → child to put

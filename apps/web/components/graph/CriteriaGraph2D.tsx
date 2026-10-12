@@ -8,7 +8,6 @@ import {
   type Node,
   ReactFlow,
   ReactFlowProvider,
-  useReactFlow,
 } from "@xyflow/react";
 import "@xyflow/react/dist/base.css";
 import { useEffect, useMemo, useState } from "react";
@@ -74,7 +73,6 @@ function toFlow(root: Criterion, sourceId: string, title: string, selected: stri
 function Graph({ root, sourceId, title, selected, onSelect }: Props) {
   const { nodes: raw, edges } = useMemo(() => toFlow(root, sourceId, title, selected), [root, sourceId, title, selected]);
   const [nodes, setNodes] = useState<Node[]>([]);
-  const { fitView } = useReactFlow();
 
   useEffect(() => {
     let live = true;
@@ -90,16 +88,17 @@ function Graph({ root, sourceId, title, selected, onSelect }: Props) {
     };
   }, [raw, edges]);
 
-  useEffect(() => {
-    if (nodes.length) requestAnimationFrame(() => fitView({ padding: 0.08 }));
-  }, [nodes.length, fitView]);
-
+  // Mount React Flow only once ELK has placed the nodes, and let its built-in fitView (which
+  // waits for measurement) frame them; fitting from an effect raced the layout.
+  if (!nodes.length) return null;
   return (
     <ReactFlow
       nodes={nodes}
       edges={edges}
       nodeTypes={nodeTypes}
       edgeTypes={edgeTypes}
+      fitView
+      fitViewOptions={{ padding: 0.06, maxZoom: 1 }}
       onNodeClick={(_, n) => n.type === "leaf" && onSelect(n.id)}
       nodesDraggable={false}
       nodesConnectable={false}

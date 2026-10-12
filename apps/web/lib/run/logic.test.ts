@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { components } from "@/lib/api/schema";
-import { evaluateTree } from "./logic";
+import { evaluateTree, gapKeys } from "./logic";
 
 type C = components["schemas"]["CriterionOut"];
 const leaf = (key: string): C => ({
@@ -17,6 +17,12 @@ describe("evaluateTree mirrors the server logic engine", () => {
   it("combines three-valued states", () => {
     const s = evaluateTree(tree, { a: "not_met", b: "met", c: "met", d: "insufficient", e: "met" });
     expect(s).toMatchObject({ o: "met", k: "met", root: "met" });
+  });
+
+  it("gaps exclude unchosen alternatives under a satisfied OR", () => {
+    const s = evaluateTree(tree, { a: "insufficient", b: "met", c: "met", d: "not_met", e: "insufficient" });
+    // OR "o" is met via b, so a is not a gap; N_OF_M "k" needs 2 of c,d,e and has only c.
+    expect(gapKeys(tree, s)).toEqual(["d", "e"]);
   });
 
   it("missing leaves are insufficient and N_OF_M fails when unreachable", () => {

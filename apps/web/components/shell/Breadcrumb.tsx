@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 const LABELS: Record<string, string> = {
   worklist: "Worklist",
+  cases: "Worklist", // a case lives under the coordinator's worklist
   policies: "Policies",
   analytics: "Analytics",
   evals: "Evals",
@@ -17,7 +18,7 @@ export function Breadcrumb() {
   const section = parts[0] ?? "worklist";
   const label = LABELS[section] ?? section;
   return parts.length > 1 ? (
-    <Link href={`/app/${section}`} className="hover:text-ink">
+    <Link href={`/app/${section === "cases" ? "worklist" : section}`} className="hover:text-ink">
       {label}
     </Link>
   ) : (

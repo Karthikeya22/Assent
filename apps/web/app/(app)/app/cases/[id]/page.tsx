@@ -18,8 +18,10 @@ export default async function CasePage({ params }: { params: Promise<{ id: strin
   let versionId = detail.policy?.version_id;
   if (!versionId) {
     const { data: pols } = await client.GET("/api/v1/policies");
-    versionId = pols?.find((p) => p.service_family === detail.service_family && p.latest_version?.status === "approved")
-      ?.latest_version?.id;
+    // Same rule as the worker's policy_resolver (approved_version_for): highest source id wins.
+    versionId = pols
+      ?.filter((p) => p.service_family === detail.service_family && p.latest_version?.status === "approved")
+      .sort((a, b) => b.source_id.localeCompare(a.source_id))[0]?.latest_version?.id;
   }
   if (!versionId) throw new Error(`no approved policy for ${detail.service_family}`);
 

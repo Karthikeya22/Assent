@@ -22,6 +22,25 @@ export function evaluateTree(root: Criterion, leaves: Record<string, Verdict | u
   return states;
 }
 
+/**
+ * Leaves that actually block the decision: not met, with no satisfied ancestor. An unchosen OR
+ * alternative (e.g. "herpes zoster" when radiculopathy already satisfies the diagnosis) is not
+ * a gap.
+ */
+export function gapKeys(root: Criterion, states: Record<string, LogicState | undefined>): string[] {
+  const out: string[] = [];
+  const walk = (n: Criterion, covered: boolean) => {
+    const done = covered || states[n.key] === "met";
+    if (n.kind === "LEAF") {
+      if (!done && states[n.key]) out.push(n.key);
+      return;
+    }
+    n.children.forEach((c) => walk(c, done));
+  };
+  walk(root, false);
+  return out;
+}
+
 export function leavesOf(c: Criterion): Criterion[] {
   return c.kind === "LEAF" ? [c] : c.children.flatMap(leavesOf);
 }

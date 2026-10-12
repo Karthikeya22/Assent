@@ -1,0 +1,104 @@
+{
+ "run_at": "2026-10-12T18:41:44+00:00",
+ "split": "dev",
+ "llm": "openai",
+ "n_cases": 2,
+ "criterion_macro_f1": 0.8111,
+ "criterion_accuracy": 0.8889,
+ "case_accuracy": 1.0,
+ "citation_precision": 0.8421,
+ "downgrade_rate": 0.1176,
+ "unsupported_claim_rate": 0.0,
+ "latency_p50_s": 116.46,
+ "latency_p95_s": 147.61,
+ "cost_per_case_usd": 0.0162,
+ "per_difficulty_f1": {
+  "buried": 0.9286,
+  "missing": 1.0
+ },
+ "confusion": {
+  "met": {
+   "met": 14,
+   "not_met": 0,
+   "insufficient": 2
+  },
+  "not_met": {
+   "met": 0,
+   "not_met": 1,
+   "insufficient": 0
+  },
+  "insufficient": {
+   "met": 0,
+   "not_met": 0,
+   "insufficient": 1
+  }
+ },
+ "cases": [
+  {
+   "case_id": "hgns-001",
+   "difficulty": "buried",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.667,
+   "chunks": 66,
+   "seconds": 147.61,
+   "cost_usd": 0.01941,
+   "misses": {
+    "ahi": "met->insufficient",
+    "anatomy": "met->insufficient"
+   },
+   "downgrades": {
+    "ahi": "quote does not entail the claim (p=0.00)",
+    "anatomy": "quote not found verbatim"
+   },
+   "risk_features": {
+    "blocking_gaps": 3.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.0369666666666667,
+    "judged_share": 0.3333333333333333
+   },
+   "final_claims": 7,
+   "unsupported": 0,
+   "claims": 9,
+   "downgraded": 2,
+   "citations": 9,
+   "valid_citations": 7,
+   "verbatim_citations": 8
+  },
+  {
+   "case_id": "hgns-006",
+   "difficulty": "missing",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.889,
+   "chunks": 96,
+   "seconds": 116.46,
+   "cost_usd": 0.01305,
+   "misses": {},
+   "downgrades": {},
+   "risk_features": {
+    "blocking_gaps": 1.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.10813000000000006,
+    "judged_share": 0.0
+   },
+   "final_claims": 8,
+   "unsupported": 0,
+   "claims": 8,
+   "downgraded": 0,
+   "citations": 10,
+   "valid_citations": 9,
+   "verbatim_citations": 10
+  }
+ ],
+ "family": "hgns",
+ "variant": "full",
+ "inject": true,
+ "complete": true,
+ "cassette": {
+  "hits": 26,
+  "misses": 9
+ }
+}

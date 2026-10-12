@@ -14,7 +14,7 @@ from assent_agents.gaps import FITTED
 from assent_evals.bench import RESULTS, load_done, summarize
 from assent_evals.synth.build import FAMILIES
 
-FULL = {"esi": "openai-{split}-p5", "hgns": "hgns-openai-{split}", "pva": "pva-openai-{split}"}
+FULL = {"esi": "openai-{split}-judge-met", "hgns": "hgns-openai-{split}", "pva": "pva-openai-{split}"}
 VARIANTS = ["no-verify", "no-rerank", "dense-only", "naive-rag", "long-context"]
 KEYS = [
     "n_cases",

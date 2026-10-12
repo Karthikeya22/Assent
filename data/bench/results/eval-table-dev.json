@@ -1,0 +1,125 @@
+{
+ "split": "dev",
+ "per_family": [
+  {
+   "family": "esi",
+   "system": "esi",
+   "n_cases": 34,
+   "criterion_macro_f1": 0.8575,
+   "case_accuracy": 0.7647,
+   "citation_precision": 0.8188,
+   "unsupported_claim_rate": null,
+   "latency_p50_s": 59.08,
+   "cost_per_case_usd": 0.0017,
+   "false_ready": 0,
+   "false_not_ready": 8
+  },
+  {
+   "family": "hgns",
+   "system": "hgns",
+   "n_cases": 12,
+   "criterion_macro_f1": 0.5819,
+   "case_accuracy": 0.6667,
+   "citation_precision": 0.8532,
+   "unsupported_claim_rate": 0.0,
+   "latency_p50_s": 95.56,
+   "cost_per_case_usd": 0.0586,
+   "false_ready": 0,
+   "false_not_ready": 4
+  },
+  {
+   "family": "pva",
+   "system": "pva",
+   "n_cases": 12,
+   "criterion_macro_f1": 0.9239,
+   "case_accuracy": 0.75,
+   "citation_precision": 0.8692,
+   "unsupported_claim_rate": 0.0,
+   "latency_p50_s": 103.49,
+   "cost_per_case_usd": 0.0827,
+   "false_ready": 2,
+   "false_not_ready": 1
+  },
+  {
+   "family": "all",
+   "system": "all",
+   "n_cases": 58,
+   "criterion_macro_f1": 0.8606,
+   "case_accuracy": 0.7414,
+   "citation_precision": 0.8328,
+   "unsupported_claim_rate": 0.0,
+   "latency_p50_s": 65.72,
+   "cost_per_case_usd": 0.0303,
+   "false_ready": 2,
+   "false_not_ready": 13
+  }
+ ],
+ "comparison": [
+  {
+   "system": "assent (full)",
+   "n_cases": 9,
+   "criterion_macro_f1": 0.9166,
+   "case_accuracy": 0.7778,
+   "citation_precision": 0.8163,
+   "unsupported_claim_rate": 0.0,
+   "latency_p50_s": 78.94,
+   "cost_per_case_usd": 0.0396,
+   "false_ready": 0,
+   "false_not_ready": 2
+  },
+  {
+   "system": "long-context",
+   "n_cases": 9,
+   "criterion_macro_f1": 0.7661,
+   "case_accuracy": 1.0,
+   "citation_precision": 0.7527,
+   "unsupported_claim_rate": 0.2791,
+   "latency_p50_s": 44.51,
+   "cost_per_case_usd": 0.0237,
+   "false_ready": 0,
+   "false_not_ready": 0
+  }
+ ],
+ "adversary": {
+  "n_seeded": 60,
+  "catch_rate": 1.0,
+  "catch_rate_high": 1.0,
+  "catch_rate_by_defect": {
+   "none": 1.0,
+   "weak": 1.0,
+   "wrong": 1.0
+  },
+  "catch_rate_by_family": {
+   "esi": 1.0,
+   "hgns": 1.0,
+   "pva": 1.0
+  },
+  "n_controls": 15,
+  "objections_per_clean_packet": 3.067,
+  "cassette": {
+   "hits": 0,
+   "misses": 75
+  },
+  "cost_usd": 1.3945
+ },
+ "injection": {
+  "n_cases": 4,
+  "false_met_leaves": 0,
+  "decision_flips_to_ready": 0,
+  "attacks_missed_by_screen": 1
+ },
+ "risk_model": {
+  "n": 24,
+  "positives": 11,
+  "cv": {
+   "brier": 0.2099,
+   "auc": 0.7483,
+   "ece": 0.1537
+  },
+  "prior_same_cases": {
+   "brier": 0.2306,
+   "auc": 0.6993,
+   "ece": 0.1509
+  }
+ }
+}

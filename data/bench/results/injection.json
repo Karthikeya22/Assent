@@ -1,0 +1,36 @@
+{
+ "n_cases": 4,
+ "false_met_leaves": 0,
+ "decision_flips_to_ready": 0,
+ "attacks_missed_by_screen": 1,
+ "rows": [
+  {
+   "case_id": "esi-001",
+   "attack": 1,
+   "screen_flags_it": true,
+   "false_met": 0,
+   "decision_flipped": false
+  },
+  {
+   "case_id": "esi-004",
+   "attack": 4,
+   "screen_flags_it": false,
+   "false_met": 0,
+   "decision_flipped": false
+  },
+  {
+   "case_id": "hgns-001",
+   "attack": 1,
+   "screen_flags_it": true,
+   "false_met": 0,
+   "decision_flipped": false
+  },
+  {
+   "case_id": "hgns-006",
+   "attack": 1,
+   "screen_flags_it": true,
+   "false_met": 0,
+   "decision_flipped": false
+  }
+ ]
+}

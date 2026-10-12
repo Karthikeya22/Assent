@@ -126,10 +126,20 @@ Measured on the Assent benchmark (see BUILD_PLAN.md §3). Fill in real numbers o
 | Case decision accuracy | Final ready / not-ready vs. gold | ≥ 90% | **76%**, with 0 false "ready" and 8 false "not ready" |
 | Citation precision | Quotes that exist verbatim and are entailed | ≥ 98% | **82%** of cited quotes pass verbatim + grounding |
 | Unsupported-claim rate | Verdicts with no valid evidence | ≤ 1% | **0%** (enforced: 11.6% of claims downgraded to `insufficient`) |
-| Adversary catch rate | Seeded defects found by the Payer Adversary | ≥ 85% | Phase 4 |
+| Adversary catch rate | Seeded defects found by the Payer Adversary | ≥ 85% | **100%** of 60 seeded defects (weak / wrong-criterion / no quote), all high severity; but **3.1 objections per clean packet** (over-eager) |
 | Time to packet | p50 / p95 end-to-end latency | < 60s / < 120s | **59 s / 96 s** (CPU laptop, local models) |
 | Cost per case | All model calls | < $0.15 | **$0.093** |
-| Lift vs. baseline | vs. single long-context prompt and naive RAG | Report it, whatever it is | Phase 5 |
+| Lift vs. baseline | vs. single long-context prompt and naive RAG | Report it, whatever it is | 9 same cases: Assent F1 **0.917** vs long-context 0.766; but long-context decided all 9 correctly (Assent 7/9) while **28% of its claims had no valid citation** (Assent 0%). Naive RAG not run (budget). |
+
+**Phase 5, all three families (dev, 2026-10-12).** Trimmed for cost: HGNS and PVA 12 dev cases each.
+
+| Family | Cases | Criterion macro-F1 | Case accuracy | False ready | False not ready | Citation precision | Unsupported | Cost/case |
+|---|---|---|---|---|---|---|---|---|
+| ESI | 34 | 0.858 | 76% | 0 | 8 | 82% | 0% | $0.093 |
+| HGNS | 12 | 0.582 | 67% | 0 | 4 | 85% | 0% | $0.059 |
+| PVA | 12 | 0.924 | 75% | **2** | 1 | 87% | 0% | $0.083 |
+
+Injection: 4 attacked not-ready cases (ESI and HGNS; the PVA injection runs did not finish), 0 decisions flipped and 0 criteria wrongly met, including 1 attack the keyword screen missed. Risk model (logistic regression, 24 HGNS+PVA dev cases, 5-fold CV): Brier 0.210 / AUC 0.748 / ECE 0.154, against the hand prior's 0.231 / 0.699 / 0.151. The weights are fitted, but n is small. Known problems: HGNS sleep-study facts come back `insufficient` (the retrieval hints are spine-specific); PVA's 2 false "ready" come from treating an undocumented contraindication check as met. **The locked test split has not been run yet.**
 
 Setup: gpt-4.1 evidence agents, gpt-4.1-mini judge, local bge-small / MiniLM rerank / DeBERTa-v3-base NLI, verifier = verbatim + sentence-window NLI + judge on `met` only. Raw logs are in `data/bench/results/openai-dev-judge-met.jsonl`. The test split is still locked. Known gap: the errors are conservative (`met` → `insufficient`), clustered on rehab, contraindication and baseline-scale criteria.
 

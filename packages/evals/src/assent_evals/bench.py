@@ -23,6 +23,7 @@ from assent_agents.evidence.agent import CaseContext
 from assent_api.db import SessionLocal
 from assent_api.models import Case, Organization, Patient
 from assent_evals.baselines import BASELINES
+from assent_evals.injection_eval import InjectedSource
 from assent_evals.metrics import case_accuracy, criterion_scores, percentile
 from assent_evals.oracle import make_oracle
 from assent_evals.synth.build import FAMILIES, REPO, family_of
@@ -195,6 +196,7 @@ async def main(
     family: str = "esi",
     variant: str = "full",
     max_usd: float = 8.0,
+    inject: bool = False,
 ) -> dict[str, Any]:
     if variant in BASELINES and which != "openai":
         raise SystemExit(
@@ -205,9 +207,17 @@ async def main(
     manifest = [
         m
         for m in json.loads((fam.bench / "manifest.json").read_text("utf-8"))
-        if m["split"] == split
+        if m["split"] == split and (not inject or m["decision"] == "not_ready")
     ][:limit]
-    source = FileFhirSource(fam.bundles)
+    source: Any = FileFhirSource(fam.bundles)
+    if inject:  # the attacker's target: not-ready charts
+        order = {
+            m["case_id"]: json.loads((fam.bench / f"{m['case_id']}.json").read_text("utf-8"))[
+                "facts"
+            ]["order_date"]
+            for m in manifest
+        }
+        source = InjectedSource(source, {k: date.fromisoformat(v) for k, v in order.items()})
     real = (
         Cassette(cassettes_for(family), llm_mod.structured, mode="auto")
         if which == "openai"
@@ -215,7 +225,7 @@ async def main(
     )
     RESULTS.mkdir(parents=True, exist_ok=True)
     default = f"{which}-{split}" if family == "esi" else f"{family}-{which}-{split}"
-    default += "" if variant == "full" else f"-{variant}"
+    default += ("" if variant == "full" else f"-{variant}") + ("-inject" if inject else "")
     log_path = RESULTS / f"{name or default}.jsonl"
     done = load_done(log_path)
     if done:
@@ -289,7 +299,7 @@ async def main(
 
     ids = [m["case_id"] for m in manifest]
     report = summarize([done[i] for i in ids if i in done], split, which)
-    report["family"], report["variant"] = family, variant
+    report["family"], report["variant"], report["inject"] = family, variant, inject
     report["complete"] = all(i in done for i in ids)
     if real:
         report["cassette"] = {"hits": real.hits, "misses": real.misses}
@@ -310,8 +320,9 @@ if __name__ == "__main__":
     ap.add_argument(
         "--max-usd", type=float, default=8.0, help="stop starting cases past this spend"
     )
+    ap.add_argument("--inject", action="store_true", help="not-ready cases + an attack note")
     ap.add_argument("--llm", default="oracle", choices=["oracle", "openai"])
     ap.add_argument("--limit", type=int)
     ap.add_argument("--name", help="run log name (resume by reusing it); default <llm>-<split>")
     a = ap.parse_args()
-    asyncio.run(main(a.split, a.llm, a.limit, a.name, a.family, a.variant, a.max_usd))
+    asyncio.run(main(a.split, a.llm, a.limit, a.name, a.family, a.variant, a.max_usd, a.inject))

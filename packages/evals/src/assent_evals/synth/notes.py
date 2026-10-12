@@ -133,10 +133,22 @@ async def llm_note(f: Facts, slot: str, rng: random.Random, llm: StructuredLLM) 
     ]
     for _ in range(3):
         out: _NoteText = await llm("fast", msgs, _NoteText)
-        if all(s in out.text for s in req):
+        missing = [s for s in req if s not in out.text]
+        if not missing:
             return Note(
                 slot=slot, date=when, title=title, author=author, text=out.text, source="llm"
             )
+        # Retry with the exact misses: report-style notes (PSG, radiology) tend to tabulate them.
+        msgs = [
+            *msgs[:2],
+            {"role": "assistant", "content": out.model_dump_json()},
+            {
+                "role": "user",
+                "content": "These sentences were missing or altered. Rewrite the whole note in "
+                "prose and include each one exactly, as its own sentence:\n"
+                + "\n".join(f"- {s}" for s in missing),
+            },
+        ]
     # shortcut: falls back to the template after 3 misses so a build never stalls; the note's
     # `source` records it, and the eval report counts template notes per split.
     return template_note(f, slot, rng)

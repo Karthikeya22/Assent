@@ -163,3 +163,23 @@
   letter-spacing: -0.01em;
   font-weight: 400;
 }
+
+/* --- marketing motion (FRONTEND §5.1); every effect has a reduced-motion fallback --- */
+.glass-mark {
+  background: linear-gradient(var(--signal-soft), var(--signal-soft)) no-repeat left / 0% 100%;
+  animation: glass-mark-in var(--dur-2) var(--ease-out) forwards;
+}
+@keyframes glass-mark-in {
+  to { background-size: 100% 100%; }
+}
+.arch .arch-box { fill: var(--paper-raised); stroke: var(--ink-3); stroke-width: 1; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.arch .arch-edge { stroke: var(--ink-3); stroke-opacity: 0.5; stroke-width: 1; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.arch-on .arch-box, .arch-on .arch-edge { animation: arch-draw 1.2s var(--ease-inout) forwards; }
+.arch g:hover .arch-box, .arch g:focus .arch-box { stroke: var(--signal); }
+@keyframes arch-draw {
+  to { stroke-dashoffset: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glass-mark { animation: none; background-size: 100% 100%; }
+  .arch .arch-box, .arch .arch-edge { animation: none; stroke-dashoffset: 0; }
+}

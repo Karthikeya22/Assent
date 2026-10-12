@@ -1,0 +1,32 @@
+{
+ "case": {
+  "service": "esi",
+  "cpt": "64483",
+  "icd10": "M54.16",
+  "patient": "Ricki Gottlieb"
+ },
+ "denial_risk": 0.755,
+ "objections": [
+  {
+   "criterion": "Radiculopathy, radicular pain or neurogenic claudication from disc herniation, osteophyte or severe DDD producing foraminal or central stenosis",
+   "severity": "medium",
+   "text": "The cited MRI quote notes 'moderate right foraminal stenosis contacting the exiting nerve root.' Mere contact with the nerve root, without documented compression or displacement, may not sufficiently establish that the disc herniation is the definitive cause producing the radiculopathy.",
+   "status": "conceded",
+   "rebuttal": "The chart excerpts document radiculopathy and MRI findings of foraminal stenosis contacting the nerve root, but do not explicitly state nerve root compression or displacement. Documentation directly describing compression or displacement is missing."
+  },
+  {
+   "criterion": "Failure of 4 weeks of noninvasive conservative care, or inability to tolerate it",
+   "severity": "medium",
+   "text": "The documentation states the patient completed 5 weeks of physical therapy, but the cited quote does not specify that the therapy was directed at the lumbar spine, nor does it detail the frequency of the sessions to confirm an adequate trial of conservative care was completed.",
+   "status": "rebutted",
+   "rebuttal": "The physical therapy was directed at musculoskeletal complaints, and the patient completed 5 weeks of therapy with adherence to the prescribed regimen, indicating an adequate trial of conservative care."
+  },
+  {
+   "criterion": "Enrolled in active rehabilitation, home exercise or functional restoration program",
+   "severity": "low",
+   "text": "The quote 'Continues the daily home exercise program taught in PT' is vague. It lacks specific details about the exercises being performed to verify that the patient is actively enrolled in an appropriate lumbar rehabilitation or functional restoration program.",
+   "status": "rebutted",
+   "rebuttal": "The chart states the patient \"continues the daily home exercise program taught in PT,\" confirming ongoing participation in a home exercise program as instructed by physical therapy, which meets the criterion for active rehabilitation."
+  }
+ ]
+}

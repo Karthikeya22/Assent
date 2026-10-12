@@ -1,0 +1,148 @@
+{
+  "source_id": "L38201",
+  "version": 25,
+  "root": {
+    "key": "pva",
+    "kind": "AND",
+    "label": "Percutaneous vertebral augmentation for osteoporotic VCF is medically reasonable and necessary",
+    "source_quote": "PVA (percutaneous vertebroplasty (PVP) or percutaneous kyphoplasty (PKP)) is covered in patients who qualify based on the following criteria",
+    "children": [
+      {
+        "key": "fx",
+        "kind": "AND",
+        "label": "Acute or subacute osteoporotic VCF confirmed by advanced imaging",
+        "children": [
+          {
+            "key": "fx.acute",
+            "kind": "LEAF",
+            "label": "Osteoporotic VCF (T1-L5), acute (< 6 wk) or subacute (6-12 wk) from symptom onset",
+            "evidence_type": "duration",
+            "threshold": {
+              "max_weeks": 12
+            },
+            "source_quote": "Acute (<6 weeks) or subacute (6-12 weeks) osteoporotic VCF"
+          },
+          {
+            "key": "fx.imaging",
+            "kind": "LEAF",
+            "label": "Advanced imaging shows bone marrow edema on MRI or bone-scan/SPECT/CT uptake",
+            "evidence_type": "imaging_finding",
+            "source_quote": "bone marrow edema on magnetic resonance imaging (MRI) or bone-scan/single photon emission computed tomography (SPECT)/computed tomography (CT) uptake"
+          }
+        ]
+      },
+      {
+        "key": "sym",
+        "kind": "OR",
+        "label": "Symptomatic",
+        "children": [
+          {
+            "key": "sym.hosp",
+            "kind": "LEAF",
+            "label": "Hospitalized with severe pain (NRS or VAS >= 8)",
+            "evidence_type": "assessment",
+            "threshold": {
+              "min_score": 8
+            },
+            "source_quote": "Hospitalized with severe pain (Numeric Rating Scale (NRS) or Visual Analog Scale (VAS) pain score ≥8)"
+          },
+          {
+            "key": "sym.outpt",
+            "kind": "AND",
+            "label": "Non-hospitalized: moderate-severe pain despite optimal non-surgical care, and a qualifying course",
+            "children": [
+              {
+                "key": "sym.moderate",
+                "kind": "LEAF",
+                "label": "Pain NRS or VAS >= 5 despite optimal non-surgical management",
+                "evidence_type": "prior_therapy",
+                "threshold": {
+                  "min_score": 5
+                },
+                "source_quote": "moderate-to-severe pain (NRS or VAS ≥5) despite optimal non-surgical management (NSM)"
+              },
+              {
+                "key": "sym.course",
+                "kind": "OR",
+                "label": "Worsening pain, or stable pain with two structural/functional features",
+                "children": [
+                  {
+                    "key": "sym.worsening",
+                    "kind": "LEAF",
+                    "label": "Worsening pain",
+                    "evidence_type": "assessment",
+                    "source_quote": "Worsening pain"
+                  },
+                  {
+                    "key": "sym.stable",
+                    "kind": "N_OF_M",
+                    "label": "At least 2 of: height-loss progression, > 25% height reduction, kyphosis, RDQ > 17",
+                    "n_required": 2,
+                    "source_quote": "Stable-to-improved pain (but NRS or VAS still ≥5) (with ≥ 2 of the following",
+                    "children": [
+                      {
+                        "key": "feat.progression",
+                        "kind": "LEAF",
+                        "label": "Progression of vertebral body height loss",
+                        "evidence_type": "imaging_finding",
+                        "source_quote": "Progression of vertebral body height loss"
+                      },
+                      {
+                        "key": "feat.height",
+                        "kind": "LEAF",
+                        "label": "More than 25% vertebral body height reduction",
+                        "evidence_type": "imaging_finding",
+                        "source_quote": "25% vertebral body height reduction"
+                      },
+                      {
+                        "key": "feat.kyphosis",
+                        "kind": "LEAF",
+                        "label": "Kyphotic deformity",
+                        "evidence_type": "imaging_finding",
+                        "source_quote": "Kyphotic deformity"
+                      },
+                      {
+                        "key": "feat.rdq",
+                        "kind": "LEAF",
+                        "label": "Severe functional impact: Roland Morris Disability Questionnaire > 17",
+                        "evidence_type": "assessment",
+                        "threshold": {
+                          "min_exclusive": 17
+                        },
+                        "source_quote": "Severe impact of VCF on daily functioning (Roland Morris Disability Questionnaire (RDQ) >17"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "care.osteo",
+        "kind": "LEAF",
+        "label": "Referred for bone density evaluation and osteoporosis treatment program",
+        "evidence_type": "prior_therapy",
+        "source_quote": "should be referred for evaluation of bone mineral density (BMD) and osteoporosis education for subsequent treatment as indicated.\n\n- All patients with VCF should be instructed to take part in an osteoporosis prevention/treatment program"
+      },
+      {
+        "key": "contra",
+        "kind": "LEAF",
+        "label": "No absolute contraindication (pain not from the VCF, osteomyelitis/discitis/infection, pregnancy)",
+        "evidence_type": "contraindication",
+        "source_quote": "Current back pain is not primarily due to the identified acute or subacute VCF(s)\n\n  - Osteomyelitis, discitis or active systemic or surgical site infection\n\n  - Pregnancy"
+      }
+    ]
+  },
+  "excluded": [
+    {
+      "quote": "Relative contraindication",
+      "reason": "Relative contraindications are clinical judgment, not a gate; surfaced by the payer adversary."
+    },
+    {
+      "quote": "osteolytic vertebral metastatic disease or myeloma",
+      "reason": "Separate malignant indication; v1 benchmark covers osteoporotic VCF."
+    }
+  ]
+}

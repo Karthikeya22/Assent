@@ -54,12 +54,21 @@ def test_gold_trees_quote_their_lcd_verbatim(path: Path) -> None:
     assert len(tree.leaves()) >= 5
 
 
-def test_all_esi_gold_trees_share_leaf_keys() -> None:
+FAMILIES = {
+    "esi": ("L39015", "L39240", "L36920"),
+    "hgns": ("L38307", "L38310", "L38385"),
+    "pva": ("L34228", "L38201", "L35130"),
+}
+
+
+@pytest.mark.parametrize("family", FAMILIES)
+def test_each_family_shares_one_leaf_key_space(family: str) -> None:
     keys = {
         p.name: {
             n.key for n in CriteriaTree.model_validate(json.loads(p.read_text("utf-8"))).leaves()
         }
         for p in GOLD
+        if p.name.startswith(FAMILIES[family])
     }
     assert len(keys) == 3
-    assert len({frozenset(k) for k in keys.values()}) == 1  # one benchmark key-space for ESI
+    assert len({frozenset(k) for k in keys.values()}) == 1  # one benchmark key-space per family

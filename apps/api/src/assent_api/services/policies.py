@@ -1,7 +1,11 @@
+import json
 import uuid
+from collections.abc import Sequence
 from datetime import UTC, datetime
+from typing import Any
 
 from sqlalchemy import delete, select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from assent_agents.policy.ingest import LcdSnapshot
@@ -52,6 +56,26 @@ async def upsert_version(
     return pv
 
 
+def _shape(rows: Sequence[CriteriaNode]) -> set[tuple[Any, ...]]:
+    key = {r.id: r.key for r in rows}
+    return {
+        (
+            r.key,
+            key.get(r.parent_id) if r.parent_id else None,
+            r.kind,
+            r.n_required,
+            r.label,
+            r.evidence_type,
+            json.dumps(r.threshold_json, sort_keys=True),
+            r.lookback_days,
+            r.policy_span_start,
+            r.policy_span_end,
+            r.order_index,
+        )
+        for r in rows
+    }
+
+
 async def replace_tree(
     s: AsyncSession, pv: PolicyVersion, tree: CriteriaTree, *, approved_by: uuid.UUID | None
 ) -> None:
@@ -59,7 +83,7 @@ async def replace_tree(
     if errs := tree.validate_against(pv.raw_text):
         raise ValueError("; ".join(errs))
     spans = tree.spans(pv.raw_text)
-    await s.execute(delete(CriteriaNode).where(CriteriaNode.policy_version_id == pv.id))
+    rows: list[CriteriaNode] = []
 
     def add(n: Node, parent: uuid.UUID | None, order: int) -> None:
         start, end = spans.get(n.key, (None, None))
@@ -78,11 +102,25 @@ async def replace_tree(
             policy_span_end=end,
             order_index=order,
         )
-        s.add(row)
+        rows.append(row)
         for i, c in enumerate(n.children):
             add(c, row.id, i)
 
     add(tree.root, None, 0)
+    old = (
+        await s.scalars(select(CriteriaNode).where(CriteriaNode.policy_version_id == pv.id))
+    ).all()
+    # Keep the rows when nothing changed: verdicts and gap tasks of past runs reference them.
+    if _shape(old) != _shape(rows):
+        try:
+            async with s.begin_nested():
+                await s.execute(delete(CriteriaNode).where(CriteriaNode.policy_version_id == pv.id))
+        except IntegrityError as e:
+            raise ValueError(
+                f"{tree.source_id} v{tree.version} has runs against its criteria; "
+                "a changed tree must be ingested as a new policy version"
+            ) from e
+        s.add_all(rows)
     await s.flush()
     if approved_by is not None:
         pv.status, pv.approved_by, pv.approved_at = (

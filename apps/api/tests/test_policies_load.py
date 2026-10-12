@@ -15,11 +15,14 @@ def _gold() -> CriteriaTree:
 async def test_load_is_idempotent_and_spans_match(users: dict[str, User]) -> None:
     snap, tree = load_snapshot("L39240", 15), _gold()
     admin = users["policy_admin"]
+    ids = []
     for _ in range(2):
         async with SessionLocal() as s:
             pv = await policies.upsert_version(s, snap, service_family="esi")
             await policies.replace_tree(s, pv, tree, approved_by=admin.id)
             await s.commit()
+            ids.append(set(await s.scalars(select(CriteriaNode.id))))
+    assert ids[0] == ids[1]  # unchanged tree keeps its rows: verdicts and gaps reference them
 
     async with SessionLocal() as s:
         assert await s.scalar(select(func.count()).select_from(Policy)) == 1
@@ -58,3 +61,16 @@ async def test_tree_with_bad_quote_is_rejected(users: dict[str, User]) -> None:
             assert "quote not found" in str(e)
         else:
             raise AssertionError("bad quote was accepted")
+
+
+async def test_changed_tree_replaces_unreferenced_rows(users: dict[str, User]) -> None:
+    snap, tree = load_snapshot("L39240", 15), _gold()
+    for label in ("first", "second"):
+        tree.root.label = label
+        async with SessionLocal() as s:
+            pv = await policies.upsert_version(s, snap, service_family="esi")
+            await policies.replace_tree(s, pv, tree, approved_by=None)
+            await s.commit()
+    async with SessionLocal() as s:
+        root = await s.scalar(select(CriteriaNode).where(CriteriaNode.key == "esi"))
+        assert root is not None and root.label == "second"

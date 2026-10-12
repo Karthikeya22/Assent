@@ -50,8 +50,9 @@ SYNONYMS["pva"] = {
 }
 # Partial evidence (e.g. "pain is from the fracture") must not prove "no contraindication".
 CONTRA_RULE = (
-    "\nFor this contraindication criterion, answer met only if the chart explicitly documents "
-    "the absence of every listed contraindication; evidence about only some of them is "
+    "\nFor this contraindication criterion, answer met only if a chart statement explicitly "
+    "rules out contraindications (e.g. denies infection or red flags). A sentence about "
+    "something else, such as when the pain began, is not evidence that none exist: answer "
     "insufficient."
 )
 

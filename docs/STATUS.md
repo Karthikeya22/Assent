@@ -3,8 +3,8 @@
 Read this first in a new session. Specs: PRODUCT.md, ARCHITECTURE.md, FRONTEND.md, BUILD_PLAN.md. Phase plans: `docs/superpowers/plans/`. The master roadmap is in `C:\Users\karth\.claude\plans\okay-lets-start-the-abundant-marshmallow.md`.
 
 ## Where things are
-- Repo `D:\Projects\assent`. Stacked branches: `phase-0-foundations` → `phase-1-esi-policy-data` → `phase-2-core-agent` → `phase-4-adversary` (contains Phase 3) → `phase-5-breadth` (current). **No GitHub remote and nothing pushed.** Ask the user before creating a remote.
-- **Phases 0–4 are done and verified live in the browser. Phase 5 is done** (see below). Next is Phase 6.
+- Repo `D:\Projects\assent`. Stacked branches: `phase-0-foundations` → `phase-1-esi-policy-data` → `phase-2-core-agent` → `phase-4-adversary` (contains Phase 3) → `phase-5-breadth` → `phase-6-packet-payer` (current). **No GitHub remote and nothing pushed.** Ask the user before creating a remote.
+- **Phases 0–4 are done and verified live in the browser. Phase 5 and Phase 6 are done.** Next is Phase 7 (landing page, /demo, /evals, deploy).
 
 ## How to run (Windows, everything on D:)
 ```powershell
@@ -12,7 +12,9 @@ Read this first in a new session. Specs: PRODUCT.md, ARCHITECTURE.md, FRONTEND.m
 uv run uvicorn assent_api.main:app --port 8000
 uv run arq assent_worker.main.WorkerSettings      # AGENT_LLM=openai (cassettes) | oracle
 cd apps\web; pnpm build; pnpm start -p 3000      # login coordinator@assent.dev / assent-dev
-uv run python -m assent_evals.bench --split dev --llm openai --name <run>   # resumable
+uv run uvicorn assent_mock_payer.main:app --port 8020   # Mock Payer (hidden rules: PUT /admin/rules)
+uv run uvicorn assent_cds.main:app --port 8010          # CDS Hooks (EHR sim: /ehr-sim)
+uv run python -m assent_evals.bench --family esi --split dev --llm openai   # resumable
 ```
 Keys are in `.env`: OPENAI_API_KEY, GEMINI_API_KEY. LLM calls are recorded to `data/fixtures/cassettes/<family>`, so a re-score with an unchanged prompt costs $0.
 
@@ -37,8 +39,14 @@ Done: 6 HGNS/PVA LCDs plus gold trees (`data/policies/gold/build_gold.py`); 150-
 The user asked to keep eval sets small (token and API cost). Runs that did not happen: the locked test split (planned 6 per family), PVA injection, naive RAG, and the reranker/hybrid/verifier ablations. Locked test split (18 cases, 6 per family) run once: 16/18 decisions correct, 0 false ready, macro-F1 0.813, 0% unsupported, $0.079/case. Injection 6/6 held. Run long benches in the foreground (`--min-free-gb 0.4`); background shells get stopped under memory pressure.
 Fixed (v2): family-specific `SYNONYMS` + `CONTRA_RULE` in `evidence/agent.py`; PVA false ready 2 → 0. Fix next: HGNS sleep-study misses (still 19 criterion misses in 12 cases), the adversary false-objection rate (3.1 per clean packet). Note: ESI dev numbers predate CONTRA_RULE. `latest_observation` is deferred (see the plan doc).
 
+## Phase 6 (branch `phase-6-packet-payer`)
+The full loop was verified live in the browser on 2026-10-12. On `/ehr-sim`, signing a CPT 64483 order shows an Assent CDS card with readiness, gaps, checklist and a case link. The HGNS case (Agatha Carter) went: approve → build packet (10 verified excerpts, PAS Bundle + PDF) → approve → submit → **denied** ("CPAP evidence insufficient: 1 of 2") → appeal agent found an independent verified CPAP excerpt → send → **certified, PA-37AE4604**. Screenshot: `.data/screens/phase6-loop-certified.png`.
+Pieces: `assent_fhir.pas` (build/validate/bundle_evidence), `apps/mock_payer` (:8020), `apps/cds` (:8010), `routers/packets.py` + `services/packets.py`, `assent_agents.appeal` + worker `appeal_job`, `components/case/PacketPanel.tsx`, `app/ehr-sim`.
+Lean substitutions: fpdf2 instead of WeasyPrint; `validate_pas` instead of HAPI `$validate`; a templated cover letter (the appeal letter is LLM-drafted and verified); a textarea editor instead of Tiptap.
+Lesson: the appeal must exclude by quote, not by chunk. One chunk can hold several independent facts; excluding whole chunks hid the second CPAP fact.
+
 ## Known gaps / small fixes
-15-minute session with no refresh token; the criteria graph renders small (wide tree); the case page bundle is 597 kB (ELK); CI is written but has never run (no remote); `/policies/[id]` is read-only (no editor yet); no Storybook stories for the case components.
+15-minute session with no refresh token; appeal drafting is polled (no SSE); the PDF has no evidence table (letter only); the criteria graph renders small (wide tree); the case page bundle is 597 kB (ELK); CI is written but has never run (no remote); `/policies/[id]` is read-only (no editor yet); no Storybook stories for the case components.
 
 ## Machine gotchas
 7 GB RAM: run benches resumably; Claude Code may reap background shells under memory pressure. Nothing new on C:. The Playwright MCP writes only under `C:\Users\karth`, so move screenshots to `.data/screens`. Postgres may need crash recovery after a reboot: `dev.ps1 up`, then wait for "accepting connections".

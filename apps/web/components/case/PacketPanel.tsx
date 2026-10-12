@@ -51,7 +51,7 @@ function AppealEditor({ caseId, appeal }: { caseId: string; appeal: Appeal }) {
 
   if (appeal.status === "drafting") return <p role="status" className="mt-2 text-xs text-ink-2">Appeal agent is re-reading the chart and drafting a cited letter…</p>;
   if (appeal.status === "failed") return <p role="alert" className="mt-2 text-xs text-fail">The appeal draft failed; see the worker log.</p>;
-  if (appeal.status === "sent") return <p className="mt-2 text-xs text-ink-2">Appeal sent{appeal.sent_at ? ` ${new Date(appeal.sent_at).toLocaleString()}` : ""}.</p>;
+  if (appeal.status === "sent") return <p suppressHydrationWarning className="mt-2 text-xs text-ink-2">Appeal sent{appeal.sent_at ? ` ${new Date(appeal.sent_at).toLocaleString()}` : ""}.</p>;
 
   const cites = Object.entries(appeal.citations);
   return (
@@ -91,7 +91,7 @@ function SubmissionView({ caseId, sub }: { caseId: string; sub: Submission }) {
   return (
     <div className="mt-2 rounded-[var(--radius-control)] border border-rule p-2.5">
       <div className="flex items-center justify-between gap-2">
-        <span className="text-xs text-ink-3">Payer response · {new Date(sub.submitted_at).toLocaleTimeString()}</span>
+        <span suppressHydrationWarning className="text-xs text-ink-3">Payer response · {new Date(sub.submitted_at).toLocaleTimeString()}</span>
         <span className={`rounded-full border px-1.5 text-[10px] uppercase ${p.cls}`}>{p.label}</span>
       </div>
       {sub.pre_auth_ref && <p className="mt-1 font-mono text-sm text-signal">Authorization {sub.pre_auth_ref}</p>}
@@ -108,7 +108,8 @@ function SubmissionView({ caseId, sub }: { caseId: string; sub: Submission }) {
           Draft appeal
         </button>
       )}
-      {sub.appeal && <AppealEditor caseId={caseId} appeal={sub.appeal} />}
+      {/* remount when the worker finishes so the editor starts from the real draft */}
+      {sub.appeal && <AppealEditor key={`${sub.appeal.id}-${sub.appeal.status}`} caseId={caseId} appeal={sub.appeal} />}
     </div>
   );
 }

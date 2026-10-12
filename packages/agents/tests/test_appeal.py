@@ -10,7 +10,7 @@ from assent_retrieval.search import Hit
 
 PT = Hit(
     uuid.uuid4(),
-    "Completed 6 weeks of physical therapy without relief.",
+    "Completed 6 weeks of physical therapy without relief. Failed naproxen.",
     date(2026, 8, 1),
     "DocumentReference",
     "n1",
@@ -36,11 +36,12 @@ async def test_draft_cites_only_new_verified_evidence_for_denied_criteria() -> N
                         "text": "The patient completed six weeks of PT without relief.",
                         "citations": [
                             {
-                                "chunk_id": "c1",
+                                "chunk_id": "c2",  # c1 is the packet's own chunk
                                 "quote": "Completed 6 weeks of physical therapy",
                                 "claim": "PT done",
                             },
-                            {"chunk_id": "c1", "quote": "not in the chunk", "claim": "made up"},
+                            {"chunk_id": "c2", "quote": "not in the chunk", "claim": "made up"},
+                            {"chunk_id": "c2", "quote": "Failed naproxen.", "claim": "repeat"},
                         ],
                     },
                     {"criterion_key": "unrelated", "text": "ignored", "citations": []},
@@ -57,11 +58,11 @@ async def test_draft_cites_only_new_verified_evidence_for_denied_criteria() -> N
         search,
         llm,
         nli,
-        already_cited={str(OLD.chunk_id)},
+        already_quoted={"Failed naproxen."},
     )
-    assert "Already in the packet." not in seen[0]  # packet evidence is not offered again
+    assert '- "Failed naproxen."' in seen[0]  # the model is told what was already submitted
     assert [c.quote for c in d.citations["dur.conservative"]] == [
         "Completed 6 weeks of physical therapy"
     ]
-    assert d.dropped == 1 and "unrelated" not in d.citations
+    assert d.dropped == 2 and "unrelated" not in d.citations  # fabricated + repeated quote
     assert "six weeks of PT" in d.text and "ignored" not in d.text

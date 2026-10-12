@@ -179,7 +179,7 @@ async def appeal_job(ctx: dict[str, Any], appeal_id: str) -> str:
                 Denial(k, labels.get(k, k), reason)
                 for k, reason in packets.denied(sub.claim_response_json or {})
             ]
-            cited = {cid for _, cid in await packets.run_evidence(s, packet.run_id)}
+            quoted = {e.quote for e, _ in await packets.run_evidence(s, packet.run_id)}
             ctx_ = CaseContext(
                 order_date=_bench_order_date(patient)
                 if patient.fhir_id.startswith("bench/")
@@ -198,7 +198,7 @@ async def appeal_job(ctx: dict[str, Any], appeal_id: str) -> str:
         from assent_agents.case_graph import phi_guard
 
         llm = phi_guard(_llm(patient, family), [patient.display_name_synthetic])
-        draft = await draft_appeal(denials, ctx_, search, llm, models.nli, cited)
+        draft = await draft_appeal(denials, ctx_, search, llm, models.nli, quoted)
         async with SessionLocal() as s:
             a = await s.get(Appeal, aid)
             assert a is not None

@@ -1,8 +1,9 @@
 """appeal_graph (ARCHITECTURE §6): denial -> criteria -> targeted re-search -> draft -> verify.
 
 The payer names what it found missing or thin. For each denied criterion we search the chart again
-for excerpts the packet did not already cite, ask the model for one cited paragraph per criterion,
-then keep only citations that pass the same verifier as the evidence agents.
+and ask for one paragraph citing evidence the packet did not already quote (one chunk can hold
+several independent facts). Only citations that pass the evidence agents' verifier and do not
+repeat a submitted quote are kept.
 """
 
 import asyncio
@@ -55,12 +56,12 @@ async def draft_appeal(
     search: Search,
     llm: StructuredLLM,
     nli: NLI,
-    already_cited: set[str],
+    already_quoted: set[str],
 ) -> AppealDraft:
     short: dict[str, Hit] = {}
     for d in denials:
         for h in await search([d.criterion_label, f"{d.criterion_label} {d.reason}"]):
-            if str(h.chunk_id) not in already_cited and h not in short.values():
+            if h not in short.values():
                 short[f"c{len(short) + 1}"] = h
     user = (
         f"Request: {ctx.service}, CPT {ctx.cpt}, ICD-10 {ctx.icd10}. "
@@ -69,7 +70,9 @@ async def draft_appeal(
         + "\n".join(
             f"- [{d.criterion_key}] {d.criterion_label}. Payer: {d.reason}" for d in denials
         )
-        + f"\n\nChart excerpts not yet submitted:\n{render(list(short.items()))}"
+        + "\n\nAlready submitted (cite different sentences):\n"
+        + ("\n".join(f'- "{q}"' for q in sorted(already_quoted)) or "- (none)")
+        + f"\n\nChart excerpts:\n{render(list(short.items()))}"
     )
     out: _AppealOut = await llm(
         "reasoning",
@@ -102,7 +105,13 @@ async def draft_appeal(
             ],
         )
         checked = await asyncio.to_thread(verify, raw, texts, nli, headers=headers)
-        ok = [c for c in checked.citations if c.verbatim_ok and (c.support or 0) >= 0.7]
+        ok = [
+            c
+            for c in checked.citations
+            if c.verbatim_ok
+            and (c.support or 0) >= 0.7
+            and not any(c.quote in q or q in c.quote for q in already_quoted)
+        ]
         draft.dropped += len(checked.citations) - len(ok)
         draft.citations[p.criterion_key] = ok
         paras.append(p.text)

@@ -120,16 +120,18 @@ It turns a coverage policy (an LCD written in prose) into an **executable Criter
 
 Measured on the Assent benchmark (see BUILD_PLAN.md §3). Fill in real numbers only after running them.
 
-| Metric | Definition | Target |
-|---|---|---|
-| Criterion-level F1 | Leaf verdicts vs. gold labels | ≥ 0.90 |
-| Case decision accuracy | Final ready / not-ready vs. gold | ≥ 90% |
-| Citation precision | Quotes that exist verbatim and are entailed | ≥ 98% |
-| Unsupported-claim rate | Verdicts with no valid evidence | ≤ 1% |
-| Adversary catch rate | Seeded defects found by the Payer Adversary | ≥ 85% |
-| Time to packet | p50 / p95 end-to-end latency | < 60s / < 120s |
-| Cost per case | All model calls | < $0.15 |
-| Lift vs. baseline | vs. single long-context prompt and naive RAG | Report it, whatever it is |
+| Metric | Definition | Target | Measured (ESI dev, 34 cases, 2026-10-12) |
+|---|---|---|---|
+| Criterion-level F1 | Leaf verdicts vs. gold labels | ≥ 0.90 | **0.858** macro (accuracy 0.927) |
+| Case decision accuracy | Final ready / not-ready vs. gold | ≥ 90% | **76%**, with 0 false "ready" and 8 false "not ready" |
+| Citation precision | Quotes that exist verbatim and are entailed | ≥ 98% | **82%** of cited quotes pass verbatim + grounding |
+| Unsupported-claim rate | Verdicts with no valid evidence | ≤ 1% | **0%** (enforced: 11.6% of claims downgraded to `insufficient`) |
+| Adversary catch rate | Seeded defects found by the Payer Adversary | ≥ 85% | Phase 4 |
+| Time to packet | p50 / p95 end-to-end latency | < 60s / < 120s | **59 s / 96 s** (CPU laptop, local models) |
+| Cost per case | All model calls | < $0.15 | **$0.093** |
+| Lift vs. baseline | vs. single long-context prompt and naive RAG | Report it, whatever it is | Phase 5 |
+
+Setup: gpt-4.1 evidence agents, gpt-4.1-mini judge, local bge-small / MiniLM rerank / DeBERTa-v3-base NLI, verifier = verbatim + sentence-window NLI + judge on `met` only. Raw logs are in `data/bench/results/openai-dev-judge-met.jsonl`. The test split is still locked. Known gap: the errors are conservative (`met` → `insufficient`), clustered on rehab, contraindication and baseline-scale criteria.
 
 ---
 

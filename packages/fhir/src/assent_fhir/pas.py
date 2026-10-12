@@ -214,3 +214,23 @@ def evidence_keys(bundle: dict[str, Any]) -> set[str]:
         for coding in cat.get("coding", [])
         if coding.get("system") == CRITERION
     }
+
+
+def bundle_evidence(bundle: dict[str, Any]) -> list[Evidence]:
+    """The criterion-tagged excerpts a bundle carries (inverse of build_pas_bundle)."""
+    out = []
+    for e in bundle.get("entry", []):
+        r = e["resource"]
+        cats = [
+            (c["code"], cat.get("text", c["code"]))
+            for cat in r.get("category", [])
+            for c in cat.get("coding", [])
+            if c.get("system") == CRITERION
+        ]
+        if r["resourceType"] != "DocumentReference" or not cats:
+            continue
+        kind = r["type"]["text"].removeprefix("Chart excerpt (").removesuffix(")")
+        when = date.fromisoformat(r["date"][:10]) if r.get("date") else None
+        quote = base64.b64decode(r["content"][0]["attachment"]["data"]).decode()
+        out.append(Evidence(cats[0][0], cats[0][1], quote, kind, when))
+    return out

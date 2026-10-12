@@ -62,3 +62,10 @@ def test_validate_reports_broken_references_and_use() -> None:
     assert any("preauthorization" in e for e in errs)
     assert any("does not resolve: DocumentReference/missing" in e for e in errs)
     assert validate_pas({"resourceType": "Bundle", "entry": []}) == ["not a Bundle with entries"]
+
+
+def test_bundle_evidence_round_trips() -> None:
+    from assent_fhir.pas import bundle_evidence
+
+    p = _input()
+    assert bundle_evidence(build_pas_bundle(p)) == p.evidence

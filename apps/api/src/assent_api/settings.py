@@ -19,6 +19,7 @@ class Settings(BaseSettings):
     # only: answers from gold, for demos and pipeline checks without an API key).
     agent_llm: str = "openai"
     chart_dir: Path = REPO_ROOT / ".data" / "bench"  # FileFhirSource root (HAPI from Phase 6)
+    payer_url: str = "http://localhost:8020"  # mock payer (apps/mock_payer)
 
 
 @lru_cache

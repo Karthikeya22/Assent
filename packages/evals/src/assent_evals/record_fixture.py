@@ -54,7 +54,8 @@ async def main(case_id: str, which: str) -> None:
             leaves=[n.key for n in tree.leaves()],
         )
     )
-    await run_case(inp, SessionLocal, FileFhirSource(fam.bundles), llm, emit=sink)
+    # review=True: the demo shows the whole pipeline, adversary and gap planner included.
+    await run_case(inp, SessionLocal, FileFhirSource(fam.bundles), llm, emit=sink, review=True)
     FIXTURES.mkdir(parents=True, exist_ok=True)
     out = FIXTURES / f"run_{case_id}.jsonl"
     out.write_text("".join(json.dumps(e) + "\n" for e in sink.events), "utf-8", newline="\n")

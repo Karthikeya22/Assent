@@ -53,7 +53,7 @@ function stackPose(i: number) {
 }
 function fanPose(i: number) {
   return {
-    pos: new THREE.Vector3(-3.0 + i * 0.47, -1.75, 0.35),
+    pos: new THREE.Vector3(-2.45 + i * 0.42, -1.3, 0.35),
     rot: new THREE.Euler(-0.15, 0, 0),
     scale: 0.42,
   };

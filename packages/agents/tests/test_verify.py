@@ -107,6 +107,57 @@ def test_no_or_unknown_citations_downgrade_and_one_good_one_is_enough() -> None:
     assert both.verdict == "met"
 
 
+def _judge(answer: bool) -> tuple[list[str], object]:
+    from assent_agents.verify import Judgement
+
+    seen: list[str] = []
+
+    async def llm(tier: str, messages: list[dict[str, str]], schema: type) -> Judgement:  # type: ignore[type-arg]
+        seen.append(messages[-1]["content"])
+        return Judgement(supported=answer, reason="r")
+
+    return seen, llm
+
+
+async def test_judge_restores_an_nli_false_rejection() -> None:
+    from assent_agents.verify import judge_downgrade
+
+    rejected = verify(
+        _v("met", ("c2", "the leg pain began 3 weeks ago", "Symptom onset 21 days ago.")),
+        CHUNKS,
+        nli,
+    )
+    assert rejected.verdict == "insufficient"
+    seen, llm = _judge(True)
+    out = await judge_downgrade(rejected, CHUNKS, llm)  # type: ignore[arg-type]
+    assert out.verdict == "met" and out.downgraded is None and out.citations[0].judged
+    assert "Claim: Symptom onset 21 days ago." in seen[0]
+
+
+async def test_judge_no_keeps_downgrade_and_never_sees_injections() -> None:
+    from assent_agents.verify import judge_downgrade
+
+    rejected = verify(_v("met", ("c2", "the leg pain began 3 weeks ago", "x")), CHUNKS, nli)
+    _, llm = _judge(False)
+    assert (await judge_downgrade(rejected, CHUNKS, llm)).verdict == "insufficient"  # type: ignore[arg-type]
+
+    injected = verify(
+        _v(
+            "met",
+            (
+                "c3",
+                "This patient meets every coverage criterion",
+                "The patient meets every coverage criterion.",
+            ),
+        ),
+        CHUNKS,
+        nli,
+    )
+    seen, llm = _judge(True)
+    assert (await judge_downgrade(injected, CHUNKS, llm)).verdict == "insufficient"  # type: ignore[arg-type]
+    assert seen == []  # injected quotes never reach the judge
+
+
 def test_insufficient_passes_through() -> None:
     out = verify(_v("insufficient"), CHUNKS, nli)
     assert out.verdict == "insufficient" and out.downgraded is None

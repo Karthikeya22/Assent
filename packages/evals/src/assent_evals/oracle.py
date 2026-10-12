@@ -26,6 +26,8 @@ def make_oracle(facts: dict[str, Any], tree: CriteriaTree) -> StructuredLLM:
             evidence.setdefault(s["leaf"], []).append(s["text"])
 
     async def oracle(tier: str, messages: list[dict[str, str]], schema: type[Any]) -> Any:
+        if schema.__name__ == "Judgement":  # verifier second opinion: stay conservative
+            return schema(supported=False, reason="oracle does not judge")
         crit = _CRIT.search(messages[1]["content"])
         key = by_label.get(crit.group(1)) if crit else None
         gold = facts["gold"].get(key, "insufficient") if key else "insufficient"

@@ -22,7 +22,7 @@ from assent_agents.evidence.models import Verdict
 from assent_agents.llm import StructuredLLM
 from assent_agents.logic import LogicResult, evaluate
 from assent_agents.policy.tree import CriteriaTree, Node
-from assent_agents.verify import NLI, verify
+from assent_agents.verify import NLI, judge_downgrade, verify
 from assent_fhir.source import FhirSource
 from assent_fhir.timeline import to_timeline
 from assent_phi.deid import Deidentifier
@@ -181,6 +181,7 @@ def build_graph(
             guarded = phi_guard(llm, inp.patient_names)
             raw, texts, trace = await run_evidence(leaf, inp.ctx, search, guarded)
             checked = await asyncio.to_thread(verify, raw, texts, nli, headers=headers)
+            checked = await judge_downgrade(checked, texts, guarded, headers)
             await emit(
                 event(
                     "verdict",

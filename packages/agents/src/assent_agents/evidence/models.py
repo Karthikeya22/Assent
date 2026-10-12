@@ -29,7 +29,8 @@ class Citation(BaseModel):
     start: int | None = None  # offsets into the chunk text, once located
     end: int | None = None
     verbatim_ok: bool = False
-    support: float | None = None  # NLI P(quote entails claim); 0 if from flagged text
+    support: float | None = None  # NLI P(passage entails claim); 0 if from flagged text
+    judged: bool = False  # NLI rejected it; the LLM judge confirmed the passage supports it
 
 
 class Verdict(BaseModel):

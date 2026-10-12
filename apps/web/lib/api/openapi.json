@@ -440,6 +440,70 @@
         "title": "CriterionOut",
         "type": "object"
       },
+      "GapOut": {
+        "properties": {
+          "assignee_role": {
+            "title": "Assignee Role",
+            "type": "string"
+          },
+          "criterion_key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Criterion Key"
+          },
+          "detail": {
+            "title": "Detail",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "criterion_key",
+          "title",
+          "detail",
+          "assignee_role",
+          "status"
+        ],
+        "title": "GapOut",
+        "type": "object"
+      },
+      "GapPatch": {
+        "properties": {
+          "status": {
+            "enum": [
+              "open",
+              "done",
+              "dismissed"
+            ],
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "title": "GapPatch",
+        "type": "object"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -471,6 +535,68 @@
           "password"
         ],
         "title": "LoginIn",
+        "type": "object"
+      },
+      "ObjectionOut": {
+        "properties": {
+          "criterion_key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Criterion Key"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "rebuttal": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rebuttal"
+          },
+          "rebuttal_chunk_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Rebuttal Chunk Ids",
+            "type": "array"
+          },
+          "severity": {
+            "title": "Severity",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "criterion_key",
+          "text",
+          "severity",
+          "status",
+          "rebuttal",
+          "rebuttal_chunk_ids"
+        ],
+        "title": "ObjectionOut",
         "type": "object"
       },
       "Page_CaseOut_": {
@@ -670,6 +796,41 @@
           "criteria"
         ],
         "title": "PolicyVersionOut",
+        "type": "object"
+      },
+      "ResumeIn": {
+        "properties": {
+          "acknowledge_high": {
+            "default": false,
+            "title": "Acknowledge High",
+            "type": "boolean"
+          },
+          "decision": {
+            "enum": [
+              "approve",
+              "reject"
+            ],
+            "title": "Decision",
+            "type": "string"
+          }
+        },
+        "required": [
+          "decision"
+        ],
+        "title": "ResumeIn",
+        "type": "object"
+      },
+      "ResumeOut": {
+        "properties": {
+          "case_status": {
+            "title": "Case Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "case_status"
+        ],
+        "title": "ResumeOut",
         "type": "object"
       },
       "Role": {
@@ -963,6 +1124,27 @@
             "title": "Criterion Key",
             "type": "string"
           },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "overridden": {
+            "default": false,
+            "title": "Overridden",
+            "type": "boolean"
+          },
+          "override_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Override Reason"
+          },
           "rationale": {
             "title": "Rationale",
             "type": "string"
@@ -973,6 +1155,7 @@
           }
         },
         "required": [
+          "id",
           "criterion_key",
           "verdict",
           "confidence",
@@ -980,6 +1163,31 @@
           "citations"
         ],
         "title": "VerdictOut",
+        "type": "object"
+      },
+      "VerdictPatch": {
+        "properties": {
+          "reason": {
+            "maxLength": 1000,
+            "minLength": 3,
+            "title": "Reason",
+            "type": "string"
+          },
+          "verdict": {
+            "enum": [
+              "met",
+              "not_met",
+              "insufficient"
+            ],
+            "title": "Verdict",
+            "type": "string"
+          }
+        },
+        "required": [
+          "verdict",
+          "reason"
+        ],
+        "title": "VerdictPatch",
         "type": "object"
       },
       "VersionStatus": {
@@ -1228,6 +1436,58 @@
         ]
       }
     },
+    "/api/v1/cases/{case_id}/gaps": {
+      "get": {
+        "operationId": "case_gaps_api_v1_cases__case_id__gaps_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "case_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Case Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/GapOut"
+                  },
+                  "title": "Response Case Gaps Api V1 Cases  Case Id  Gaps Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Case Gaps",
+        "tags": [
+          "runs"
+        ]
+      }
+    },
     "/api/v1/cases/{case_id}/runs": {
       "post": {
         "operationId": "start_run_api_v1_cases__case_id__runs_post",
@@ -1333,6 +1593,64 @@
           }
         ],
         "summary": "Case Timeline",
+        "tags": [
+          "runs"
+        ]
+      }
+    },
+    "/api/v1/gaps/{gap_id}": {
+      "patch": {
+        "operationId": "update_gap_api_v1_gaps__gap_id__patch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gap_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Gap Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GapPatch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GapOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Update Gap",
         "tags": [
           "runs"
         ]
@@ -1464,6 +1782,117 @@
         ]
       }
     },
+    "/api/v1/runs/{run_id}/objections": {
+      "get": {
+        "operationId": "run_objections_api_v1_runs__run_id__objections_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Run Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ObjectionOut"
+                  },
+                  "title": "Response Run Objections Api V1 Runs  Run Id  Objections Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Run Objections",
+        "tags": [
+          "runs"
+        ]
+      }
+    },
+    "/api/v1/runs/{run_id}/resume": {
+      "post": {
+        "description": "The human-review interrupt: nothing is submitted without this (PRODUCT \u00a74.9).",
+        "operationId": "resume_run_api_v1_runs__run_id__resume_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Run Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResumeIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResumeOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Resume Run",
+        "tags": [
+          "runs"
+        ]
+      }
+    },
     "/api/v1/runs/{run_id}/stream": {
       "get": {
         "operationId": "stream_run_api_v1_runs__run_id__stream_get",
@@ -1552,6 +1981,65 @@
           }
         ],
         "summary": "Run Verdicts",
+        "tags": [
+          "runs"
+        ]
+      }
+    },
+    "/api/v1/verdicts/{verdict_id}": {
+      "patch": {
+        "description": "Human override (PRODUCT \u00a74.9): audited, and the case's readiness is recomputed.",
+        "operationId": "override_verdict_api_v1_verdicts__verdict_id__patch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "verdict_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Verdict Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerdictPatch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResumeOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Override Verdict",
         "tags": [
           "runs"
         ]

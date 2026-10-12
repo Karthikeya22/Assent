@@ -106,7 +106,12 @@ async def run_case_job(ctx: dict[str, Any], run_id: str) -> str:
             )
         )
         result = await run_case(
-            inp, SessionLocal, FileFhirSource(get_settings().chart_dir), llm, emit=emit
+            inp,
+            SessionLocal,
+            FileFhirSource(get_settings().chart_dir),
+            llm,
+            emit=emit,
+            review=True,
         )
         async with SessionLocal() as s:
             run = await s.get(Run, rid)

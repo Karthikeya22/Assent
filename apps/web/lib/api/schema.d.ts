@@ -55,6 +55,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/cases/{case_id}/gaps": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Case Gaps */
+        get: operations["case_gaps_api_v1_cases__case_id__gaps_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/cases/{case_id}/runs": {
         parameters: {
             query?: never;
@@ -87,6 +104,23 @@ export interface paths {
         options?: never;
         head?: never;
         patch?: never;
+        trace?: never;
+    };
+    "/api/v1/gaps/{gap_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** Update Gap */
+        patch: operations["update_gap_api_v1_gaps__gap_id__patch"];
         trace?: never;
     };
     "/api/v1/policies": {
@@ -140,6 +174,43 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/runs/{run_id}/objections": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Run Objections */
+        get: operations["run_objections_api_v1_runs__run_id__objections_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/runs/{run_id}/resume": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Resume Run
+         * @description The human-review interrupt: nothing is submitted without this (PRODUCT §4.9).
+         */
+        post: operations["resume_run_api_v1_runs__run_id__resume_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/runs/{run_id}/stream": {
         parameters: {
             query?: never;
@@ -172,6 +243,26 @@ export interface paths {
         options?: never;
         head?: never;
         patch?: never;
+        trace?: never;
+    };
+    "/api/v1/verdicts/{verdict_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /**
+         * Override Verdict
+         * @description Human override (PRODUCT §4.9): audited, and the case's readiness is recomputed.
+         */
+        patch: operations["override_verdict_api_v1_verdicts__verdict_id__patch"];
         trace?: never;
     };
     "/healthz": {
@@ -335,6 +426,32 @@ export interface components {
                 [key: string]: unknown;
             } | null;
         };
+        /** GapOut */
+        GapOut: {
+            /** Assignee Role */
+            assignee_role: string;
+            /** Criterion Key */
+            criterion_key: string | null;
+            /** Detail */
+            detail: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Status */
+            status: string;
+            /** Title */
+            title: string;
+        };
+        /** GapPatch */
+        GapPatch: {
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "open" | "done" | "dismissed";
+        };
         /** HTTPValidationError */
         HTTPValidationError: {
             /** Detail */
@@ -346,6 +463,26 @@ export interface components {
             email: string;
             /** Password */
             password: string;
+        };
+        /** ObjectionOut */
+        ObjectionOut: {
+            /** Criterion Key */
+            criterion_key: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Rebuttal */
+            rebuttal: string | null;
+            /** Rebuttal Chunk Ids */
+            rebuttal_chunk_ids: string[];
+            /** Severity */
+            severity: string;
+            /** Status */
+            status: string;
+            /** Text */
+            text: string;
         };
         /** Page[CaseOut] */
         Page_CaseOut_: {
@@ -414,6 +551,24 @@ export interface components {
             status: components["schemas"]["VersionStatus"];
             /** Version */
             version: string;
+        };
+        /** ResumeIn */
+        ResumeIn: {
+            /**
+             * Acknowledge High
+             * @default false
+             */
+            acknowledge_high: boolean;
+            /**
+             * Decision
+             * @enum {string}
+             */
+            decision: "approve" | "reject";
+        };
+        /** ResumeOut */
+        ResumeOut: {
+            /** Case Status */
+            case_status: string;
         };
         /**
          * Role
@@ -548,10 +703,32 @@ export interface components {
             confidence: number;
             /** Criterion Key */
             criterion_key: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Overridden
+             * @default false
+             */
+            overridden: boolean;
+            /** Override Reason */
+            override_reason?: string | null;
             /** Rationale */
             rationale: string;
             /** Verdict */
             verdict: string;
+        };
+        /** VerdictPatch */
+        VerdictPatch: {
+            /** Reason */
+            reason: string;
+            /**
+             * Verdict
+             * @enum {string}
+             */
+            verdict: "met" | "not_met" | "insufficient";
         };
         /**
          * VersionStatus
@@ -678,6 +855,37 @@ export interface operations {
             };
         };
     };
+    case_gaps_api_v1_cases__case_id__gaps_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                case_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GapOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     start_run_api_v1_cases__case_id__runs_post: {
         parameters: {
             query?: never;
@@ -731,6 +939,41 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ChunkOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    update_gap_api_v1_gaps__gap_id__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                gap_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["GapPatch"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GapOut"];
                 };
             };
             /** @description Validation Error */
@@ -826,6 +1069,72 @@ export interface operations {
             };
         };
     };
+    run_objections_api_v1_runs__run_id__objections_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                run_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ObjectionOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    resume_run_api_v1_runs__run_id__resume_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                run_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ResumeIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ResumeOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     stream_run_api_v1_runs__run_id__stream_get: {
         parameters: {
             query?: never;
@@ -873,6 +1182,41 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["VerdictOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    override_verdict_api_v1_verdicts__verdict_id__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                verdict_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["VerdictPatch"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ResumeOut"];
                 };
             };
             /** @description Validation Error */

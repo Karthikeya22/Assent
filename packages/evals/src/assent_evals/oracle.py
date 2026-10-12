@@ -28,6 +28,10 @@ def make_oracle(facts: dict[str, Any], tree: CriteriaTree) -> StructuredLLM:
     async def oracle(tier: str, messages: list[dict[str, str]], schema: type[Any]) -> Any:
         if schema.__name__ == "Judgement":  # verifier second opinion: stay conservative
             return schema(supported=False, reason="oracle does not judge")
+        if schema.__name__ == "AdversaryOut":  # review stage: the oracle raises no objections
+            return schema(objections=[])
+        if schema.__name__ == "GapPlan":  # gap planner falls back to its templates
+            return schema(tasks=[])
         crit = _CRIT.search(messages[1]["content"])
         key = by_label.get(crit.group(1)) if crit else None
         gold = facts["gold"].get(key, "insufficient") if key else "insufficient"

@@ -25,14 +25,20 @@ export default async function CasePage({ params }: { params: Promise<{ id: strin
   }
   if (!versionId) throw new Error(`no approved policy for ${detail.service_family}`);
 
-  const [pv, timeline, verdicts] = await Promise.all([
+  const finished = detail.latest_run?.status === "finished" ? detail.latest_run.id : null;
+  const run = { params: { path: { run_id: finished ?? "" } } };
+  const [pv, timeline, verdicts, objections, gaps, runDetail] = await Promise.all([
     client.GET("/api/v1/policy-versions/{version_id}", { params: { path: { version_id: versionId } } }),
     client.GET("/api/v1/cases/{case_id}/timeline", { params: { path: { case_id: id } } }),
-    detail.latest_run?.status === "finished"
-      ? client.GET("/api/v1/runs/{run_id}/verdicts", { params: { path: { run_id: detail.latest_run.id } } })
-      : Promise.resolve({ data: [] }),
+    finished ? client.GET("/api/v1/runs/{run_id}/verdicts", run) : Promise.resolve({ data: [] }),
+    finished ? client.GET("/api/v1/runs/{run_id}/objections", run) : Promise.resolve({ data: [] }),
+    client.GET("/api/v1/cases/{case_id}/gaps", { params: { path: { case_id: id } } }),
+    finished ? client.GET("/api/v1/runs/{run_id}", run) : Promise.resolve({ data: null }),
   ]);
   if (!pv.data?.criteria) throw new Error("policy has no criteria tree");
+  const reviewStep = runDetail.data?.steps.find((s) => s.node === "review")?.payload as
+    | { risk_factors?: string[]; error?: string | null }
+    | undefined;
 
   return (
     <CaseWorkspace
@@ -42,6 +48,12 @@ export default async function CasePage({ params }: { params: Promise<{ id: strin
       policy={{ sourceId: pv.data.policy.source_id, version: pv.data.version, title: pv.data.policy.title }}
       chunks={timeline.data ?? []}
       verdicts={verdicts.data ?? []}
+      review={{
+        objections: objections.data ?? [],
+        gaps: (gaps.data ?? []).filter((g) => g.status === "open"),
+        riskFactors: reviewStep?.risk_factors ?? [],
+        error: reviewStep?.error ?? null,
+      }}
     />
   );
 }

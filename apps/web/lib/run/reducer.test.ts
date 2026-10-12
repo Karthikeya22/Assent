@@ -42,6 +42,21 @@ describe("run reducer", () => {
     expect(JSON.stringify(before)).toBe(snapshot);
   });
 
+  it("tracks objections, rebuttals, gaps and denial risk", () => {
+    const s = replay([
+      { type: "objection", id: "ob1", criterion_id: "dur.pain", text: "No onset date.", severity: "high" },
+      { type: "objection_update", id: "ob1", status: "rebutted", rebuttal: "Onset 06/01." },
+      { type: "objection_update", id: "ghost", status: "conceded", rebuttal: "x" },
+      { type: "gap", criterion_id: "rehab", title: "Document HEP", detail: "d", assignee_role: "clinician" },
+      { type: "run_finished", state: "insufficient", readiness: 0.8, denial_risk: 0.4, risk_factors: ["1 gap"] },
+    ]);
+    expect(s.objections).toEqual({
+      ob1: { id: "ob1", criterion_id: "dur.pain", text: "No onset date.", severity: "high", status: "rebutted", rebuttal: "Onset 06/01." },
+    });
+    expect(s.gaps).toHaveLength(1);
+    expect(s).toMatchObject({ denialRisk: 0.4, riskFactors: ["1 gap"] });
+  });
+
   it("surfaces failures instead of spinning", () => {
     const s = replay([{ type: "run_started", leaves: ["x"] }, { type: "run_failed", error: "boom" }]);
     expect(s).toMatchObject({ status: "failed", error: "boom" });

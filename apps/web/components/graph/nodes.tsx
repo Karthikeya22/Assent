@@ -20,6 +20,11 @@ const hidden = "!h-1 !w-1 !min-w-0 !border-0 !bg-transparent";
 
 export const LeafNode = memo(function LeafNode({ id, data }: NodeProps & { data: LeafData }) {
   const leaf = useRunStore((s) => s.run.leaves[id]);
+  // Worst objection on this criterion: open pulses, conceded stays, rebutted fades.
+  const objection = useRunStore((s) => {
+    const obs = Object.values(s.run.objections).filter((o) => o.criterion_id === id);
+    return obs.find((o) => o.status === "open")?.status ?? obs.find((o) => o.status === "conceded")?.status ?? obs[0]?.status;
+  });
   const v = leaf?.verdict;
   const running = leaf?.status === "running";
   const tone = v ? TONE[v] : null;
@@ -38,6 +43,14 @@ export const LeafNode = memo(function LeafNode({ id, data }: NodeProps & { data:
         }`}
       />
       <Handle type="source" position={Position.Top} className={hidden} />
+      {objection && (
+        <span
+          title={`Payer objection: ${objection}`}
+          className={`absolute top-2 right-2 size-2 rounded-full bg-adversary transition-opacity duration-[var(--dur-2)] ${
+            objection === "open" ? "animate-pulse motion-reduce:animate-none" : objection === "rebutted" ? "opacity-25" : ""
+          }`}
+        />
+      )}
       <div className="relative">
         <div className="flex items-start gap-2">
           <span className="mt-0.5 font-mono text-[0.7rem] text-ink-3 tabular">{data.index}</span>

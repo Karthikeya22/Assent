@@ -1,0 +1,122 @@
+{
+ "split": "test",
+ "facts": {
+  "family": "pva",
+  "case_id": "pva-031",
+  "difficulty": "clean",
+  "order_date": "2026-09-26",
+  "patient": {
+   "fhir_id": "592ad309-7d98-4a5d-dbcb-2a5c6379c99e",
+   "name": "Gwyn Runolfsson",
+   "sex": "female",
+   "birth_date": "1955-03-09"
+  },
+  "condition": "worsening:T12",
+  "cpt": "22513",
+  "cpt_text": "Percutaneous vertebral augmentation (kyphoplasty), thoracic",
+  "icd10": "M80.08XA",
+  "icd10_text": "Age-related osteoporosis with current pathological fracture, vertebra(e), initial encounter",
+  "dates": {
+   "pcp": "2026-08-29",
+   "inpatient": "2026-09-24",
+   "radiology": "2026-09-18",
+   "consult": "2026-09-25",
+   "onset": "2026-08-22",
+   "xray": "2026-08-26"
+  },
+  "observations": [],
+  "gold": {
+   "fx.acute": "met",
+   "fx.imaging": "met",
+   "sym.hosp": "not_met",
+   "sym.moderate": "not_met",
+   "sym.worsening": "met",
+   "feat.progression": "insufficient",
+   "feat.height": "insufficient",
+   "feat.kyphosis": "insufficient",
+   "feat.rdq": "insufficient",
+   "care.osteo": "met",
+   "contra": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "fx.acute",
+    "gold": "met",
+    "text": "Back pain began 08/22/2026 after a fall from standing height, 5 weeks before this visit.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "fx.imaging",
+    "gold": "met",
+    "text": "MRI thoracolumbar spine 09/18/2026: acute osteoporotic T12 compression fracture with bone marrow edema on STIR imaging.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sym.hosp",
+    "gold": "not_met",
+    "text": "Seen in the outpatient spine clinic; not hospitalized for this fracture.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.moderate",
+    "gold": "not_met",
+    "text": "Pain now NRS 2/10 with acetaminophen and calcitonin nasal spray and bracing.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.worsening",
+    "gold": "met",
+    "text": "Pain has worsened over the past two weeks despite bracing.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "care.osteo",
+    "gold": "met",
+    "text": "Referred for DEXA bone density testing and osteoporosis education; enrolled in the osteoporosis treatment program.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Back pain localizes to the fractured level; afebrile with no signs of infection or discitis.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-08-29",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 08/29/2026\nPatient: Gwyn Runolfsson, 71-year-old female\n\nSubjective:\nMs. Runolfsson presents for her routine follow-up visit. She reports feeling generally well with no new complaints today.\n\nObjective:\nVital signs are within normal limits. Physical examination reveals no acute distress. Cardiovascular, respiratory, and abdominal exams are unremarkable. Musculoskeletal exam shows no tenderness or deformity.\n\nAssessment:\n71-year-old female with stable health status. No new issues identified.\n\nPlan:\nContinue current medications and lifestyle. Routine monitoring and follow-up as scheduled. Patient advised to report any new symptoms promptly.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-09-18",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 09/18/2026\nPatient: Gwyn Runolfsson, 71-year-old female\n\nExamination: MRI thoracolumbar spine\n\nFindings:\nMRI thoracolumbar spine 09/18/2026: acute osteoporotic T12 compression fracture with bone marrow edema on STIR imaging.\n\nNo other acute abnormalities are identified in the thoracic or lumbar spine.\n\nImpression:\nAcute osteoporotic compression fracture at T12 with associated bone marrow edema, consistent with recent injury.\n\nRecommendations:\nClinical correlation is advised. Further management should be guided by the referring physician based on clinical findings.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-25",
+   "title": "Spine Intervention Consultation",
+   "author": "Interventional radiologist",
+   "text": "Spine Intervention Consultation\nDate: 09/25/2026\nPatient: Gwyn Runolfsson, 71-year-old female\n\nHistory:\nBack pain began 08/22/2026 after a fall from standing height, 5 weeks before this visit. Seen in the outpatient spine clinic; not hospitalized for this fracture. Pain has worsened over the past two weeks despite bracing.\n\nCurrent Status:\nPain now NRS 2/10 with acetaminophen and calcitonin nasal spray and bracing. Back pain localizes to the fractured level; afebrile with no signs of infection or discitis.\n\nPlan:\nReferred for DEXA bone density testing and osteoporosis education; enrolled in the osteoporosis treatment program. Continue current pain management and bracing. Monitor symptoms closely and follow up as needed for further intervention.",
+   "source": "llm"
+  }
+ ]
+}

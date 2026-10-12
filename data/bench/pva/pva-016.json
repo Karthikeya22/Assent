@@ -1,0 +1,124 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "pva",
+  "case_id": "pva-016",
+  "difficulty": "missing",
+  "order_date": "2026-09-13",
+  "patient": {
+   "fhir_id": "015e81ff-7324-919f-9e5f-e936fa8cdba6",
+   "name": "Maxwell Veum",
+   "sex": "male",
+   "birth_date": "1946-06-24"
+  },
+  "condition": "worsening:L1",
+  "cpt": "22514",
+  "cpt_text": "Percutaneous vertebral augmentation (kyphoplasty), lumbar",
+  "icd10": "M80.08XA",
+  "icd10_text": "Age-related osteoporosis with current pathological fracture, vertebra(e), initial encounter",
+  "dates": {
+   "pcp": "2026-08-12",
+   "inpatient": "2026-09-10",
+   "radiology": "2026-09-04",
+   "consult": "2026-09-12",
+   "onset": "2026-08-09",
+   "xray": "2026-08-12"
+  },
+  "observations": [
+   {
+    "code": "72514-3",
+    "system": "http://loinc.org",
+    "display": "Pain severity 0-10 numeric rating",
+    "value": 6.0,
+    "unit": "{score}",
+    "date": "2026-09-12"
+   }
+  ],
+  "gold": {
+   "fx.acute": "met",
+   "fx.imaging": "met",
+   "sym.hosp": "not_met",
+   "sym.moderate": "met",
+   "sym.worsening": "met",
+   "feat.progression": "insufficient",
+   "feat.height": "insufficient",
+   "feat.kyphosis": "insufficient",
+   "feat.rdq": "insufficient",
+   "care.osteo": "met",
+   "contra": "insufficient"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "fx.acute",
+    "gold": "met",
+    "text": "Back pain began 08/09/2026 after lifting a laundry basket, 5 weeks before this visit.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "fx.imaging",
+    "gold": "met",
+    "text": "MRI thoracolumbar spine 09/04/2026: acute osteoporotic L1 compression fracture with bone marrow edema on STIR imaging.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sym.hosp",
+    "gold": "not_met",
+    "text": "Seen in the outpatient spine clinic; not hospitalized for this fracture.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.moderate",
+    "gold": "met",
+    "text": "Pain NRS 6/10 despite 4 weeks of optimal non-surgical management with acetaminophen and calcitonin nasal spray, a thoracolumbar brace and activity modification.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.worsening",
+    "gold": "met",
+    "text": "Pain has worsened over the past two weeks despite bracing.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "care.osteo",
+    "gold": "met",
+    "text": "Referred for DEXA bone density testing and osteoporosis education; enrolled in the osteoporosis treatment program.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-08-12",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 08/12/2026\nPatient: Maxwell Veum, 80-year-old male\n\nSubjective:\nMr. Veum presents for his routine follow-up. He reports no new complaints today and feels generally well.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no acute distress. Cardiovascular, respiratory, and abdominal exams are unremarkable. Musculoskeletal exam shows no tenderness or deformity.\n\nAssessment:\nMr. Veum is an 80-year-old male with no new issues at this visit. His overall health status remains stable.\n\nPlan:\nContinue current management and routine monitoring. Encourage regular physical activity and balanced nutrition. Follow up as scheduled or sooner if any new symptoms arise.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-09-04",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 09/04/2026\nPatient: Maxwell Veum, 80-year-old male\n\nExamination: MRI thoracolumbar spine\n\nFindings:\nMRI thoracolumbar spine 09/04/2026: acute osteoporotic L1 compression fracture with bone marrow edema on STIR imaging.\n\nImpression:\nThere is an acute osteoporotic compression fracture at the L1 vertebral body, demonstrated by bone marrow edema on STIR sequences. No other acute abnormalities are identified.\n\nRecommendations:\nClinical correlation is advised. Further management should be guided by the referring physician based on clinical presentation.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-12",
+   "title": "Spine Intervention Consultation",
+   "author": "Interventional radiologist",
+   "text": "Spine Intervention Consultation\nDate: 09/12/2026\nPatient: Maxwell Veum, 80-year-old male\n\nHistory:\nBack pain began 08/09/2026 after lifting a laundry basket, 5 weeks before this visit. Seen in the outpatient spine clinic; not hospitalized for this fracture. Pain NRS 6/10 despite 4 weeks of optimal non-surgical management with acetaminophen and calcitonin nasal spray, a thoracolumbar brace and activity modification. Pain has worsened over the past two weeks despite bracing.\n\nAssessment:\nThe patient presents with persistent and worsening back pain related to a vertebral fracture sustained after lifting a laundry basket. Conservative treatment has been followed as outlined.\n\nPlan:\nReferred for DEXA bone density testing and osteoporosis education; enrolled in the osteoporosis treatment program. Continue current pain management and bracing. Consider interventional options if pain remains refractory.",
+   "source": "llm"
+  }
+ ]
+}

@@ -1,0 +1,160 @@
+{
+ "split": "test",
+ "facts": {
+  "family": "pva",
+  "case_id": "pva-017",
+  "difficulty": "buried",
+  "order_date": "2026-09-30",
+  "patient": {
+   "fhir_id": "c6b31718-a0ab-ba00-16e4-7d786b4ec07c",
+   "name": "Adrian Wintheiser",
+   "sex": "male",
+   "birth_date": "1937-07-05"
+  },
+  "condition": "stable:L1",
+  "cpt": "22514",
+  "cpt_text": "Percutaneous vertebral augmentation (kyphoplasty), lumbar",
+  "icd10": "M80.08XA",
+  "icd10_text": "Age-related osteoporosis with current pathological fracture, vertebra(e), initial encounter",
+  "dates": {
+   "pcp": "2026-08-18",
+   "inpatient": "2026-09-27",
+   "radiology": "2026-09-26",
+   "consult": "2026-09-29",
+   "onset": "2026-08-12",
+   "xray": "2026-08-16"
+  },
+  "observations": [
+   {
+    "code": "72514-3",
+    "system": "http://loinc.org",
+    "display": "Pain severity 0-10 numeric rating",
+    "value": 6.0,
+    "unit": "{score}",
+    "date": "2026-09-29"
+   },
+   {
+    "code": "vb-height-loss",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Vertebral body height loss",
+    "value": 35.0,
+    "unit": "%",
+    "date": "2026-09-26"
+   }
+  ],
+  "gold": {
+   "fx.acute": "met",
+   "fx.imaging": "met",
+   "sym.hosp": "not_met",
+   "sym.moderate": "met",
+   "sym.worsening": "not_met",
+   "feat.progression": "met",
+   "feat.height": "met",
+   "feat.kyphosis": "met",
+   "feat.rdq": "insufficient",
+   "care.osteo": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "fx.acute",
+    "gold": "met",
+    "text": "Back pain since 08/12/2026 after a fall from standing height.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "fx.imaging",
+    "gold": "met",
+    "text": "MRI 09/26/2026: L1 compression fx, marrow edema on STIR.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sym.hosp",
+    "gold": "not_met",
+    "text": "Outpt, not admitted.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.moderate",
+    "gold": "met",
+    "text": "NRS 6/10 despite 6 wks NSM (acetaminophen and tramadol, TLSO brace).",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.worsening",
+    "gold": "not_met",
+    "text": "Pain stable/slightly better.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "feat.progression",
+    "gold": "met",
+    "text": "Interval increase in L1 vertebral body height loss compared with radiographs from 08/16/2026.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "feat.height",
+    "gold": "met",
+    "text": "~35% L1 height loss.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "feat.kyphosis",
+    "gold": "met",
+    "text": "Focal kyphosis L1 22 deg.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "care.osteo",
+    "gold": "met",
+    "text": "Referred for DEXA + osteoporosis program.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Pain at fx level; afebrile, no infx signs.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-08-18",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 08/18/2026\nPatient: Adrian Wintheiser, 89 y/o M\n\nCC: Back pain\n\nHPI: Back pain since 08/12/2026 after a fall from standing height. No radicular sx noted. No bowel/bladder changes reported.\n\nPE: Tenderness over lumbar paraspinals. No step-offs or deformities palpated. Neuro exam intact distally. Gait steady.\n\nAssessment: Acute lumbar strain post-fall.\n\nPlan: Advise rest, NSAIDs prn, monitor for worsening sx. Follow-up in 1 wk or sooner if new neuro sx develop.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-09-26",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 09/26/2026\nPatient: Adrian Wintheiser, 89-year-old male\n\nMRI 09/26/2026: L1 compression fx, marrow edema on STIR. Interval increase in L1 vertebral body height loss compared with radiographs from 08/16/2026. ~35% L1 height loss. Focal kyphosis L1 22 deg.\n\nNo other acute abnormalities identified on this exam.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-29",
+   "title": "Spine Intervention Consultation",
+   "author": "Interventional radiologist",
+   "text": "Spine Intervention Consult 09/29/2026\nPt: Adrian Wintheiser, 89 y/o M\n\nHPI: Outpt, not admitted. NRS 6/10 despite 6 wks NSM (acetaminophen and tramadol, TLSO brace). Pain stable/slightly better. Pain at fx level; afebrile, no infx signs.\n\nPlan: Referred for DEXA + osteoporosis program. Continue current meds and brace. Monitor for any changes or worsening symptoms.\n\nIR consult for possible intervention if pain worsens or new findings.",
+   "source": "llm"
+  }
+ ]
+}

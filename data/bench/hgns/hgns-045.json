@@ -1,0 +1,150 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-045",
+  "difficulty": "missing",
+  "order_date": "2026-09-28",
+  "patient": {
+   "fhir_id": "a440e265-1db3-44e9-1a40-56455cfb101c",
+   "name": "Candice Kozey",
+   "sex": "female",
+   "birth_date": "1945-06-14"
+  },
+  "condition": "cpap_intolerance",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-06-01",
+   "psg": "2026-06-18",
+   "sleepmd": "2026-08-18",
+   "ent": "2026-09-26"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 31.7,
+    "unit": "kg/m2",
+    "date": "2026-08-18"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 30.9,
+    "unit": "/h",
+    "date": "2026-06-18"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "insufficient",
+   "dise": "met",
+   "anatomy": "met",
+   "contra": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "81-year-old woman referred for hypoglossal nerve stimulation evaluation.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "BMI 31.7 kg/m2.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Diagnostic in-laboratory polysomnography performed 06/18/2026.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "Total apnea-hypopnea index (AHI) 30.9 events/hour.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "Central and mixed apneas comprised 12% of all events.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "met",
+    "text": "Drug-induced sleep endoscopy 09/18/2026: anteroposterior collapse at the velum without complete concentric collapse.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Oropharynx: tonsils size 1, no other anatomic obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.",
+    "slot": "ent",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-06-01",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 06/01/2026\nPatient: Candice Kozey, 81-year-old female\n\nSubjective:\nMs. Kozey presents for her routine follow-up visit. She reports feeling generally well with no new complaints. She denies any recent changes in her health status.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no acute abnormalities. Cardiovascular, respiratory, and neurological exams are unremarkable.\n\nAssessment:\nMs. Kozey remains stable with her chronic conditions well controlled. No new issues identified at this time.\n\nPlan:\nContinue current medications and management plan. Routine monitoring and follow-up scheduled as per standard guidelines. Patient advised to report any new symptoms promptly.\n\nNo additional interventions are required today.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2026-06-18",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 06/18/2026\nPatient: Candice Kozey, 81-year-old female\n\nDiagnostic in-laboratory polysomnography performed 06/18/2026. Total apnea-hypopnea index (AHI) 30.9 events/hour. Central and mixed apneas comprised 12% of all events. The study showed a predominance of obstructive events contributing to the overall apnea-hypopnea index. Oxygen saturation levels demonstrated intermittent desaturations associated with respiratory events. Sleep architecture was preserved with normal distribution of REM and non-REM sleep stages. No significant cardiac arrhythmias or periodic limb movements were observed during the recording. These findings indicate moderate to severe sleep apnea requiring clinical correlation and consideration for appropriate management.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-08-18",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation\nDate: 08/18/2026\nPatient: Candice Kozey, 81-year-old female\n\nReason for Consultation:\nEvaluation of sleep disturbances and assessment for possible sleep apnea.\n\nHistory:\nMs. Kozey reports frequent nighttime awakenings and non-restorative sleep. She denies excessive daytime sleepiness but notes occasional morning headaches. No history of restless legs or periodic limb movements.\n\nPhysical Examination:\nVital signs are stable. BMI 31.7 kg/m2. No craniofacial abnormalities noted. Oropharyngeal examination reveals mild tonsillar hypertrophy.\n\nAssessment:\nObesity is a contributing factor to her sleep complaints. Further evaluation with polysomnography is recommended to assess for sleep-disordered breathing.\n\nPlan:\nSchedule overnight sleep study. Counsel on sleep hygiene and weight management strategies. Follow-up after diagnostic testing to discuss results and management options.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-26",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation Note\nDate: 09/26/2026\nPatient: Candice Kozey, 81-year-old female\n\nThis 81-year-old woman referred for hypoglossal nerve stimulation evaluation. Drug-induced sleep endoscopy 09/18/2026: anteroposterior collapse at the velum without complete concentric collapse. Oropharynx: tonsils size 1, no other anatomic obstruction. No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.\n\nBased on these findings, the patient appears to be an appropriate candidate for hypoglossal nerve stimulation therapy. The plan is to proceed with further evaluation and preparation for implantation. The patient will be counseled on device use and follow-up arranged accordingly.",
+   "source": "llm"
+  }
+ ]
+}

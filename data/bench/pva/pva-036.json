@@ -1,0 +1,131 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "pva",
+  "case_id": "pva-036",
+  "difficulty": "buried",
+  "order_date": "2026-09-06",
+  "patient": {
+   "fhir_id": "6ec048b4-8466-8773-87bb-8b91081e1bd7",
+   "name": "Johnathon Kemmer",
+   "sex": "male",
+   "birth_date": "1957-08-16"
+  },
+  "condition": "worsening:L3",
+  "cpt": "22514",
+  "cpt_text": "Percutaneous vertebral augmentation (kyphoplasty), lumbar",
+  "icd10": "M80.08XA",
+  "icd10_text": "Age-related osteoporosis with current pathological fracture, vertebra(e), initial encounter",
+  "dates": {
+   "pcp": "2026-07-08",
+   "inpatient": "2026-09-03",
+   "radiology": "2026-08-31",
+   "consult": "2026-09-05",
+   "onset": "2026-07-05",
+   "xray": "2026-07-08"
+  },
+  "observations": [
+   {
+    "code": "72514-3",
+    "system": "http://loinc.org",
+    "display": "Pain severity 0-10 numeric rating",
+    "value": 7.0,
+    "unit": "{score}",
+    "date": "2026-09-05"
+   }
+  ],
+  "gold": {
+   "fx.acute": "met",
+   "fx.imaging": "met",
+   "sym.hosp": "not_met",
+   "sym.moderate": "met",
+   "sym.worsening": "met",
+   "feat.progression": "insufficient",
+   "feat.height": "insufficient",
+   "feat.kyphosis": "insufficient",
+   "feat.rdq": "insufficient",
+   "care.osteo": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "fx.acute",
+    "gold": "met",
+    "text": "Back pain since 07/05/2026 after lifting a laundry basket.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "fx.imaging",
+    "gold": "met",
+    "text": "MRI 08/31/2026: L3 compression fx, marrow edema on STIR.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sym.hosp",
+    "gold": "not_met",
+    "text": "Outpt, not admitted.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.moderate",
+    "gold": "met",
+    "text": "NRS 7/10 despite 8 wks NSM (acetaminophen and tramadol, TLSO brace).",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.worsening",
+    "gold": "met",
+    "text": "Pain worse x2 wks despite brace.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "care.osteo",
+    "gold": "met",
+    "text": "Referred for DEXA + osteoporosis program.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Pain at fx level; afebrile, no infx signs.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-07-08",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 07/08/2026\nPatient: Johnathon Kemmer, 69 y/o M\n\nCC: Back pain\n\nHPI: Back pain since 07/05/2026 after lifting a laundry basket. No radicular sx. No bowel/bladder changes.\n\nPE: Tenderness over lumbar paraspinals. No step-offs or deformities noted. Neuro exam intact.\n\nAssessment: Acute mechanical back pain.\n\nPlan: NSAIDs prn, activity as tolerated, follow-up prn worsening or new sx.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-31",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/31/2026\nPatient: Johnathon Kemmer, 69 y/o M\n\nIndication: Evaluation of lumbar spine.\n\nFindings:\nMRI 08/31/2026: L3 compression fx, marrow edema on STIR.\nNo other acute fractures or lesions identified.\nIntervertebral discs show mild desiccation at L4-L5.\nNo significant canal stenosis or neural foraminal narrowing.\nParaspinal soft tissues unremarkable.\n\nImpression:\nL3 compression fracture with marrow edema consistent with acute/subacute injury.\nNo additional acute abnormalities detected.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-05",
+   "title": "Spine Intervention Consultation",
+   "author": "Interventional radiologist",
+   "text": "Spine Intervention Consultation\nDate: 09/05/2026\nPatient: Johnathon Kemmer, 69 y/o M\n\nHPI: Outpt, not admitted. NRS 7/10 despite 8 wks NSM (acetaminophen and tramadol, TLSO brace). Pain worse x2 wks despite brace. Pain at fx level; afebrile, no infx signs.\n\nAssessment: Persistent pain at vertebral fracture site despite conservative management. No signs of infection.\n\nPlan: Referred for DEXA + osteoporosis program. Consider interventional options if pain persists or worsens.",
+   "source": "llm"
+  }
+ ]
+}

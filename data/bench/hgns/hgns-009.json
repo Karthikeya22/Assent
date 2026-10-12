@@ -1,0 +1,157 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-009",
+  "difficulty": "clean",
+  "order_date": "2026-09-15",
+  "patient": {
+   "fhir_id": "98ec8999-16e4-0159-a4ac-fc193a8f02d1",
+   "name": "Thomas Goyette",
+   "sex": "male",
+   "birth_date": "1943-04-14"
+  },
+  "condition": "cpap_failure",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-05-05",
+   "psg": "2025-04-27",
+   "sleepmd": "2026-07-20",
+   "ent": "2026-09-13"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 30.9,
+    "unit": "kg/m2",
+    "date": "2026-07-20"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 44.9,
+    "unit": "/h",
+    "date": "2025-04-27"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "met",
+   "dise": "not_met",
+   "anatomy": "met",
+   "contra": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "83-year-old man referred for hypoglossal nerve stimulation evaluation.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "BMI 30.9 kg/m2.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Diagnostic in-laboratory polysomnography performed 04/27/2025.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "Total apnea-hypopnea index (AHI) 44.9 events/hour.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "Central and mixed apneas comprised 13% of all events.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "cpap",
+    "gold": "met",
+    "text": "CPAP failure: residual AHI 25.1 events/hour on CPAP at 10 cmH2O despite consistent nightly use.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "not_met",
+    "text": "Drug-induced sleep endoscopy 09/06/2026: complete concentric collapse at the velum.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Oropharynx: tonsils size 1, no other anatomic obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.",
+    "slot": "ent",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-05-05",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 05/05/2026\nPatient: Thomas Goyette, 83-year-old male\n\nSubjective:\nMr. Goyette presents for his routine follow-up visit. He reports feeling generally well with no new complaints. He denies any recent changes in his health status.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no abnormalities. Cardiovascular, respiratory, abdominal, and neurological exams are unremarkable.\n\nAssessment:\nMr. Goyette is an 83-year-old male with stable health status. No new issues identified during today's visit.\n\nPlan:\nContinue current management and medications. Encourage regular exercise and balanced diet. Schedule next routine follow-up in 6 months or sooner if any concerns arise.\n\nNo additional testing or referrals are indicated at this time.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2025-04-27",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 04/27/2025\nPatient: Thomas Goyette, 82-year-old male\n\nDiagnostic in-laboratory polysomnography performed 04/27/2025. The study evaluated sleep patterns and breathing abnormalities throughout the night. Total apnea-hypopnea index (AHI) 44.9 events/hour. Central and mixed apneas comprised 13% of all events. Sleep architecture showed normal distribution of sleep stages with no unusual disruptions. These findings indicate severe sleep apnea with a notable component of central and mixed apneas. Clinical correlation and consideration of treatment options are advised.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-07-20",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation\nDate: 07/20/2026\nPatient: Thomas Goyette, 83-year-old male\n\nReason for Consultation:\nEvaluation and management of sleep-disordered breathing.\n\nHistory:\nMr. Goyette is an 83-year-old male with a history of obstructive sleep apnea currently treated with CPAP therapy. He reports ongoing symptoms despite adherence to therapy.\n\nPhysical Examination:\nBMI 30.9 kg/m2.\n\nSleep Study and CPAP Data:\nCPAP failure: residual AHI 25.1 events/hour on CPAP at 10 cmH2O despite consistent nightly use.\n\nAssessment:\nThe patient demonstrates persistent moderate to severe obstructive sleep apnea despite adequate CPAP therapy and compliance.\n\nPlan:\n1. Consider alternative treatment options including bilevel positive airway pressure or advanced modalities.\n2. Reassess mask fit and pressure settings.\n3. Schedule follow-up sleep study to evaluate response to therapy adjustments.\n4. Continue monitoring symptoms and adherence.\n\nSummary:\nMr. Goyette remains symptomatic with significant residual apnea events on CPAP. Further evaluation and treatment modification are warranted to improve sleep quality and reduce apnea burden.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-13",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation Note\nDate: 09/13/2026\nPatient: Thomas Goyette, 83-year-old male\n\nThis 83-year-old man referred for hypoglossal nerve stimulation evaluation. Drug-induced sleep endoscopy 09/06/2026: complete concentric collapse at the velum. Oropharynx: tonsils size 1, no other anatomic obstruction. No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote. The patient is considered an appropriate candidate for hypoglossal nerve stimulation based on the clinical and endoscopic findings.",
+   "source": "llm"
+  }
+ ]
+}

@@ -1,0 +1,125 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "pva",
+  "case_id": "pva-033",
+  "difficulty": "buried",
+  "order_date": "2026-09-15",
+  "patient": {
+   "fhir_id": "e10471a4-e1a5-9e7a-1b3d-7cbfef73a58d",
+   "name": "Filiberto Ryan",
+   "sex": "male",
+   "birth_date": "1937-05-31"
+  },
+  "condition": "hosp:T12",
+  "cpt": "22513",
+  "cpt_text": "Percutaneous vertebral augmentation (kyphoplasty), thoracic",
+  "icd10": "M80.08XA",
+  "icd10_text": "Age-related osteoporosis with current pathological fracture, vertebra(e), initial encounter",
+  "dates": {
+   "pcp": "2026-06-24",
+   "inpatient": "2026-09-12",
+   "radiology": "2026-09-11",
+   "consult": "2026-09-14",
+   "onset": "2026-08-25",
+   "xray": "2026-08-29"
+  },
+  "observations": [
+   {
+    "code": "72514-3",
+    "system": "http://loinc.org",
+    "display": "Pain severity 0-10 numeric rating",
+    "value": 9.0,
+    "unit": "{score}",
+    "date": "2026-09-12"
+   }
+  ],
+  "gold": {
+   "fx.acute": "met",
+   "fx.imaging": "met",
+   "sym.hosp": "met",
+   "sym.moderate": "insufficient",
+   "sym.worsening": "insufficient",
+   "feat.progression": "insufficient",
+   "feat.height": "insufficient",
+   "feat.kyphosis": "insufficient",
+   "feat.rdq": "insufficient",
+   "care.osteo": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "fx.acute",
+    "gold": "met",
+    "text": "Back pain since 08/25/2026 after lifting a laundry basket.",
+    "slot": "inpatient",
+    "stale": false
+   },
+   {
+    "leaf": "fx.imaging",
+    "gold": "met",
+    "text": "MRI 09/11/2026: T12 compression fx, marrow edema on STIR.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sym.hosp",
+    "gold": "met",
+    "text": "Adm 09/12/2026 intractable back pain, NRS 9/10 on IV opioids.",
+    "slot": "inpatient",
+    "stale": false
+   },
+   {
+    "leaf": "care.osteo",
+    "gold": "met",
+    "text": "Referred for DEXA + osteoporosis program.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Pain at fx level; afebrile, no infx signs.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-06-24",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 06/24/2026\nPatient: Filiberto Ryan, 89 y/o M\n\nCC: Follow-up visit\n\nHPI: Pt presents for routine follow-up. No new complaints reported.\n\nPE: Vitals stable. Cardiopulmonary exam unremarkable. Abdomen soft, nontender. Neuro exam grossly intact.\n\nAssessment: Stable condition. No acute issues identified.\n\nPlan: Continue current management. Routine labs and monitoring at next visit.\n\nNo mention of prior treatments or spinal imaging findings as per guidelines.",
+   "source": "llm"
+  },
+  {
+   "slot": "inpatient",
+   "date": "2026-09-12",
+   "title": "Hospital Admission History and Physical",
+   "author": "Hospitalist",
+   "text": "Hospital Admission History and Physical\nDate: 09/12/2026\nPatient: Filiberto Ryan, 89 y/o M\n\nChief Complaint:\nBack pain.\n\nHistory of Present Illness:\nBack pain since 08/25/2026 after lifting a laundry basket. No trauma reported. No radiation of pain.\n\nAdmission:\nAdm 09/12/2026 intractable back pain, NRS 9/10 on IV opioids.\n\nPast Medical History:\nHTN, CAD, no prior spine surgery.\n\nPhysical Exam:\nVS stable. Tenderness over lumbar spine. No motor deficit. Sensation intact. Reflexes normal.\n\nAssessment:\nSevere back pain, likely musculoskeletal etiology.\n\nPlan:\nContinue pain control. Monitor neurologic status. Imaging pending.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-09-11",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 09/11/2026\nPatient: Filiberto Ryan, 89 y/o M\n\nMRI of the thoracic spine performed.\n\nMRI 09/11/2026: T12 compression fx, marrow edema on STIR.\nNo other acute fractures identified. No paraspinal soft tissue mass or abnormal enhancement.\nNo evidence of spinal canal stenosis or cord signal abnormality.\n\nImpression:\nT12 compression fracture with marrow edema consistent with acute/subacute injury.\nNo additional acute findings.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-14",
+   "title": "Spine Intervention Consultation",
+   "author": "Interventional radiologist",
+   "text": "Spine Intervention Consultation\nDate: 09/14/2026\nPatient: Filiberto Ryan, 89 y/o M\n\nHx: Pt presents with vertebral compression fracture.\n\nExam: Pain at fx level; afebrile, no infx signs.\n\nImaging: Recent MRI confirms acute compression fracture at T12.\n\nPlan: Referred for DEXA + osteoporosis program.\n\nIntervention: Consider vertebroplasty pending bone density results and pt's clinical status.\n\nFollow-up: Monitor for any new neuro deficits or signs of infection.",
+   "source": "llm"
+  }
+ ]
+}

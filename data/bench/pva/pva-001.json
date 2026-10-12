@@ -1,0 +1,132 @@
+{
+ "split": "test",
+ "facts": {
+  "family": "pva",
+  "case_id": "pva-001",
+  "difficulty": "contradictory",
+  "order_date": "2026-09-15",
+  "patient": {
+   "fhir_id": "d5c23197-dcc7-f8e9-4b50-b1bd581089ce",
+   "name": "Delilah Wisozk",
+   "sex": "female",
+   "birth_date": "1940-11-20"
+  },
+  "condition": "hosp:L3",
+  "cpt": "22514",
+  "cpt_text": "Percutaneous vertebral augmentation (kyphoplasty), lumbar",
+  "icd10": "M80.08XA",
+  "icd10_text": "Age-related osteoporosis with current pathological fracture, vertebra(e), initial encounter",
+  "dates": {
+   "pcp": "2026-06-16",
+   "inpatient": "2026-09-11",
+   "radiology": "2026-09-07",
+   "consult": "2026-09-14",
+   "onset": "2026-09-01",
+   "xray": "2026-09-05"
+  },
+  "observations": [
+   {
+    "code": "72514-3",
+    "system": "http://loinc.org",
+    "display": "Pain severity 0-10 numeric rating",
+    "value": 8.0,
+    "unit": "{score}",
+    "date": "2026-09-11"
+   }
+  ],
+  "gold": {
+   "fx.acute": "met",
+   "fx.imaging": "met",
+   "sym.hosp": "met",
+   "sym.moderate": "insufficient",
+   "sym.worsening": "insufficient",
+   "feat.progression": "insufficient",
+   "feat.height": "insufficient",
+   "feat.kyphosis": "insufficient",
+   "feat.rdq": "insufficient",
+   "care.osteo": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "fx.acute",
+    "gold": "met",
+    "text": "Back pain began 09/01/2026 after bending to pick up a grandchild, 2 weeks before this visit.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "fx.imaging",
+    "gold": "met",
+    "text": "MRI thoracolumbar spine 09/07/2026: acute osteoporotic L3 compression fracture with bone marrow edema on STIR imaging.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sym.hosp",
+    "gold": "met",
+    "text": "Admitted 09/11/2026 for intractable back pain, NRS 8/10 despite IV analgesia.",
+    "slot": "inpatient",
+    "stale": false
+   },
+   {
+    "leaf": "care.osteo",
+    "gold": "met",
+    "text": "Referred for DEXA bone density testing and osteoporosis education; enrolled in the osteoporosis treatment program.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Back pain localizes to the fractured level; afebrile with no signs of infection or discitis.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "fx.acute",
+    "gold": "met",
+    "text": "Reports back pain for about six months.",
+    "slot": "inpatient",
+    "stale": true
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-06-16",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 06/16/2026\nPatient: Delilah Wisozk, 86-year-old female\n\nSubjective:\nThe patient presents for routine follow-up. She reports no new complaints today.\n\nObjective:\nVital signs are within normal limits. Physical examination reveals no acute distress. Cardiovascular, respiratory, abdominal, and neurological exams are unremarkable.\n\nAssessment:\nStable condition with no new findings.\n\nPlan:\nContinue current management and routine monitoring. Patient advised to report any new symptoms promptly.\n\nFollow-up in 6 months or sooner if needed.",
+   "source": "llm"
+  },
+  {
+   "slot": "inpatient",
+   "date": "2026-09-11",
+   "title": "Hospital Admission History and Physical",
+   "author": "Hospitalist",
+   "text": "Hospital Admission History and Physical\nDate: 09/11/2026\nPatient: Delilah Wisozk, 86-year-old female\n\nChief Complaint:\nIntractable back pain.\n\nHistory of Present Illness:\nAdmitted 09/11/2026 for intractable back pain, NRS 8/10 despite IV analgesia. Reports back pain for about six months.\n\nPast Medical History:\nNot documented in this note.\n\nMedications:\nNot documented in this note.\n\nAllergies:\nNot documented in this note.\n\nPhysical Examination:\nGeneral: Elderly female in moderate distress due to pain.\nBack: Tenderness noted over the lumbar region.\nNeurological: No focal deficits observed.\n\nAssessment:\nElderly female admitted for severe, persistent back pain.\n\nPlan:\nContinue monitoring pain levels and adjust analgesia as needed. Further diagnostic evaluation to determine underlying cause will be pursued.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-09-07",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 09/07/2026\nPatient: Delilah Wisozk, 86-year-old female\n\nExamination: MRI thoracolumbar spine\n\nFindings:\nMRI thoracolumbar spine 09/07/2026: acute osteoporotic L3 compression fracture with bone marrow edema on STIR imaging.\n\nImpression:\nThere is an acute osteoporotic compression fracture at the L3 vertebral body, demonstrated by bone marrow edema on STIR sequences. No other acute abnormalities are identified in the thoracolumbar spine.\n\nRecommendations:\nClinical correlation is advised. Further management should be guided by the referring physician.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-14",
+   "title": "Spine Intervention Consultation",
+   "author": "Interventional radiologist",
+   "text": "Spine Intervention Consultation\nDate: 09/14/2026\nPatient: Delilah Wisozk, 86-year-old female\nAuthor: Interventional radiologist\n\nBack pain localizes to the fractured level; afebrile with no signs of infection or discitis.\nReferred for DEXA bone density testing and osteoporosis education; enrolled in the osteoporosis treatment program.\nBack pain began 09/01/2026 after bending to pick up a grandchild, 2 weeks before this visit.\nReferred for evaluation of vertebral augmentation.\nMedications and allergies reviewed.\nPlan: request prior authorization for kyphoplasty.\n",
+   "source": "template"
+  }
+ ]
+}

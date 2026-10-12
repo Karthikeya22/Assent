@@ -1,0 +1,132 @@
+{
+ "split": "test",
+ "facts": {
+  "family": "pva",
+  "case_id": "pva-026",
+  "difficulty": "contradictory",
+  "order_date": "2026-09-07",
+  "patient": {
+   "fhir_id": "5a1715ff-f3e1-47a1-ab36-743ba8fd4194",
+   "name": "Stan Bednar",
+   "sex": "male",
+   "birth_date": "1956-05-10"
+  },
+  "condition": "hosp:L2",
+  "cpt": "22514",
+  "cpt_text": "Percutaneous vertebral augmentation (kyphoplasty), lumbar",
+  "icd10": "M80.08XA",
+  "icd10_text": "Age-related osteoporosis with current pathological fracture, vertebra(e), initial encounter",
+  "dates": {
+   "pcp": "2026-06-30",
+   "inpatient": "2026-09-02",
+   "radiology": "2026-09-01",
+   "consult": "2026-09-06",
+   "onset": "2026-08-17",
+   "xray": "2026-08-22"
+  },
+  "observations": [
+   {
+    "code": "72514-3",
+    "system": "http://loinc.org",
+    "display": "Pain severity 0-10 numeric rating",
+    "value": 9.0,
+    "unit": "{score}",
+    "date": "2026-09-02"
+   }
+  ],
+  "gold": {
+   "fx.acute": "met",
+   "fx.imaging": "met",
+   "sym.hosp": "met",
+   "sym.moderate": "insufficient",
+   "sym.worsening": "insufficient",
+   "feat.progression": "insufficient",
+   "feat.height": "insufficient",
+   "feat.kyphosis": "insufficient",
+   "feat.rdq": "insufficient",
+   "care.osteo": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "fx.acute",
+    "gold": "met",
+    "text": "Back pain began 08/17/2026 after lifting a laundry basket, 3 weeks before this visit.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "fx.imaging",
+    "gold": "met",
+    "text": "MRI thoracolumbar spine 09/01/2026: acute osteoporotic L2 compression fracture with bone marrow edema on STIR imaging.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sym.hosp",
+    "gold": "met",
+    "text": "Admitted 09/02/2026 for intractable back pain, NRS 9/10 despite IV analgesia.",
+    "slot": "inpatient",
+    "stale": false
+   },
+   {
+    "leaf": "care.osteo",
+    "gold": "met",
+    "text": "Referred for DEXA bone density testing and osteoporosis education; enrolled in the osteoporosis treatment program.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Back pain localizes to the fractured level; afebrile with no signs of infection or discitis.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "fx.acute",
+    "gold": "met",
+    "text": "Reports back pain for about six months.",
+    "slot": "inpatient",
+    "stale": true
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-06-30",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 06/30/2026\nPatient: Stan Bednar, 70-year-old male\n\nSubjective:\nMr. Bednar presents for routine follow-up. He reports no new complaints today.\n\nObjective:\nVital signs are stable. Physical examination reveals no acute distress. Cardiovascular, respiratory, and abdominal exams are unremarkable. Neurological exam shows intact strength and sensation in all extremities.\n\nAssessment:\nMr. Bednar is a 70-year-old male with a history of chronic conditions, currently stable.\n\nPlan:\nContinue current management and routine monitoring. Encourage healthy lifestyle habits and regular follow-up visits.\n\nNo additional interventions are planned at this time.",
+   "source": "llm"
+  },
+  {
+   "slot": "inpatient",
+   "date": "2026-09-02",
+   "title": "Hospital Admission History and Physical",
+   "author": "Hospitalist",
+   "text": "Hospital Admission History and Physical\nDate: 09/02/2026\nPatient: Stan Bednar, 70-year-old male\n\nChief Complaint:\nAdmitted 09/02/2026 for intractable back pain, NRS 9/10 despite IV analgesia.\n\nHistory of Present Illness:\nReports back pain for about six months. The pain is severe and persistent, requiring hospital admission for management.\n\nPast Medical History:\nNo additional relevant medical history provided.\n\nPhysical Examination:\nGeneral: Alert and oriented.\nMusculoskeletal: Tenderness noted over the lumbar spine region. Range of motion limited due to pain.\nNeurological: No focal deficits observed.\n\nAssessment:\nSevere intractable back pain requiring inpatient management.\n\nPlan:\nContinue pain control measures and monitor closely. Further diagnostic evaluation to be considered as needed.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-09-01",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 09/01/2026\nPatient: Stan Bednar, 70-year-old male\n\nExamination: MRI thoracolumbar spine\n\nFindings:\nMRI thoracolumbar spine 09/01/2026: acute osteoporotic L2 compression fracture with bone marrow edema on STIR imaging.\n\nImpression:\nThere is an acute osteoporotic compression fracture at the L2 vertebral body demonstrated by bone marrow edema on STIR sequences. No other acute abnormalities are noted in the thoracolumbar spine.\n\nRecommendations:\nClinical correlation is advised. Further management should be guided by the referring physician based on this imaging finding.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-06",
+   "title": "Spine Intervention Consultation",
+   "author": "Interventional radiologist",
+   "text": "Spine Intervention Consultation\nDate: 09/06/2026\nPatient: Stan Bednar, 70-year-old male\nAuthor: Interventional radiologist\n\nBack pain localizes to the fractured level; afebrile with no signs of infection or discitis.\nReferred for DEXA bone density testing and osteoporosis education; enrolled in the osteoporosis treatment program.\nBack pain began 08/17/2026 after lifting a laundry basket, 3 weeks before this visit.\nReferred for evaluation of vertebral augmentation.\nMedications and allergies reviewed.\nPlan: request prior authorization for kyphoplasty.\n",
+   "source": "template"
+  }
+ ]
+}

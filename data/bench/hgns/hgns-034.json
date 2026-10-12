@@ -1,0 +1,157 @@
+{
+ "split": "test",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-034",
+  "difficulty": "clean",
+  "order_date": "2026-09-12",
+  "patient": {
+   "fhir_id": "b52d94c8-14df-cfb9-c19d-a6a92204560a",
+   "name": "Sophie Lubowitz",
+   "sex": "female",
+   "birth_date": "1961-09-01"
+  },
+  "condition": "cpap_failure",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-05-14",
+   "psg": "2025-07-13",
+   "sleepmd": "2026-08-09",
+   "ent": "2026-09-10"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 32.4,
+    "unit": "kg/m2",
+    "date": "2026-08-09"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 18.5,
+    "unit": "/h",
+    "date": "2025-07-13"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "met",
+   "dise": "met",
+   "anatomy": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "65-year-old woman referred for hypoglossal nerve stimulation evaluation.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "BMI 32.4 kg/m2.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Diagnostic in-laboratory polysomnography performed 07/13/2025.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "Total apnea-hypopnea index (AHI) 18.5 events/hour.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "Central and mixed apneas comprised 6% of all events.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "cpap",
+    "gold": "met",
+    "text": "CPAP failure: residual AHI 27.3 events/hour on CPAP at 12 cmH2O despite consistent nightly use.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "met",
+    "text": "Drug-induced sleep endoscopy 08/21/2026: anteroposterior collapse at the velum without complete concentric collapse.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Oropharynx: tonsils size 1, no other anatomic obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.",
+    "slot": "ent",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-05-14",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 05/14/2026\nPatient: Sophie Lubowitz, 65-year-old female\n\nSubjective:\nMs. Lubowitz presents for her routine follow-up visit. She reports feeling generally well with no new complaints. She denies any acute symptoms or concerns at this time.\n\nObjective:\nVital signs are within normal limits. Physical examination reveals no abnormalities. Cardiovascular, respiratory, abdominal, and neurological exams are unremarkable.\n\nAssessment:\nMs. Lubowitz remains in good health. No new issues identified.\n\nPlan:\nContinue current management and routine health maintenance. Recommend annual screening tests as per guidelines. Patient advised to report any new symptoms promptly.\n\nFollow-up in 6 months or sooner if needed.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2025-07-13",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 07/13/2025\nPatient: Sophie Lubowitz, 64-year-old female\n\nDiagnostic in-laboratory polysomnography performed 07/13/2025. The study assessed sleep patterns and breathing abnormalities throughout the night. Total apnea-hypopnea index (AHI) 18.5 events/hour. Central and mixed apneas comprised 6% of all events. Oxygen saturation levels showed mild intermittent desaturation corresponding to respiratory events. Sleep architecture was within normal limits with expected distribution of sleep stages.\n\nIn summary, the findings indicate moderate sleep apnea with a small proportion of central and mixed apneas. Clinical correlation and consideration of treatment options are advised.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-08-09",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation\nDate: 08/09/2026\nPatient: Sophie Lubowitz, 65-year-old female\n\nReason for Consultation:\nEvaluation and management of obstructive sleep apnea with CPAP therapy.\n\nHistory:\nMs. Lubowitz has a history of obstructive sleep apnea and has been using CPAP therapy. She reports consistent nightly use of her CPAP device.\n\nPhysical Examination:\nBMI 32.4 kg/m2.\n\nAssessment:\nCPAP failure: residual AHI 27.3 events/hour on CPAP at 12 cmH2O despite consistent nightly use.\n\nPlan:\n1. Consider alternative treatment options given CPAP failure.\n2. Discuss potential for advanced therapies or referral for further evaluation.\n3. Continue monitoring symptoms and adherence.\n4. Schedule follow-up appointment in 3 months or sooner if symptoms worsen.\n\nSummary:\nMs. Lubowitz demonstrates persistent obstructive events despite adherence to CPAP therapy at adequate pressure settings. Further management strategies will be explored to improve her sleep quality and reduce apnea events.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-10",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation Note\nDate: 09/10/2026\nPatient: Sophie Lubowitz, 65-year-old female\n\nThis 65-year-old woman referred for hypoglossal nerve stimulation evaluation. Drug-induced sleep endoscopy 08/21/2026: anteroposterior collapse at the velum without complete concentric collapse. Oropharynx: tonsils size 1, no other anatomic obstruction. No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.\n\nBased on these findings, the patient appears to be an appropriate candidate for hypoglossal nerve stimulation therapy. Further steps will include device implantation planning and patient education regarding device use and follow-up care.",
+   "source": "llm"
+  }
+ ]
+}

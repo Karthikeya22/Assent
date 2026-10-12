@@ -1,0 +1,153 @@
+{
+ "split": "test",
+ "facts": {
+  "family": "pva",
+  "case_id": "pva-042",
+  "difficulty": "clean",
+  "order_date": "2026-09-28",
+  "patient": {
+   "fhir_id": "98ec8999-16e4-0159-a4ac-fc193a8f02d1",
+   "name": "Thomas Goyette",
+   "sex": "male",
+   "birth_date": "1943-04-14"
+  },
+  "condition": "stable:L1",
+  "cpt": "22514",
+  "cpt_text": "Percutaneous vertebral augmentation (kyphoplasty), lumbar",
+  "icd10": "M80.08XA",
+  "icd10_text": "Age-related osteoporosis with current pathological fracture, vertebra(e), initial encounter",
+  "dates": {
+   "pcp": "2026-08-02",
+   "inpatient": "2026-09-26",
+   "radiology": "2026-09-20",
+   "consult": "2026-09-27",
+   "onset": "2026-07-27",
+   "xray": "2026-07-30"
+  },
+  "observations": [
+   {
+    "code": "72514-3",
+    "system": "http://loinc.org",
+    "display": "Pain severity 0-10 numeric rating",
+    "value": 6.0,
+    "unit": "{score}",
+    "date": "2026-09-27"
+   },
+   {
+    "code": "rdq",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Roland Morris Disability Questionnaire",
+    "value": 19.0,
+    "unit": "{score}",
+    "date": "2026-09-27"
+   }
+  ],
+  "gold": {
+   "fx.acute": "met",
+   "fx.imaging": "met",
+   "sym.hosp": "not_met",
+   "sym.moderate": "met",
+   "sym.worsening": "not_met",
+   "feat.progression": "met",
+   "feat.height": "insufficient",
+   "feat.kyphosis": "insufficient",
+   "feat.rdq": "met",
+   "care.osteo": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "fx.acute",
+    "gold": "met",
+    "text": "Back pain began 07/27/2026 after bending to pick up a grandchild, 9 weeks before this visit.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "fx.imaging",
+    "gold": "met",
+    "text": "MRI thoracolumbar spine 09/20/2026: acute osteoporotic L1 compression fracture with bone marrow edema on STIR imaging.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sym.hosp",
+    "gold": "not_met",
+    "text": "Seen in the outpatient spine clinic; not hospitalized for this fracture.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.moderate",
+    "gold": "met",
+    "text": "Pain NRS 6/10 despite 8 weeks of optimal non-surgical management with acetaminophen and calcitonin nasal spray, a thoracolumbar brace and activity modification.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.worsening",
+    "gold": "not_met",
+    "text": "Pain has been stable to slightly improved since the fracture.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "feat.progression",
+    "gold": "met",
+    "text": "Interval increase in L1 vertebral body height loss compared with radiographs from 07/30/2026.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "feat.rdq",
+    "gold": "met",
+    "text": "Roland Morris Disability Questionnaire score 19/24.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "care.osteo",
+    "gold": "met",
+    "text": "Referred for DEXA bone density testing and osteoporosis education; enrolled in the osteoporosis treatment program.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Back pain localizes to the fractured level; afebrile with no signs of infection or discitis.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-08-02",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 08/02/2026\nPatient: Thomas Goyette, 83-year-old male\n\nSubjective:\nMr. Goyette presents for his routine follow-up. He reports feeling generally well with no new complaints. He denies any recent falls or injuries.\n\nObjective:\nVital signs are stable. Physical examination reveals no acute distress. Cardiovascular, respiratory, and abdominal exams are unremarkable. Musculoskeletal exam shows no tenderness or deformity.\n\nAssessment:\nMr. Goyette is an 83-year-old male with stable health status. No new issues identified at this visit.\n\nPlan:\nContinue current management and routine monitoring. Encourage regular physical activity and balanced nutrition. Follow up in 6 months or sooner if any concerns arise.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-09-20",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 09/20/2026\nPatient: Thomas Goyette, 83-year-old male\n\nMRI thoracolumbar spine 09/20/2026: acute osteoporotic L1 compression fracture with bone marrow edema on STIR imaging. Interval increase in L1 vertebral body height loss compared with radiographs from 07/30/2026.\n\nImpression:\nThere is an acute osteoporotic compression fracture at the L1 vertebral body with bone marrow edema evident on STIR sequences. Interval increase in L1 vertebral body height loss compared with radiographs from 07/30/2026.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-27",
+   "title": "Spine Intervention Consultation",
+   "author": "Interventional radiologist",
+   "text": "Spine Intervention Consultation\nDate: 09/27/2026\nPatient: Thomas Goyette, 83-year-old male\n\nHistory:\nBack pain began 07/27/2026 after bending to pick up a grandchild, 9 weeks before this visit. Pain NRS 6/10 despite 8 weeks of optimal non-surgical management with acetaminophen and calcitonin nasal spray, a thoracolumbar brace and activity modification. Pain has been stable to slightly improved since the fracture.\n\nClinical Findings:\nBack pain localizes to the fractured level; afebrile with no signs of infection or discitis. Seen in the outpatient spine clinic; not hospitalized for this fracture.\n\nFunctional Status:\nRoland Morris Disability Questionnaire score 19/24.\n\nManagement:\nReferred for DEXA bone density testing and osteoporosis education; enrolled in the osteoporosis treatment program.\n\nPlan:\nContinue current conservative measures and monitor symptoms. Follow up after DEXA testing to discuss further osteoporosis management and potential interventions.",
+   "source": "llm"
+  }
+ ]
+}

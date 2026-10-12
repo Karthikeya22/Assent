@@ -1,0 +1,157 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-008",
+  "difficulty": "clean",
+  "order_date": "2026-09-17",
+  "patient": {
+   "fhir_id": "a4083bf1-d94c-6c91-ff7b-91deabccf7aa",
+   "name": "Adrian McLaughlin",
+   "sex": "male",
+   "birth_date": "1959-02-04"
+  },
+  "condition": "cpap_intolerance",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-05-28",
+   "psg": "2025-11-04",
+   "sleepmd": "2026-07-20",
+   "ent": "2026-09-15"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 26.7,
+    "unit": "kg/m2",
+    "date": "2026-07-20"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 34.3,
+    "unit": "/h",
+    "date": "2025-11-04"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "met",
+   "dise": "met",
+   "anatomy": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "67-year-old man referred for hypoglossal nerve stimulation evaluation.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "BMI 26.7 kg/m2.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Diagnostic in-laboratory polysomnography performed 11/04/2025.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "Total apnea-hypopnea index (AHI) 34.3 events/hour.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "Central and mixed apneas comprised 10% of all events.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "cpap",
+    "gold": "met",
+    "text": "CPAP intolerance: download shows average use 1.7 hours per night on 40% of nights despite mask refitting; shared decision-making with the patient documented that CPAP is not tolerated.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "met",
+    "text": "Drug-induced sleep endoscopy 09/07/2026: anteroposterior collapse at the velum without complete concentric collapse.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Oropharynx: tonsils size 1, no other anatomic obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.",
+    "slot": "ent",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-05-28",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 05/28/2026\nPatient: Adrian McLaughlin, 67-year-old male\n\nSubjective:\nMr. McLaughlin presents for his routine follow-up visit. He reports feeling well overall with no new complaints. He denies any recent illnesses or changes in his health status.\n\nObjective:\nVital signs are within normal limits. Physical examination reveals no abnormalities. Cardiovascular, respiratory, abdominal, and neurological exams are unremarkable.\n\nAssessment:\nMr. McLaughlin remains in good health. No new issues identified.\n\nPlan:\nContinue current medications and lifestyle. Routine labs and screenings to be scheduled as per guidelines. Follow-up visit in six months or sooner if needed.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2025-11-04",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 11/04/2025\nPatient: Adrian McLaughlin, 66-year-old male\n\nDiagnostic in-laboratory polysomnography performed 11/04/2025. Total apnea-hypopnea index (AHI) 34.3 events/hour. Central and mixed apneas comprised 10% of all events. The remainder of the events were obstructive in nature. Oxygen saturation levels showed intermittent desaturations corresponding to apnea events. Sleep architecture was disrupted with reduced REM sleep percentage. These findings indicate moderate to severe sleep apnea. Further evaluation for treatment options is recommended.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-07-20",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation\nDate: 07/20/2026\nPatient: Adrian McLaughlin, 67-year-old male\n\nReason for Consultation:\nEvaluation and management of sleep-disordered breathing.\n\nHistory:\nMr. McLaughlin presents for follow-up regarding his obstructive sleep apnea treatment. He has been using CPAP therapy but reports difficulty tolerating the device.\n\nPhysical Examination:\nBMI 26.7 kg/m2.\n\nAssessment:\nThe patient demonstrates CPAP intolerance: download shows average use 1.7 hours per night on 40% of nights despite mask refitting; shared decision-making with the patient documented that CPAP is not tolerated.\n\nPlan:\nDiscuss alternative treatment options for obstructive sleep apnea including oral appliance therapy and positional therapy. Referral to dental sleep specialist will be considered. Continue monitoring symptoms and sleep quality. Provide education on sleep hygiene and lifestyle modifications.\n\nFollow-up:\nPatient to return in 3 months or sooner if symptoms worsen or new concerns arise.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-15",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation Note\nDate: 09/15/2026\nPatient: Adrian McLaughlin, 67-year-old male\n\nThis 67-year-old man referred for hypoglossal nerve stimulation evaluation. Drug-induced sleep endoscopy 09/07/2026: anteroposterior collapse at the velum without complete concentric collapse. Oropharynx: tonsils size 1, no other anatomic obstruction. No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.\n\nBased on these findings, the patient is a suitable candidate for hypoglossal nerve stimulation therapy. Further steps will be discussed to proceed with treatment planning.",
+   "source": "llm"
+  }
+ ]
+}

@@ -1,0 +1,157 @@
+{
+ "split": "test",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-030",
+  "difficulty": "buried",
+  "order_date": "2026-09-29",
+  "patient": {
+   "fhir_id": "31e0e1f2-6a63-fcee-b192-7a1f17dbd379",
+   "name": "Earnest Schimmel",
+   "sex": "male",
+   "birth_date": "1956-03-04"
+  },
+  "condition": "cpap_failure",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-06-25",
+   "psg": "2025-09-09",
+   "sleepmd": "2026-08-07",
+   "ent": "2026-09-27"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 25.9,
+    "unit": "kg/m2",
+    "date": "2026-08-07"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 51.1,
+    "unit": "/h",
+    "date": "2025-09-09"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "met",
+   "dise": "met",
+   "anatomy": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "70yo M referred for HGNS eval.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "Wt stable, BMI 25.9.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Attended PSG 09/09/2025.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "AHI 51.1/h.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "CA+MA 17% of total AHI.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "cpap",
+    "gold": "met",
+    "text": "CPAP 13 cmH2O, residual AHI 27.2 despite nightly use = failure.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "met",
+    "text": "DISE 09/20/2026: AP velum collapse, no CCC.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Tonsils 1+, no other obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No NM dz, no NYHA III/IV CHF, no MRI need, can use remote.",
+    "slot": "pcp",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-06-25",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 06/25/2026\nPatient: Earnest Schimmel, 70 y/o M\n\nVitals: Wt stable, BMI 25.9.\nPE: No NM dz, no NYHA III/IV CHF, no MRI need, can use remote.\n\nAssessment: Stable overall. Continue current management. Monitor vitals and labs as per protocol.\n\nPlan: Follow-up in 6 months or sooner if changes occur. Maintain current meds and lifestyle modifications.\n\nNo acute issues noted at this visit.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2025-09-09",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 09/09/2025\nPatient: Earnest Schimmel, 69 y/o M\n\nAttended PSG 09/09/2025. Study revealed severe sleep-disordered breathing. AHI 51.1/h. CA+MA 17% of total AHI. Oxygen desaturation nadir 82%. Sleep architecture fragmented with decreased REM and slow wave sleep. Periodic limb movements within normal limits. No significant arrhythmias noted. CPAP titration recommended given severity of OSA.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-08-07",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation\nDate: 08/07/2026\nPatient: Earnest Schimmel, 70 y/o M\n\nHx: Pt with known OSA, on CPAP therapy.\n\nCurrent Tx: CPAP 13 cmH2O, residual AHI 27.2 despite nightly use = failure.\n\nAssessment: Persistent elevated AHI indicates inadequate control of sleep apnea with current CPAP settings.\n\nPlan: Consider alternative therapies or advanced PAP modalities. Recommend sleep study reassessment and possible referral to ENT for airway evaluation.\n\nFollow-up: Schedule in 3 months or sooner if symptoms worsen.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-27",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation\nDate: 09/27/2026\nPatient: Earnest Schimmel, 70yo M\n\n70yo M referred for HGNS eval. Exam: Tonsils 1+, no other obstruction. DISE 09/20/2026: AP velum collapse, no CCC. Nasal passages patent. No significant tongue base or epiglottic collapse noted. No septal deviation or polyps. Airway assessment consistent with prior findings. Plan: Consider HGNS candidacy based on DISE findings and clinical exam. Follow-up to discuss therapy options and next steps.",
+   "source": "llm"
+  }
+ ]
+}

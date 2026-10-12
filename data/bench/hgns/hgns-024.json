@@ -1,0 +1,157 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-024",
+  "difficulty": "clean",
+  "order_date": "2026-09-22",
+  "patient": {
+   "fhir_id": "e10471a4-e1a5-9e7a-1b3d-7cbfef73a58d",
+   "name": "Filiberto Ryan",
+   "sex": "male",
+   "birth_date": "1937-05-31"
+  },
+  "condition": "cpap_intolerance",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-06-08",
+   "psg": "2025-10-16",
+   "sleepmd": "2026-08-16",
+   "ent": "2026-09-20"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 27.6,
+    "unit": "kg/m2",
+    "date": "2026-08-16"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 56.6,
+    "unit": "/h",
+    "date": "2025-10-16"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "met",
+   "dise": "met",
+   "anatomy": "not_met",
+   "contra": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "89-year-old man referred for hypoglossal nerve stimulation evaluation.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "BMI 27.6 kg/m2.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Diagnostic in-laboratory polysomnography performed 10/16/2025.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "Total apnea-hypopnea index (AHI) 56.6 events/hour.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "Central and mixed apneas comprised 12% of all events.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "cpap",
+    "gold": "met",
+    "text": "CPAP intolerance: download shows average use 1.4 hours per night on 32% of nights despite mask refitting; shared decision-making with the patient documented that CPAP is not tolerated.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "met",
+    "text": "Drug-induced sleep endoscopy 09/04/2026: anteroposterior collapse at the velum without complete concentric collapse.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "not_met",
+    "text": "Oropharynx: tonsils size 4, nearly obstructing the airway.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.",
+    "slot": "ent",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-06-08",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 06/08/2026\nPatient: Filiberto Ryan, 89-year-old male\n\nSubjective:\nMr. Ryan presents today for his routine follow-up visit. He reports feeling generally well with no new complaints. He denies any recent illnesses or hospitalizations.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no acute distress. Cardiovascular, respiratory, abdominal, and neurological exams are unremarkable.\n\nAssessment:\n89-year-old male with stable health status. No new issues identified at this visit.\n\nPlan:\nContinue current medications and lifestyle. Encourage regular exercise and balanced diet. Schedule next routine follow-up in six months. Patient advised to report any new symptoms promptly.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2025-10-16",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 10/16/2025\nPatient: Filiberto Ryan, 88-year-old male\n\nDiagnostic in-laboratory polysomnography performed 10/16/2025. The study demonstrated significant sleep-disordered breathing. Total apnea-hypopnea index (AHI) 56.6 events/hour. Central and mixed apneas comprised 12% of all events. Oxygen saturation showed intermittent drops associated with respiratory events. The findings are consistent with severe obstructive sleep apnea with a notable component of central and mixed apneas. Clinical correlation and consideration for positive airway pressure therapy are recommended.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-08-16",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation Note\nDate: 08/16/2026\nPatient: Filiberto Ryan, 89-year-old male\n\nReason for Consultation:\nEvaluation and management of sleep-disordered breathing.\n\nHistory:\nMr. Ryan has a history of obstructive sleep apnea diagnosed several years ago. He was started on CPAP therapy but reports difficulty tolerating the treatment.\n\nPhysical Examination:\nBMI 27.6 kg/m2.\nNo other significant findings noted on examination relevant to sleep disorder.\n\nSleep Study and CPAP Data:\nCPAP intolerance: download shows average use 1.4 hours per night on 32% of nights despite mask refitting; shared decision-making with the patient documented that CPAP is not tolerated.\n\nAssessment:\nThe patient demonstrates poor adherence to CPAP therapy despite efforts to optimize mask fit and support. Given the low usage and intolerance, alternative treatment options should be considered.\n\nPlan:\n1. Discuss alternative therapies for sleep apnea including oral appliance therapy and positional therapy.\n2. Consider referral to dental sleep specialist for evaluation.\n3. Continue monitoring symptoms and reassess in follow-up.\n4. Educate patient and family on sleep hygiene and safety precautions.\n\nSummary:\nMr. Ryan is an elderly male with obstructive sleep apnea and documented CPAP intolerance. A multidisciplinary approach will be pursued to optimize his sleep health and quality of life.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-20",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation Note\nDate: 09/20/2026\nPatient: Filiberto Ryan, 89-year-old male\n\nReason for Consultation:\n89-year-old man referred for hypoglossal nerve stimulation evaluation.\n\nHistory and Examination:\nThe patient presents for evaluation regarding hypoglossal nerve stimulation as a treatment option. Drug-induced sleep endoscopy 09/04/2026: anteroposterior collapse at the velum without complete concentric collapse. Oropharynx: tonsils size 4, nearly obstructing the airway.\n\nAssessment:\nThe findings indicate significant oropharyngeal obstruction due to enlarged tonsils. The pattern of airway collapse is primarily anteroposterior at the velum, without complete concentric collapse.\n\nPlan:\nNo neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote. Given the patient's airway anatomy and absence of contraindications, hypoglossal nerve stimulation remains a viable treatment option. Further discussion regarding procedural risks and benefits will be conducted.\n\nSummary:\nThe patient is an appropriate candidate for hypoglossal nerve stimulation based on current evaluation and sleep endoscopy findings.",
+   "source": "llm"
+  }
+ ]
+}

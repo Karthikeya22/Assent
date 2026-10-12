@@ -1,0 +1,153 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "pva",
+  "case_id": "pva-012",
+  "difficulty": "missing",
+  "order_date": "2026-09-10",
+  "patient": {
+   "fhir_id": "1c33b867-560e-3196-bb8b-34b7dfb633b2",
+   "name": "Taylor Kunde",
+   "sex": "male",
+   "birth_date": "1955-07-25"
+  },
+  "condition": "stable:L3",
+  "cpt": "22514",
+  "cpt_text": "Percutaneous vertebral augmentation (kyphoplasty), lumbar",
+  "icd10": "M80.08XA",
+  "icd10_text": "Age-related osteoporosis with current pathological fracture, vertebra(e), initial encounter",
+  "dates": {
+   "pcp": "2026-07-11",
+   "inpatient": "2026-09-07",
+   "radiology": "2026-08-28",
+   "consult": "2026-09-09",
+   "onset": "2026-07-02",
+   "xray": "2026-07-07"
+  },
+  "observations": [
+   {
+    "code": "72514-3",
+    "system": "http://loinc.org",
+    "display": "Pain severity 0-10 numeric rating",
+    "value": 5.0,
+    "unit": "{score}",
+    "date": "2026-09-09"
+   },
+   {
+    "code": "vb-height-loss",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Vertebral body height loss",
+    "value": 47.0,
+    "unit": "%",
+    "date": "2026-08-28"
+   }
+  ],
+  "gold": {
+   "fx.acute": "met",
+   "fx.imaging": "met",
+   "sym.hosp": "not_met",
+   "sym.moderate": "met",
+   "sym.worsening": "not_met",
+   "feat.progression": "met",
+   "feat.height": "met",
+   "feat.kyphosis": "met",
+   "feat.rdq": "insufficient",
+   "care.osteo": "met",
+   "contra": "insufficient"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "fx.acute",
+    "gold": "met",
+    "text": "Back pain began 07/02/2026 after bending to pick up a grandchild, 10 weeks before this visit.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "fx.imaging",
+    "gold": "met",
+    "text": "MRI thoracolumbar spine 08/28/2026: acute osteoporotic L3 compression fracture with bone marrow edema on STIR imaging.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sym.hosp",
+    "gold": "not_met",
+    "text": "Seen in the outpatient spine clinic; not hospitalized for this fracture.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.moderate",
+    "gold": "met",
+    "text": "Pain NRS 5/10 despite 9 weeks of optimal non-surgical management with acetaminophen and tramadol, a thoracolumbar brace and activity modification.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.worsening",
+    "gold": "not_met",
+    "text": "Pain has been stable to slightly improved since the fracture.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "feat.progression",
+    "gold": "met",
+    "text": "Interval increase in L3 vertebral body height loss compared with radiographs from 07/07/2026.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "feat.height",
+    "gold": "met",
+    "text": "Approximately 47% loss of L3 vertebral body height.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "feat.kyphosis",
+    "gold": "met",
+    "text": "Focal kyphotic deformity at L3 measuring 24 degrees.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "care.osteo",
+    "gold": "met",
+    "text": "Referred for DEXA bone density testing and osteoporosis education; enrolled in the osteoporosis treatment program.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-07-11",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 07/11/2026\nPatient: Taylor Kunde, 71-year-old male\n\nSubjective:\nMr. Kunde presents for routine follow-up. He reports no new complaints today and feels generally well. No issues with mobility or daily activities were noted.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no abnormalities. Cardiovascular, respiratory, and abdominal exams are unremarkable.\n\nAssessment:\nMr. Kunde is a 71-year-old male in stable condition with no acute concerns at this time.\n\nPlan:\nContinue current management and routine monitoring. Encourage regular exercise and balanced diet. Follow up in 6 months or sooner if any new symptoms arise.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-28",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/28/2026\nPatient: Taylor Kunde, 71-year-old male\n\nMRI thoracolumbar spine 08/28/2026: acute osteoporotic L3 compression fracture with bone marrow edema on STIR imaging. Interval increase in L3 vertebral body height loss compared with radiographs from 07/07/2026. Approximately 47% loss of L3 vertebral body height. Focal kyphotic deformity at L3 measuring 24 degrees.\n\nImpression:\nThe findings are consistent with an acute osteoporotic compression fracture of the L3 vertebral body. There is an interval increase in vertebral body height loss, now approximately 47%, compared to prior imaging. The focal kyphotic deformity at L3 measuring 24 degrees is noted and may have clinical significance.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-09",
+   "title": "Spine Intervention Consultation",
+   "author": "Interventional radiologist",
+   "text": "Spine Intervention Consultation\nDate: 09/09/2026\nPatient: Taylor Kunde, 71-year-old male\n\nHistory:\nBack pain began 07/02/2026 after bending to pick up a grandchild, 10 weeks before this visit. Seen in the outpatient spine clinic; not hospitalized for this fracture. Pain NRS 5/10 despite 9 weeks of optimal non-surgical management with acetaminophen and tramadol, a thoracolumbar brace and activity modification. Pain has been stable to slightly improved since the fracture.\n\nAssessment:\nThe patient presents with a vertebral compression fracture managed conservatively. The current pain level remains moderate but stable.\n\nPlan:\nReferred for DEXA bone density testing and osteoporosis education; enrolled in the osteoporosis treatment program. Continue current pain management and brace use. Monitor symptoms and consider further intervention if pain worsens or functional status declines.",
+   "source": "llm"
+  }
+ ]
+}

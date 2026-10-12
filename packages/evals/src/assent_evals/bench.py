@@ -20,6 +20,8 @@ from assent_agents import llm as llm_mod
 from assent_agents.case_graph import CaseInput, CaseResult, Variant, run_case
 from assent_agents.cassette import Cassette
 from assent_agents.evidence.agent import CaseContext
+from assent_agents.gaps import risk_features
+from assent_agents.logic import gap_keys
 from assent_api.db import SessionLocal
 from assent_api.models import Case, Organization, Patient
 from assent_evals.baselines import BASELINES
@@ -285,6 +287,11 @@ async def main(
                 k: r.verdict.downgraded for k, r in res.leaves.items() if r.verdict.downgraded
             },
             "leaf_pairs": pairs,
+            "risk_features": risk_features(
+                len(gap_keys(tree.root, res.logic.states)),
+                res.objections,
+                {k: r.verdict for k, r in res.leaves.items()},
+            ),
             **_citation_stats(res),
         }
         with log_path.open("a", encoding="utf-8", newline="\n") as f:  # durable per case

@@ -5,8 +5,11 @@ One fast-tier call writes the tasks; any gap the model skips gets a plain templa
 gap is never silently dropped.
 """
 
+import json
 import math
 from dataclasses import dataclass
+from functools import cache
+from pathlib import Path
 from typing import Literal
 
 from pydantic import BaseModel, Field
@@ -92,20 +95,38 @@ async def plan_gaps(
 
 
 # --- denial risk -----------------------------------------------------------------------------
-# shortcut: hand-set weights until Phase 5 fits a calibrated logistic model on the dev split.
-_BIAS = -2.4
-_WEIGHTS = {
-    "blocking_gaps": (1.4, "{n} criteria not yet proven"),
-    "conceded_high": (1.6, "{n} high-severity payer objection(s) conceded"),
-    "conceded_other": (0.5, "{n} other objection(s) conceded"),
-    "weak_support": (2.0, "evidence grounding {pct}% below full"),
-    "judged_share": (0.8, "{pct}% of evidence needed the second-opinion judge"),
+# Fitted by `assent_evals.fit_risk` on dev-split runs; the hand-set prior is the fallback.
+FITTED = Path(__file__).with_name("risk_v1.json")
+PRIOR: tuple[float, dict[str, float]] = (
+    -2.4,
+    {
+        "blocking_gaps": 1.4,
+        "conceded_high": 1.6,
+        "conceded_other": 0.5,
+        "weak_support": 2.0,
+        "judged_share": 0.8,
+    },
+)
+_LABELS = {
+    "blocking_gaps": "{n} criteria not yet proven",
+    "conceded_high": "{n} high-severity payer objection(s) conceded",
+    "conceded_other": "{n} other objection(s) conceded",
+    "weak_support": "evidence grounding {pct}% below full",
+    "judged_share": "{pct}% of evidence needed the second-opinion judge",
 }
 
 
-def denial_risk(
+@cache
+def risk_params() -> tuple[float, dict[str, float]]:
+    if FITTED.exists():
+        d = json.loads(FITTED.read_text("utf-8"))
+        return float(d["bias"]), {k: float(v) for k, v in d["weights"].items()}
+    return PRIOR
+
+
+def risk_features(
     blocking: int, objections: list[Objection], verdicts: dict[str, Verdict]
-) -> tuple[float, list[str]]:
+) -> dict[str, float]:
     support = [
         c.support or 0.0
         for v in verdicts.values()
@@ -114,7 +135,7 @@ def denial_risk(
         if c.verbatim_ok
     ]
     judged = [c.judged for v in verdicts.values() if v.verdict == "met" for c in v.citations]
-    feats = {
+    return {
         "blocking_gaps": float(blocking),
         "conceded_high": float(
             sum(o.status == "conceded" and o.severity == "high" for o in objections)
@@ -125,8 +146,18 @@ def denial_risk(
         "weak_support": 1 - (sum(support) / len(support)) if support else 1.0,
         "judged_share": sum(judged) / len(judged) if judged else 0.0,
     }
-    contrib = {k: _WEIGHTS[k][0] * v for k, v in feats.items()}
-    risk = 1 / (1 + math.exp(-(_BIAS + sum(contrib.values()))))
+
+
+def denial_risk(
+    blocking: int,
+    objections: list[Objection],
+    verdicts: dict[str, Verdict],
+    params: tuple[float, dict[str, float]] | None = None,
+) -> tuple[float, list[str]]:
+    feats = risk_features(blocking, objections, verdicts)
+    bias, weights = params or risk_params()
+    contrib = {k: weights[k] * v for k, v in feats.items()}
+    risk = 1 / (1 + math.exp(-(bias + sum(contrib.values()))))
     top = [k for k, c in sorted(contrib.items(), key=lambda kv: -kv[1]) if c > 0.05][:3]
-    factors = [_WEIGHTS[k][1].format(n=int(feats[k]), pct=round(feats[k] * 100)) for k in top]
+    factors = [_LABELS[k].format(n=int(feats[k]), pct=round(feats[k] * 100)) for k in top]
     return round(risk, 3), factors

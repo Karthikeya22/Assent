@@ -1,0 +1,352 @@
+[
+ {
+  "case_id": "hgns-001",
+  "split": "dev",
+  "difficulty": "buried",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-002",
+  "split": "dev",
+  "difficulty": "contradictory",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-003",
+  "split": "test",
+  "difficulty": "missing",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-004",
+  "split": "test",
+  "difficulty": "clean",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-005",
+  "split": "dev",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-006",
+  "split": "dev",
+  "difficulty": "missing",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-007",
+  "split": "test",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-008",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-009",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-010",
+  "split": "dev",
+  "difficulty": "injection",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-011",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-012",
+  "split": "dev",
+  "difficulty": "contradictory",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-013",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-014",
+  "split": "dev",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-015",
+  "split": "dev",
+  "difficulty": "injection",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-016",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-017",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-018",
+  "split": "test",
+  "difficulty": "clean",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-019",
+  "split": "test",
+  "difficulty": "missing",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-020",
+  "split": "dev",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-021",
+  "split": "test",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-022",
+  "split": "test",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-023",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-024",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-025",
+  "split": "dev",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-026",
+  "split": "test",
+  "difficulty": "contradictory",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-027",
+  "split": "test",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-028",
+  "split": "dev",
+  "difficulty": "missing",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-029",
+  "split": "dev",
+  "difficulty": "contradictory",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-030",
+  "split": "test",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-031",
+  "split": "dev",
+  "difficulty": "buried",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-032",
+  "split": "dev",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-033",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-034",
+  "split": "test",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-035",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-036",
+  "split": "test",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-037",
+  "split": "test",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-038",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-039",
+  "split": "dev",
+  "difficulty": "missing",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-040",
+  "split": "test",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-041",
+  "split": "test",
+  "difficulty": "buried",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-042",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-043",
+  "split": "dev",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-044",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-045",
+  "split": "dev",
+  "difficulty": "missing",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-046",
+  "split": "test",
+  "difficulty": "contradictory",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-047",
+  "split": "test",
+  "difficulty": "missing",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-048",
+  "split": "dev",
+  "difficulty": "missing",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-049",
+  "split": "dev",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "hgns-050",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ }
+]

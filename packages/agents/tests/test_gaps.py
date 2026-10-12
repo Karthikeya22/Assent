@@ -2,7 +2,7 @@ from typing import Any
 
 from assent_agents.adversary import Objection
 from assent_agents.evidence.models import Citation, Verdict
-from assent_agents.gaps import GapPlan, GapTaskOut, denial_risk, gap_inputs, plan_gaps
+from assent_agents.gaps import PRIOR, GapPlan, GapTaskOut, denial_risk, gap_inputs, plan_gaps
 from assent_agents.logic import evaluate, gap_keys
 from assent_agents.policy.tree import CriteriaTree, Node
 
@@ -75,9 +75,9 @@ async def test_plan_covers_every_gap_with_template_fallback() -> None:
 
 
 def test_risk_rises_with_gaps_and_conceded_high_objections() -> None:
-    clean, _ = denial_risk(0, [], {"a": _v("a", "met", 0.95)})
+    clean, _ = denial_risk(0, [], {"a": _v("a", "met", 0.95)}, PRIOR)
     gappy, f1 = denial_risk(
-        2, [Objection("a", "x", "high", status="conceded")], {"a": _v("a", "met")}
+        2, [Objection("a", "x", "high", status="conceded")], {"a": _v("a", "met")}, PRIOR
     )
     assert clean < 0.25 < 0.8 < gappy
     assert f1[0] == "2 criteria not yet proven" and len(f1) <= 3

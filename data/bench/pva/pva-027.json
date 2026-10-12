@@ -1,0 +1,125 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "pva",
+  "case_id": "pva-027",
+  "difficulty": "clean",
+  "order_date": "2026-09-13",
+  "patient": {
+   "fhir_id": "4748b200-bb8e-faea-a24c-729e7f2f6e5f",
+   "name": "Karry Bogisich",
+   "sex": "female",
+   "birth_date": "1950-08-12"
+  },
+  "condition": "hosp:L3",
+  "cpt": "22514",
+  "cpt_text": "Percutaneous vertebral augmentation (kyphoplasty), lumbar",
+  "icd10": "M80.08XA",
+  "icd10_text": "Age-related osteoporosis with current pathological fracture, vertebra(e), initial encounter",
+  "dates": {
+   "pcp": "2026-07-24",
+   "inpatient": "2026-09-10",
+   "radiology": "2026-09-06",
+   "consult": "2026-09-12",
+   "onset": "2026-08-23",
+   "xray": "2026-08-28"
+  },
+  "observations": [
+   {
+    "code": "72514-3",
+    "system": "http://loinc.org",
+    "display": "Pain severity 0-10 numeric rating",
+    "value": 10.0,
+    "unit": "{score}",
+    "date": "2026-09-10"
+   }
+  ],
+  "gold": {
+   "fx.acute": "met",
+   "fx.imaging": "met",
+   "sym.hosp": "met",
+   "sym.moderate": "insufficient",
+   "sym.worsening": "insufficient",
+   "feat.progression": "insufficient",
+   "feat.height": "insufficient",
+   "feat.kyphosis": "insufficient",
+   "feat.rdq": "insufficient",
+   "care.osteo": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "fx.acute",
+    "gold": "met",
+    "text": "Back pain began 08/23/2026 after a fall from standing height, 3 weeks before this visit.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "fx.imaging",
+    "gold": "met",
+    "text": "MRI thoracolumbar spine 09/06/2026: acute osteoporotic L3 compression fracture with bone marrow edema on STIR imaging.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sym.hosp",
+    "gold": "met",
+    "text": "Admitted 09/10/2026 for intractable back pain, NRS 10/10 despite IV analgesia.",
+    "slot": "inpatient",
+    "stale": false
+   },
+   {
+    "leaf": "care.osteo",
+    "gold": "met",
+    "text": "Referred for DEXA bone density testing and osteoporosis education; enrolled in the osteoporosis treatment program.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Back pain localizes to the fractured level; afebrile with no signs of infection or discitis.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-07-24",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 07/24/2026\nPatient: Karry Bogisich, 76-year-old female\n\nSubjective:\nMs. Bogisich presents for routine follow-up. She reports no new complaints today.\n\nObjective:\nVital signs are within normal limits. Physical examination reveals no acute distress. Cardiovascular, respiratory, and abdominal exams are unremarkable. Musculoskeletal exam shows no swelling or deformity.\n\nAssessment:\nStable health status in a 76-year-old female with no new issues reported.\n\nPlan:\nContinue current health maintenance and routine screenings. Follow-up as needed or sooner if new symptoms develop.",
+   "source": "llm"
+  },
+  {
+   "slot": "inpatient",
+   "date": "2026-09-10",
+   "title": "Hospital Admission History and Physical",
+   "author": "Hospitalist",
+   "text": "Hospital Admission History and Physical\nDate: 09/10/2026\nPatient: Karry Bogisich, 76-year-old female\n\nChief Complaint:\nIntractable back pain.\n\nHistory of Present Illness:\nAdmitted 09/10/2026 for intractable back pain, NRS 10/10 despite IV analgesia.\n\nPast Medical History:\nNo additional relevant history provided.\n\nPhysical Examination:\nGeneral: Alert and oriented.\nBack: Tenderness noted on palpation of the lumbar region.\nNeurological: No focal deficits observed.\n\nAssessment:\nSevere back pain requiring inpatient management.\n\nPlan:\nContinue monitoring pain levels and vital signs.\nProvide supportive care and reassess as needed.\nConsult pain management if necessary.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-09-06",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 09/06/2026\nPatient: Karry Bogisich, 76-year-old female\n\nExamination: MRI thoracolumbar spine\n\nFindings:\nMRI thoracolumbar spine 09/06/2026: acute osteoporotic L3 compression fracture with bone marrow edema on STIR imaging.\n\nImpression:\nThere is an acute osteoporotic compression fracture at the L3 vertebral body demonstrated by bone marrow edema on STIR sequences. No other acute abnormalities are identified in the thoracolumbar spine.\n\nRecommendations:\nClinical correlation is advised. Further management should be determined by the referring physician based on this imaging finding.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-12",
+   "title": "Spine Intervention Consultation",
+   "author": "Interventional radiologist",
+   "text": "Spine Intervention Consultation\nDate: 09/12/2026\nPatient: Karry Bogisich, 76-year-old female\nAuthor: Interventional radiologist\n\nBack pain localizes to the fractured level; afebrile with no signs of infection or discitis.\nReferred for DEXA bone density testing and osteoporosis education; enrolled in the osteoporosis treatment program.\nBack pain began 08/23/2026 after a fall from standing height, 3 weeks before this visit.\nReferred for evaluation of vertebral augmentation.\nMedications and allergies reviewed.\nPlan: request prior authorization for kyphoplasty.\n",
+   "source": "template"
+  }
+ ]
+}

@@ -1,0 +1,157 @@
+{
+ "split": "test",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-040",
+  "difficulty": "clean",
+  "order_date": "2026-09-23",
+  "patient": {
+   "fhir_id": "76a2c3b0-c5c5-03da-a59f-3e0f667a0f94",
+   "name": "Shaunna McClure",
+   "sex": "female",
+   "birth_date": "1959-09-06"
+  },
+  "condition": "cpap_intolerance",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-06-23",
+   "psg": "2025-11-16",
+   "sleepmd": "2026-07-29",
+   "ent": "2026-09-21"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 27.9,
+    "unit": "kg/m2",
+    "date": "2026-07-29"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 52.8,
+    "unit": "/h",
+    "date": "2025-11-16"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "met",
+   "dise": "met",
+   "anatomy": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "67-year-old woman referred for hypoglossal nerve stimulation evaluation.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "BMI 27.9 kg/m2.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Diagnostic in-laboratory polysomnography performed 11/16/2025.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "Total apnea-hypopnea index (AHI) 52.8 events/hour.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "Central and mixed apneas comprised 18% of all events.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "cpap",
+    "gold": "met",
+    "text": "CPAP intolerance: download shows average use 1.8 hours per night on 24% of nights despite mask refitting; shared decision-making with the patient documented that CPAP is not tolerated.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "met",
+    "text": "Drug-induced sleep endoscopy 09/08/2026: anteroposterior collapse at the velum without complete concentric collapse.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Oropharynx: tonsils size 1, no other anatomic obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.",
+    "slot": "ent",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-06-23",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 06/23/2026\nPatient: Shaunna McClure, 67-year-old female\n\nSubjective:\nMs. McClure presents today for her routine follow-up visit. She reports feeling generally well with no new complaints. She denies any recent illnesses or changes in her health status.\n\nObjective:\nVital signs are within normal limits. Physical examination reveals no abnormalities. Cardiovascular, respiratory, abdominal, and neurological exams are unremarkable.\n\nAssessment:\nMs. McClure remains in good health. No acute issues identified at this time.\n\nPlan:\nContinue current management and medications. Encourage regular exercise and balanced diet. Schedule routine labs and follow-up in six months or sooner if any concerns arise.\n\nPatient education provided regarding healthy lifestyle maintenance. No further interventions needed at this time.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2025-11-16",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 11/16/2025\nPatient: Shaunna McClure, 66-year-old female\n\nDiagnostic in-laboratory polysomnography performed 11/16/2025. Total apnea-hypopnea index (AHI) 52.8 events/hour. Central and mixed apneas comprised 18% of all events. The study showed disrupted sleep architecture with frequent arousals related to respiratory events. Oxygen saturation levels dropped intermittently during apneas. These findings are consistent with severe sleep-disordered breathing. Further evaluation and treatment planning are recommended.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-07-29",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation\nDate: 07/29/2026\nPatient: Shaunna McClure, 67-year-old female\n\nReason for Consultation:\nEvaluation and management of sleep-related issues.\n\nHistory:\nMs. McClure presents for follow-up regarding her sleep apnea treatment. She has been using CPAP therapy but reports difficulty tolerating the device.\n\nPhysical Examination:\nBMI 27.9 kg/m2.\n\nAssessment:\nThe patient demonstrates CPAP intolerance: download shows average use 1.8 hours per night on 24% of nights despite mask refitting; shared decision-making with the patient documented that CPAP is not tolerated.\n\nPlan:\nDiscuss alternative treatment options for sleep apnea including oral appliance therapy and positional therapy. Recommend follow-up sleep study if symptoms persist or worsen. Continue monitoring and supportive care.\n\nFollow-up:\nSchedule return visit in 3 months or sooner if symptoms change.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-21",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation Note\nDate: 09/21/2026\nPatient: Shaunna McClure, 67-year-old female\n\nReason for Consultation:\n67-year-old woman referred for hypoglossal nerve stimulation evaluation.\n\nClinical Findings:\nDrug-induced sleep endoscopy 09/08/2026: anteroposterior collapse at the velum without complete concentric collapse.\nOropharynx: tonsils size 1, no other anatomic obstruction.\n\nMedical Assessment:\nNo neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.\n\nPlan:\nPatient is a suitable candidate for hypoglossal nerve stimulation based on current evaluation. Further discussion regarding the procedure and next steps will be scheduled.\n\nSummary:\nThe patient presents with obstructive findings appropriate for hypoglossal nerve stimulation therapy. No contraindications identified at this time.",
+   "source": "llm"
+  }
+ ]
+}

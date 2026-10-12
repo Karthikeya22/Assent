@@ -1,0 +1,150 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-006",
+  "difficulty": "missing",
+  "order_date": "2026-09-04",
+  "patient": {
+   "fhir_id": "0d97c922-486e-b83d-a7cd-5cad399366f7",
+   "name": "Lance Morar",
+   "sex": "male",
+   "birth_date": "1954-12-28"
+  },
+  "condition": "cpap_intolerance",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-05-06",
+   "psg": "2026-02-17",
+   "sleepmd": "2026-07-23",
+   "ent": "2026-09-02"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 33.4,
+    "unit": "kg/m2",
+    "date": "2026-07-23"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 57.2,
+    "unit": "/h",
+    "date": "2026-02-17"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "insufficient",
+   "dise": "met",
+   "anatomy": "met",
+   "contra": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "71-year-old man referred for hypoglossal nerve stimulation evaluation.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "BMI 33.4 kg/m2.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Diagnostic in-laboratory polysomnography performed 02/17/2026.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "Total apnea-hypopnea index (AHI) 57.2 events/hour.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "Central and mixed apneas comprised 8% of all events.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "met",
+    "text": "Drug-induced sleep endoscopy 08/22/2026: anteroposterior collapse at the velum without complete concentric collapse.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Oropharynx: tonsils size 1, no other anatomic obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.",
+    "slot": "ent",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-05-06",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 05/06/2026\nPatient: Lance Morar, 72-year-old male\n\nSubjective:\nMr. Morar presents for his routine follow-up visit. He reports feeling generally well with no new complaints. He denies any respiratory difficulties, chest pain, or recent illnesses.\n\nObjective:\nVital signs are within normal limits. Physical examination reveals clear lung sounds bilaterally, regular heart rhythm without murmurs, and no peripheral edema. Neurological and abdominal exams are unremarkable.\n\nAssessment:\nStable health status in a 72-year-old male with no acute issues noted today.\n\nPlan:\nContinue current medications and lifestyle measures. Routine labs and screening tests will be scheduled as per age-appropriate guidelines. Patient advised to report any new symptoms promptly.\n\nFollow-up in 6 months or sooner if needed.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2026-02-17",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 02/17/2026\nPatient: Lance Morar, 72-year-old male\n\nDiagnostic in-laboratory polysomnography performed 02/17/2026. The study demonstrated severe sleep-disordered breathing. Total apnea-hypopnea index (AHI) 57.2 events/hour. Central and mixed apneas comprised 8% of all events. Sleep architecture was disrupted with frequent arousals related to respiratory events. Oxygen saturation showed intermittent desaturations corresponding to apneas and hypopneas.\n\nIn summary, the findings confirm severe sleep apnea with a predominance of obstructive events and a smaller proportion of central and mixed apneas. Clinical correlation and appropriate management are advised.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-07-23",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation\nDate: 07/23/2026\nPatient: Lance Morar, 72-year-old male\n\nReason for Consultation:\nEvaluation of sleep-related concerns and assessment of overall sleep health.\n\nHistory:\nMr. Morar reports experiencing daytime fatigue and occasional morning headaches. He denies any recent changes in sleep patterns or new medications. No history of restless legs or parasomnias noted.\n\nPhysical Examination:\nVital signs are stable. BMI 33.4 kg/m2. No craniofacial abnormalities observed. Neck circumference is within normal limits.\n\nAssessment:\nThe patient presents with symptoms suggestive of possible sleep-disordered breathing. Given his BMI, he is at increased risk for obstructive sleep apnea.\n\nPlan:\nRecommend overnight polysomnography to evaluate for sleep apnea and other sleep disorders. Advise weight management strategies to reduce risk factors. Follow-up after sleep study results to discuss further management options.\n\nSummary:\nMr. Morar is a 72-year-old male with a BMI 33.4 kg/m2 presenting for sleep evaluation. Further diagnostic testing is planned to clarify diagnosis and guide treatment.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-02",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation Note\nDate: 09/02/2026\nPatient: Lance Morar, 72-year-old male\n\nReason for Consultation:\nEvaluation for hypoglossal nerve stimulation.\n\nHistory:\n71-year-old man referred for hypoglossal nerve stimulation evaluation.\n\nExamination:\nDrug-induced sleep endoscopy 08/22/2026: anteroposterior collapse at the velum without complete concentric collapse.\nOropharynx: tonsils size 1, no other anatomic obstruction.\n\nAssessment:\nNo neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.\n\nPlan:\nPatient is a suitable candidate for hypoglossal nerve stimulation based on current evaluation and findings. Further discussion regarding device implantation and follow-up will be scheduled.",
+   "source": "llm"
+  }
+ ]
+}

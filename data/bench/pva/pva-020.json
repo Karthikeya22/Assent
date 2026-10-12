@@ -1,0 +1,125 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "pva",
+  "case_id": "pva-020",
+  "difficulty": "clean",
+  "order_date": "2026-09-12",
+  "patient": {
+   "fhir_id": "016280d2-d2bb-d608-2b26-08eb58346bfd",
+   "name": "Vertie Rutherford",
+   "sex": "female",
+   "birth_date": "1956-06-17"
+  },
+  "condition": "hosp:L2",
+  "cpt": "22514",
+  "cpt_text": "Percutaneous vertebral augmentation (kyphoplasty), lumbar",
+  "icd10": "M80.08XA",
+  "icd10_text": "Age-related osteoporosis with current pathological fracture, vertebra(e), initial encounter",
+  "dates": {
+   "pcp": "2026-05-30",
+   "inpatient": "2026-09-08",
+   "radiology": "2026-09-04",
+   "consult": "2026-09-11",
+   "onset": "2026-08-22",
+   "xray": "2026-08-24"
+  },
+  "observations": [
+   {
+    "code": "72514-3",
+    "system": "http://loinc.org",
+    "display": "Pain severity 0-10 numeric rating",
+    "value": 10.0,
+    "unit": "{score}",
+    "date": "2026-09-08"
+   }
+  ],
+  "gold": {
+   "fx.acute": "met",
+   "fx.imaging": "not_met",
+   "sym.hosp": "met",
+   "sym.moderate": "insufficient",
+   "sym.worsening": "insufficient",
+   "feat.progression": "insufficient",
+   "feat.height": "insufficient",
+   "feat.kyphosis": "insufficient",
+   "feat.rdq": "insufficient",
+   "care.osteo": "met",
+   "contra": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "fx.acute",
+    "gold": "met",
+    "text": "Back pain began 08/22/2026 after a fall from standing height, 3 weeks before this visit.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "fx.imaging",
+    "gold": "not_met",
+    "text": "MRI thoracolumbar spine 09/04/2026: chronic-appearing L2 compression deformity without bone marrow edema.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sym.hosp",
+    "gold": "met",
+    "text": "Admitted 09/08/2026 for intractable back pain, NRS 10/10 despite IV analgesia.",
+    "slot": "inpatient",
+    "stale": false
+   },
+   {
+    "leaf": "care.osteo",
+    "gold": "met",
+    "text": "Referred for DEXA bone density testing and osteoporosis education; enrolled in the osteoporosis treatment program.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Back pain localizes to the fractured level; afebrile with no signs of infection or discitis.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-05-30",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 05/30/2026\nPatient: Vertie Rutherford, 70-year-old female\n\nSubjective:\nVertie Rutherford presents for routine follow-up. She reports no new complaints today. No mention of pain or other symptoms.\n\nObjective:\nVital signs are within normal limits. Physical examination reveals no abnormalities. No tenderness or deformities noted on musculoskeletal exam.\n\nAssessment:\nStable condition. No new findings.\n\nPlan:\nContinue current management. Routine monitoring at next scheduled visit.\n\nNo additional interventions are planned at this time.",
+   "source": "llm"
+  },
+  {
+   "slot": "inpatient",
+   "date": "2026-09-08",
+   "title": "Hospital Admission History and Physical",
+   "author": "Hospitalist",
+   "text": "Hospital Admission History and Physical\nDate: 09/08/2026\nPatient: Vertie Rutherford, 70-year-old female\n\nChief Complaint:\nAdmitted 09/08/2026 for intractable back pain, NRS 10/10 despite IV analgesia.\n\nHistory of Present Illness:\nVertie Rutherford is a 70-year-old female admitted today due to severe back pain that has not responded to intravenous analgesics. The pain intensity is reported as 10 out of 10 on the numeric rating scale.\n\nPast Medical History:\nNo additional relevant medical history documented at this time.\n\nPhysical Examination:\nGeneral: Patient appears in distress due to pain.\nMusculoskeletal: Tenderness noted over the lumbar spine region.\nNeurological: No focal neurological deficits observed.\n\nAssessment:\nSevere intractable back pain requiring hospital admission for pain management and further evaluation.\n\nPlan:\n1. Continue pain control measures with close monitoring.\n2. Obtain imaging studies to evaluate underlying cause.\n3. Consult appropriate specialties as needed.\n4. Monitor neurological status regularly.\n\nSummary:\nVertie Rutherford, a 70-year-old female, admitted on 09/08/2026 for intractable back pain, NRS 10/10 despite IV analgesia, requiring comprehensive inpatient management.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-09-04",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 09/04/2026\nPatient: Vertie Rutherford, 70-year-old female\n\nIndication:\nEvaluation of thoracolumbar spine.\n\nFindings:\nMRI thoracolumbar spine 09/04/2026: chronic-appearing L2 compression deformity without bone marrow edema.\n\nNo acute fractures or marrow edema identified. The remainder of the thoracic and lumbar vertebrae demonstrate normal marrow signal. No evidence of spinal canal or foraminal stenosis.\n\nImpression:\nChronic L2 compression deformity without signs of acute injury or edema.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-11",
+   "title": "Spine Intervention Consultation",
+   "author": "Interventional radiologist",
+   "text": "Spine Intervention Consultation\nDate: 09/11/2026\nPatient: Vertie Rutherford, 70-year-old female\n\nHistory:\nBack pain began 08/22/2026 after a fall from standing height, 3 weeks before this visit. Patient reports localized pain at the site of injury.\n\nPhysical Examination:\nBack pain localizes to the fractured level; afebrile with no signs of infection or discitis. Neurological examination is unremarkable.\n\nImaging:\nRecent imaging confirms a vertebral compression fracture at the affected level.\n\nPlan:\nReferred for DEXA bone density testing and osteoporosis education; enrolled in the osteoporosis treatment program. Consideration for interventional procedures will be based on further evaluation and patient response.\n\nSummary:\nThe patient presents with a recent vertebral fracture following a fall. Current management focuses on bone health assessment and education to prevent future fractures.",
+   "source": "llm"
+  }
+ ]
+}

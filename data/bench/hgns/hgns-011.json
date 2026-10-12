@@ -1,0 +1,157 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-011",
+  "difficulty": "clean",
+  "order_date": "2026-09-20",
+  "patient": {
+   "fhir_id": "67d157a1-e88a-7b5f-af9c-1c890cbea62f",
+   "name": "Ahmed Gerlach",
+   "sex": "male",
+   "birth_date": "1942-09-22"
+  },
+  "condition": "cpap_failure",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-06-05",
+   "psg": "2025-12-16",
+   "sleepmd": "2026-07-25",
+   "ent": "2026-09-18"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 33.8,
+    "unit": "kg/m2",
+    "date": "2026-07-25"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 32.0,
+    "unit": "/h",
+    "date": "2025-12-16"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "met",
+   "dise": "met",
+   "anatomy": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "83-year-old man referred for hypoglossal nerve stimulation evaluation.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "BMI 33.8 kg/m2.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Diagnostic in-laboratory polysomnography performed 12/16/2025.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "Total apnea-hypopnea index (AHI) 32.0 events/hour.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "Central and mixed apneas comprised 15% of all events.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "cpap",
+    "gold": "met",
+    "text": "CPAP failure: residual AHI 25.5 events/hour on CPAP at 9 cmH2O despite consistent nightly use.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "met",
+    "text": "Drug-induced sleep endoscopy 09/01/2026: anteroposterior collapse at the velum without complete concentric collapse.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Oropharynx: tonsils size 1, no other anatomic obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.",
+    "slot": "ent",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-06-05",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 06/05/2026\nPatient: Ahmed Gerlach, 84-year-old male\n\nSubjective:\nMr. Gerlach presents today for his routine follow-up appointment. He reports feeling generally well with no new complaints. He denies any recent changes in his health status.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no acute distress. Cardiovascular, respiratory, abdominal, and neurological exams are unremarkable.\n\nAssessment:\nMr. Gerlach remains in good health for his age. No new issues identified during today's visit.\n\nPlan:\nContinue current medications and lifestyle. Encourage regular exercise and balanced diet. Follow-up in six months or sooner if any concerns arise.\n\nNo additional testing or referrals are indicated at this time.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2025-12-16",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 12/16/2025\nPatient: Ahmed Gerlach, 83-year-old male\n\nDiagnostic in-laboratory polysomnography performed 12/16/2025. Total apnea-hypopnea index (AHI) 32.0 events/hour. Central and mixed apneas comprised 15% of all events. These results indicate moderate to severe obstructive sleep apnea. Recommendations include evaluation for positive airway pressure therapy and follow-up with sleep medicine specialist for management.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-07-25",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation Note\nDate: 07/25/2026\nPatient: Ahmed Gerlach, 84-year-old male\n\nReason for Consultation:\nEvaluation and management of obstructive sleep apnea (OSA) with CPAP therapy.\n\nHistory:\nMr. Gerlach is an 84-year-old male with a diagnosis of OSA currently treated with CPAP. He reports consistent nightly use of his CPAP device.\n\nPhysical Examination:\nBMI 33.8 kg/m2.\n\nAssessment:\nCPAP failure: residual AHI 25.5 events/hour on CPAP at 9 cmH2O despite consistent nightly use.\n\nPlan:\n1. Consider alternative treatment options given CPAP failure.\n2. Discuss potential for bilevel positive airway pressure or advanced therapies.\n3. Recommend follow-up sleep study to assess efficacy of new interventions.\n4. Continue monitoring adherence and symptoms.\n\nSummary:\nMr. Gerlach demonstrates persistent moderate to severe OSA despite adherence to CPAP therapy. Further evaluation and treatment modification are warranted to improve sleep quality and reduce apnea events.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-18",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation Note\nDate: 09/18/2026\nPatient: Ahmed Gerlach, 84-year-old male\n\nReason for Consultation:\nEvaluation for hypoglossal nerve stimulation.\n\nHistory:\n83-year-old man referred for hypoglossal nerve stimulation evaluation.\n\nExamination:\nDrug-induced sleep endoscopy 09/01/2026: anteroposterior collapse at the velum without complete concentric collapse.\nOropharynx: tonsils size 1, no other anatomic obstruction.\n\nAssessment:\nNo neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.\n\nPlan:\nProceed with hypoglossal nerve stimulation evaluation and consider candidacy based on current findings and patient ability to manage device.",
+   "source": "llm"
+  }
+ ]
+}

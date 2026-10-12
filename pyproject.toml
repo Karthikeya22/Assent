@@ -62,7 +62,7 @@ files = ["apps/api/src", "apps/worker/src", "packages/*/src"]
 exclude = ["migrations/"]
 
 [[tool.mypy.overrides]]
-module = ["arq.*", "pgvector.*", "presidio_analyzer.*", "presidio_anonymizer.*", "spacy.*", "sentence_transformers.*", "torch.*"]
+module = ["arq.*", "pgvector.*", "presidio_analyzer.*", "presidio_anonymizer.*", "spacy.*", "sentence_transformers.*", "torch.*", "sklearn.*"]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]

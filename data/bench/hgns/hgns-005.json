@@ -1,0 +1,157 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-005",
+  "difficulty": "buried",
+  "order_date": "2026-09-18",
+  "patient": {
+   "fhir_id": "1c021a10-a968-019a-c27d-aa03f55c2cd3",
+   "name": "Michell VonRueden",
+   "sex": "female",
+   "birth_date": "1940-05-26"
+  },
+  "condition": "cpap_intolerance",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-05-01",
+   "psg": "2025-11-28",
+   "sleepmd": "2026-07-31",
+   "ent": "2026-09-16"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 27.4,
+    "unit": "kg/m2",
+    "date": "2026-07-31"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 52.5,
+    "unit": "/h",
+    "date": "2025-11-28"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "met",
+   "dise": "met",
+   "anatomy": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "86yo W referred for HGNS eval.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "Wt stable, BMI 27.4.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Attended PSG 11/28/2025.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "AHI 52.5/h.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "CA+MA 13% of total AHI.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "cpap",
+    "gold": "met",
+    "text": "CPAP dl avg 2.2 h/night, 25% nights despite mask refit; SDM w/ pt: CPAP intolerant.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "met",
+    "text": "DISE 08/31/2026: AP velum collapse, no CCC.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Tonsils 1+, no other obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No NM dz, no NYHA III/IV CHF, no MRI need, can use remote.",
+    "slot": "pcp",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-05-01",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 05/01/2026\nPatient: Michell VonRueden, 86 y/o F\n\nWt stable, BMI 27.4. Vitals WNL. No acute distress. PE: lungs clear, heart RRR, no murmurs. Abd soft, NT, no HSM. Neuro grossly intact. No edema.\n\nLabs reviewed, no significant changes. Meds reconciled, adherence good. Discussed lifestyle, diet, and exercise. No new complaints.\n\nNo NM dz, no NYHA III/IV CHF, no MRI need, can use remote.\n\nPlan: Continue current meds, monitor labs q3mo, follow-up in 3 months or prn.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2025-11-28",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 11/28/2025\nPatient: Michell VonRueden, 85 y.o. F\n\nAttended PSG 11/28/2025. Study revealed severe sleep-disordered breathing. AHI 52.5/h. CA+MA 13% of total AHI. Oxygen desaturation nadir 82%. Sleep architecture fragmented with reduced REM and slow wave sleep. Periodic limb movements within normal limits. No significant cardiac arrhythmias noted during study. CPAP titration recommended given severity of apnea.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-07-31",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation\nDate: 07/31/2026\nPatient: Michell VonRueden, 86 y/o F\n\nHx: OSA dx years ago, CPAP started. Compliance suboptimal.\n\nCPAP dl avg 2.2 h/night, 25% nights despite mask refit; SDM w/ pt: CPAP intolerant.\n\nPt reports persistent daytime somnolence, fragmented sleep. No new symptoms.\n\nPlan: Consider alternative therapies, possible oral appliance eval. Sleep hygiene reinforced. Follow-up in 3 mo or prn.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-16",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation\nDate: 09/16/2026\nPatient: Michell VonRueden, 86yo W\n\n86yo W referred for HGNS eval. PMH noncontributory. No acute distress.\n\nExam: Oropharynx: Tonsils 1+, no other obstruction. Nasal passages patent. No septal deviation.\n\nDISE 08/31/2026: AP velum collapse, no CCC.\n\nAssessment: Findings consistent with velopharyngeal collapse without concentric circumferential collapse. Tonsillar hypertrophy minimal.\n\nPlan: Consider candidacy for HGNS therapy. Further sleep study data to be reviewed. Follow-up in 4 weeks.",
+   "source": "llm"
+  }
+ ]
+}

@@ -199,6 +199,7 @@ async def main(
     variant: str = "full",
     max_usd: float = 8.0,
     inject: bool = False,
+    min_free_gb: float = MIN_FREE_GB,
 ) -> dict[str, Any]:
     if variant in BASELINES and which != "openai":
         raise SystemExit(
@@ -239,7 +240,7 @@ async def main(
         if llm_mod.usage["cost_usd"] - start_usd >= max_usd:
             print(f"stopping before {m['case_id']}: spent ${max_usd} this run (--max-usd)")
             break
-        free, need = free_ram_gb(), MIN_FREE_GB_LOADED if ran else MIN_FREE_GB
+        free, need = free_ram_gb(), min(MIN_FREE_GB_LOADED, min_free_gb) if ran else min_free_gb
         if free is not None and free < need:
             print(
                 f"stopping before {m['case_id']}: only {free:.1f} GB RAM free (need "
@@ -327,9 +328,14 @@ if __name__ == "__main__":
     ap.add_argument(
         "--max-usd", type=float, default=8.0, help="stop starting cases past this spend"
     )
+    ap.add_argument("--min-free-gb", type=float, default=MIN_FREE_GB, help="RAM gate (paging ok)")
     ap.add_argument("--inject", action="store_true", help="not-ready cases + an attack note")
     ap.add_argument("--llm", default="oracle", choices=["oracle", "openai"])
     ap.add_argument("--limit", type=int)
     ap.add_argument("--name", help="run log name (resume by reusing it); default <llm>-<split>")
     a = ap.parse_args()
-    asyncio.run(main(a.split, a.llm, a.limit, a.name, a.family, a.variant, a.max_usd, a.inject))
+    asyncio.run(
+        main(
+            a.split, a.llm, a.limit, a.name, a.family, a.variant, a.max_usd, a.inject, a.min_free_gb
+        )
+    )

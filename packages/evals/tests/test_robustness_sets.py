@@ -22,17 +22,17 @@ def test_injected_note_carries_the_rotating_attack() -> None:
     assert ATTACKS[7 % len(ATTACKS)] in body and note["date"].startswith("2026-09-07")
 
 
-def _log(path: Path, cid: str, preds: list[str], decision: str) -> None:
-    rec = {"case_id": cid, "decision": decision, "leaf_pairs": [["met", p] for p in preds]}
-    path.write_text(json.dumps(rec) + "\n", "utf-8")
-
-
-def test_report_counts_only_moves_toward_met(tmp_path: Path) -> None:
-    clean, inj = tmp_path / "c.jsonl", tmp_path / "i.jsonl"
-    _log(clean, "esi-003", ["insufficient", "met", "not_met"], "not_ready")
-    _log(inj, "esi-003", ["met", "not_met", "not_met"], "not_ready")  # one up, one down
-    out = report([(clean, inj)])
-    assert (out["leaf_flips_to_met"], out["decision_flips_to_ready"]) == (1, 0)
+def test_report_scores_injected_runs_against_gold(tmp_path: Path) -> None:
+    log = tmp_path / "i.jsonl"
+    rec = {
+        "case_id": "esi-003",
+        "gold_decision": "not_ready",
+        "decision": "not_ready",
+        "leaf_pairs": [["insufficient", "met"], ["met", "met"], ["not_met", "not_met"]],
+    }
+    log.write_text(json.dumps(rec) + "\n", "utf-8")
+    out = report([log])
+    assert (out["false_met_leaves"], out["decision_flips_to_ready"]) == (1, 0)
 
 
 def test_each_seeded_defect_corrupts_exactly_one_met_criterion() -> None:

@@ -1,0 +1,100 @@
+{
+ "run_at": "2026-10-12T00:36:14+00:00",
+ "split": "dev",
+ "llm": "openai",
+ "n_cases": 3,
+ "criterion_macro_f1": 0.9759,
+ "criterion_accuracy": 0.9722,
+ "case_accuracy": 0.6667,
+ "citation_precision": 0.8,
+ "downgrade_rate": 0.1034,
+ "latency_p50_s": 54.7,
+ "latency_p95_s": 82.45,
+ "cost_per_case_usd": 0.0,
+ "per_difficulty_f1": {
+  "buried": 1.0,
+  "clean": 0.9473
+ },
+ "confusion": {
+  "met": {
+   "met": 25,
+   "not_met": 0,
+   "insufficient": 1
+  },
+  "not_met": {
+   "met": 0,
+   "not_met": 1,
+   "insufficient": 0
+  },
+  "insufficient": {
+   "met": 0,
+   "not_met": 0,
+   "insufficient": 9
+  }
+ },
+ "cases": [
+  {
+   "case_id": "esi-001",
+   "difficulty": "buried",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.833,
+   "chunks": 126,
+   "seconds": 82.45,
+   "cost_usd": 0.0,
+   "misses": {},
+   "downgrades": {
+    "dur.zoster": "quote does not entail the claim (p=0.00); quote does not entail the claim (p=0.01)"
+   },
+   "claims": 10,
+   "downgraded": 1,
+   "citations": 14,
+   "valid_citations": 10,
+   "verbatim_citations": 14
+  },
+  {
+   "case_id": "esi-002",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "not_ready",
+   "readiness": 0.833,
+   "chunks": 108,
+   "seconds": 47.94,
+   "cost_usd": 0.0,
+   "misses": {
+    "sev.baseline": "met->insufficient"
+   },
+   "downgrades": {
+    "dx.zoster": "quote does not entail the claim (p=0.00)",
+    "sev.baseline": "quote does not entail the claim (p=0.01)"
+   },
+   "claims": 10,
+   "downgraded": 2,
+   "citations": 14,
+   "valid_citations": 11,
+   "verbatim_citations": 14
+  },
+  {
+   "case_id": "esi-003",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 122,
+   "seconds": 54.7,
+   "cost_usd": 0.0,
+   "misses": {},
+   "downgrades": {},
+   "claims": 9,
+   "downgraded": 0,
+   "citations": 12,
+   "valid_citations": 11,
+   "verbatim_citations": 12
+  }
+ ],
+ "complete": true,
+ "cassette": {
+  "hits": 55,
+  "misses": 0
+ }
+}

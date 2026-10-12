@@ -1,0 +1,85 @@
+{
+ "run_at": "2026-10-10T04:57:27+00:00",
+ "split": "dev",
+ "llm": "oracle",
+ "n_cases": 3,
+ "criterion_macro_f1": 1.0,
+ "criterion_accuracy": 1.0,
+ "case_accuracy": 1.0,
+ "citation_precision": 1.0,
+ "downgrade_rate": 0.0,
+ "latency_p50_s": 52.93,
+ "latency_p95_s": 101.83,
+ "per_difficulty_f1": {
+  "buried": 1.0,
+  "clean": 1.0
+ },
+ "confusion": {
+  "met": {
+   "met": 26,
+   "not_met": 0,
+   "insufficient": 0
+  },
+  "not_met": {
+   "met": 0,
+   "not_met": 1,
+   "insufficient": 0
+  },
+  "insufficient": {
+   "met": 0,
+   "not_met": 0,
+   "insufficient": 9
+  }
+ },
+ "cassette": null,
+ "cases": [
+  {
+   "case_id": "esi-001",
+   "difficulty": "buried",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.833,
+   "chunks": 126,
+   "seconds": 101.83,
+   "misses": {},
+   "downgrades": {},
+   "claims": 9,
+   "downgraded": 0,
+   "citations": 9,
+   "valid_citations": 9,
+   "verbatim_citations": 9
+  },
+  {
+   "case_id": "esi-002",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 108,
+   "seconds": 41.19,
+   "misses": {},
+   "downgrades": {},
+   "claims": 9,
+   "downgraded": 0,
+   "citations": 9,
+   "valid_citations": 9,
+   "verbatim_citations": 9
+  },
+  {
+   "case_id": "esi-003",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 122,
+   "seconds": 52.93,
+   "misses": {},
+   "downgrades": {},
+   "claims": 9,
+   "downgraded": 0,
+   "citations": 9,
+   "valid_citations": 9,
+   "verbatim_citations": 9
+  }
+ ]
+}

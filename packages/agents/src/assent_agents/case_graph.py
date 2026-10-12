@@ -146,9 +146,19 @@ def build_graph(
         leaf: Node = state["leaf"]
         since = inp.ctx.order_date - timedelta(days=leaf.lookback_days or inp.lookback_days)
 
+        headers: dict[str, str] = {}  # chunk id -> "Type MM/DD/YYYY", context for the verifier
+
         async def search(queries: list[str]) -> Any:
             async with sessions() as s:
                 hits = await hybrid_search(s, inp.case_id, queries, since=since)
+            headers.update(
+                {
+                    str(h.chunk_id): f"{h.resource_type} {h.date:%m/%d/%Y}"
+                    if h.date
+                    else h.resource_type
+                    for h in hits
+                }
+            )
             await emit(
                 event(
                     "retrieval",
@@ -170,7 +180,7 @@ def build_graph(
             await emit(event("node_started", node="evidence_agent", criterion_id=leaf.key))
             guarded = phi_guard(llm, inp.patient_names)
             raw, texts, trace = await run_evidence(leaf, inp.ctx, search, guarded)
-            checked = await asyncio.to_thread(verify, raw, texts, nli)
+            checked = await asyncio.to_thread(verify, raw, texts, nli, headers=headers)
             await emit(
                 event(
                     "verdict",

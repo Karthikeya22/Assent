@@ -78,7 +78,8 @@ def _citation_stats(res: CaseResult) -> dict[str, int]:
     }
 
 
-MIN_FREE_GB = 1.5  # each case loads embeddings + reranker + NLI (~2 GB) on a 7 GB laptop
+MIN_FREE_GB = 1.5  # the first case loads embeddings + reranker + NLI (~2 GB) on a 7 GB laptop
+MIN_FREE_GB_LOADED = 0.5  # later cases reuse the loaded models
 
 
 def free_ram_gb() -> float | None:
@@ -170,14 +171,15 @@ async def main(
     done = load_done(log_path)
     if done:
         print(f"resuming {log_path.name}: {len(done)} cases already done")
+    ran = False
     for m in manifest:
         if m["case_id"] in done:
             continue
-        free = free_ram_gb()
-        if free is not None and free < MIN_FREE_GB:
+        free, need = free_ram_gb(), MIN_FREE_GB_LOADED if ran else MIN_FREE_GB
+        if free is not None and free < need:
             print(
                 f"stopping before {m['case_id']}: only {free:.1f} GB RAM free (need "
-                f"{MIN_FREE_GB}). Close browsers/editors and rerun; finished cases are kept."
+                f"{need}). Close browsers/editors and rerun; finished cases are kept."
             )
             break
         facts = json.loads((BENCH / f"{m['case_id']}.json").read_text("utf-8"))["facts"]
@@ -223,6 +225,7 @@ async def main(
         with log_path.open("a", encoding="utf-8", newline="\n") as f:  # durable per case
             f.write(json.dumps(rec) + "\n")
         done[m["case_id"]] = rec
+        ran = True
         print(
             f"{m['case_id']} {m['difficulty']:13} gold={facts['decision']:9} "
             f"pred={decision:9} misses={len(rec['misses'])} {seconds:5.1f}s "

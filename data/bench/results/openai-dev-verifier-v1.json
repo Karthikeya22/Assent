@@ -1,0 +1,67 @@
+{
+ "run_at": "2026-10-12T00:22:30+00:00",
+ "split": "dev",
+ "llm": "openai",
+ "n_cases": 1,
+ "criterion_macro_f1": 0.812,
+ "criterion_accuracy": 0.75,
+ "case_accuracy": 1.0,
+ "citation_precision": 0.4286,
+ "downgrade_rate": 0.4,
+ "latency_p50_s": 100.5,
+ "latency_p95_s": 100.5,
+ "cost_per_case_usd": 0.1056,
+ "per_difficulty_f1": {
+  "buried": 0.812
+ },
+ "confusion": {
+  "met": {
+   "met": 5,
+   "not_met": 0,
+   "insufficient": 3
+  },
+  "not_met": {
+   "met": 0,
+   "not_met": 1,
+   "insufficient": 0
+  },
+  "insufficient": {
+   "met": 0,
+   "not_met": 0,
+   "insufficient": 3
+  }
+ },
+ "cases": [
+  {
+   "case_id": "esi-001",
+   "difficulty": "buried",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.333,
+   "chunks": 126,
+   "seconds": 100.5,
+   "cost_usd": 0.10561,
+   "misses": {
+    "dx.radic": "met->insufficient",
+    "sev.baseline": "met->insufficient",
+    "dur.pain": "met->insufficient"
+   },
+   "downgrades": {
+    "dx.radic": "quote does not entail the claim (p=0.00); quote does not entail the claim (p=0.02)",
+    "sev.baseline": "quote does not entail the claim (p=0.00)",
+    "dur.pain": "quote does not entail the claim (p=0.00)",
+    "dur.zoster": "quote does not entail the claim (p=0.00); quote does not entail the claim (p=0.16)"
+   },
+   "claims": 10,
+   "downgraded": 4,
+   "citations": 14,
+   "valid_citations": 6,
+   "verbatim_citations": 14
+  }
+ ],
+ "complete": false,
+ "cassette": {
+  "hits": 0,
+  "misses": 19
+ }
+}

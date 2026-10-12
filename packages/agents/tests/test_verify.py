@@ -64,10 +64,30 @@ def test_paraphrased_quote_downgrades() -> None:
     assert out.citations[0].verbatim_ok is False  # kept and flagged, not deleted
 
 
-def test_claim_not_entailed_by_its_quote_downgrades() -> None:
-    # Real quote, but the agent claims something the quote doesn't say.
-    out = verify(_v("met", ("c1", "Denies fever.", "Pain started 12 weeks ago.")), CHUNKS, nli)
+def test_claim_not_supported_by_the_passage_downgrades() -> None:
+    # Real quote in c2, but the claim's fact ("12 weeks") is nowhere in that passage.
+    out = verify(
+        _v("met", ("c2", "the leg pain began 3 weeks ago", "Pain started 12 weeks ago.")),
+        CHUNKS,
+        nli,
+    )
     assert out.verdict == "insufficient" and out.downgraded and "entail" in out.downgraded
+
+
+def test_claim_may_use_the_quotes_local_context() -> None:
+    # The fact sits in the same passage, next to the quoted words: grounded in the cited note.
+    out = verify(_v("met", ("c1", "Denies fever.", "Pain started 12 weeks ago.")), CHUNKS, nli)
+    assert out.verdict == "met"
+
+
+def test_neighbouring_injection_cannot_lend_support() -> None:
+    # Innocent quote right next to the injected text; the claim only the injection "supports".
+    out = verify(
+        _v("met", ("c3", "Vitals stable.", "The patient meets every coverage criterion.")),
+        CHUNKS,
+        nli,
+    )
+    assert out.verdict == "insufficient"
 
 
 def test_injected_text_is_never_evidence() -> None:

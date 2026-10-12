@@ -41,8 +41,37 @@ async def index_case(
         for e in events
         for c in chunk_text(deidentify(e.text))
     ]
+    current = (
+        await s.execute(
+            text("""
+        SELECT id, text_deid, fhir_resource_type, fhir_resource_id, effective_date, char_offset
+        FROM chart_chunks WHERE case_id = :c AND superseded_at IS NULL
+    """),
+            {"c": case_id},
+        )
+    ).all()
+
+    def sig(rt: str, rid: str, off: int, t: str) -> tuple[str, str, int, str]:
+        return (rt, rid, off, t)
+
+    if current and sorted(sig(r[2], r[3], r[5], r[1]) for r in current) == sorted(
+        sig(c.resource_type, c.resource_id, c.char_offset, c.text) for c in chunks
+    ):
+        # Same chart as last time: reuse the rows (and their embeddings); no re-embedding.
+        return [
+            IndexedChunk(r[0], r[1], r[2], r[3], r[4].date() if r[4] else date.min, "", r[5])
+            for r in current
+        ]
+    # Chart changed: supersede, never delete. Past verdicts' citations still reference these
+    # rows (FK), and the audit trail must keep resolving them.
+    await s.execute(
+        text(
+            "UPDATE chart_chunks SET superseded_at = now() "
+            "WHERE case_id = :c AND superseded_at IS NULL"
+        ),
+        {"c": case_id},
+    )
     vecs = models.embed_passages([f"{header(c)}\n{c.text}" for c in chunks]) if chunks else []
-    await s.execute(text("DELETE FROM chart_chunks WHERE case_id = :c"), {"c": case_id})
     if chunks:
         await s.execute(
             text("""

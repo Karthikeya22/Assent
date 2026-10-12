@@ -36,11 +36,12 @@ _FTS = """
     SELECT id FROM chart_chunks
     CROSS JOIN LATERAL (SELECT CAST(replace(CAST(plainto_tsquery('english', :q) AS text),
                                             '&', '|') AS tsquery) AS q) x
-    WHERE case_id = :c AND tsv @@ x.q
+    WHERE case_id = :c AND superseded_at IS NULL AND tsv @@ x.q
     ORDER BY ts_rank_cd(tsv, x.q) DESC LIMIT :n
 """
 _DENSE = """
-    SELECT id FROM chart_chunks WHERE case_id = :c AND embedding IS NOT NULL
+    SELECT id FROM chart_chunks
+    WHERE case_id = :c AND superseded_at IS NULL AND embedding IS NOT NULL
     ORDER BY embedding <=> CAST(:v AS vector) LIMIT :n
 """
 

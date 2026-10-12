@@ -2,6 +2,8 @@ import json
 from datetime import date, timedelta
 from pathlib import Path
 
+from sqlalchemy import text
+
 from assent_api.db import SessionLocal
 from assent_api.models import Case, Patient, User
 from assent_fhir.timeline import TimelineEvent
@@ -75,3 +77,29 @@ async def test_index_and_hybrid_search_finds_the_pt_sentence(users: dict[str, Us
             since=date.fromisoformat(facts["order_date"]) + timedelta(days=1),
         )
         assert future == []
+
+        # Re-index with the same chart: rows are reused (same ids, no re-embedding).
+        again = await index_case(s, case.id, events, deidentify=lambda t: t)
+        await s.commit()
+        assert {c.id for c in again} == {c.id for c in chunks}
+
+        # Changed chart: old rows are superseded, never deleted; search sees only the new ones.
+        changed = [
+            *events[:-1],
+            TimelineEvent(
+                "DocumentReference",
+                "note-new",
+                events[-1].date,
+                "note",
+                "Addendum",
+                "Addendum: physical therapy completed.",
+            ),
+        ]
+        new = await index_case(s, case.id, changed, deidentify=lambda t: t)
+        await s.commit()
+        total = await s.scalar(
+            text("SELECT count(*) FROM chart_chunks WHERE case_id = :c"), {"c": case.id}
+        )
+        assert total == len(chunks) + len(new)
+        hits = await hybrid_search(s, case.id, ["physical therapy addendum"], k=50)
+        assert {h.chunk_id for h in hits} <= {c.id for c in new}

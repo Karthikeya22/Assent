@@ -185,7 +185,7 @@ async def case_timeline(case_id: uuid.UUID, user: CurrentUser, s: Session) -> li
     rows = (
         await s.scalars(
             select(ChartChunk)
-            .where(ChartChunk.case_id == case_id)
+            .where(ChartChunk.case_id == case_id, ChartChunk.superseded_at.is_(None))
             .order_by(
                 ChartChunk.effective_date.desc().nulls_last(),
                 ChartChunk.fhir_resource_id,

@@ -242,6 +242,9 @@ class ChartChunk(Base):
     char_offset: Mapped[int] = mapped_column(Integer, default=0)
     embedding: Mapped[list[float] | None] = mapped_column(Vector(get_settings().embed_dim))
     tsv: Mapped[Any] = mapped_column(TSVECTOR, nullable=True)
+    # Set when a re-index replaces this chunk. Superseded chunks are never deleted: past
+    # verdicts' citations still point at them (audit trail); search ignores them.
+    superseded_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), index=True)
 
 
 # --- runs & evidence -----------------------------------------------------------

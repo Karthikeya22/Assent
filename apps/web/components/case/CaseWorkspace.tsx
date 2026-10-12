@@ -87,7 +87,12 @@ export function CaseWorkspace({
 
   // Finished runs load from the DB; live runs stream (the server replays their full log).
   useEffect(() => {
-    if (!liveRun) useRunStore.getState().reset(verdicts.length ? fromDb(root, verdicts, detail, review) : initialRunState);
+    if (liveRun) return;
+    if (detail.latest_run?.status === "failed") {
+      useRunStore.getState().reset({ ...initialRunState, status: "failed", error: "the last run failed. Re-run to retry." });
+    } else {
+      useRunStore.getState().reset(verdicts.length ? fromDb(root, verdicts, detail, review) : initialRunState);
+    }
   }, [liveRun, verdicts, root, detail, review]);
   useRunStream(liveRun);
 

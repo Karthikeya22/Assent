@@ -131,6 +131,15 @@ Measured on the Assent benchmark (see BUILD_PLAN.md §3). Fill in real numbers o
 | Cost per case | All model calls | < $0.15 | **$0.093** |
 | Lift vs. baseline | vs. single long-context prompt and naive RAG | Report it, whatever it is | 9 same cases: Assent F1 **0.917** vs long-context 0.766; but long-context decided all 9 correctly (Assent 7/9) while **28% of its claims had no valid citation** (Assent 0%). Naive RAG not run (budget). |
 
+**Locked test split (run once, 2026-10-12, v2 code; 6 cases per family, trimmed for cost).**
+
+| Family | Cases | Criterion macro-F1 | Decisions correct | False ready | False not ready | Citation precision | Unsupported | Cost/case |
+|---|---|---|---|---|---|---|---|---|
+| ESI | 6 | 0.786 | 5/6 | 0 | 1 | 83% | 0% | $0.089 |
+| HGNS | 6 | 0.656 | 6/6 | 0 | 0 | 87% | 0% | $0.068 |
+| PVA | 6 | 0.864 | 5/6 | 0 | 1 | 91% | 0% | $0.081 |
+| **All** | **18** | **0.813** | **16/18 (89%)** | **0** | 2 | 86% | 0% | $0.079 |
+
 **Phase 5, all three families (dev, 2026-10-12).** Trimmed for cost: HGNS and PVA 12 dev cases each. "v2" = after two fixes (contraindication evidence must actually rule contraindications out; family-specific search hints).
 
 | Family | Cases | Decisions correct (v1 → v2) | False ready (v1 → v2) | Criterion misses (v1 → v2) | Citation precision | Unsupported |
@@ -141,7 +150,7 @@ Measured on the Assent benchmark (see BUILD_PLAN.md §3). Fill in real numbers o
 
 The criterion macro-F1 on 12 cases is unstable (HGNS 0.58 → 0.36 with the same number of misses, because the rare `not_met` class dominates the average); report misses and decisions instead until the test split runs. Real cost per case is $0.06–0.09; v2 logs look cheaper only because recorded calls replayed.
 
-Injection: 4 attacked not-ready cases (ESI and HGNS), 0 decisions flipped and 0 criteria wrongly met, including 1 attack the keyword screen missed. Risk model (logistic regression, 24 v1 HGNS+PVA dev cases, 5-fold CV): Brier 0.210 / AUC 0.748 / ECE 0.154, against the hand prior's 0.231 / 0.699 / 0.151. **The locked test split has not been run yet** (stopped twice for low memory: 2 of 18 cases done).
+Injection: 6 attacked not-ready cases (2 per family), 0 decisions flipped and 0 criteria wrongly met, including 2 attacks the keyword screen missed. Risk model (logistic regression, 24 v1 HGNS+PVA dev cases, 5-fold CV): Brier 0.210 / AUC 0.748 / ECE 0.154, against the hand prior's 0.231 / 0.699 / 0.151.
 
 Setup: gpt-4.1 evidence agents, gpt-4.1-mini judge, local bge-small / MiniLM rerank / DeBERTa-v3-base NLI, verifier = verbatim + sentence-window NLI + judge on `met` only. Raw logs are in `data/bench/results/openai-dev-judge-met.jsonl`. The test split is still locked. Known gap: the errors are conservative (`met` → `insufficient`), clustered on rehab, contraindication and baseline-scale criteria.
 

@@ -1,0 +1,106 @@
+{
+ "run_at": "2026-10-12T20:22:25+00:00",
+ "split": "dev",
+ "llm": "openai",
+ "n_cases": 2,
+ "criterion_macro_f1": 0.7889,
+ "criterion_accuracy": 0.8182,
+ "case_accuracy": 1.0,
+ "citation_precision": 0.9286,
+ "downgrade_rate": 0.0714,
+ "unsupported_claim_rate": 0.0,
+ "latency_p50_s": 71.82,
+ "latency_p95_s": 122.75,
+ "cost_per_case_usd": 0.0062,
+ "per_difficulty_f1": {
+  "buried": 0.7593,
+  "contradictory": 0.7919
+ },
+ "confusion": {
+  "met": {
+   "met": 9,
+   "not_met": 1,
+   "insufficient": 1
+  },
+  "not_met": {
+   "met": 0,
+   "not_met": 3,
+   "insufficient": 2
+  },
+  "insufficient": {
+   "met": 0,
+   "not_met": 0,
+   "insufficient": 6
+  }
+ },
+ "cases": [
+  {
+   "case_id": "pva-002",
+   "difficulty": "buried",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.5,
+   "chunks": 57,
+   "seconds": 122.75,
+   "cost_usd": 0.01248,
+   "misses": {
+    "sym.moderate": "met->not_met",
+    "contra": "not_met->insufficient"
+   },
+   "downgrades": {},
+   "risk_features": {
+    "blocking_gaps": 3.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.0045999999999999375,
+    "judged_share": 0.0
+   },
+   "final_claims": 6,
+   "unsupported": 0,
+   "claims": 6,
+   "downgraded": 0,
+   "citations": 6,
+   "valid_citations": 6,
+   "verbatim_citations": 6
+  },
+  {
+   "case_id": "pva-011",
+   "difficulty": "contradictory",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.5,
+   "chunks": 89,
+   "seconds": 71.82,
+   "cost_usd": 0.0,
+   "misses": {
+    "fx.acute": "not_met->insufficient",
+    "contra": "met->insufficient"
+   },
+   "downgrades": {
+    "fx.acute": "quote does not entail the claim (p=0.01)"
+   },
+   "risk_features": {
+    "blocking_gaps": 2.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.0036200000000000676,
+    "judged_share": 0.0
+   },
+   "final_claims": 7,
+   "unsupported": 0,
+   "claims": 8,
+   "downgraded": 1,
+   "citations": 8,
+   "valid_citations": 7,
+   "verbatim_citations": 8
+  }
+ ],
+ "family": "pva",
+ "variant": "full",
+ "inject": true,
+ "complete": true,
+ "cassette": {
+  "hits": 39,
+  "misses": 3
+ }
+}

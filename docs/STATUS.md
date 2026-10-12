@@ -4,7 +4,7 @@ Read this first in a new session. Specs: PRODUCT.md, ARCHITECTURE.md, FRONTEND.m
 
 ## Where things are
 - Repo `D:\Projects\assent`. Stacked branches: `phase-0-foundations` → `phase-1-esi-policy-data` → `phase-2-core-agent` → `phase-4-adversary` (contains Phase 3) → `phase-5-breadth` (current). **No GitHub remote and nothing pushed.** Ask the user before creating a remote.
-- **Phases 0–4 are done and verified live in the browser. Phase 5 is mostly done** (see below).
+- **Phases 0–4 are done and verified live in the browser. Phase 5 is done** (see below). Next is Phase 6.
 
 ## How to run (Windows, everything on D:)
 ```powershell
@@ -34,7 +34,7 @@ Criterion macro-F1 0.858 (accuracy 0.927); case accuracy 76% (0 false "ready", 8
 
 ## Phase 5 status (branch `phase-5-breadth`)
 Done: 6 HGNS/PVA LCDs plus gold trees (`data/policies/gold/build_gold.py`); 150-case benchmark (`synth/hgns.py`, `synth/pva.py`, `FAMILIES` in `synth/build.py`); `--family/--variant/--inject/--max-usd/--min-free-gb` bench flags; baselines (`baselines.py`); injection set (`injection_eval.py`); seeded-defect adversary eval (`adversary_eval.py`); risk fit (`fit_risk.py` → `assent_agents/risk_v1.json`, loaded by `denial_risk`); eval table (`report.py` → `data/bench/results/eval-table-dev.json`). Numbers are in PRODUCT §6.
-The user asked to keep eval sets small (token and API cost). Runs that did not happen: the locked test split (planned 6 per family), PVA injection, naive RAG, and the reranker/hybrid/verifier ablations. To finish: `bench --family <f> --split test --limit 6 --llm openai` for each family, plus `bench --family pva --split dev --limit 2 --inject` (2 of 18 test cases done; the queue was stopped twice for low memory).
+The user asked to keep eval sets small (token and API cost). Runs that did not happen: the locked test split (planned 6 per family), PVA injection, naive RAG, and the reranker/hybrid/verifier ablations. Locked test split (18 cases, 6 per family) run once: 16/18 decisions correct, 0 false ready, macro-F1 0.813, 0% unsupported, $0.079/case. Injection 6/6 held. Run long benches in the foreground (`--min-free-gb 0.4`); background shells get stopped under memory pressure.
 Fixed (v2): family-specific `SYNONYMS` + `CONTRA_RULE` in `evidence/agent.py`; PVA false ready 2 → 0. Fix next: HGNS sleep-study misses (still 19 criterion misses in 12 cases), the adversary false-objection rate (3.1 per clean packet). Note: ESI dev numbers predate CONTRA_RULE. `latest_observation` is deferred (see the plan doc).
 
 ## Known gaps / small fixes

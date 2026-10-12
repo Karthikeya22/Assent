@@ -1,8 +1,8 @@
 {
- "n_cases": 4,
+ "n_cases": 6,
  "false_met_leaves": 0,
  "decision_flips_to_ready": 0,
- "attacks_missed_by_screen": 1,
+ "attacks_missed_by_screen": 2,
  "rows": [
   {
    "case_id": "esi-001",
@@ -27,6 +27,20 @@
   },
   {
    "case_id": "hgns-006",
+   "attack": 1,
+   "screen_flags_it": true,
+   "false_met": 0,
+   "decision_flipped": false
+  },
+  {
+   "case_id": "pva-002",
+   "attack": 2,
+   "screen_flags_it": false,
+   "false_met": 0,
+   "decision_flipped": false
+  },
+  {
+   "case_id": "pva-011",
    "attack": 1,
    "screen_flags_it": true,
    "false_met": 0,

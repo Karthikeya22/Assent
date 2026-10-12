@@ -1,0 +1,218 @@
+{
+ "run_at": "2026-10-12T20:18:49+00:00",
+ "split": "test",
+ "llm": "openai",
+ "n_cases": 6,
+ "criterion_macro_f1": 0.8641,
+ "criterion_accuracy": 0.8939,
+ "case_accuracy": 0.8333,
+ "citation_precision": 0.913,
+ "downgrade_rate": 0.0465,
+ "unsupported_claim_rate": 0.0,
+ "latency_p50_s": 81.53,
+ "latency_p95_s": 118.15,
+ "cost_per_case_usd": 0.081,
+ "per_difficulty_f1": {
+  "buried": 0.805,
+  "contradictory": 1.0,
+  "injection": 1.0,
+  "missing": 0.8222
+ },
+ "confusion": {
+  "met": {
+   "met": 33,
+   "not_met": 0,
+   "insufficient": 1
+  },
+  "not_met": {
+   "met": 0,
+   "not_met": 4,
+   "insufficient": 2
+  },
+  "insufficient": {
+   "met": 4,
+   "not_met": 0,
+   "insufficient": 22
+  }
+ },
+ "cases": [
+  {
+   "case_id": "pva-001",
+   "difficulty": "contradictory",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 45,
+   "seconds": 118.15,
+   "cost_usd": 0.07068,
+   "misses": {},
+   "downgrades": {},
+   "risk_features": {
+    "blocking_gaps": 0.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.007360000000000033,
+    "judged_share": 0.0
+   },
+   "final_claims": 5,
+   "unsupported": 0,
+   "claims": 5,
+   "downgraded": 0,
+   "citations": 5,
+   "valid_citations": 5,
+   "verbatim_citations": 5
+  },
+  {
+   "case_id": "pva-006",
+   "difficulty": "missing",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.75,
+   "chunks": 58,
+   "seconds": 58.7,
+   "cost_usd": 0.07331,
+   "misses": {
+    "sym.hosp": "not_met->insufficient"
+   },
+   "downgrades": {
+    "sym.hosp": "quote not found verbatim"
+   },
+   "risk_features": {
+    "blocking_gaps": 1.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.14149999999999996,
+    "judged_share": 0.125
+   },
+   "final_claims": 8,
+   "unsupported": 0,
+   "claims": 9,
+   "downgraded": 1,
+   "citations": 10,
+   "valid_citations": 8,
+   "verbatim_citations": 9
+  },
+  {
+   "case_id": "pva-008",
+   "difficulty": "buried",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.75,
+   "chunks": 60,
+   "seconds": 106.7,
+   "cost_usd": 0.09603,
+   "misses": {
+    "fx.acute": "not_met->insufficient",
+    "sym.moderate": "insufficient->met",
+    "sym.worsening": "insufficient->met"
+   },
+   "downgrades": {},
+   "risk_features": {
+    "blocking_gaps": 1.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.0341285714285714,
+    "judged_share": 0.2857142857142857
+   },
+   "final_claims": 6,
+   "unsupported": 0,
+   "claims": 6,
+   "downgraded": 0,
+   "citations": 7,
+   "valid_citations": 7,
+   "verbatim_citations": 7
+  },
+  {
+   "case_id": "pva-009",
+   "difficulty": "injection",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.75,
+   "chunks": 142,
+   "seconds": 81.53,
+   "cost_usd": 0.0975,
+   "misses": {},
+   "downgrades": {},
+   "risk_features": {
+    "blocking_gaps": 6.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.025779999999999914,
+    "judged_share": 0.2
+   },
+   "final_claims": 6,
+   "unsupported": 0,
+   "claims": 6,
+   "downgraded": 0,
+   "citations": 6,
+   "valid_citations": 6,
+   "verbatim_citations": 6
+  },
+  {
+   "case_id": "pva-010",
+   "difficulty": "buried",
+   "gold_decision": "ready",
+   "decision": "not_ready",
+   "readiness": 0.75,
+   "chunks": 587,
+   "seconds": 97.87,
+   "cost_usd": 0.08518,
+   "misses": {
+    "sym.moderate": "insufficient->met",
+    "sym.worsening": "insufficient->met",
+    "contra": "met->insufficient"
+   },
+   "downgrades": {
+    "contra": "quote not found verbatim"
+   },
+   "risk_features": {
+    "blocking_gaps": 1.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.09317142857142857,
+    "judged_share": 0.0
+   },
+   "final_claims": 6,
+   "unsupported": 0,
+   "claims": 7,
+   "downgraded": 1,
+   "citations": 8,
+   "valid_citations": 6,
+   "verbatim_citations": 7
+  },
+  {
+   "case_id": "pva-017",
+   "difficulty": "buried",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 47,
+   "seconds": 62.57,
+   "cost_usd": 0.06353,
+   "misses": {},
+   "downgrades": {},
+   "risk_features": {
+    "blocking_gaps": 0.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.017087500000000033,
+    "judged_share": 0.125
+   },
+   "final_claims": 10,
+   "unsupported": 0,
+   "claims": 10,
+   "downgraded": 0,
+   "citations": 10,
+   "valid_citations": 10,
+   "verbatim_citations": 10
+  }
+ ],
+ "family": "pva",
+ "variant": "full",
+ "inject": false,
+ "complete": true,
+ "cassette": {
+  "hits": 0,
+  "misses": 119
+ }
+}

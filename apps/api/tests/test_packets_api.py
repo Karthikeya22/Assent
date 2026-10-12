@@ -2,14 +2,14 @@ from typing import Any
 
 import httpx
 import pytest
+from assent_mock_payer.main import Rules, state
+from assent_mock_payer.main import app as payer_app
 from httpx import AsyncClient
 from sqlalchemy import select
 
 from assent_api.db import SessionLocal
 from assent_api.models import Appeal, AuditLog, Case, User
 from assent_api.services import packets
-from assent_mock_payer.main import Rules, state
-from assent_mock_payer.main import app as payer_app
 
 from .conftest import bearer
 from .test_review_api import _setup

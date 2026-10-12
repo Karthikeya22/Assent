@@ -8,11 +8,10 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 import * as THREE from "three";
-import { create } from "zustand";
 import { POLICY, layout, type LNode } from "./layout";
+import { useStory } from "./store";
 import { heroFrame, ringFill, span, storyFrame, type Frame } from "./timeline";
 
-export const useStory = create<{ progress: number }>(() => ({ progress: 0 }));
 
 type Palette = Record<
   "ink" | "ink3" | "rule" | "paper" | "signal" | "gap" | "fail" | "adversary",
@@ -82,7 +81,7 @@ void main(){
   float inner = step(0.03, vUv.x) * step(vUv.x, 0.97) * step(0.025, vUv.y) * step(vUv.y, 0.975);
   float hi = abs(r - uHiRow) < 0.5 ? uHiAmt : 0.0;
   vec3 line = mix(uInk, uSig, hi);
-  float la = inLine * (0.28 + 0.72 * hi);
+  float la = inLine * (0.5 + 0.5 * hi);
   vec3 col = mix(uPaper, line, la);
   float a = uOpacity * mix(0.6, 0.5, inner) * (inner > 0.5 ? 1.0 : 0.9) + la * 0.5;
   gl_FragColor = vec4(col, clamp(a, 0.0, 1.0));

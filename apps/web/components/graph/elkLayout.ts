@@ -1,11 +1,12 @@
-import ELK from "elkjs/lib/elk.bundled.js";
 import type { Edge, Node } from "@xyflow/react";
 
-const elk = new ELK();
+// ELK is ~400 KB; load it on first layout instead of in the page bundle.
+let elk: Promise<InstanceType<typeof import("elkjs/lib/elk.bundled.js").default>> | null = null;
 
 /** Top-down layered layout for a criteria tree (FRONTEND §6.3). */
 export async function layout(nodes: Node[], edges: Edge[]): Promise<Node[]> {
-  const g = await elk.layout({
+  elk ??= import("elkjs/lib/elk.bundled.js").then(({ default: ELK }) => new ELK());
+  const g = await (await elk).layout({
     id: "root",
     layoutOptions: {
       "elk.algorithm": "layered",

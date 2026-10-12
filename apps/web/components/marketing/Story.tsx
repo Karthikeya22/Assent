@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { LatticeMount } from "@/components/lattice/LatticeMount";
-import { useStory } from "@/components/lattice/Lattice";
+import { useStory } from "@/components/lattice/store";
 
 gsap.registerPlugin(ScrollTrigger);
 

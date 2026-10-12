@@ -29,11 +29,18 @@ def _router() -> Any:
     )
 
 
+# Process-wide spend on real calls (cassette replays never reach here, so they cost 0).
+usage: dict[str, float] = {"cost_usd": 0.0, "tokens": 0, "calls": 0}
+
+
 async def structured[T: BaseModel](tier: str, messages: list[dict[str, str]], schema: type[T]) -> T:
     """One structured-output call. Retries once on schema validation failure (ARCHITECTURE §7.3)."""
     last: Exception | None = None
     for _ in range(2):
         resp = await _router().acompletion(model=tier, messages=messages, response_format=schema)
+        usage["calls"] += 1
+        usage["cost_usd"] += float((resp._hidden_params or {}).get("response_cost") or 0.0)
+        usage["tokens"] += getattr(resp.usage, "total_tokens", 0) or 0
         try:
             return schema.model_validate_json(resp.choices[0].message.content)
         except ValueError as e:

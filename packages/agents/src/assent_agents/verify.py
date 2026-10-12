@@ -139,7 +139,10 @@ async def judge_downgrade(
     were NLI false rejections), so a fast LLM judge re-checks the same blanked passage. Only an
     explicit "supported" restores the agent's verdict; anything else keeps the downgrade.
     """
-    if v.original is None or v.downgraded is None or "injection" in v.downgraded:
+    # Only `met` gets a second opinion: NLI-rejected `not_met` claims were mostly absence
+    # inferences ("radiculopathy, not zoster" for a chart silent on zoster). On the dev run the
+    # judge restored 4 correct not_met verdicts and 23 wrong ones.
+    if v.original != "met" or v.downgraded is None or "injection" in v.downgraded:
         return v
     cands = [
         i
@@ -148,8 +151,7 @@ async def judge_downgrade(
         and c.start is not None
         and c.end is not None
         and not any(
-            s < c.end and c.start < e
-            for s, e in suspicious_spans(chunks.get(c.chunk_id, ""))
+            s < c.end and c.start < e for s, e in suspicious_spans(chunks.get(c.chunk_id, ""))
         )
     ]
     for i in cands[:MAX_JUDGED]:

@@ -158,6 +158,17 @@ async def test_judge_no_keeps_downgrade_and_never_sees_injections() -> None:
     assert seen == []  # injected quotes never reach the judge
 
 
+async def test_judge_never_rescues_not_met() -> None:
+    from assent_agents.verify import judge_downgrade
+
+    rejected = verify(
+        _v("not_met", ("c2", "the leg pain began 3 weeks ago", "Not herpes zoster.")), CHUNKS, nli
+    )
+    seen, llm = _judge(True)
+    assert (await judge_downgrade(rejected, CHUNKS, llm)).verdict == "insufficient"  # type: ignore[arg-type]
+    assert seen == []
+
+
 def test_insufficient_passes_through() -> None:
     out = verify(_v("insufficient"), CHUNKS, nli)
     assert out.verdict == "insufficient" and out.downgraded is None

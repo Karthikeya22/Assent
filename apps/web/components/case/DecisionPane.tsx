@@ -269,7 +269,11 @@ export function DecisionPane({
         {error && <p role="alert" className="text-xs text-fail">{error}</p>}
         {ack && (
           <div role="alertdialog" aria-label="Acknowledge objections" className="rounded-[var(--radius-control)] border border-adversary/40 p-2.5 text-xs text-ink-2">
-            {highOpen.length || "Some"} high-severity objection(s) are not rebutted. Approving records that you reviewed them.
+            Approving anyway records that you reviewed:
+            <ul className="mt-1 list-disc pl-4">
+              {run.decision !== "met" && <li>{blocking.length} coverage criteria not yet proven</li>}
+              {highOpen.length > 0 && <li>{highOpen.length} high-severity payer objection(s) not rebutted</li>}
+            </ul>
             <div className="mt-2 flex gap-2">
               <button type="button" disabled={pending} onClick={() => act("approve", true)} className="h-8 rounded-[var(--radius-control)] bg-ink px-3 text-paper">Approve anyway</button>
               <button type="button" onClick={() => setAck(false)} className="h-8 px-2 text-ink-3">Cancel</button>
@@ -280,7 +284,7 @@ export function DecisionPane({
           <button
             type="button"
             disabled={!finished || pending || decided}
-            onClick={() => (highOpen.length ? setAck(true) : act("approve"))}
+            onClick={() => (highOpen.length || run.decision !== "met" ? setAck(true) : act("approve"))}
             className="h-9 flex-1 rounded-[var(--radius-control)] bg-signal font-medium text-paper disabled:opacity-40"
           >
             {decided ? "Approved" : "Approve for packet"}

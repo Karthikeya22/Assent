@@ -345,6 +345,7 @@ class VerdictPatch(BaseModel):
 class ResumeIn(BaseModel):
     decision: Literal["approve", "reject"]
     acknowledge_high: bool = False
+    acknowledge_not_ready: bool = False  # approving with unproven criteria is an explicit choice
 
 
 class ResumeOut(BaseModel):
@@ -510,6 +511,12 @@ async def resume_run(run_id: uuid.UUID, body: ResumeIn, user: Approver, s: Sessi
             status.HTTP_409_CONFLICT,
             f"{len(high)} high-severity objection(s) are not rebutted; acknowledge them to approve",
         )
+    not_ready = (case.readiness_score or 0.0) < 1.0
+    if body.decision == "approve" and not_ready and not body.acknowledge_not_ready:
+        raise HTTPException(
+            status.HTTP_409_CONFLICT,
+            "The case is not ready (coverage criteria unproven); acknowledge to approve anyway",
+        )
     before = case.status.value
     case.status = CaseStatus.ready if body.decision == "approve" else CaseStatus.new
     await audit.append(
@@ -522,6 +529,8 @@ async def resume_run(run_id: uuid.UUID, body: ResumeIn, user: Approver, s: Sessi
         after={
             "case_status": case.status.value,
             "acknowledged_high": [str(h) for h in high] if body.acknowledge_high else [],
+            "acknowledged_not_ready": not_ready and body.acknowledge_not_ready,
+            "readiness": case.readiness_score,
         },
     )
     await s.commit()

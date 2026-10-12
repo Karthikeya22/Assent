@@ -805,6 +805,11 @@
             "title": "Acknowledge High",
             "type": "boolean"
           },
+          "acknowledge_not_ready": {
+            "default": false,
+            "title": "Acknowledge Not Ready",
+            "type": "boolean"
+          },
           "decision": {
             "enum": [
               "approve",

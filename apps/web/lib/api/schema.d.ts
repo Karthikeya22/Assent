@@ -560,6 +560,11 @@ export interface components {
              */
             acknowledge_high: boolean;
             /**
+             * Acknowledge Not Ready
+             * @default false
+             */
+            acknowledge_not_ready: boolean;
+            /**
              * Decision
              * @enum {string}
              */

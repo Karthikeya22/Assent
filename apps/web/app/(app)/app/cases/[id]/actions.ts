@@ -28,18 +28,18 @@ export async function decide(
   caseId: string,
   runId: string,
   decision: "approve" | "reject",
-  acknowledgeHigh = false,
+  acknowledge = false,
 ): Promise<Result & { needsAck?: boolean }> {
   const { data, response } = await (await api()).POST("/api/v1/runs/{run_id}/resume", {
     params: { path: { run_id: runId } },
-    body: { decision, acknowledge_high: acknowledgeHigh },
+    body: { decision, acknowledge_high: acknowledge, acknowledge_not_ready: acknowledge },
   });
   if (data) {
     revalidatePath(`/app/cases/${caseId}`);
     return {};
   }
   const msg = await detail(response);
-  return { error: msg, needsAck: response.status === 409 && msg.includes("high-severity") };
+  return { error: msg, needsAck: response.status === 409 && msg.includes("acknowledge") };
 }
 
 export async function overrideVerdict(

@@ -149,3 +149,32 @@ async def test_override_needs_reason_is_audited_and_recomputes_readiness(
             )
             == 1
         )
+
+
+async def test_approve_on_not_ready_case_needs_acknowledgement(
+    client: AsyncClient, users: dict[str, User]
+) -> None:
+    _, run_id = await _setup(users)
+    h = bearer(users["coordinator"])
+    verdicts = (await client.get(f"/api/v1/runs/{run_id}/verdicts", headers=h)).json()
+    rehab = next(v for v in verdicts if v["criterion_key"] == "rehab")
+    await client.patch(
+        f"/api/v1/verdicts/{rehab['id']}",
+        json={"verdict": "insufficient", "reason": "HEP not documented"},
+        headers=h,
+    )
+    r = await client.post(
+        f"/api/v1/runs/{run_id}/resume",
+        json={"decision": "approve", "acknowledge_high": True},
+        headers=h,
+    )
+    assert r.status_code == 409 and "not ready" in r.json()["detail"]
+    r = await client.post(
+        f"/api/v1/runs/{run_id}/resume",
+        json={"decision": "approve", "acknowledge_high": True, "acknowledge_not_ready": True},
+        headers=h,
+    )
+    assert r.status_code == 200
+    async with SessionLocal() as s:
+        row = await s.scalar(select(AuditLog).where(AuditLog.action == "run.approve"))
+        assert row is not None and row.after_json and row.after_json["acknowledged_not_ready"]

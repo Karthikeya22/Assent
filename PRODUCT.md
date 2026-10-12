@@ -131,15 +131,17 @@ Measured on the Assent benchmark (see BUILD_PLAN.md §3). Fill in real numbers o
 | Cost per case | All model calls | < $0.15 | **$0.093** |
 | Lift vs. baseline | vs. single long-context prompt and naive RAG | Report it, whatever it is | 9 same cases: Assent F1 **0.917** vs long-context 0.766; but long-context decided all 9 correctly (Assent 7/9) while **28% of its claims had no valid citation** (Assent 0%). Naive RAG not run (budget). |
 
-**Phase 5, all three families (dev, 2026-10-12).** Trimmed for cost: HGNS and PVA 12 dev cases each.
+**Phase 5, all three families (dev, 2026-10-12).** Trimmed for cost: HGNS and PVA 12 dev cases each. "v2" = after two fixes (contraindication evidence must actually rule contraindications out; family-specific search hints).
 
-| Family | Cases | Criterion macro-F1 | Case accuracy | False ready | False not ready | Citation precision | Unsupported | Cost/case |
-|---|---|---|---|---|---|---|---|---|
-| ESI | 34 | 0.858 | 76% | 0 | 8 | 82% | 0% | $0.093 |
-| HGNS | 12 | 0.582 | 67% | 0 | 4 | 85% | 0% | $0.059 |
-| PVA | 12 | 0.924 | 75% | **2** | 1 | 87% | 0% | $0.083 |
+| Family | Cases | Decisions correct (v1 → v2) | False ready (v1 → v2) | Criterion misses (v1 → v2) | Citation precision | Unsupported |
+|---|---|---|---|---|---|---|
+| ESI | 34 | 76% | 0 | — | 82% | 0% |
+| HGNS | 12 | 8 → **9** | 0 → 0 | 19 → 19 | 85% | 0% |
+| PVA | 12 | 9 → 9 | **2 → 0** | 10 → 12 | 91% | 0% |
 
-Injection: 4 attacked not-ready cases (ESI and HGNS; the PVA injection runs did not finish), 0 decisions flipped and 0 criteria wrongly met, including 1 attack the keyword screen missed. Risk model (logistic regression, 24 HGNS+PVA dev cases, 5-fold CV): Brier 0.210 / AUC 0.748 / ECE 0.154, against the hand prior's 0.231 / 0.699 / 0.151. The weights are fitted, but n is small. Known problems: HGNS sleep-study facts come back `insufficient` (the retrieval hints are spine-specific); PVA's 2 false "ready" come from treating an undocumented contraindication check as met. **The locked test split has not been run yet.**
+The criterion macro-F1 on 12 cases is unstable (HGNS 0.58 → 0.36 with the same number of misses, because the rare `not_met` class dominates the average); report misses and decisions instead until the test split runs. Real cost per case is $0.06–0.09; v2 logs look cheaper only because recorded calls replayed.
+
+Injection: 4 attacked not-ready cases (ESI and HGNS), 0 decisions flipped and 0 criteria wrongly met, including 1 attack the keyword screen missed. Risk model (logistic regression, 24 v1 HGNS+PVA dev cases, 5-fold CV): Brier 0.210 / AUC 0.748 / ECE 0.154, against the hand prior's 0.231 / 0.699 / 0.151. **The locked test split has not been run yet** (stopped twice for low memory: 2 of 18 cases done).
 
 Setup: gpt-4.1 evidence agents, gpt-4.1-mini judge, local bge-small / MiniLM rerank / DeBERTa-v3-base NLI, verifier = verbatim + sentence-window NLI + judge on `met` only. Raw logs are in `data/bench/results/openai-dev-judge-met.jsonl`. The test split is still locked. Known gap: the errors are conservative (`met` → `insufficient`), clustered on rehab, contraindication and baseline-scale criteria.
 

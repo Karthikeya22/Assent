@@ -14,10 +14,14 @@ from assent_agents.gaps import FITTED
 from assent_evals.bench import RESULTS, load_done, summarize
 from assent_evals.synth.build import FAMILIES
 
+# The full-pipeline log per (split, family): the latest code's run of each.
 FULL = {
-    "esi": "openai-{split}-judge-met",
-    "hgns": "hgns-openai-{split}",
-    "pva": "pva-openai-{split}",
+    "dev": {
+        "esi": "openai-dev-judge-met",
+        "hgns": "hgns-openai-dev-v2",
+        "pva": "pva-openai-dev-v2",
+    },
+    "test": {"esi": "openai-test", "hgns": "hgns-openai-test", "pva": "pva-openai-test"},
 }
 VARIANTS = ["no-verify", "no-rerank", "dense-only", "naive-rag", "long-context"]
 KEYS = [
@@ -49,7 +53,7 @@ def variant_name(family: str, split: str, variant: str) -> str:
 
 
 def build(split: str) -> dict[str, Any]:
-    full = {f: _log(FULL[f].format(split=split)) for f in FAMILIES}
+    full = {f: _log(FULL[split][f]) for f in FAMILIES}
     table: dict[str, Any] = {"split": split, "per_family": [], "comparison": []}
     every = []
     for f, recs in full.items():

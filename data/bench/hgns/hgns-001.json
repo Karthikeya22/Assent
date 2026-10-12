@@ -1,0 +1,157 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-001",
+  "difficulty": "buried",
+  "order_date": "2026-09-10",
+  "patient": {
+   "fhir_id": "fcc8e5ae-a599-1ac5-5648-05494e660d80",
+   "name": "Daniel Peralta",
+   "sex": "male",
+   "birth_date": "1947-01-23"
+  },
+  "condition": "cpap_failure",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-05-18",
+   "psg": "2025-11-09",
+   "sleepmd": "2026-07-20",
+   "ent": "2026-09-08"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 30.7,
+    "unit": "kg/m2",
+    "date": "2026-07-20"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 31.8,
+    "unit": "/h",
+    "date": "2025-11-09"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "met",
+   "dise": "met",
+   "anatomy": "met",
+   "contra": "not_met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "79yo M referred for HGNS eval.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "Wt stable, BMI 30.7.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Attended PSG 11/09/2025.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "AHI 31.8/h.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "CA+MA 9% of total AHI.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "cpap",
+    "gold": "met",
+    "text": "CPAP 11 cmH2O, residual AHI 24.1 despite nightly use = failure.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "met",
+    "text": "DISE 08/22/2026: AP velum collapse, no CCC.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Tonsils 1+, no other obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "not_met",
+    "text": "NYHA class III heart failure on recent cardiology review.",
+    "slot": "pcp",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-05-18",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 05/18/2026\nPatient: Daniel Peralta, 79 y/o M\n\nCC: Routine f/u\n\nHPI: Pt here for routine follow-up. No new complaints.\n\nPMH: HTN, DM2, HF\n\nVS: BP 138/82, HR 78, RR 16, T 98.6\u00b0F\n\nPE: Gen: NAD. CV: RRR, no m/r/g. Lungs: Clear bilat. Abd: Soft, NT, ND.\n\nLabs: Pending\n\nAssessment:\n- NYHA class III heart failure on recent cardiology review.\n- Wt stable, BMI 30.7.\n\nPlan:\n- Continue current meds.\n- Monitor wt and symptoms.\n- F/u in 3 months or prn.\n\nNo changes at this time.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2025-11-09",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 11/09/2025\nPatient: Daniel Peralta, 78 y.o. M\n\nAttended PSG 11/09/2025. Study revealed moderate-severe sleep apnea. AHI 31.8/h. CA+MA 9% of total AHI. Oxygen desaturation nadir 82%. Sleep architecture fragmented with reduced REM.\n\nNo significant arrhythmias or limb movements noted. CPAP titration recommended given severity.\n\nSigned,\nSleep Medicine Physician",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-07-20",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation\nDate: 07/20/2026\nPatient: Daniel Peralta, 79 y/o M\n\nHx: Pt c/o persistent daytime somnolence, despite adherence to CPAP therapy.\n\nPE: BMI 32, no acute distress, oropharynx clear, no nasal obstruction.\n\nSleep Study: CPAP 11 cmH2O, residual AHI 24.1 despite nightly use = failure.\n\nAssessment: Severe OSA refractory to current CPAP settings.\n\nPlan: Consider alternative therapies including BiPAP or ASV. Evaluate for positional therapy and possible adjunctive pharmacotherapy. Follow-up sleep study after adjustments.\n\nPt advised on importance of compliance and scheduled for re-evaluation in 3 months.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-08",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation\nDate: 09/08/2026\nPatient: Daniel Peralta, 79yo M\n\n79yo M referred for HGNS eval. PMH notable for OSA, CPAP intolerant. Exam: Tonsils 1+, no other obstruction. Nasal passages patent. Oral cavity unremarkable. DISE 08/22/2026: AP velum collapse, no CCC. No significant tongue base or epiglottic collapse noted. Airway anatomy suitable for HGNS implantation. Plan: Proceed with preop workup and discuss HGNS candidacy with patient.",
+   "source": "llm"
+  }
+ ]
+}

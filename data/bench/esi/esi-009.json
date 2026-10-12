@@ -1,0 +1,150 @@
+{
+ "split": "test",
+ "facts": {
+  "case_id": "esi-009",
+  "difficulty": "clean",
+  "order_date": "2026-09-02",
+  "patient": {
+   "fhir_id": "2e995dc8-10b8-030a-5345-93978f5db90e",
+   "name": "Deanne Ortiz",
+   "sex": "female",
+   "birth_date": "1941-04-18"
+  },
+  "condition": "radic",
+  "region": "lumbar",
+  "level": "L4-L5",
+  "side": "left",
+  "cpt": "64483",
+  "icd10": "M54.16",
+  "onset_date": "2026-05-13",
+  "pain_weeks": 16,
+  "pt_start": "2026-05-27",
+  "pt_weeks": 4,
+  "nsaid": "meloxicam 15 mg daily",
+  "scale_name": "VAS",
+  "scale_value": "65 mm",
+  "imaging_date": "2026-07-30",
+  "imaging_modality": "MRI",
+  "prior_esi_dates": [
+   "2026-04-05",
+   "2026-07-01"
+  ],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "insufficient",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "Assessment: left lumbar radiculopathy at L4-L5 due to disc herniation with foraminal stenosis.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "MRI lumbar spine 07/30/2026: L4-L5 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Function: unable to stand long enough to cook a meal, has stopped driving because of the pain.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "VAS at baseline today: 65 mm.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "Reports low back pain radiating to the left leg for 16 weeks.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "PT discharge summary: completed 4 weeks of physical therapy (05/27/2026 to 06/24/2026) without meaningful improvement; meloxicam 15 mg daily for the same period without relief.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "Continues the daily home exercise program taught in PT.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Denies fever, chills, weight loss, or bowel or bladder changes; no history of cancer.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "Epidural steroid injection history: 2 lumbar injections in the past 12 months (04/05/2026, 07/01/2026).",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-05-22",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 05/22/2026\nPatient: Deanne Ortiz, 85-year-old female\n\nSubjective:\nMs. Ortiz presents for her routine follow-up visit. She reports no new complaints today and feels generally well. She denies any recent changes in her health status.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no abnormalities. Cardiovascular, respiratory, abdominal, and neurological exams are unremarkable.\n\nAssessment:\nMs. Ortiz is an 85-year-old female in stable condition with no acute issues at this time.\n\nPlan:\nContinue current management and routine monitoring. Encourage healthy lifestyle and adherence to medications. Follow-up visit scheduled in 6 months or sooner if needed.",
+   "source": "llm"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-06-24",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 06/24/2026\nPatient: Deanne Ortiz, 85-year-old female\n\nReason for Referral:\nPatient was referred for physical therapy to address ongoing musculoskeletal complaints.\n\nTherapy Course:\nPT discharge summary: completed 4 weeks of physical therapy (05/27/2026 to 06/24/2026) without meaningful improvement; meloxicam 15 mg daily for the same period without relief.\n\nInterventions Provided:\nThe therapy program included range of motion exercises, strengthening activities, and functional mobility training tailored to the patient's tolerance.\n\nOutcome:\nDespite adherence to the prescribed therapy regimen and medication, the patient did not experience significant symptom relief or functional gains.\n\nRecommendations:\nFurther evaluation by the referring physician is advised to consider alternative management strategies or diagnostic assessments.\n\nTherapist:\n[Physical Therapist's Name], PT",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-07-30",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 07/30/2026\nPatient: Deanne Ortiz, 85-year-old female\n\nExamination: MRI Lumbar Spine\n\nFindings:\nMRI lumbar spine 07/30/2026: L4-L5 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.\n\nNo other significant abnormalities are noted in the lumbar spine.\n\nImpression:\nL4-L5 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root, which may correlate with clinical symptoms if present.\n\nRecommendations:\nClinical correlation is advised to determine the significance of these findings and guide further management.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-08-31",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 08/31/2026\nPatient: Deanne Ortiz, 85-year-old female\n\nChief Complaint:\nReports low back pain radiating to the left leg for 16 weeks.\n\nHistory:\nDenies fever, chills, weight loss, or bowel or bladder changes; no history of cancer.\n\nAssessment:\nAssessment: left lumbar radiculopathy at L4-L5 due to disc herniation with foraminal stenosis.\n\nTreatment History:\nEpidural steroid injection history: 2 lumbar injections in the past 12 months (04/05/2026, 07/01/2026).\n\nCurrent Status:\nVAS at baseline today: 65 mm.\nContinues the daily home exercise program taught in PT.\n\nFunction:\nFunction: unable to stand long enough to cook a meal, has stopped driving because of the pain.\n\nPlan:\nContinue conservative management with physical therapy and home exercises. Consider further interventional options if symptoms persist or worsen. Monitor functional status and pain levels closely.",
+   "source": "llm"
+  }
+ ]
+}

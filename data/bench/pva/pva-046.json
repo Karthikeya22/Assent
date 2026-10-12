@@ -1,0 +1,131 @@
+{
+ "split": "test",
+ "facts": {
+  "family": "pva",
+  "case_id": "pva-046",
+  "difficulty": "buried",
+  "order_date": "2026-09-28",
+  "patient": {
+   "fhir_id": "ba2f1c13-c0ba-f6da-bcd5-5cfab2b0f5f8",
+   "name": "Salvatore Mosciski",
+   "sex": "male",
+   "birth_date": "1950-01-08"
+  },
+  "condition": "worsening:T12",
+  "cpt": "22513",
+  "cpt_text": "Percutaneous vertebral augmentation (kyphoplasty), thoracic",
+  "icd10": "M80.08XA",
+  "icd10_text": "Age-related osteoporosis with current pathological fracture, vertebra(e), initial encounter",
+  "dates": {
+   "pcp": "2026-08-29",
+   "inpatient": "2026-09-26",
+   "radiology": "2026-09-15",
+   "consult": "2026-09-27",
+   "onset": "2026-08-24",
+   "xray": "2026-08-28"
+  },
+  "observations": [
+   {
+    "code": "72514-3",
+    "system": "http://loinc.org",
+    "display": "Pain severity 0-10 numeric rating",
+    "value": 8.0,
+    "unit": "{score}",
+    "date": "2026-09-27"
+   }
+  ],
+  "gold": {
+   "fx.acute": "met",
+   "fx.imaging": "met",
+   "sym.hosp": "not_met",
+   "sym.moderate": "met",
+   "sym.worsening": "met",
+   "feat.progression": "insufficient",
+   "feat.height": "insufficient",
+   "feat.kyphosis": "insufficient",
+   "feat.rdq": "insufficient",
+   "care.osteo": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "fx.acute",
+    "gold": "met",
+    "text": "Back pain since 08/24/2026 after a fall from standing height.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "fx.imaging",
+    "gold": "met",
+    "text": "MRI 09/15/2026: T12 compression fx, marrow edema on STIR.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sym.hosp",
+    "gold": "not_met",
+    "text": "Outpt, not admitted.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.moderate",
+    "gold": "met",
+    "text": "NRS 8/10 despite 4 wks NSM (acetaminophen and tramadol, TLSO brace).",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.worsening",
+    "gold": "met",
+    "text": "Pain worse x2 wks despite brace.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "care.osteo",
+    "gold": "met",
+    "text": "Referred for DEXA + osteoporosis program.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Pain at fx level; afebrile, no infx signs.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-08-29",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 08/29/2026\nPatient: Salvatore Mosciski, 76 y/o M\n\nCC: Back pain\n\nHPI: Back pain since 08/24/2026 after a fall from standing height. No radicular symptoms reported. No bowel or bladder dysfunction.\n\nPE: Tenderness over lumbar paraspinal muscles. No step-offs or deformities palpated. Neurologic exam intact, strength 5/5 in lower extremities, sensation preserved.\n\nAssessment: Acute back pain post-fall. No red flags for emergent pathology.\n\nPlan: Conservative mgmt with NSAIDs, activity modification, and close follow-up. Advise return if worsening or new neurologic symptoms.\n\nNo imaging ordered at this time.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-09-15",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 09/15/2026\nPatient: Salvatore Mosciski, 76 y/o M\n\nExam: MRI thoracic spine\n\nFindings: MRI 09/15/2026: T12 compression fx, marrow edema on STIR. No other acute fractures identified. Adjacent vertebrae appear intact. No paraspinal soft tissue mass or abnormal enhancement noted. Spinal canal and neural foramina patent without significant stenosis.\n\nImpression: T12 compression fracture with marrow edema consistent with acute/subacute injury. No additional acute abnormalities detected.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-27",
+   "title": "Spine Intervention Consultation",
+   "author": "Interventional radiologist",
+   "text": "Spine Intervention Consultation\nDate: 09/27/2026\nPatient: Salvatore Mosciski, 76 y/o M\n\nHPI: Outpt, not admitted. NRS 8/10 despite 4 wks NSM (acetaminophen and tramadol, TLSO brace). Pain worse x2 wks despite brace. Pain at fx level; afebrile, no infx signs.\n\nPlan: Referred for DEXA + osteoporosis program. Consider interventional options if pain persists or worsens.\n\nNo signs of infection or systemic illness. Continue current meds and brace use. Monitor closely.",
+   "source": "llm"
+  }
+ ]
+}

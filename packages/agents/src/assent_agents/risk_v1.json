@@ -1,0 +1,30 @@
+{
+ "bias": -0.8822,
+ "weights": {
+  "blocking_gaps": 0.7076,
+  "conceded_high": 1.6,
+  "conceded_other": 0.5,
+  "weak_support": -0.2492,
+  "judged_share": -0.4945
+ },
+ "fitted_on": [
+  "data\\bench\\results\\hgns-openai-dev.jsonl",
+  "data\\bench\\results\\pva-openai-dev.jsonl"
+ ],
+ "n": 24,
+ "positives": 11,
+ "prior_kept": [
+  "conceded_high",
+  "conceded_other"
+ ],
+ "cv": {
+  "brier": 0.2099,
+  "auc": 0.7483,
+  "ece": 0.1537
+ },
+ "prior_same_cases": {
+  "brier": 0.2306,
+  "auc": 0.6993,
+  "ece": 0.1509
+ }
+}

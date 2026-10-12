@@ -1,0 +1,157 @@
+{
+ "split": "test",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-018",
+  "difficulty": "clean",
+  "order_date": "2026-09-27",
+  "patient": {
+   "fhir_id": "f6d01ac3-e719-307b-475e-b0f713dc04b2",
+   "name": "Mar\u00eda Teresa Salcedo",
+   "sex": "female",
+   "birth_date": "1952-09-02"
+  },
+  "condition": "cpap_failure",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-06-23",
+   "psg": "2026-05-15",
+   "sleepmd": "2026-08-02",
+   "ent": "2026-09-25"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 28.2,
+    "unit": "kg/m2",
+    "date": "2026-08-02"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 31.5,
+    "unit": "/h",
+    "date": "2026-05-15"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "met",
+   "dise": "not_met",
+   "anatomy": "met",
+   "contra": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "74-year-old woman referred for hypoglossal nerve stimulation evaluation.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "BMI 28.2 kg/m2.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Diagnostic in-laboratory polysomnography performed 05/15/2026.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "Total apnea-hypopnea index (AHI) 31.5 events/hour.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "Central and mixed apneas comprised 2% of all events.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "cpap",
+    "gold": "met",
+    "text": "CPAP failure: residual AHI 21.4 events/hour on CPAP at 10 cmH2O despite consistent nightly use.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "not_met",
+    "text": "Drug-induced sleep endoscopy 09/18/2026: complete concentric collapse at the velum.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Oropharynx: tonsils size 1, no other anatomic obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.",
+    "slot": "ent",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-06-23",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 06/23/2026\nPatient: Mar\u00eda Teresa Salcedo, 74-year-old female\n\nSubjective:\nMs. Salcedo presents for her routine follow-up visit. She reports feeling generally well with no new complaints. She denies any acute symptoms or concerns at this time.\n\nObjective:\nVital signs are within normal limits. Physical examination reveals no abnormalities. Cardiovascular, respiratory, abdominal, and neurological exams are unremarkable.\n\nAssessment:\nStable health status. No new issues identified.\n\nPlan:\nContinue current management and medications. Encourage routine health maintenance and follow-up as scheduled. Patient advised to report any new symptoms promptly.\n\nFollow-up:\nReturn visit in 6 months or sooner if needed.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2026-05-15",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 05/15/2026\nPatient: Mar\u00eda Teresa Salcedo, 74-year-old female\n\nDiagnostic in-laboratory polysomnography performed 05/15/2026. The study evaluated the patient's sleep architecture and respiratory events throughout the night. Total apnea-hypopnea index (AHI) 31.5 events/hour. Central and mixed apneas comprised 2% of all events. Oxygen saturation showed intermittent desaturations associated with respiratory events. Sleep stages were within normal limits, with appropriate distribution of REM and non-REM sleep. The findings are consistent with moderate to severe obstructive sleep apnea. Recommendations include consideration of positive airway pressure therapy and follow-up with a sleep medicine specialist for management.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-08-02",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation\nDate: 08/02/2026\nPatient: Mar\u00eda Teresa Salcedo, 74-year-old female\n\nReason for Consultation:\nEvaluation and management of sleep-disordered breathing.\n\nHistory:\nMs. Salcedo has been using CPAP therapy for obstructive sleep apnea. Despite adherence, she reports persistent symptoms suggestive of inadequate control.\n\nPhysical Examination:\nBMI 28.2 kg/m2.\nNo other significant findings noted.\n\nSleep Study and CPAP Data:\nCPAP failure: residual AHI 21.4 events/hour on CPAP at 10 cmH2O despite consistent nightly use.\n\nAssessment:\nThe patient demonstrates suboptimal response to current CPAP settings with significant residual apnea events.\n\nPlan:\n1. Consider alternative therapies or adjustment of CPAP parameters.\n2. Schedule follow-up sleep study to evaluate efficacy of any changes.\n3. Continue monitoring adherence and symptomatology.\n4. Educate patient on importance of follow-up and potential treatment modifications.\n\nSummary:\nMs. Salcedo's sleep apnea remains inadequately controlled on current CPAP therapy, necessitating further evaluation and management.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-25",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation Note\nDate: 09/25/2026\nPatient: Mar\u00eda Teresa Salcedo, 74-year-old female\n\nThis 74-year-old woman referred for hypoglossal nerve stimulation evaluation. Drug-induced sleep endoscopy 09/18/2026: complete concentric collapse at the velum. Oropharynx: tonsils size 1, no other anatomic obstruction. No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.\n\nThe patient is a suitable candidate for hypoglossal nerve stimulation given the findings and absence of contraindications. Further steps will include detailed counseling and planning for the procedure.",
+   "source": "llm"
+  }
+ ]
+}

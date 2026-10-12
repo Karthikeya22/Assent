@@ -1,0 +1,157 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-014",
+  "difficulty": "buried",
+  "order_date": "2026-09-12",
+  "patient": {
+   "fhir_id": "2e995dc8-10b8-030a-5345-93978f5db90e",
+   "name": "Deanne Ortiz",
+   "sex": "female",
+   "birth_date": "1941-04-18"
+  },
+  "condition": "cpap_failure",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-05-03",
+   "psg": "2025-10-20",
+   "sleepmd": "2026-08-13",
+   "ent": "2026-09-10"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 30.0,
+    "unit": "kg/m2",
+    "date": "2026-08-13"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 39.1,
+    "unit": "/h",
+    "date": "2025-10-20"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "met",
+   "dise": "met",
+   "anatomy": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "85yo W referred for HGNS eval.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "Wt stable, BMI 30.0.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Attended PSG 10/20/2025.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "AHI 39.1/h.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "CA+MA 13% of total AHI.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "cpap",
+    "gold": "met",
+    "text": "CPAP 14 cmH2O, residual AHI 19.2 despite nightly use = failure.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "met",
+    "text": "DISE 09/01/2026: AP velum collapse, no CCC.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Tonsils 1+, no other obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No NM dz, no NYHA III/IV CHF, no MRI need, can use remote.",
+    "slot": "pcp",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-05-03",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 05/03/2026\nPatient: Deanne Ortiz, 85 y/o F\n\nWt stable, BMI 30.0. Vitals stable, BP 130/78, HR 72. No acute distress. PE: lungs clear, heart RRR, no murmurs. Abd soft, NT, no HSM. Neuro grossly intact.\n\nNo NM dz, no NYHA III/IV CHF, no MRI need, can use remote. Labs WNL. Meds reviewed, adherence good. Discussed lifestyle mods, diet, exercise. Follow-up in 6 mo or PRN.\n\nPlan: Continue current meds, monitor BP, labs q6mo. Encourage activity, wt control. Telehealth option available as needed.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2025-10-20",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 10/20/2025\nPatient: Deanne Ortiz, 84 y/o F\n\nAttended PSG 10/20/2025. Study revealed moderate-severe sleep apnea. AHI 39.1/h. CA+MA 13% of total AHI. Sleep architecture fragmented with reduced REM.\n\nO2 sat nadir 82%, mean 93%. Periodic limb movements minimal. No significant arrhythmias noted.\n\nRecommendations: Consider CPAP titration given severity. Follow-up in sleep clinic for management and compliance monitoring.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-08-13",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation\nDate: 08/13/2026\nPatient: Deanne Ortiz, 85 y/o F\n\nHx: Long-standing OSA, CPAP tx initiated 2 yrs ago.\n\nCurrent Tx: CPAP 14 cmH2O, residual AHI 19.2 despite nightly use = failure.\n\nAssessment: Persistent moderate-severe OSA despite adherence to CPAP at prescribed pressure.\n\nPlan: Consider alternative therapies including BiPAP or advanced PAP modes. Recommend sleep study to reassess titration and evaluate for comorbid sleep disorders. Follow-up in 4 weeks to review results and adjust management accordingly.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-10",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation Note\nDate: 09/10/2026\nPatient: Deanne Ortiz, 85yo F\n\n85yo W referred for HGNS eval. PMH noncontributory. No acute distress.\n\nExam: Tonsils 1+, no other obstruction. Nasal passages patent. Oropharynx clear.\n\nDISE 09/01/2026: AP velum collapse, no CCC.\n\nAssessment: Findings consistent with OSA with AP velum collapse. Tonsillar hypertrophy mild.\n\nPlan: Proceed with HGNS candidacy workup. Discussed risks/benefits with patient. Follow-up scheduled.",
+   "source": "llm"
+  }
+ ]
+}

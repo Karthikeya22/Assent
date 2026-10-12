@@ -1,0 +1,156 @@
+{
+ "split": "dev",
+ "facts": {
+  "case_id": "esi-049",
+  "difficulty": "buried",
+  "order_date": "2026-09-23",
+  "patient": {
+   "fhir_id": "9801576f-8900-6d73-0995-c9a4a60f8dc1",
+   "name": "Elvina Schaden",
+   "sex": "female",
+   "birth_date": "1957-11-13"
+  },
+  "condition": "radic",
+  "region": "lumbar",
+  "level": "L3-L4",
+  "side": "right",
+  "cpt": "64483",
+  "icd10": "M54.16",
+  "onset_date": "2026-05-13",
+  "pain_weeks": 19,
+  "pt_start": "2026-05-24",
+  "pt_weeks": 6,
+  "nsaid": "naproxen 500 mg BID",
+  "scale_name": "VAS",
+  "scale_value": "67 mm",
+  "imaging_date": "2026-08-26",
+  "imaging_modality": "CT",
+  "prior_esi_dates": [
+   "2025-11-19"
+  ],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "not_met",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "A/P: R L radic 2/2 L3-L4 HNP w/ foraminal stenosis.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.pls",
+    "gold": "not_met",
+    "text": "PSH: no spinal surgery.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "CT lumbar spine 08/26/2026: L3-L4 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Fx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Initial VAS 67 mm.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "LBP x19 wks w/ radiation to R LE.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "D/C from PT after 6 wks (05/24/2026-07/05/2026), sx unchanged. Failed naproxen 500 mg BID.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "HEP daily, compliant.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "ROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "Epidural steroid injection history: 1 lumbar injection in the past 12 months (11/19/2025).",
+    "slot": "pcp",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-05-22",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 05/22/2026\nPatient: Elvina Schaden, 69 y/o F\n\nCC: Follow-up for lumbar radiculopathy.\n\nHPI: Pt c/o persistent R leg radic pain. No new complaints.\n\nPMH: PSH: no spinal surgery.\n\nMeds: Continue current regimen.\n\nROS: ROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.\n\nPE: Neuro exam shows diminished sensation R L4 dermatome, mild weakness R quadriceps.\n\nImaging: Prior MRI showed L3-L4 HNP with foraminal stenosis.\n\nTx: Epidural steroid injection history: 1 lumbar injection in the past 12 months (11/19/2025).\n\nA/P: A/P: R L radic 2/2 L3-L4 HNP w/ foraminal stenosis.\n\nPlan: Continue conservative mgmt, monitor symptoms, consider repeat injection if no improvement.",
+   "source": "llm"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-07-05",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 07/05/2026\nPatient: Elvina Schaden, 69 y/o F\n\nHx: Fx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.\nInitial VAS 67 mm.\n\nTx course: PT from 05/24/2026 to 07/05/2026. D/C from PT after 6 wks (05/24/2026-07/05/2026), sx unchanged. Failed naproxen 500 mg BID.\n\nPt instructed on HEP daily, compliant.\n\nPlan: Continue monitoring, consider alternative mgmt options given lack of improvement.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-26",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/26/2026\nPatient: Elvina Schaden, 69 y/o F\n\nExam: CT lumbar spine\n\nFindings: At L3-L4 level, CT lumbar spine 08/26/2026: L3-L4 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root. No evidence of fracture or spondylolisthesis. Vertebral body heights preserved. No paraspinal soft tissue abnormality.\n\nImpression: L3-L4 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root as described. No acute osseous abnormality.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-21",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/21/2026\nPatient: Elvina Schaden, 69 y/o F\n\nCC: LBP x19 wks w/ radiation to R LE.\n\nHPI: Pt reports persistent low back pain for 19 weeks, radiating to right lower extremity. No new trauma or inciting event noted. Denies any rash or skin changes.\n\nPMH: HTN, hyperlipidemia.\n\nMeds: Lisinopril, atorvastatin.\n\nPE: Tenderness over lumbar paraspinals. Limited lumbar ROM due to pain. Neuro exam: intact sensation and strength in lower extremities.\n\nAssessment: Chronic low back pain with radicular symptoms to R LE.\n\nPlan: Recommend continuation of conservative measures. Consider imaging if symptoms worsen. Discussed pain management options including pharmacologic and interventional therapies.\n\nFollow-up in 4 weeks or sooner if symptoms escalate.",
+   "source": "llm"
+  }
+ ]
+}

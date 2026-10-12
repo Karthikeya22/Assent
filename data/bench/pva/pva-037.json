@@ -1,0 +1,118 @@
+{
+ "split": "test",
+ "facts": {
+  "family": "pva",
+  "case_id": "pva-037",
+  "difficulty": "missing",
+  "order_date": "2026-09-26",
+  "patient": {
+   "fhir_id": "1dda1c49-4783-1f9d-8f10-56ef498f0fe4",
+   "name": "Valery Erdman",
+   "sex": "female",
+   "birth_date": "1938-10-04"
+  },
+  "condition": "hosp:T11",
+  "cpt": "22513",
+  "cpt_text": "Percutaneous vertebral augmentation (kyphoplasty), thoracic",
+  "icd10": "M80.08XA",
+  "icd10_text": "Age-related osteoporosis with current pathological fracture, vertebra(e), initial encounter",
+  "dates": {
+   "pcp": "2026-06-18",
+   "inpatient": "2026-09-22",
+   "radiology": "2026-09-16",
+   "consult": "2026-09-25",
+   "onset": "2026-09-05",
+   "xray": "2026-09-07"
+  },
+  "observations": [
+   {
+    "code": "72514-3",
+    "system": "http://loinc.org",
+    "display": "Pain severity 0-10 numeric rating",
+    "value": 8.0,
+    "unit": "{score}",
+    "date": "2026-09-22"
+   }
+  ],
+  "gold": {
+   "fx.acute": "insufficient",
+   "fx.imaging": "met",
+   "sym.hosp": "met",
+   "sym.moderate": "insufficient",
+   "sym.worsening": "insufficient",
+   "feat.progression": "insufficient",
+   "feat.height": "insufficient",
+   "feat.kyphosis": "insufficient",
+   "feat.rdq": "insufficient",
+   "care.osteo": "met",
+   "contra": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "fx.imaging",
+    "gold": "met",
+    "text": "MRI thoracolumbar spine 09/16/2026: acute osteoporotic T11 compression fracture with bone marrow edema on STIR imaging.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sym.hosp",
+    "gold": "met",
+    "text": "Admitted 09/22/2026 for intractable back pain, NRS 8/10 despite IV analgesia.",
+    "slot": "inpatient",
+    "stale": false
+   },
+   {
+    "leaf": "care.osteo",
+    "gold": "met",
+    "text": "Referred for DEXA bone density testing and osteoporosis education; enrolled in the osteoporosis treatment program.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Back pain localizes to the fractured level; afebrile with no signs of infection or discitis.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-06-18",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 06/18/2026\nPatient: Valery Erdman, 88-year-old female\n\nSubjective:\nThe patient presents for routine follow-up. She reports no new complaints today.\n\nObjective:\nVital signs are within normal limits. Physical examination reveals no acute distress. Cardiovascular, respiratory, and abdominal exams are unremarkable. Neurological exam shows intact cranial nerves and normal motor and sensory function.\n\nAssessment:\nValery Erdman is an 88-year-old female with stable chronic conditions, currently without new issues.\n\nPlan:\nContinue current management and routine monitoring. Patient advised to report any new symptoms promptly. Follow-up appointment scheduled as per routine care guidelines.",
+   "source": "llm"
+  },
+  {
+   "slot": "inpatient",
+   "date": "2026-09-22",
+   "title": "Hospital Admission History and Physical",
+   "author": "Hospitalist",
+   "text": "Hospital Admission History and Physical\nDate: 09/22/2026\nPatient: Valery Erdman, 88-year-old female\n\nChief Complaint:\nAdmitted 09/22/2026 for intractable back pain, NRS 8/10 despite IV analgesia.\n\nHistory of Present Illness:\nMs. Erdman presents with severe back pain that has necessitated hospital admission. The pain is described as intense and unrelieved by intravenous analgesics.\n\nPast Medical History:\nIncludes hypertension and osteoarthritis.\n\nPhysical Examination:\nVital signs are stable. On examination, tenderness is noted over the lumbar spine. Neurological exam reveals no focal deficits.\n\nAssessment:\nIntractable back pain requiring inpatient management.\n\nPlan:\nContinue pain management with close monitoring. Further diagnostic evaluation will be considered to determine underlying cause. Consultations with pain management and orthopedics will be arranged as needed.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-09-16",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 09/16/2026\nPatient: Valery Erdman, 88-year-old female\n\nExamination: MRI thoracolumbar spine\n\nFindings:\nMRI thoracolumbar spine 09/16/2026: acute osteoporotic T11 compression fracture with bone marrow edema on STIR imaging.\n\nNo other acute abnormalities are identified in the thoracic or lumbar spine.\n\nImpression:\nAcute osteoporotic compression fracture at T11 with associated bone marrow edema on STIR sequences, consistent with recent injury.\n\nRecommendations:\nClinical correlation is advised. Further management should be determined by the referring physician based on the clinical scenario.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-25",
+   "title": "Spine Intervention Consultation",
+   "author": "Interventional radiologist",
+   "text": "Spine Intervention Consultation\nDate: 09/25/2026\nPatient: Valery Erdman, 88-year-old female\n\nHistory:\nValery Erdman presents for evaluation of back pain associated with a known vertebral fracture.\n\nExamination:\nBack pain localizes to the fractured level; afebrile with no signs of infection or discitis.\n\nAssessment:\nThe patient has a vertebral compression fracture without evidence of infection or discitis.\n\nPlan:\nReferred for DEXA bone density testing and osteoporosis education; enrolled in the osteoporosis treatment program.\nFurther interventional options will be considered based on bone density results and clinical follow-up.",
+   "source": "llm"
+  }
+ ]
+}

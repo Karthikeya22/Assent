@@ -1,0 +1,157 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-016",
+  "difficulty": "clean",
+  "order_date": "2026-09-30",
+  "patient": {
+   "fhir_id": "1a64d9ff-ee20-a422-cf2a-b5d54faca023",
+   "name": "Ricki Gottlieb",
+   "sex": "female",
+   "birth_date": "1949-11-28"
+  },
+  "condition": "cpap_intolerance",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-06-05",
+   "psg": "2026-02-18",
+   "sleepmd": "2026-08-03",
+   "ent": "2026-09-28"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 31.7,
+    "unit": "kg/m2",
+    "date": "2026-08-03"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 40.9,
+    "unit": "/h",
+    "date": "2026-02-18"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "met",
+   "dise": "met",
+   "anatomy": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "76-year-old woman referred for hypoglossal nerve stimulation evaluation.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "BMI 31.7 kg/m2.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Diagnostic in-laboratory polysomnography performed 02/18/2026.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "Total apnea-hypopnea index (AHI) 40.9 events/hour.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "Central and mixed apneas comprised 9% of all events.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "cpap",
+    "gold": "met",
+    "text": "CPAP intolerance: download shows average use 1.3 hours per night on 28% of nights despite mask refitting; shared decision-making with the patient documented that CPAP is not tolerated.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "met",
+    "text": "Drug-induced sleep endoscopy 09/15/2026: anteroposterior collapse at the velum without complete concentric collapse.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Oropharynx: tonsils size 1, no other anatomic obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.",
+    "slot": "ent",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-06-05",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 06/05/2026\nPatient: Ricki Gottlieb, 77-year-old female\n\nSubjective:\nRicki Gottlieb presents today for her routine follow-up. She reports feeling generally well with no new complaints. She denies any recent illnesses or changes in her health status.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no abnormalities. Cardiovascular, respiratory, abdominal, and neurological exams are unremarkable.\n\nAssessment:\nRicki is a 77-year-old female in stable condition. No acute issues identified during today's visit.\n\nPlan:\nContinue current medications and lifestyle. Routine monitoring and follow-up as scheduled. Encourage maintenance of healthy diet and regular exercise.\n\nNo additional testing or referrals are indicated at this time.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2026-02-18",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 02/18/2026\nPatient: Ricki Gottlieb, 77-year-old female\n\nDiagnostic in-laboratory polysomnography performed 02/18/2026. The study monitored multiple physiological parameters throughout the night to assess sleep quality and breathing patterns.\n\nTotal apnea-hypopnea index (AHI) 40.9 events/hour. Central and mixed apneas comprised 9% of all events. Oxygen saturation levels showed intermittent drops corresponding to respiratory events, with a minimum saturation of 82%.\n\nSleep was fragmented with frequent arousals related to respiratory disturbances. These findings indicate severe sleep-disordered breathing with a notable proportion of central and mixed apneas.\n\nRecommendations include further clinical evaluation and consideration of appropriate therapeutic interventions to manage the patient's condition.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-08-03",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation Note\nDate: 08/03/2026\nPatient: Ricki Gottlieb, 77-year-old female\n\nReason for Consultation:\nEvaluation and management of sleep-disordered breathing.\n\nHistory:\nRicki Gottlieb is a 77-year-old female referred for assessment of sleep apnea management. She has a history of obstructive sleep apnea diagnosed several years ago.\n\nPhysical Examination:\nBMI 31.7 kg/m2.\nNo other significant findings noted on physical exam relevant to sleep disorders.\n\nSleep Study and Treatment:\nCPAP intolerance: download shows average use 1.3 hours per night on 28% of nights despite mask refitting; shared decision-making with the patient documented that CPAP is not tolerated.\n\nPlan:\nDiscuss alternative therapies for sleep apnea management including oral appliance therapy and positional therapy. Continue to monitor symptoms and consider referral to dental sleep specialist for oral appliance evaluation. Emphasize sleep hygiene and weight management.\n\nFollow-up:\nPatient to return in 3 months or sooner if symptoms worsen or new concerns arise.\n\nPhysician:\nSleep medicine physician",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-28",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation Note\nDate: 09/28/2026\nPatient: Ricki Gottlieb, 77-year-old female\n\nReason for Consultation:\nEvaluation for hypoglossal nerve stimulation.\n\nHistory:\n76-year-old woman referred for hypoglossal nerve stimulation evaluation.\n\nExamination:\nOropharynx: tonsils size 1, no other anatomic obstruction.\n\nProcedures:\nDrug-induced sleep endoscopy 09/15/2026: anteroposterior collapse at the velum without complete concentric collapse.\n\nAssessment:\nNo neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.\n\nPlan:\nProceed with hypoglossal nerve stimulation evaluation and potential implantation given the absence of contraindications and suitable anatomy.",
+   "source": "llm"
+  }
+ ]
+}

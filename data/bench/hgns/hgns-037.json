@@ -1,0 +1,157 @@
+{
+ "split": "test",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-037",
+  "difficulty": "buried",
+  "order_date": "2026-09-21",
+  "patient": {
+   "fhir_id": "92a5e91d-4157-082a-10a3-4caaa3ce75fd",
+   "name": "Lean Stanton",
+   "sex": "female",
+   "birth_date": "1961-03-28"
+  },
+  "condition": "cpap_intolerance",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-06-03",
+   "psg": "2026-04-21",
+   "sleepmd": "2026-08-12",
+   "ent": "2026-09-19"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 26.3,
+    "unit": "kg/m2",
+    "date": "2026-08-12"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 50.6,
+    "unit": "/h",
+    "date": "2026-04-21"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "met",
+   "dise": "met",
+   "anatomy": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "65yo W referred for HGNS eval.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "Wt stable, BMI 26.3.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Attended PSG 04/21/2026.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "AHI 50.6/h.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "CA+MA 4% of total AHI.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "cpap",
+    "gold": "met",
+    "text": "CPAP dl avg 2.4 h/night, 45% nights despite mask refit; SDM w/ pt: CPAP intolerant.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "met",
+    "text": "DISE 09/12/2026: AP velum collapse, no CCC.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Tonsils 1+, no other obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No NM dz, no NYHA III/IV CHF, no MRI need, can use remote.",
+    "slot": "pcp",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-06-03",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 06/03/2026\nPatient: Lean Stanton, 65 y/o F\n\nVitals: Wt stable, BMI 26.3.\nPE: No NM dz, no NYHA III/IV CHF, no MRI need, can use remote.\n\nAssessment: Stable chronic conditions. No new complaints.\nPlan: Continue current meds, routine labs next visit, telehealth follow-up as needed.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2026-04-21",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 04/21/2026\nPatient: Lean Stanton, 65 y/o F\n\nAttended PSG 04/21/2026. Study revealed severe sleep-disordered breathing. Total AHI 50.6/h. CA+MA 4% of total AHI. Oxygen desaturation nadir 82%. Sleep architecture fragmented with reduced REM and slow wave sleep. Periodic limb movements within normal limits. No significant arrhythmias noted. CPAP titration recommended based on findings.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-08-12",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation\nDate: 08/12/2026\nPatient: Lean Stanton, 65 y/o F\n\nHx: OSA dx 2018, CPAP started 2019. Pt reports poor adherence.\n\nCPAP dl avg 2.4 h/night, 45% nights despite mask refit; SDM w/ pt: CPAP intolerant.\n\nExam: BMI 32, no craniofacial abnormalities. No nasal obstruction noted.\n\nPlan: Discussed alternatives to CPAP including oral appliance therapy and positional therapy. Sleep hygiene reinforced. Referral to dental sleep specialist made.\n\nF/U in 3 mo or prn.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-19",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation\nDate: 09/19/2026\nPatient: Lean Stanton, 65yo F\n\n65yo W referred for HGNS eval. Pt c/o snoring and mild daytime somnolence. No hx of apnea tx. Exam: Tonsils 1+, no other obstruction. Nasal passages patent. Oral cavity unremarkable.\n\nDISE 09/12/2026: AP velum collapse, no CCC. No tongue base or epiglottic collapse noted. No laryngeal obstruction.\n\nAssessment: Findings consistent with velopharyngeal obstruction without concentric collapse. Candidate for HGNS therapy.\n\nPlan: Discuss HGNS options, proceed with pre-op workup, and schedule follow-up.",
+   "source": "llm"
+  }
+ ]
+}

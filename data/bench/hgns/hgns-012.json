@@ -1,0 +1,156 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-012",
+  "difficulty": "contradictory",
+  "order_date": "2026-09-28",
+  "patient": {
+   "fhir_id": "4a138e40-dc84-dd23-782e-017c3747b915",
+   "name": "Dewitt Hirthe",
+   "sex": "male",
+   "birth_date": "1961-05-21"
+  },
+  "condition": "cpap_intolerance",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-06-29",
+   "psg": "2026-06-04",
+   "sleepmd": "2026-08-07",
+   "ent": "2026-09-26"
+  },
+  "observations": [
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 46.7,
+    "unit": "/h",
+    "date": "2026-06-04"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "met",
+   "dise": "met",
+   "anatomy": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "65-year-old man referred for hypoglossal nerve stimulation evaluation.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Diagnostic in-laboratory polysomnography performed 06/04/2026.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "Total apnea-hypopnea index (AHI) 46.7 events/hour.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "Central and mixed apneas comprised 7% of all events.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "cpap",
+    "gold": "met",
+    "text": "CPAP intolerance: download shows average use 3.0 hours per night on 21% of nights despite mask refitting; shared decision-making with the patient documented that CPAP is not tolerated.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "met",
+    "text": "Drug-induced sleep endoscopy 09/11/2026: anteroposterior collapse at the velum without complete concentric collapse.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Oropharynx: tonsils size 1, no other anatomic obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "Current BMI 33.6 kg/m2 measured today.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "BMI 35.5 kg/m2.",
+    "slot": "pcp",
+    "stale": true
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-06-29",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 06/29/2026\nPatient: Dewitt Hirthe, 65-year-old male\n\nSubjective:\nMr. Hirthe presents today for his routine follow-up. He reports feeling generally well with no new complaints. He denies any acute symptoms or concerns at this time.\n\nObjective:\nVital signs are stable. Physical examination is unremarkable. BMI 35.5 kg/m2.\n\nAssessment:\n1. Obesity, BMI 35.5 kg/m2.\n2. No other active medical issues noted.\n\nPlan:\nContinue current lifestyle recommendations focusing on diet and exercise to address obesity. Monitor weight and metabolic parameters at next visit. Encourage patient to maintain regular physical activity and healthy eating habits.\n\nFollow-up in 6 months or sooner if any new symptoms arise.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2026-06-04",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 06/04/2026\nPatient: Dewitt Hirthe, 65-year-old male\n\nDiagnostic in-laboratory polysomnography performed 06/04/2026. The study revealed a Total apnea-hypopnea index (AHI) 46.7 events/hour. Central and mixed apneas comprised 7% of all events. Sleep architecture showed normal distribution of sleep stages with adequate REM and non-REM sleep. Oxygen saturation levels decreased during respiratory events, with a nadir of 82%. These findings are consistent with severe obstructive sleep apnea with a minor component of central and mixed apneas. Clinical correlation and appropriate management are advised.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-08-07",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation\nDate: 08/07/2026\nPatient: Dewitt Hirthe, 65-year-old male\n\nReason for Consultation:\nEvaluation and management of sleep-disordered breathing.\n\nHistory:\nMr. Hirthe has been diagnosed with obstructive sleep apnea and was initiated on CPAP therapy. He reports difficulty tolerating the device.\n\nCPAP Compliance:\nCPAP intolerance: download shows average use 3.0 hours per night on 21% of nights despite mask refitting; shared decision-making with the patient documented that CPAP is not tolerated.\n\nAssessment:\nThe patient demonstrates poor adherence to CPAP therapy despite attempts at mask refitting and support.\n\nPlan:\nDiscuss alternative treatment options including oral appliance therapy and positional therapy. Recommend follow-up sleep study to evaluate current severity and response to alternative treatments. Continue to monitor symptoms and provide supportive care.\n\nFollow-up:\nSchedule return visit in 3 months or sooner if symptoms worsen or new concerns arise.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-26",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation Note\nDate: 09/26/2026\nPatient: Dewitt Hirthe, 65-year-old male\n\nThis 65-year-old man referred for hypoglossal nerve stimulation evaluation. Drug-induced sleep endoscopy 09/11/2026: anteroposterior collapse at the velum without complete concentric collapse. Oropharynx: tonsils size 1, no other anatomic obstruction. No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote. Current BMI 33.6 kg/m2 measured today.\n\nThe patient is considered an appropriate candidate for hypoglossal nerve stimulation given the findings and absence of contraindications. Further planning and patient education will follow.",
+   "source": "llm"
+  }
+ ]
+}

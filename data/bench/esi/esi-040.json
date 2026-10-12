@@ -1,0 +1,147 @@
+{
+ "split": "dev",
+ "facts": {
+  "case_id": "esi-040",
+  "difficulty": "missing",
+  "order_date": "2026-09-08",
+  "patient": {
+   "fhir_id": "592ad309-7d98-4a5d-dbcb-2a5c6379c99e",
+   "name": "Gwyn Runolfsson",
+   "sex": "female",
+   "birth_date": "1955-03-09"
+  },
+  "condition": "radic",
+  "region": "cervical",
+  "level": "C5-C6",
+  "side": "right",
+  "cpt": "64479",
+  "icd10": "M54.12",
+  "onset_date": "2026-05-12",
+  "pain_weeks": 17,
+  "pt_start": "2026-05-19",
+  "pt_weeks": 4,
+  "nsaid": "ibuprofen 600 mg TID",
+  "scale_name": "VAS",
+  "scale_value": "68 mm",
+  "imaging_date": "2026-08-10",
+  "imaging_modality": "MRI",
+  "prior_esi_dates": [],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "not_met",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "insufficient",
+   "freq": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "Assessment: right cervical radiculopathy at C5-C6 due to disc herniation with foraminal stenosis.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dx.pls",
+    "gold": "not_met",
+    "text": "Past surgical history: no prior spine surgery.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "MRI cervical spine 08/10/2026: C5-C6 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Function: unable to stand long enough to cook a meal, has stopped driving because of the pain.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "VAS at baseline today: 68 mm.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "Symptoms began on 05/12/2026, 17 weeks before this visit.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "Completed physical therapy from 05/19/2026 to 06/16/2026 (4 weeks) with no lasting benefit, and failed ibuprofen 600 mg TID.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "Continues the daily home exercise program taught in PT.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "No prior epidural steroid injections.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-05-21",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 05/21/2026\nPatient: Gwyn Runolfsson, 71-year-old female\n\nSubjective:\nThe patient presents for routine follow-up. She reports no new complaints or concerns today.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no acute abnormalities.\n\nAssessment:\nThe patient remains in stable condition with no new issues identified.\n\nPlan:\nContinue current management and routine monitoring. Encourage regular exercise and balanced diet.\n\nPast surgical history: no prior spine surgery.",
+   "source": "llm"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-06-16",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 06/16/2026\nPatient: Gwyn Runolfsson, 71-year-old female\n\nReason for Referral:\nPatient was referred for physical therapy to address ongoing musculoskeletal complaints.\n\nTherapy Course:\nCompleted physical therapy from 05/19/2026 to 06/16/2026 (4 weeks) with no lasting benefit, and failed ibuprofen 600 mg TID.\n\nInterventions:\nTreatment included therapeutic exercises, manual therapy, and patient education focused on improving mobility and function.\n\nOutcome:\nDespite adherence to the prescribed therapy regimen, the patient did not experience sustained improvement in symptoms.\n\nRecommendations:\nFurther evaluation by the primary care provider or specialist is advised to explore alternative management options.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-10",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/10/2026\nPatient: Gwyn Runolfsson, 71-year-old female\n\nExamination: MRI Cervical Spine\n\nFindings:\nMRI cervical spine 08/10/2026: C5-C6 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.\n\nImpression:\nThere is a disc herniation at the C5-C6 level causing moderate right foraminal stenosis and contact with the exiting nerve root. No other significant abnormalities are noted.\n\nRecommendations:\nClinical correlation is advised to assess for symptoms related to the findings. Further evaluation or management should be guided by the referring physician.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-06",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/06/2026\nPatient: Gwyn Runolfsson, 71-year-old female\nAuthor: Pain medicine physician\n\nNo prior epidural steroid injections.\nContinues the daily home exercise program taught in PT.\nSymptoms began on 05/12/2026, 17 weeks before this visit.\nVAS at baseline today: 68 mm.\nFunction: unable to stand long enough to cook a meal, has stopped driving because of the pain.\nAssessment: right cervical radiculopathy at C5-C6 due to disc herniation with foraminal stenosis.\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\n",
+   "source": "template"
+  }
+ ]
+}

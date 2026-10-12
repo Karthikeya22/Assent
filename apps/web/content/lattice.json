@@ -1,0 +1,113 @@
+{
+ "policy": "L39240",
+ "nodes": [
+  {
+   "key": "esi",
+   "kind": "AND",
+   "label": "Initial epidural steroid injection is medically reasonable and necessary",
+   "parent": null
+  },
+  {
+   "key": "dx",
+   "kind": "AND",
+   "label": "Qualifying condition supported by history, exam and concordant imaging",
+   "parent": "esi"
+  },
+  {
+   "key": "dx.condition",
+   "kind": "OR",
+   "label": "One qualifying condition",
+   "parent": "dx"
+  },
+  {
+   "key": "dx.radic",
+   "kind": "LEAF",
+   "label": "Radiculopathy, radicular pain or neurogenic claudication from disc herniation, osteophyte or severe DDD producing foraminal or central stenosis",
+   "parent": "dx.condition"
+  },
+  {
+   "key": "dx.pls",
+   "kind": "LEAF",
+   "label": "Post-laminectomy syndrome",
+   "parent": "dx.condition"
+  },
+  {
+   "key": "dx.zoster",
+   "kind": "LEAF",
+   "label": "Acute herpes zoster associated pain",
+   "parent": "dx.condition"
+  },
+  {
+   "key": "dx.imaging",
+   "kind": "LEAF",
+   "label": "Imaging concordant with the qualifying condition",
+   "parent": "dx"
+  },
+  {
+   "key": "sev",
+   "kind": "AND",
+   "label": "Severity documented with a baseline objective scale",
+   "parent": "esi"
+  },
+  {
+   "key": "sev.impact",
+   "kind": "LEAF",
+   "label": "Pain greatly impacts quality of life or function",
+   "parent": "sev"
+  },
+  {
+   "key": "sev.baseline",
+   "kind": "LEAF",
+   "label": "Objective pain scale or functional assessment recorded at baseline",
+   "parent": "sev"
+  },
+  {
+   "key": "dur",
+   "kind": "OR",
+   "label": "Duration and conservative care requirement",
+   "parent": "esi"
+  },
+  {
+   "key": "dur.standard",
+   "kind": "AND",
+   "label": "Four weeks of pain and failed or intolerable conservative care",
+   "parent": "dur"
+  },
+  {
+   "key": "dur.pain",
+   "kind": "LEAF",
+   "label": "Pain duration of at least 4 weeks",
+   "parent": "dur.standard"
+  },
+  {
+   "key": "dur.conservative",
+   "kind": "LEAF",
+   "label": "Failure of 4 weeks of noninvasive conservative care, or inability to tolerate it",
+   "parent": "dur.standard"
+  },
+  {
+   "key": "dur.zoster",
+   "kind": "LEAF",
+   "label": "Acute herpes zoster refractory to conservative management (4-week wait not required)",
+   "parent": "dur"
+  },
+  {
+   "key": "rehab",
+   "kind": "LEAF",
+   "label": "Enrolled in active rehabilitation, home exercise or functional restoration program",
+   "parent": "esi"
+  },
+  {
+   "key": "contra",
+   "kind": "LEAF",
+   "label": "No contraindication (spinal or systemic infection, cord/conus/cauda equina compression, cancer risk)",
+   "parent": "esi"
+  },
+  {
+   "key": "freq",
+   "kind": "LEAF",
+   "label": "No more than 4 ESI sessions in this spinal region in the past 12 months",
+   "parent": "esi"
+  }
+ ]
+}

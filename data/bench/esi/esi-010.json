@@ -1,0 +1,134 @@
+{
+ "split": "test",
+ "facts": {
+  "case_id": "esi-010",
+  "difficulty": "buried",
+  "order_date": "2026-09-30",
+  "patient": {
+   "fhir_id": "154de301-afca-c4e5-3c20-2f104f5d7bfd",
+   "name": "Lavonna Huel",
+   "sex": "female",
+   "birth_date": "1946-03-15"
+  },
+  "condition": "zoster",
+  "region": "lumbar",
+  "level": "L3-L4",
+  "side": "left",
+  "cpt": "64483",
+  "icd10": "B02.29",
+  "onset_date": "2026-09-09",
+  "pain_weeks": 3,
+  "pt_start": "2026-08-07",
+  "pt_weeks": 7,
+  "nsaid": "naproxen 500 mg BID",
+  "scale_name": "VAS",
+  "scale_value": "69 mm",
+  "imaging_date": "2026-09-18",
+  "imaging_modality": "CT",
+  "prior_esi_dates": [
+   "2026-07-28"
+  ],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "insufficient",
+   "dx.pls": "insufficient",
+   "dx.zoster": "met",
+   "dx.imaging": "insufficient",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "not_met",
+   "dur.conservative": "insufficient",
+   "dur.zoster": "met",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "dx.zoster",
+    "gold": "met",
+    "text": "Assessment: acute herpes zoster in a left L1 dermatomal distribution with associated pain; vesicular rash first noted 09/11/2026.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Fx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Initial VAS 69 mm.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "not_met",
+    "text": "LBP x3 wks w/ radiation to L LE.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.zoster",
+    "gold": "met",
+    "text": "Pain persists despite valacyclovir and gabapentin titrated to 900 mg daily; refractory to conservative management.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "HEP daily, compliant.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "ROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "Epidural steroid injection history: 1 lumbar injection in the past 12 months (07/28/2026).",
+    "slot": "pcp",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-09-18",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 09/18/2026\nPatient: Lavonna Huel, 80 y/o F\n\nCC: Rash and pain in left lower abdomen.\n\nHPI: Pt presents with vesicular rash and pain localized to left L1 dermatome. Vesicular rash first noted 09/11/2026.\n\nAssessment: acute herpes zoster in a left L1 dermatomal distribution with associated pain; vesicular rash first noted 09/11/2026.\n\nROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.\n\nPMH: Epidural steroid injection history: 1 lumbar injection in the past 12 months (07/28/2026).\n\nPlan: Continue monitoring rash and pain. Educate pt on signs of complications. Follow-up in 1 week or sooner if worsening.\n\nNo new meds started today.",
+   "source": "llm"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-09-25",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 09/25/2026\nPt: Lavonna Huel, 80 y/o F\n\nFx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.\nInitial VAS 69 mm.\n\nTx focused on improving mobility and ADLs. Pt demonstrated inc ROM and strength in LE. Gait training provided; ambulation distance improved to 2 blocks with assistive device. Balance exercises incorporated; no falls reported.\n\nDischarge status: functional gains noted, pt independent with home exercise program. Advised continued activity and follow-up with PCP as needed.\n\nNo complications during course. Goals met to extent possible given age and comorbidities.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-28",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/28/2026\nPatient: Lavonna Huel, 80 y/o F\n\nCC: LBP x3 wks w/ radiation to L LE.\n\nHPI: Pt reports persistent low back pain with radiation to left lower extremity for 3 weeks. Pain persists despite valacyclovir and gabapentin titrated to 900 mg daily; refractory to conservative management. No prior spine surgery or imaging discussed.\n\nMedications: Valacyclovir, gabapentin 900 mg daily.\n\nPlan: Continue current meds, monitor response. HEP daily, compliant. Consider interventional options if no improvement.",
+   "source": "llm"
+  }
+ ]
+}

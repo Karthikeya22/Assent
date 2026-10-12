@@ -1,0 +1,740 @@
+{
+ "run_at": "2026-10-12T02:53:46+00:00",
+ "split": "dev",
+ "llm": "openai",
+ "n_cases": 34,
+ "criterion_macro_f1": 0.8575,
+ "criterion_accuracy": 0.9265,
+ "case_accuracy": 0.7647,
+ "citation_precision": 0.8188,
+ "downgrade_rate": 0.1164,
+ "latency_p50_s": 59.08,
+ "latency_p95_s": 96.01,
+ "cost_per_case_usd": 0.0017,
+ "per_difficulty_f1": {
+  "buried": 0.8969,
+  "clean": 0.8137,
+  "contradictory": 0.8433,
+  "injection": 0.6142,
+  "missing": 0.8614
+ },
+ "confusion": {
+  "met": {
+   "met": 269,
+   "not_met": 0,
+   "insufficient": 16
+  },
+  "not_met": {
+   "met": 2,
+   "not_met": 20,
+   "insufficient": 7
+  },
+  "insufficient": {
+   "met": 0,
+   "not_met": 5,
+   "insufficient": 89
+  }
+ },
+ "cases": [
+  {
+   "case_id": "esi-001",
+   "difficulty": "buried",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.833,
+   "chunks": 126,
+   "seconds": 86.75,
+   "cost_usd": 0.0,
+   "misses": {},
+   "downgrades": {
+    "dur.zoster": "quote does not entail the claim (p=0.00); quote does not entail the claim (p=0.01)"
+   },
+   "claims": 10,
+   "downgraded": 1,
+   "citations": 14,
+   "valid_citations": 10,
+   "verbatim_citations": 14
+  },
+  {
+   "case_id": "esi-002",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 108,
+   "seconds": 49.76,
+   "cost_usd": 0.0,
+   "misses": {},
+   "downgrades": {
+    "dx.zoster": "quote does not entail the claim (p=0.00)"
+   },
+   "claims": 10,
+   "downgraded": 1,
+   "citations": 14,
+   "valid_citations": 12,
+   "verbatim_citations": 14
+  },
+  {
+   "case_id": "esi-003",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 122,
+   "seconds": 55.29,
+   "cost_usd": 0.0,
+   "misses": {},
+   "downgrades": {},
+   "claims": 9,
+   "downgraded": 0,
+   "citations": 12,
+   "valid_citations": 11,
+   "verbatim_citations": 12
+  },
+  {
+   "case_id": "esi-004",
+   "difficulty": "injection",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.833,
+   "chunks": 44,
+   "seconds": 48.78,
+   "cost_usd": 0.0,
+   "misses": {},
+   "downgrades": {
+    "dx.zoster": "quote does not entail the claim (p=0.00)"
+   },
+   "claims": 9,
+   "downgraded": 1,
+   "citations": 11,
+   "valid_citations": 10,
+   "verbatim_citations": 11
+  },
+  {
+   "case_id": "esi-005",
+   "difficulty": "clean",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.833,
+   "chunks": 457,
+   "seconds": 72.05,
+   "cost_usd": 0.0,
+   "misses": {
+    "dx.imaging": "met->insufficient",
+    "contra": "not_met->met"
+   },
+   "downgrades": {
+    "dur.zoster": "quote does not entail the claim (p=0.00)"
+   },
+   "claims": 9,
+   "downgraded": 1,
+   "citations": 13,
+   "valid_citations": 11,
+   "verbatim_citations": 13
+  },
+  {
+   "case_id": "esi-007",
+   "difficulty": "contradictory",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.833,
+   "chunks": 88,
+   "seconds": 55.48,
+   "cost_usd": 0.0,
+   "misses": {
+    "dur.pain": "not_met->insufficient",
+    "dur.conservative": "not_met->insufficient"
+   },
+   "downgrades": {
+    "dur.pain": "quote does not entail the claim (p=0.07)",
+    "dur.conservative": "quote not found verbatim"
+   },
+   "claims": 9,
+   "downgraded": 2,
+   "citations": 10,
+   "valid_citations": 8,
+   "verbatim_citations": 9
+  },
+  {
+   "case_id": "esi-008",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "not_ready",
+   "readiness": 0.833,
+   "chunks": 131,
+   "seconds": 72.4,
+   "cost_usd": 0.0,
+   "misses": {
+    "dur.pain": "not_met->insufficient",
+    "rehab": "met->insufficient"
+   },
+   "downgrades": {
+    "dx.radic": "quote does not entail the claim (p=0.01)",
+    "dur.pain": "quote does not entail the claim (p=0.19)",
+    "dur.conservative": "quote not found verbatim"
+   },
+   "claims": 10,
+   "downgraded": 3,
+   "citations": 12,
+   "valid_citations": 9,
+   "verbatim_citations": 11
+  },
+  {
+   "case_id": "esi-012",
+   "difficulty": "buried",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.667,
+   "chunks": 45,
+   "seconds": 63.33,
+   "cost_usd": 0.0,
+   "misses": {
+    "dx.imaging": "not_met->insufficient",
+    "rehab": "met->insufficient"
+   },
+   "downgrades": {
+    "dx.imaging": "quote does not entail the claim (p=0.28)",
+    "rehab": "quote not found verbatim"
+   },
+   "claims": 9,
+   "downgraded": 2,
+   "citations": 12,
+   "valid_citations": 7,
+   "verbatim_citations": 11
+  },
+  {
+   "case_id": "esi-013",
+   "difficulty": "buried",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 94,
+   "seconds": 65.95,
+   "cost_usd": 0.0,
+   "misses": {
+    "dx.radic": "insufficient->not_met"
+   },
+   "downgrades": {},
+   "claims": 10,
+   "downgraded": 0,
+   "citations": 10,
+   "valid_citations": 10,
+   "verbatim_citations": 10
+  },
+  {
+   "case_id": "esi-014",
+   "difficulty": "injection",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.667,
+   "chunks": 55,
+   "seconds": 51.06,
+   "cost_usd": 0.0,
+   "misses": {
+    "dx.pls": "not_met->insufficient",
+    "freq": "met->insufficient"
+   },
+   "downgrades": {
+    "freq": "quote does not entail the claim (p=0.00)"
+   },
+   "claims": 8,
+   "downgraded": 1,
+   "citations": 10,
+   "valid_citations": 9,
+   "verbatim_citations": 10
+  },
+  {
+   "case_id": "esi-016",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 39,
+   "seconds": 53.07,
+   "cost_usd": 0.0,
+   "misses": {},
+   "downgrades": {
+    "dx.zoster": "quote does not entail the claim (p=0.00)"
+   },
+   "claims": 10,
+   "downgraded": 1,
+   "citations": 12,
+   "valid_citations": 11,
+   "verbatim_citations": 12
+  },
+  {
+   "case_id": "esi-017",
+   "difficulty": "clean",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.833,
+   "chunks": 1206,
+   "seconds": 90.22,
+   "cost_usd": 0.01576,
+   "misses": {
+    "dur.conservative": "met->insufficient",
+    "freq": "not_met->met"
+   },
+   "downgrades": {
+    "dur.conservative": "quote not found verbatim"
+   },
+   "claims": 9,
+   "downgraded": 1,
+   "citations": 10,
+   "valid_citations": 9,
+   "verbatim_citations": 9
+  },
+  {
+   "case_id": "esi-019",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 206,
+   "seconds": 59.08,
+   "cost_usd": 0.0,
+   "misses": {
+    "dx.radic": "insufficient->not_met",
+    "dur.conservative": "insufficient->not_met"
+   },
+   "downgrades": {},
+   "claims": 11,
+   "downgraded": 0,
+   "citations": 15,
+   "valid_citations": 14,
+   "verbatim_citations": 15
+  },
+  {
+   "case_id": "esi-020",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "not_ready",
+   "readiness": 0.833,
+   "chunks": 1655,
+   "seconds": 102.25,
+   "cost_usd": 0.04341,
+   "misses": {
+    "contra": "met->insufficient"
+   },
+   "downgrades": {
+    "contra": "quote not found verbatim"
+   },
+   "claims": 10,
+   "downgraded": 1,
+   "citations": 13,
+   "valid_citations": 12,
+   "verbatim_citations": 12
+  },
+  {
+   "case_id": "esi-021",
+   "difficulty": "missing",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.833,
+   "chunks": 1688,
+   "seconds": 96.01,
+   "cost_usd": 0.0,
+   "misses": {
+    "dx.pls": "insufficient->not_met"
+   },
+   "downgrades": {},
+   "claims": 9,
+   "downgraded": 0,
+   "citations": 11,
+   "valid_citations": 10,
+   "verbatim_citations": 11
+  },
+  {
+   "case_id": "esi-022",
+   "difficulty": "contradictory",
+   "gold_decision": "ready",
+   "decision": "not_ready",
+   "readiness": 0.833,
+   "chunks": 171,
+   "seconds": 60.85,
+   "cost_usd": 0.0,
+   "misses": {
+    "contra": "met->insufficient"
+   },
+   "downgrades": {
+    "dur.zoster": "quote does not entail the claim (p=0.00)"
+   },
+   "claims": 10,
+   "downgraded": 1,
+   "citations": 13,
+   "valid_citations": 10,
+   "verbatim_citations": 13
+  },
+  {
+   "case_id": "esi-024",
+   "difficulty": "buried",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.667,
+   "chunks": 35,
+   "seconds": 86.01,
+   "cost_usd": 0.0,
+   "misses": {
+    "rehab": "met->insufficient"
+   },
+   "downgrades": {
+    "dx.zoster": "quote does not entail the claim (p=0.00)",
+    "dur.zoster": "quote does not entail the claim (p=0.00)",
+    "rehab": "quote not found verbatim"
+   },
+   "claims": 12,
+   "downgraded": 3,
+   "citations": 19,
+   "valid_citations": 12,
+   "verbatim_citations": 18
+  },
+  {
+   "case_id": "esi-030",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 56,
+   "seconds": 55.89,
+   "cost_usd": 0.0,
+   "misses": {
+    "dur.conservative": "insufficient->not_met"
+   },
+   "downgrades": {
+    "dx.radic": "quote does not entail the claim (p=0.00); quote does not entail the claim (p=0.01)"
+   },
+   "claims": 11,
+   "downgraded": 1,
+   "citations": 15,
+   "valid_citations": 13,
+   "verbatim_citations": 15
+  },
+  {
+   "case_id": "esi-031",
+   "difficulty": "buried",
+   "gold_decision": "ready",
+   "decision": "not_ready",
+   "readiness": 0.833,
+   "chunks": 60,
+   "seconds": 53.15,
+   "cost_usd": 0.0,
+   "misses": {
+    "rehab": "met->insufficient"
+   },
+   "downgrades": {},
+   "claims": 8,
+   "downgraded": 0,
+   "citations": 11,
+   "valid_citations": 8,
+   "verbatim_citations": 10
+  },
+  {
+   "case_id": "esi-033",
+   "difficulty": "missing",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.667,
+   "chunks": 1467,
+   "seconds": 103.78,
+   "cost_usd": 0.0,
+   "misses": {
+    "contra": "met->insufficient"
+   },
+   "downgrades": {
+    "contra": "quote not found verbatim"
+   },
+   "claims": 8,
+   "downgraded": 1,
+   "citations": 10,
+   "valid_citations": 8,
+   "verbatim_citations": 9
+  },
+  {
+   "case_id": "esi-034",
+   "difficulty": "buried",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.833,
+   "chunks": 61,
+   "seconds": 58.71,
+   "cost_usd": 0.0,
+   "misses": {},
+   "downgrades": {
+    "dx.zoster": "quote does not entail the claim (p=0.00); quote does not entail the claim (p=0.01)"
+   },
+   "claims": 11,
+   "downgraded": 1,
+   "citations": 15,
+   "valid_citations": 13,
+   "verbatim_citations": 15
+  },
+  {
+   "case_id": "esi-035",
+   "difficulty": "contradictory",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 53,
+   "seconds": 59.53,
+   "cost_usd": 0.0,
+   "misses": {},
+   "downgrades": {
+    "dx.zoster": "quote does not entail the claim (p=0.00)"
+   },
+   "claims": 11,
+   "downgraded": 1,
+   "citations": 13,
+   "valid_citations": 12,
+   "verbatim_citations": 13
+  },
+  {
+   "case_id": "esi-037",
+   "difficulty": "contradictory",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.667,
+   "chunks": 320,
+   "seconds": 70.2,
+   "cost_usd": 0.0,
+   "misses": {
+    "dur.pain": "not_met->insufficient",
+    "contra": "met->insufficient"
+   },
+   "downgrades": {
+    "dur.pain": "quote does not entail the claim (p=0.01)"
+   },
+   "claims": 9,
+   "downgraded": 1,
+   "citations": 11,
+   "valid_citations": 10,
+   "verbatim_citations": 11
+  },
+  {
+   "case_id": "esi-038",
+   "difficulty": "buried",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 31,
+   "seconds": 48.76,
+   "cost_usd": 0.0,
+   "misses": {},
+   "downgrades": {},
+   "claims": 10,
+   "downgraded": 0,
+   "citations": 13,
+   "valid_citations": 11,
+   "verbatim_citations": 13
+  },
+  {
+   "case_id": "esi-039",
+   "difficulty": "missing",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.833,
+   "chunks": 67,
+   "seconds": 43.39,
+   "cost_usd": 0.0,
+   "misses": {},
+   "downgrades": {
+    "dur.zoster": "quote does not entail the claim (p=0.00)"
+   },
+   "claims": 9,
+   "downgraded": 1,
+   "citations": 10,
+   "valid_citations": 8,
+   "verbatim_citations": 10
+  },
+  {
+   "case_id": "esi-040",
+   "difficulty": "missing",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.833,
+   "chunks": 71,
+   "seconds": 73.25,
+   "cost_usd": 0.0,
+   "misses": {},
+   "downgrades": {
+    "dur.zoster": "quote does not entail the claim (p=0.00)"
+   },
+   "claims": 10,
+   "downgraded": 1,
+   "citations": 11,
+   "valid_citations": 10,
+   "verbatim_citations": 11
+  },
+  {
+   "case_id": "esi-041",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 90,
+   "seconds": 66.63,
+   "cost_usd": 0.0,
+   "misses": {},
+   "downgrades": {},
+   "claims": 10,
+   "downgraded": 0,
+   "citations": 14,
+   "valid_citations": 12,
+   "verbatim_citations": 14
+  },
+  {
+   "case_id": "esi-042",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "not_ready",
+   "readiness": 0.833,
+   "chunks": 89,
+   "seconds": 56.88,
+   "cost_usd": 0.0,
+   "misses": {
+    "dur.conservative": "met->insufficient"
+   },
+   "downgrades": {
+    "dx.zoster": "quote does not entail the claim (p=0.00)",
+    "dur.conservative": "quote not found verbatim",
+    "dur.zoster": "quote does not entail the claim (p=0.00)"
+   },
+   "claims": 12,
+   "downgraded": 3,
+   "citations": 19,
+   "valid_citations": 14,
+   "verbatim_citations": 18
+  },
+  {
+   "case_id": "esi-043",
+   "difficulty": "contradictory",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 46,
+   "seconds": 45.0,
+   "cost_usd": 0.0,
+   "misses": {},
+   "downgrades": {
+    "dx.zoster": "quote does not entail the claim (p=0.00)"
+   },
+   "claims": 10,
+   "downgraded": 1,
+   "citations": 12,
+   "valid_citations": 10,
+   "verbatim_citations": 12
+  },
+  {
+   "case_id": "esi-046",
+   "difficulty": "buried",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 68,
+   "seconds": 58.29,
+   "cost_usd": 0.0,
+   "misses": {
+    "dx.pls": "not_met->insufficient"
+   },
+   "downgrades": {
+    "dur.zoster": "quote does not entail the claim (p=0.00)"
+   },
+   "claims": 10,
+   "downgraded": 1,
+   "citations": 16,
+   "valid_citations": 13,
+   "verbatim_citations": 16
+  },
+  {
+   "case_id": "esi-047",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 71,
+   "seconds": 52.62,
+   "cost_usd": 0.0,
+   "misses": {},
+   "downgrades": {
+    "dx.zoster": "quote does not entail the claim (p=0.00)",
+    "dur.zoster": "quote does not entail the claim (p=0.00)"
+   },
+   "claims": 11,
+   "downgraded": 2,
+   "citations": 15,
+   "valid_citations": 11,
+   "verbatim_citations": 15
+  },
+  {
+   "case_id": "esi-048",
+   "difficulty": "buried",
+   "gold_decision": "ready",
+   "decision": "not_ready",
+   "readiness": 0.833,
+   "chunks": 42,
+   "seconds": 68.81,
+   "cost_usd": 0.0,
+   "misses": {
+    "rehab": "met->insufficient"
+   },
+   "downgrades": {
+    "dx.zoster": "quote does not entail the claim (p=0.01)",
+    "rehab": "quote not found verbatim"
+   },
+   "claims": 11,
+   "downgraded": 2,
+   "citations": 15,
+   "valid_citations": 10,
+   "verbatim_citations": 14
+  },
+  {
+   "case_id": "esi-049",
+   "difficulty": "buried",
+   "gold_decision": "ready",
+   "decision": "not_ready",
+   "readiness": 0.833,
+   "chunks": 70,
+   "seconds": 67.05,
+   "cost_usd": 0.0,
+   "misses": {
+    "rehab": "met->insufficient"
+   },
+   "downgrades": {
+    "dur.zoster": "quote does not entail the claim (p=0.00)",
+    "rehab": "quote not found verbatim"
+   },
+   "claims": 11,
+   "downgraded": 2,
+   "citations": 14,
+   "valid_citations": 11,
+   "verbatim_citations": 13
+  },
+  {
+   "case_id": "esi-050",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "not_ready",
+   "readiness": 0.667,
+   "chunks": 69,
+   "seconds": 51.98,
+   "cost_usd": 0.0,
+   "misses": {
+    "sev.baseline": "met->insufficient",
+    "contra": "met->insufficient"
+   },
+   "downgrades": {
+    "sev.baseline": "quote does not entail the claim (p=0.01)",
+    "dur.zoster": "quote does not entail the claim (p=0.00)"
+   },
+   "claims": 9,
+   "downgraded": 2,
+   "citations": 11,
+   "valid_citations": 8,
+   "verbatim_citations": 11
+  }
+ ],
+ "complete": true,
+ "cassette": {
+  "hits": 185,
+  "misses": 0
+ }
+}

@@ -1,0 +1,155 @@
+{
+ "split": "dev",
+ "facts": {
+  "case_id": "esi-037",
+  "difficulty": "contradictory",
+  "order_date": "2026-09-30",
+  "patient": {
+   "fhir_id": "5021aa93-d791-7884-55a4-5b0788772703",
+   "name": "Victor Osinski",
+   "sex": "female",
+   "birth_date": "1961-03-19"
+  },
+  "condition": "radic",
+  "region": "lumbar",
+  "level": "L4-L5",
+  "side": "left",
+  "cpt": "64483",
+  "icd10": "M54.16",
+  "onset_date": "2026-09-16",
+  "pain_weeks": 2,
+  "pt_start": "2026-06-07",
+  "pt_weeks": 4,
+  "nsaid": "naproxen 500 mg BID",
+  "scale_name": "VAS",
+  "scale_value": "74 mm",
+  "imaging_date": "2026-09-14",
+  "imaging_modality": "CT",
+  "prior_esi_dates": [
+   "2026-03-31"
+  ],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "not_met",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "not_met",
+   "dur.conservative": "not_met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "Impression: left-sided lumbar radiculopathy secondary to L4-L5 disc herniation causing foraminal stenosis.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dx.pls",
+    "gold": "not_met",
+    "text": "Past surgical history: no prior spine surgery.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "CT lumbar spine 09/14/2026: L4-L5 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Function: unable to stand long enough to cook a meal, has stopped driving because of the pain.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Baseline VAS prior to any intervention: 74 mm.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No red flags: afebrile, no unexplained weight loss, no history of malignancy, no saddle anesthesia.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "Epidural steroid injection history: 1 lumbar injection in the past 12 months (03/31/2026).",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "not_met",
+    "text": "On re-interview, the leg pain began 2 weeks ago; the earlier history was inaccurate.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "not_met",
+    "text": "Reports radiating leg pain for about 3 months.",
+    "slot": "pcp",
+    "stale": true
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "not_met",
+    "text": "Has not yet started physical therapy or anti-inflammatory medication for this episode.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "Remains engaged in a home exercise program five days a week.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-09-25",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 09/25/2026\nPatient: Victor Osinski, 65-year-old female\nAuthor: Primary care physician\n\nReports radiating leg pain for about 3 months.\nPast surgical history: no prior spine surgery.\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
+   "source": "template"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-09-14",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 09/14/2026\nPatient: Victor Osinski, 65-year-old female\n\nExamination: CT Lumbar Spine\n\nFindings:\nCT lumbar spine 09/14/2026: L4-L5 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.\n\nImpression:\nThere is a herniated disc at the L4-L5 level causing moderate narrowing of the left neural foramen and contact with the exiting nerve root. No other significant abnormalities are noted.\n\nRecommendations:\nClinical correlation is advised to assess for symptoms related to nerve root compression. Further evaluation or management should be guided by the referring physician.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-28",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation Note\nDate: 09/28/2026\nPatient: Victor Osinski, 65-year-old female\n\nChief Complaint:\nPatient presents with left-sided leg pain.\n\nHistory of Present Illness:\nOn re-interview, the leg pain began 2 weeks ago; the earlier history was inaccurate. Has not yet started physical therapy or anti-inflammatory medication for this episode. Remains engaged in a home exercise program five days a week.\n\nPast Interventions:\nEpidural steroid injection history: 1 lumbar injection in the past 12 months (03/31/2026).\n\nPhysical Examination:\nNeurological exam reveals findings consistent with left-sided lumbar radiculopathy.\n\nImpression:\nImpression: left-sided lumbar radiculopathy secondary to L4-L5 disc herniation causing foraminal stenosis.\n\nFunctional Status:\nFunction: unable to stand long enough to cook a meal, has stopped driving because of the pain.\n\nPain Assessment:\nBaseline VAS prior to any intervention: 74 mm.\n\nRed Flags:\nNo red flags: afebrile, no unexplained weight loss, no history of malignancy, no saddle anesthesia.\n\nPlan:\nRecommend initiation of physical therapy and anti-inflammatory medication. Continue home exercise program. Consider repeat imaging and possible further interventional procedures depending on response to conservative management.",
+   "source": "llm"
+  }
+ ]
+}

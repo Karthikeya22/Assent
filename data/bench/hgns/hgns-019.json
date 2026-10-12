@@ -1,0 +1,150 @@
+{
+ "split": "test",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-019",
+  "difficulty": "missing",
+  "order_date": "2026-09-21",
+  "patient": {
+   "fhir_id": "5cba1a26-077d-6f97-b993-24abe2cf4d89",
+   "name": "Hern\u00e1n Ocasio",
+   "sex": "male",
+   "birth_date": "1941-11-16"
+  },
+  "condition": "cpap_intolerance",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-05-13",
+   "psg": "2025-11-06",
+   "sleepmd": "2026-07-30",
+   "ent": "2026-09-19"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 24.6,
+    "unit": "kg/m2",
+    "date": "2026-07-30"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 43.3,
+    "unit": "/h",
+    "date": "2025-11-06"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "met",
+   "dise": "insufficient",
+   "anatomy": "met",
+   "contra": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "84-year-old man referred for hypoglossal nerve stimulation evaluation.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "BMI 24.6 kg/m2.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Diagnostic in-laboratory polysomnography performed 11/06/2025.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "Total apnea-hypopnea index (AHI) 43.3 events/hour.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "Central and mixed apneas comprised 18% of all events.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "cpap",
+    "gold": "met",
+    "text": "CPAP intolerance: download shows average use 1.4 hours per night on 41% of nights despite mask refitting; shared decision-making with the patient documented that CPAP is not tolerated.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Oropharynx: tonsils size 1, no other anatomic obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.",
+    "slot": "ent",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-05-13",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 05/13/2026\nPatient: Hern\u00e1n Ocasio, 85-year-old male\n\nSubjective:\nMr. Ocasio presents for his routine follow-up visit. He reports feeling generally well with no new complaints. No issues with his current medications or any new symptoms.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no acute distress. Cardiovascular, respiratory, abdominal, and neurological exams are unremarkable.\n\nAssessment:\nMr. Ocasio remains stable with no new health concerns. Chronic conditions are well controlled.\n\nPlan:\nContinue current medications and lifestyle recommendations. Routine labs and follow-up in 6 months or sooner if any new symptoms arise.\n\nNo additional interventions are needed at this time.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2025-11-06",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 11/06/2025\nPatient: Hern\u00e1n Ocasio, 84-year-old male\n\nDiagnostic in-laboratory polysomnography performed 11/06/2025. The study included continuous monitoring of brain activity, eye movements, muscle activity, respiratory effort, airflow, oxygen saturation, and heart rhythm throughout the night.\n\nTotal apnea-hypopnea index (AHI) 43.3 events/hour. Central and mixed apneas comprised 18% of all events. Oxygen saturation levels showed intermittent drops corresponding to respiratory events, with a minimum saturation of 82%.\n\nSleep architecture was disrupted, with decreased REM sleep and frequent arousals.\n\nIn summary, the study demonstrates severe sleep apnea with a significant component of central and mixed apneas. Clinical correlation and appropriate treatment planning are advised.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-07-30",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation Note\nDate: 07/30/2026\nPatient: Hern\u00e1n Ocasio, 85-year-old male\n\nReason for Consultation:\nEvaluation and management of sleep-disordered breathing.\n\nHistory:\nThe patient has a history of obstructive sleep apnea diagnosed several years ago. He has been prescribed CPAP therapy but reports difficulty tolerating the device.\n\nPhysical Examination:\nBMI 24.6 kg/m2.\nNo other significant findings noted relevant to sleep disorder.\n\nSleep Study and CPAP Data:\nCPAP intolerance: download shows average use 1.4 hours per night on 41% of nights despite mask refitting; shared decision-making with the patient documented that CPAP is not tolerated.\n\nAssessment:\nThe patient demonstrates poor adherence to CPAP therapy despite attempts at mask refitting and education. Given the documented intolerance, alternative treatment options should be considered.\n\nPlan:\n1. Discuss alternative therapies including oral appliance therapy and positional therapy.\n2. Continue monitoring symptoms and oxygenation.\n3. Schedule follow-up in 3 months to reassess treatment efficacy and patient comfort.\n\nSummary:\nThis elderly patient with obstructive sleep apnea is unable to tolerate CPAP therapy as evidenced by limited nightly use. A shared decision-making approach has been taken to explore other management strategies.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-19",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation Note\nDate: 09/19/2026\nPatient: Hern\u00e1n Ocasio, 85-year-old male\n\nReason for Consultation:\nEvaluation for hypoglossal nerve stimulation.\n\nHistory:\n84-year-old man referred for hypoglossal nerve stimulation evaluation.\n\nPhysical Examination:\nOropharynx: tonsils size 1, no other anatomic obstruction.\n\nNeurological:\nNo neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.\n\nAssessment:\nPatient is a suitable candidate for hypoglossal nerve stimulation based on clinical evaluation and absence of contraindications.\n\nPlan:\nProceed with further evaluation and preparation for hypoglossal nerve stimulation therapy as indicated.\n\nSigned,\nOtolaryngologist",
+   "source": "llm"
+  }
+ ]
+}

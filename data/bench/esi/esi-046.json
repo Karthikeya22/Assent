@@ -1,0 +1,154 @@
+{
+ "split": "dev",
+ "facts": {
+  "case_id": "esi-046",
+  "difficulty": "buried",
+  "order_date": "2026-09-01",
+  "patient": {
+   "fhir_id": "35b60a8e-9c7c-4842-fe18-307bf0f13762",
+   "name": "Agatha Carter",
+   "sex": "female",
+   "birth_date": "1949-12-25"
+  },
+  "condition": "radic",
+  "region": "cervical",
+  "level": "C5-C6",
+  "side": "right",
+  "cpt": "64479",
+  "icd10": "M54.12",
+  "onset_date": "2026-06-30",
+  "pain_weeks": 9,
+  "pt_start": "2026-07-13",
+  "pt_weeks": 4,
+  "nsaid": "naproxen 500 mg BID",
+  "scale_name": "NRS",
+  "scale_value": "9/10",
+  "imaging_date": "2026-07-28",
+  "imaging_modality": "CT",
+  "prior_esi_dates": [],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "not_met",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "A/P: R C radic 2/2 C5-C6 HNP w/ foraminal stenosis.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.pls",
+    "gold": "not_met",
+    "text": "PSH: no spinal surgery.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "CT cervical spine 07/28/2026: C5-C6 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Fx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Initial NRS 9/10.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "Neck pain x9 wks w/ radiation to R UE.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "D/C from PT after 4 wks (07/13/2026-08/10/2026), sx unchanged. Failed naproxen 500 mg BID.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "HEP daily, compliant.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "ROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "No prior ESI.",
+    "slot": "pcp",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-07-09",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 07/09/2026\nPatient: Agatha Carter, 77 y/o F\n\nCC: Neck and right arm pain.\n\nHPI: Pt c/o R arm radic pain. No prior ESI. PSH: no spinal surgery.\n\nPE: Neuro exam shows decreased sensation in R C6 dermatome, mild weakness in R biceps. Reflexes diminished at R biceps.\n\nROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.\n\nAssessment:\nA/P: R C radic 2/2 C5-C6 HNP w/ foraminal stenosis.\n\nPlan: Continue conservative mgmt, NSAIDs prn, PT referral. Monitor neuro status closely.",
+   "source": "llm"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-08-10",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 08/10/2026\nPatient: Agatha Carter, 77 y/o F\n\nFx: can't walk >1 block, stopped volunteering d/t pain, poor sleep. Initial NRS 9/10. Pt presented with severe functional limitations.\n\nTx course: D/C from PT after 4 wks (07/13/2026-08/10/2026), sx unchanged. Failed naproxen 500 mg BID. No improvement in pain or function noted.\n\nPt was compliant with HEP daily, compliant. No adverse events during therapy.\n\nPlan: Recommend further medical evaluation for pain management and possible alternative interventions.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-07-28",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 07/28/2026\nPatient: Agatha Carter, 77 y/o F\n\nIndication: Eval neck pain.\n\nFindings:\nCT cervical spine 07/28/2026: C5-C6 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.\nNo acute fractures or dislocations.\nVertebral alignment preserved.\nNo prevertebral soft tissue swelling.\n\nImpression:\nC5-C6 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.\nNo other significant abnormalities detected.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-08-30",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 08/30/2026\nPatient: Agatha Carter, 77 y/o F\n\nCC: Neck pain\n\nHPI: Neck pain x9 wks w/ radiation to R UE. No hx of trauma or recent illness. Denies rash or skin changes.\n\nPE: Limited cervical ROM, tenderness over paraspinal muscles. Neuro exam: intact sensation, strength 5/5 in all extremities, reflexes symmetric.\n\nAssessment: Chronic cervical radiculopathy symptoms.\n\nPlan: Recommend cervical epidural steroid injection. Continue NSAIDs and physical therapy. Monitor for any new neuro deficits.",
+   "source": "llm"
+  }
+ ]
+}

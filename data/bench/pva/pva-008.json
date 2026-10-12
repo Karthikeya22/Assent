@@ -1,0 +1,125 @@
+{
+ "split": "test",
+ "facts": {
+  "family": "pva",
+  "case_id": "pva-008",
+  "difficulty": "buried",
+  "order_date": "2026-09-18",
+  "patient": {
+   "fhir_id": "b52d94c8-14df-cfb9-c19d-a6a92204560a",
+   "name": "Sophie Lubowitz",
+   "sex": "female",
+   "birth_date": "1961-09-01"
+  },
+  "condition": "hosp:L2",
+  "cpt": "22514",
+  "cpt_text": "Percutaneous vertebral augmentation (kyphoplasty), lumbar",
+  "icd10": "M80.08XA",
+  "icd10_text": "Age-related osteoporosis with current pathological fracture, vertebra(e), initial encounter",
+  "dates": {
+   "pcp": "2026-03-04",
+   "inpatient": "2026-09-14",
+   "radiology": "2026-09-10",
+   "consult": "2026-09-17",
+   "onset": "2026-04-24",
+   "xray": "2026-04-26"
+  },
+  "observations": [
+   {
+    "code": "72514-3",
+    "system": "http://loinc.org",
+    "display": "Pain severity 0-10 numeric rating",
+    "value": 8.0,
+    "unit": "{score}",
+    "date": "2026-09-14"
+   }
+  ],
+  "gold": {
+   "fx.acute": "not_met",
+   "fx.imaging": "met",
+   "sym.hosp": "met",
+   "sym.moderate": "insufficient",
+   "sym.worsening": "insufficient",
+   "feat.progression": "insufficient",
+   "feat.height": "insufficient",
+   "feat.kyphosis": "insufficient",
+   "feat.rdq": "insufficient",
+   "care.osteo": "met",
+   "contra": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "fx.acute",
+    "gold": "not_met",
+    "text": "Chronic back pain since 04/24/2026.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "fx.imaging",
+    "gold": "met",
+    "text": "MRI 09/10/2026: L2 compression fx, marrow edema on STIR.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sym.hosp",
+    "gold": "met",
+    "text": "Adm 09/14/2026 intractable back pain, NRS 8/10 on IV opioids.",
+    "slot": "inpatient",
+    "stale": false
+   },
+   {
+    "leaf": "care.osteo",
+    "gold": "met",
+    "text": "Referred for DEXA + osteoporosis program.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Pain at fx level; afebrile, no infx signs.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-03-04",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 03/04/2026\nPatient: Sophie Lubowitz, 65 y/o F\n\nCC: Routine follow-up\n\nHPI: Pt presents for routine follow-up. No new complaints reported.\n\nPMH: HTN, hyperlipidemia.\n\nMeds: Lisinopril 10 mg daily, Atorvastatin 20 mg nightly.\n\nPE: Vitals stable. Cardiopulmonary exam WNL. MSK exam unremarkable.\n\nAssessment: Stable chronic conditions. No acute issues.\n\nPlan: Continue current meds. Routine labs next visit. Follow-up in 6 months or PRN.\n\nNo mention of pain or spinal issues as per instructions.",
+   "source": "llm"
+  },
+  {
+   "slot": "inpatient",
+   "date": "2026-09-14",
+   "title": "Hospital Admission History and Physical",
+   "author": "Hospitalist",
+   "text": "Hospital Admission History and Physical\nDate: 09/14/2026\nPatient: Sophie Lubowitz, 65 y/o F\n\nChief Complaint:\nIntractable back pain.\n\nHistory of Present Illness:\nAdm 09/14/2026 intractable back pain, NRS 8/10 on IV opioids.\n\nPast Medical History:\nHTN, DM2, hyperlipidemia.\n\nPhysical Exam:\nVS stable. Tenderness noted over lower thoracic spine. No focal neuro deficits. Strength 5/5 in all extremities. Sensation intact.\n\nLabs:\nWNL.\n\nImaging:\nPending.\n\nAssessment:\nSevere back pain requiring IV opioids.\n\nPlan:\nContinue pain control with IV opioids. Monitor neuro status closely. Consult pain management and ortho as needed. Admit to hospital for further evaluation and management.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-09-10",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 09/10/2026\nPatient: Sophie Lubowitz, 65 y/o F\n\nIndication: Evaluation of lumbar spine.\n\nFindings:\nMRI 09/10/2026: L2 compression fx, marrow edema on STIR.\nNo other acute fractures identified. No paraspinal soft tissue abnormality.\nIntervertebral discs show mild degenerative changes without significant herniation.\nSpinal canal and neural foramina are patent.\n\nImpression:\nL2 compression fracture with marrow edema consistent with acute/subacute injury.\nNo additional acute osseous or soft tissue abnormalities.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-17",
+   "title": "Spine Intervention Consultation",
+   "author": "Interventional radiologist",
+   "text": "Spine Intervention Consultation\nDate: 09/17/2026\nPatient: Sophie Lubowitz, 65 y/o F\n\nHx: Chronic back pain since 04/24/2026. No fever or systemic signs.\n\nExam: Pain at fx level; afebrile, no infx signs. Neuro exam WNL.\n\nImaging: Reviewed recent spine films; findings consistent with vertebral compression fracture.\n\nPlan: Referred for DEXA + osteoporosis program. Consider vertebral augmentation if pain persists.\n\nFollow-up: Monitor clinical status; coordinate with osteoporosis management team.",
+   "source": "llm"
+  }
+ ]
+}

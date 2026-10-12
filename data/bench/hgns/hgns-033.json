@@ -1,0 +1,157 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-033",
+  "difficulty": "clean",
+  "order_date": "2026-09-03",
+  "patient": {
+   "fhir_id": "c1bbbd6d-d6f9-86d5-5e40-5918f63fdccf",
+   "name": "Sasha Wilkinson",
+   "sex": "female",
+   "birth_date": "1960-09-13"
+  },
+  "condition": "cpap_failure",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-05-14",
+   "psg": "2025-12-19",
+   "sleepmd": "2026-07-21",
+   "ent": "2026-09-01"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 26.3,
+    "unit": "kg/m2",
+    "date": "2026-07-21"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 42.0,
+    "unit": "/h",
+    "date": "2025-12-19"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "met",
+   "dise": "met",
+   "anatomy": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "65-year-old woman referred for hypoglossal nerve stimulation evaluation.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "BMI 26.3 kg/m2.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Diagnostic in-laboratory polysomnography performed 12/19/2025.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "Total apnea-hypopnea index (AHI) 42.0 events/hour.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "Central and mixed apneas comprised 11% of all events.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "cpap",
+    "gold": "met",
+    "text": "CPAP failure: residual AHI 18.5 events/hour on CPAP at 13 cmH2O despite consistent nightly use.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "met",
+    "text": "Drug-induced sleep endoscopy 08/19/2026: anteroposterior collapse at the velum without complete concentric collapse.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Oropharynx: tonsils size 1, no other anatomic obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.",
+    "slot": "ent",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-05-14",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 05/14/2026\nPatient: Sasha Wilkinson, 66-year-old female\n\nSubjective:\nMs. Wilkinson presents for her routine follow-up appointment. She reports feeling generally well with no new complaints. She denies any acute symptoms or concerns at this time.\n\nObjective:\nVital signs are within normal limits. Physical examination reveals no abnormalities. Cardiovascular, respiratory, abdominal, and neurological exams are unremarkable.\n\nAssessment:\nMs. Wilkinson is stable with no new issues identified during today's visit.\n\nPlan:\nContinue current management and routine health maintenance. Encourage healthy lifestyle habits including balanced diet and regular exercise. Schedule next follow-up in six months or sooner if any concerns arise.\n\nNo additional testing or referrals are indicated at this time.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2025-12-19",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 12/19/2025\nPatient: Sasha Wilkinson, 65-year-old female\n\nDiagnostic in-laboratory polysomnography performed 12/19/2025. The study demonstrated significant sleep-disordered breathing. Total apnea-hypopnea index (AHI) 42.0 events/hour. Central and mixed apneas comprised 11% of all events. Oxygen saturation showed intermittent desaturations associated with respiratory events. Sleep architecture was fragmented with reduced REM sleep. These findings indicate severe sleep apnea with a notable proportion of central and mixed apneas. Clinical correlation and consideration of therapeutic interventions are recommended.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-07-21",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation Note\nDate: 07/21/2026\nPatient: Sasha Wilkinson, 66-year-old female\n\nReason for Consultation:\nEvaluation and management of obstructive sleep apnea with CPAP therapy.\n\nHistory:\nMs. Wilkinson has been using CPAP therapy for obstructive sleep apnea. She reports consistent nightly use but continues to experience symptoms suggestive of inadequate control.\n\nPhysical Examination:\nBMI 26.3 kg/m2.\n\nSleep Study and CPAP Data:\nCPAP failure: residual AHI 18.5 events/hour on CPAP at 13 cmH2O despite consistent nightly use.\n\nAssessment:\nPersistent obstructive sleep apnea despite adherence to CPAP therapy at adequate pressure settings.\n\nPlan:\n1. Consider alternative treatment options including bilevel positive airway pressure or advanced PAP modalities.\n2. Evaluate for potential upper airway resistance or other contributing factors.\n3. Schedule follow-up sleep study to reassess efficacy of therapy.\n4. Continue monitoring adherence and symptoms.\n\nSummary:\nMs. Wilkinson demonstrates CPAP failure with significant residual apnea events despite compliance. Further evaluation and treatment adjustment are warranted to improve sleep quality and reduce apnea burden.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-01",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation Note\nDate: 09/01/2026\nPatient: Sasha Wilkinson, 66-year-old female\n\nReason for Consultation:\nEvaluation for hypoglossal nerve stimulation.\n\nHistory:\n65-year-old woman referred for hypoglossal nerve stimulation evaluation.\n\nExamination:\nOropharynx: tonsils size 1, no other anatomic obstruction.\n\nProcedures:\nDrug-induced sleep endoscopy 08/19/2026: anteroposterior collapse at the velum without complete concentric collapse.\n\nAssessment:\nNo neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.\n\nPlan:\nProceed with hypoglossal nerve stimulation evaluation based on current findings and patient suitability.",
+   "source": "llm"
+  }
+ ]
+}

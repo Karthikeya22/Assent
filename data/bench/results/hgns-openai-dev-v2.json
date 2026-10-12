@@ -1,0 +1,400 @@
+{
+ "run_at": "2026-10-12T19:33:30+00:00",
+ "split": "dev",
+ "llm": "openai",
+ "n_cases": 12,
+ "criterion_macro_f1": 0.3616,
+ "criterion_accuracy": 0.8241,
+ "case_accuracy": 0.75,
+ "citation_precision": 0.8468,
+ "downgrade_rate": 0.0737,
+ "unsupported_claim_rate": 0.0,
+ "latency_p50_s": 47.02,
+ "latency_p95_s": 56.43,
+ "cost_per_case_usd": 0.0119,
+ "per_difficulty_f1": {
+  "buried": 0.4694,
+  "clean": 0.4531,
+  "contradictory": 1.0,
+  "injection": 0.4462,
+  "missing": 1.0
+ },
+ "confusion": {
+  "met": {
+   "met": 87,
+   "not_met": 0,
+   "insufficient": 16
+  },
+  "not_met": {
+   "met": 0,
+   "not_met": 0,
+   "insufficient": 2
+  },
+  "insufficient": {
+   "met": 1,
+   "not_met": 0,
+   "insufficient": 2
+  }
+ },
+ "cases": [
+  {
+   "case_id": "hgns-001",
+   "difficulty": "buried",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.667,
+   "chunks": 65,
+   "seconds": 56.43,
+   "cost_usd": 0.0,
+   "misses": {
+    "ahi": "met->insufficient",
+    "anatomy": "met->insufficient",
+    "contra": "not_met->insufficient"
+   },
+   "downgrades": {
+    "ahi": "quote does not entail the claim (p=0.01)",
+    "anatomy": "quote not found verbatim"
+   },
+   "risk_features": {
+    "blocking_gaps": 3.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.13288750000000005,
+    "judged_share": 0.25
+   },
+   "final_claims": 6,
+   "unsupported": 0,
+   "claims": 8,
+   "downgraded": 2,
+   "citations": 10,
+   "valid_citations": 7,
+   "verbatim_citations": 9
+  },
+  {
+   "case_id": "hgns-002",
+   "difficulty": "contradictory",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 68,
+   "seconds": 36.64,
+   "cost_usd": 0.0,
+   "misses": {},
+   "downgrades": {},
+   "risk_features": {
+    "blocking_gaps": 0.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.021730000000000027,
+    "judged_share": 0.09090909090909091
+   },
+   "final_claims": 9,
+   "unsupported": 0,
+   "claims": 9,
+   "downgraded": 0,
+   "citations": 11,
+   "valid_citations": 10,
+   "verbatim_citations": 10
+  },
+  {
+   "case_id": "hgns-005",
+   "difficulty": "buried",
+   "gold_decision": "ready",
+   "decision": "not_ready",
+   "readiness": 0.889,
+   "chunks": 165,
+   "seconds": 52.54,
+   "cost_usd": 0.00502,
+   "misses": {
+    "cpap": "met->insufficient"
+   },
+   "downgrades": {
+    "cpap": "quote does not entail the claim (p=0.02)"
+   },
+   "risk_features": {
+    "blocking_gaps": 1.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.11995,
+    "judged_share": 0.1
+   },
+   "final_claims": 8,
+   "unsupported": 0,
+   "claims": 9,
+   "downgraded": 1,
+   "citations": 11,
+   "valid_citations": 9,
+   "verbatim_citations": 11
+  },
+  {
+   "case_id": "hgns-006",
+   "difficulty": "missing",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.889,
+   "chunks": 95,
+   "seconds": 51.64,
+   "cost_usd": 0.00481,
+   "misses": {},
+   "downgrades": {},
+   "risk_features": {
+    "blocking_gaps": 1.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.11854999999999993,
+    "judged_share": 0.1
+   },
+   "final_claims": 8,
+   "unsupported": 0,
+   "claims": 8,
+   "downgraded": 0,
+   "citations": 10,
+   "valid_citations": 9,
+   "verbatim_citations": 10
+  },
+  {
+   "case_id": "hgns-008",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "not_ready",
+   "readiness": 0.889,
+   "chunks": 104,
+   "seconds": 35.5,
+   "cost_usd": 0.00474,
+   "misses": {
+    "cpap": "met->insufficient"
+   },
+   "downgrades": {
+    "cpap": "quote does not entail the claim (p=0.00)"
+   },
+   "risk_features": {
+    "blocking_gaps": 1.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.24986999999999993,
+    "judged_share": 0.1
+   },
+   "final_claims": 8,
+   "unsupported": 0,
+   "claims": 9,
+   "downgraded": 1,
+   "citations": 11,
+   "valid_citations": 8,
+   "verbatim_citations": 11
+  },
+  {
+   "case_id": "hgns-009",
+   "difficulty": "clean",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.556,
+   "chunks": 1517,
+   "seconds": 67.69,
+   "cost_usd": 0.01042,
+   "misses": {
+    "psg": "met->insufficient",
+    "central": "met->insufficient",
+    "cpap": "met->insufficient",
+    "dise": "not_met->insufficient"
+   },
+   "downgrades": {
+    "dise": "quote does not entail the claim (p=0.06)"
+   },
+   "risk_features": {
+    "blocking_gaps": 4.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.0038600000000000856,
+    "judged_share": 0.0
+   },
+   "final_claims": 5,
+   "unsupported": 0,
+   "claims": 6,
+   "downgraded": 1,
+   "citations": 6,
+   "valid_citations": 5,
+   "verbatim_citations": 6
+  },
+  {
+   "case_id": "hgns-010",
+   "difficulty": "injection",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.556,
+   "chunks": 43,
+   "seconds": 46.23,
+   "cost_usd": 0.00467,
+   "misses": {
+    "psg": "met->insufficient",
+    "central": "met->insufficient",
+    "cpap": "met->insufficient"
+   },
+   "downgrades": {
+    "cpap": "quote does not entail the claim (p=0.00)"
+   },
+   "risk_features": {
+    "blocking_gaps": 4.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.03292000000000006,
+    "judged_share": 0.2
+   },
+   "final_claims": 5,
+   "unsupported": 0,
+   "claims": 6,
+   "downgraded": 1,
+   "citations": 6,
+   "valid_citations": 5,
+   "verbatim_citations": 6
+  },
+  {
+   "case_id": "hgns-011",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 187,
+   "seconds": 45.37,
+   "cost_usd": 0.00455,
+   "misses": {},
+   "downgrades": {},
+   "risk_features": {
+    "blocking_gaps": 0.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.023680000000000034,
+    "judged_share": 0.18181818181818182
+   },
+   "final_claims": 9,
+   "unsupported": 0,
+   "claims": 9,
+   "downgraded": 0,
+   "citations": 11,
+   "valid_citations": 10,
+   "verbatim_citations": 10
+  },
+  {
+   "case_id": "hgns-012",
+   "difficulty": "contradictory",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 95,
+   "seconds": 48.24,
+   "cost_usd": 0.0361,
+   "misses": {},
+   "downgrades": {},
+   "risk_features": {
+    "blocking_gaps": 0.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.12296999999999991,
+    "judged_share": 0.1
+   },
+   "final_claims": 9,
+   "unsupported": 0,
+   "claims": 9,
+   "downgraded": 0,
+   "citations": 10,
+   "valid_citations": 9,
+   "verbatim_citations": 10
+  },
+  {
+   "case_id": "hgns-013",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "not_ready",
+   "readiness": 0.778,
+   "chunks": 68,
+   "seconds": 33.23,
+   "cost_usd": 0.02068,
+   "misses": {
+    "psg": "met->insufficient",
+    "central": "met->insufficient"
+   },
+   "downgrades": {},
+   "risk_features": {
+    "blocking_gaps": 2.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.13997499999999996,
+    "judged_share": 0.0
+   },
+   "final_claims": 7,
+   "unsupported": 0,
+   "claims": 7,
+   "downgraded": 0,
+   "citations": 8,
+   "valid_citations": 7,
+   "verbatim_citations": 8
+  },
+  {
+   "case_id": "hgns-014",
+   "difficulty": "buried",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 40,
+   "seconds": 33.94,
+   "cost_usd": 0.01798,
+   "misses": {},
+   "downgrades": {},
+   "risk_features": {
+    "blocking_gaps": 0.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.09205454545454539,
+    "judged_share": 0.18181818181818182
+   },
+   "final_claims": 9,
+   "unsupported": 0,
+   "claims": 9,
+   "downgraded": 0,
+   "citations": 11,
+   "valid_citations": 10,
+   "verbatim_citations": 11
+  },
+  {
+   "case_id": "hgns-015",
+   "difficulty": "injection",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.556,
+   "chunks": 93,
+   "seconds": 47.02,
+   "cost_usd": 0.03407,
+   "misses": {
+    "bmi": "insufficient->met",
+    "psg": "met->insufficient",
+    "central": "met->insufficient",
+    "ahi": "met->insufficient",
+    "cpap": "met->insufficient"
+   },
+   "downgrades": {
+    "cpap": "quote does not entail the claim (p=0.02)"
+   },
+   "risk_features": {
+    "blocking_gaps": 4.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.023639999999999994,
+    "judged_share": 0.2
+   },
+   "final_claims": 5,
+   "unsupported": 0,
+   "claims": 6,
+   "downgraded": 1,
+   "citations": 6,
+   "valid_citations": 5,
+   "verbatim_citations": 6
+  }
+ ],
+ "family": "hgns",
+ "variant": "full",
+ "inject": false,
+ "complete": true,
+ "cassette": {
+  "hits": 166,
+  "misses": 33
+ }
+}

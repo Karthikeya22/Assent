@@ -1,0 +1,154 @@
+{
+ "split": "dev",
+ "facts": {
+  "case_id": "esi-048",
+  "difficulty": "buried",
+  "order_date": "2026-09-17",
+  "patient": {
+   "fhir_id": "f6d01ac3-e719-307b-475e-b0f713dc04b2",
+   "name": "Mar\u00eda Teresa Salcedo",
+   "sex": "female",
+   "birth_date": "1952-09-02"
+  },
+  "condition": "radic",
+  "region": "cervical",
+  "level": "C5-C6",
+  "side": "left",
+  "cpt": "64479",
+  "icd10": "M54.12",
+  "onset_date": "2026-07-09",
+  "pain_weeks": 10,
+  "pt_start": "2026-07-18",
+  "pt_weeks": 8,
+  "nsaid": "naproxen 500 mg BID",
+  "scale_name": "NRS",
+  "scale_value": "6/10",
+  "imaging_date": "2026-08-17",
+  "imaging_modality": "MRI",
+  "prior_esi_dates": [],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "not_met",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "A/P: L C radic 2/2 C5-C6 HNP w/ foraminal stenosis.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.pls",
+    "gold": "not_met",
+    "text": "PSH: no spinal surgery.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "MRI cervical spine 08/17/2026: C5-C6 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Fx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Initial NRS 6/10.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "Neck pain x10 wks w/ radiation to L UE.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "D/C from PT after 8 wks (07/18/2026-09/12/2026), sx unchanged. Failed naproxen 500 mg BID.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "HEP daily, compliant.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "ROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "No prior ESI.",
+    "slot": "pcp",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-07-18",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 07/18/2026\nPatient: Mar\u00eda Teresa Salcedo, 74 y/o F\n\nCC: Neck and L arm pain\n\nHPI: Pt c/o L cervical radicular pain. No prior ESI. PSH: no spinal surgery.\n\nPE: Neuro exam shows decreased sensation in L C6 dermatome, mild weakness in L biceps. Reflexes diminished at L biceps. No signs of infection.\n\nROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.\n\nAssessment/Plan:\nA/P: L C radic 2/2 C5-C6 HNP w/ foraminal stenosis.\nRecommend conservative mgmt with NSAIDs, PT. Monitor neuro status closely. Follow-up in 4 wks or sooner if worsening.",
+   "source": "llm"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-09-12",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 09/12/2026\nPatient: Mar\u00eda Teresa Salcedo, 74 y/o F\n\nFx: can't walk >1 block, stopped volunteering d/t pain, poor sleep. Initial NRS 6/10.\nD/C from PT after 8 wks (07/18/2026-09/12/2026), sx unchanged. Failed naproxen 500 mg BID.\n\nTx focused on mobility and pain mgmt. HEP daily, compliant.\n\nNo improvement in sx; pt advised to follow up with MD for further eval.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-17",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/17/2026\nPatient: Mar\u00eda Teresa Salcedo, 74 y/o F\n\nExam: MRI cervical spine\n\nFindings: MRI cervical spine 08/17/2026: C5-C6 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root. No other significant abnormalities noted. Vertebral alignment preserved. No evidence of cord compression or signal abnormality.\n\nImpression: C5-C6 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root. Recommend clinical correlation.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-15",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/15/2026\nPatient: Mar\u00eda Teresa Salcedo, 74 y/o F\n\nCC: Neck pain\n\nHPI: Neck pain x10 wks w/ radiation to L UE. No hx of trauma. Denies numbness or weakness. No prior interventions noted.\n\nPE: Limited cervical ROM due to pain. Tenderness over paraspinal muscles. Neuro exam: intact sensation and strength in UE.\n\nAssessment: Chronic cervical radiculopathy symptoms.\n\nPlan: Recommend cervical epidural steroid injection. Continue NSAIDs PRN. PT referral for cervical stabilization exercises. Follow-up in 4 wks to assess response.",
+   "source": "llm"
+  }
+ ]
+}

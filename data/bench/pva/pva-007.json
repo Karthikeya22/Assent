@@ -1,0 +1,161 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "pva",
+  "case_id": "pva-007",
+  "difficulty": "buried",
+  "order_date": "2026-09-30",
+  "patient": {
+   "fhir_id": "5cba1a26-077d-6f97-b993-24abe2cf4d89",
+   "name": "Hern\u00e1n Ocasio",
+   "sex": "male",
+   "birth_date": "1941-11-16"
+  },
+  "condition": "stable:L2",
+  "cpt": "22514",
+  "cpt_text": "Percutaneous vertebral augmentation (kyphoplasty), lumbar",
+  "icd10": "M80.08XA",
+  "icd10_text": "Age-related osteoporosis with current pathological fracture, vertebra(e), initial encounter",
+  "dates": {
+   "pcp": "2026-08-09",
+   "inpatient": "2026-09-27",
+   "radiology": "2026-09-19",
+   "consult": "2026-09-29",
+   "onset": "2026-08-05",
+   "xray": "2026-08-08"
+  },
+  "observations": [
+   {
+    "code": "72514-3",
+    "system": "http://loinc.org",
+    "display": "Pain severity 0-10 numeric rating",
+    "value": 5.0,
+    "unit": "{score}",
+    "date": "2026-09-29"
+   },
+   {
+    "code": "vb-height-loss",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Vertebral body height loss",
+    "value": 42.0,
+    "unit": "%",
+    "date": "2026-09-19"
+   },
+   {
+    "code": "rdq",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Roland Morris Disability Questionnaire",
+    "value": 18.0,
+    "unit": "{score}",
+    "date": "2026-09-29"
+   }
+  ],
+  "gold": {
+   "fx.acute": "met",
+   "fx.imaging": "met",
+   "sym.hosp": "not_met",
+   "sym.moderate": "met",
+   "sym.worsening": "not_met",
+   "feat.progression": "insufficient",
+   "feat.height": "met",
+   "feat.kyphosis": "insufficient",
+   "feat.rdq": "met",
+   "care.osteo": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "fx.acute",
+    "gold": "met",
+    "text": "Back pain since 08/05/2026 after a fall from standing height.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "fx.imaging",
+    "gold": "met",
+    "text": "MRI 09/19/2026: L2 compression fx, marrow edema on STIR.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sym.hosp",
+    "gold": "not_met",
+    "text": "Outpt, not admitted.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.moderate",
+    "gold": "met",
+    "text": "NRS 5/10 despite 7 wks NSM (oxycodone 5 mg as needed, TLSO brace).",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.worsening",
+    "gold": "not_met",
+    "text": "Pain stable/slightly better.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "feat.height",
+    "gold": "met",
+    "text": "~42% L2 height loss.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "feat.rdq",
+    "gold": "met",
+    "text": "RDQ 18/24.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "care.osteo",
+    "gold": "met",
+    "text": "Referred for DEXA + osteoporosis program.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Pain at fx level; afebrile, no infx signs.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-08-09",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 08/09/2026\nPatient: Hern\u00e1n Ocasio, 85 y/o M\n\nCC: Back pain\n\nHPI: Back pain since 08/05/2026 after a fall from standing height. No radiculopathy or numbness reported. No bowel/bladder dysfunction.\n\nPE: Tenderness over lumbar paraspinals. No step-offs or deformities palpated. Neuro exam intact in lower extremities.\n\nAssessment: Acute back pain post-fall. No red flags.\n\nPlan: Conservative mgmt with NSAIDs, activity modification. Monitor for worsening or neuro changes. Follow-up in 1 week or sooner if symptoms escalate.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-09-19",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 09/19/2026\nPatient: Hern\u00e1n Ocasio, 85 y/o M\n\nMRI 09/19/2026: L2 compression fx, marrow edema on STIR. ~42% L2 height loss.\n\nFindings: L2 vertebral body shows compression fracture with associated marrow edema evident on STIR sequences. No other acute osseous abnormalities identified. Adjacent discs and posterior elements unremarkable. No paraspinal soft tissue mass or abnormal enhancement.\n\nImpression: Acute compression fracture of L2 with marrow edema. Recommend clinical correlation.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-29",
+   "title": "Spine Intervention Consultation",
+   "author": "Interventional radiologist",
+   "text": "Spine Intervention Consultation\nDate: 09/29/2026\nPatient: Hern\u00e1n Ocasio, 85 y/o M\n\nHPI: Outpt, not admitted. NRS 5/10 despite 7 wks NSM (oxycodone 5 mg as needed, TLSO brace). Pain stable/slightly better. Pain at fx level; afebrile, no infx signs.\n\nExam: Limited ROM due to pain. No neuro deficits.\n\nAssessment: Persistent pain at fracture site. RDQ 18/24.\n\nPlan: Referred for DEXA + osteoporosis program. Continue current analgesics and brace. Monitor symptoms closely.",
+   "source": "llm"
+  }
+ ]
+}

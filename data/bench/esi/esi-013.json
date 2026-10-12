@@ -1,0 +1,147 @@
+{
+ "split": "dev",
+ "facts": {
+  "case_id": "esi-013",
+  "difficulty": "buried",
+  "order_date": "2026-09-14",
+  "patient": {
+   "fhir_id": "b132eedb-7965-9c85-b44b-3966bbe2f1cf",
+   "name": "Grover Stamm",
+   "sex": "male",
+   "birth_date": "1950-11-28"
+  },
+  "condition": "zoster",
+  "region": "lumbar",
+  "level": "L4-L5",
+  "side": "left",
+  "cpt": "64483",
+  "icd10": "B02.29",
+  "onset_date": "2026-08-24",
+  "pain_weeks": 3,
+  "pt_start": "2026-07-15",
+  "pt_weeks": 8,
+  "nsaid": "ibuprofen 600 mg TID",
+  "scale_name": "NRS",
+  "scale_value": "9/10",
+  "imaging_date": "2026-08-22",
+  "imaging_modality": "MRI",
+  "prior_esi_dates": [],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "insufficient",
+   "dx.pls": "insufficient",
+   "dx.zoster": "met",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "not_met",
+   "dur.conservative": "insufficient",
+   "dur.zoster": "met",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "dx.zoster",
+    "gold": "met",
+    "text": "Assessment: acute herpes zoster in a left L1 dermatomal distribution with associated pain; vesicular rash first noted 08/26/2026.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "MRI thoracolumbar spine 08/22/2026: no compressive lesion; enhancement of the left L1 nerve root consistent with zoster radiculitis.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Fx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Initial NRS 9/10.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "not_met",
+    "text": "LBP x3 wks w/ radiation to L LE.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.zoster",
+    "gold": "met",
+    "text": "Pain persists despite valacyclovir and gabapentin titrated to 900 mg daily; refractory to conservative management.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "HEP daily, compliant.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "ROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "No prior ESI.",
+    "slot": "pcp",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-09-02",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 09/02/2026\nPatient: Grover Stamm, 76 y/o M\n\nCC: Rash and pain on left flank\n\nHPI: Pt presents with vesicular rash and pain localized to left L1 dermatome. Rash first noted 08/26/2026. No prior ESI.\n\nROS: ROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.\n\nPE: Vesicular rash consistent with herpes zoster in left L1 distribution. No signs of secondary infection.\n\nAssessment: acute herpes zoster in a left L1 dermatomal distribution with associated pain; vesicular rash first noted 08/26/2026.\n\nPlan: Initiate antiviral therapy. Monitor for complications. Provide supportive care and pain management as needed. Follow-up in 1 week or sooner if symptoms worsen.",
+   "source": "llm"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-09-09",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 09/09/2026\nPatient: Grover Stamm, 76 y/o M\n\nCC: Chronic low back pain.\n\nFx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.\nInitial NRS 9/10.\n\nExam: Limited lumbar ROM, tenderness paraspinal muscles, decreased trunk extensor strength.\n\nIntervention: Focused on mobility and strengthening exercises.\n\nOutcome: Improved lumbar ROM and strength noted. Patient reports decreased pain intensity and improved function.\n\nPlan: Home exercise program prescribed. Follow-up PRN.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-22",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/22/2026\nPatient: Grover Stamm, 76 y/o M\n\nMRI thoracolumbar spine 08/22/2026: no compressive lesion; enhancement of the left L1 nerve root consistent with zoster radiculitis.\n\nNo evidence of fracture or marrow abnormality. Paraspinal soft tissues unremarkable. No abnormal fluid collections or masses seen.\n\nImpression: Findings consistent with zoster radiculitis involving left L1 nerve root. No compressive lesion identified.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-12",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/12/2026\nPatient: Grover Stamm, 76 y/o M\n\nCC: LBP x3 wks w/ radiation to L LE.\n\nHPI: Pt reports persistent low back pain with radiation to left lower extremity. Pain persists despite valacyclovir and gabapentin titrated to 900 mg daily; refractory to conservative management.\n\nMedications: Valacyclovir, gabapentin 900 mg daily.\n\nExam: Limited lumbar ROM due to pain. No focal neuro deficits noted.\n\nPlan: Continue current meds. Recommend HEP daily, compliant. Consider interventional options if no improvement.",
+   "source": "llm"
+  }
+ ]
+}

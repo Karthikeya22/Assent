@@ -1,0 +1,157 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-017",
+  "difficulty": "clean",
+  "order_date": "2026-09-08",
+  "patient": {
+   "fhir_id": "41ad07fc-8555-5365-c823-015ebf2a5544",
+   "name": "Janyce Wintheiser",
+   "sex": "female",
+   "birth_date": "1955-04-17"
+  },
+  "condition": "cpap_intolerance",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-04-19",
+   "psg": "2025-03-17",
+   "sleepmd": "2026-07-28",
+   "ent": "2026-09-06"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 25.2,
+    "unit": "kg/m2",
+    "date": "2026-07-28"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 21.3,
+    "unit": "/h",
+    "date": "2025-03-17"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "met",
+   "dise": "met",
+   "anatomy": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "71-year-old woman referred for hypoglossal nerve stimulation evaluation.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "BMI 25.2 kg/m2.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Diagnostic in-laboratory polysomnography performed 03/17/2025.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "Total apnea-hypopnea index (AHI) 21.3 events/hour.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "Central and mixed apneas comprised 6% of all events.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "cpap",
+    "gold": "met",
+    "text": "CPAP intolerance: download shows average use 2.2 hours per night on 26% of nights despite mask refitting; shared decision-making with the patient documented that CPAP is not tolerated.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "met",
+    "text": "Drug-induced sleep endoscopy 08/24/2026: anteroposterior collapse at the velum without complete concentric collapse.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Oropharynx: tonsils size 1, no other anatomic obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.",
+    "slot": "ent",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-04-19",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 04/19/2026\nPatient: Janyce Wintheiser, 71-year-old female\n\nSubjective:\nMs. Wintheiser presents today for her routine follow-up. She reports feeling generally well with no new complaints. She denies any recent changes in her health status.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no abnormalities. Cardiovascular, respiratory, abdominal, and neurological exams are unremarkable.\n\nAssessment:\nMs. Wintheiser is a 71-year-old female in stable condition. No acute issues identified at this time.\n\nPlan:\nContinue current management and routine health maintenance. Encourage regular exercise and balanced diet. Follow up in 6 months or sooner if any concerns arise.\n\nNo additional testing or referrals are indicated at this time.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2025-03-17",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 03/17/2025\nPatient: Janyce Wintheiser, 70-year-old female\n\nDiagnostic in-laboratory polysomnography performed 03/17/2025. Total apnea-hypopnea index (AHI) 21.3 events/hour. Central and mixed apneas comprised 6% of all events. Oxygen saturation levels showed mild intermittent desaturation corresponding with apneic episodes. The overall findings are consistent with moderate sleep apnea. Clinical correlation and consideration of treatment options such as positive airway pressure therapy are advised. Follow-up assessment is recommended to evaluate treatment efficacy and symptom improvement.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-07-28",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation Note\nDate: 07/28/2026\nPatient: Janyce Wintheiser, 71-year-old female\n\nReason for Consultation:\nEvaluation and management of sleep-related breathing disorder.\n\nHistory:\nThe patient presents for follow-up regarding her sleep apnea treatment. She has been using CPAP therapy but reports difficulty tolerating the device.\n\nPhysical Examination:\nBMI 25.2 kg/m2.\n\nAssessment:\nThe patient's CPAP intolerance is confirmed by device download data. CPAP intolerance: download shows average use 2.2 hours per night on 26% of nights despite mask refitting; shared decision-making with the patient documented that CPAP is not tolerated.\n\nPlan:\nDiscuss alternative treatment options for sleep apnea, including oral appliance therapy and positional therapy. Continue to monitor symptoms and consider referral to dental sleep specialist if appropriate. Provide education on sleep hygiene and lifestyle modifications to improve sleep quality.\n\nFollow-up:\nSchedule follow-up appointment in 3 months to reassess symptoms and treatment adherence.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-06",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation Note\nDate: 09/06/2026\nPatient: Janyce Wintheiser, 71-year-old female\n\nThis 71-year-old woman referred for hypoglossal nerve stimulation evaluation. Drug-induced sleep endoscopy 08/24/2026: anteroposterior collapse at the velum without complete concentric collapse. Oropharynx: tonsils size 1, no other anatomic obstruction. No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.\n\nThe patient is a suitable candidate for hypoglossal nerve stimulation based on the current evaluation. Further steps will include device programming and patient education on its use. Follow-up will be scheduled to monitor response and adjust treatment as necessary.",
+   "source": "llm"
+  }
+ ]
+}

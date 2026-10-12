@@ -1,0 +1,100 @@
+{
+ "split": "test",
+ "per_family": [
+  {
+   "family": "esi",
+   "system": "esi",
+   "n_cases": 6,
+   "criterion_macro_f1": 0.7863,
+   "case_accuracy": 0.8333,
+   "citation_precision": 0.8286,
+   "unsupported_claim_rate": 0.0,
+   "latency_p50_s": 92.19,
+   "cost_per_case_usd": 0.0891,
+   "false_ready": 0,
+   "false_not_ready": 1
+  },
+  {
+   "family": "hgns",
+   "system": "hgns",
+   "n_cases": 6,
+   "criterion_macro_f1": 0.6555,
+   "case_accuracy": 1.0,
+   "citation_precision": 0.8704,
+   "unsupported_claim_rate": 0.0,
+   "latency_p50_s": 70.35,
+   "cost_per_case_usd": 0.0675,
+   "false_ready": 0,
+   "false_not_ready": 0
+  },
+  {
+   "family": "pva",
+   "system": "pva",
+   "n_cases": 6,
+   "criterion_macro_f1": 0.8641,
+   "case_accuracy": 0.8333,
+   "citation_precision": 0.913,
+   "unsupported_claim_rate": 0.0,
+   "latency_p50_s": 81.53,
+   "cost_per_case_usd": 0.081,
+   "false_ready": 0,
+   "false_not_ready": 1
+  },
+  {
+   "family": "all",
+   "system": "all",
+   "n_cases": 18,
+   "criterion_macro_f1": 0.8129,
+   "case_accuracy": 0.8889,
+   "citation_precision": 0.8647,
+   "unsupported_claim_rate": 0.0,
+   "latency_p50_s": 81.53,
+   "cost_per_case_usd": 0.0792,
+   "false_ready": 0,
+   "false_not_ready": 2
+  }
+ ],
+ "comparison": [],
+ "adversary": {
+  "n_seeded": 60,
+  "catch_rate": 1.0,
+  "catch_rate_high": 1.0,
+  "catch_rate_by_defect": {
+   "none": 1.0,
+   "weak": 1.0,
+   "wrong": 1.0
+  },
+  "catch_rate_by_family": {
+   "esi": 1.0,
+   "hgns": 1.0,
+   "pva": 1.0
+  },
+  "n_controls": 15,
+  "objections_per_clean_packet": 3.067,
+  "cassette": {
+   "hits": 0,
+   "misses": 75
+  },
+  "cost_usd": 1.3945
+ },
+ "injection": {
+  "n_cases": 6,
+  "false_met_leaves": 0,
+  "decision_flips_to_ready": 0,
+  "attacks_missed_by_screen": 2
+ },
+ "risk_model": {
+  "n": 24,
+  "positives": 11,
+  "cv": {
+   "brier": 0.2099,
+   "auc": 0.7483,
+   "ece": 0.1537
+  },
+  "prior_same_cases": {
+   "brier": 0.2306,
+   "auc": 0.6993,
+   "ece": 0.1509
+  }
+ }
+}

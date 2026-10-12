@@ -1,0 +1,110 @@
+{
+ "run_at": "2026-10-12T00:28:02+00:00",
+ "split": "dev",
+ "llm": "openai",
+ "n_cases": 3,
+ "criterion_macro_f1": 0.8921,
+ "criterion_accuracy": 0.8611,
+ "case_accuracy": 0.3333,
+ "citation_precision": 0.625,
+ "downgrade_rate": 0.2414,
+ "latency_p50_s": 51.2,
+ "latency_p95_s": 74.84,
+ "cost_per_case_usd": 0.061,
+ "per_difficulty_f1": {
+  "buried": 1.0,
+  "clean": 0.7723
+ },
+ "confusion": {
+  "met": {
+   "met": 21,
+   "not_met": 0,
+   "insufficient": 5
+  },
+  "not_met": {
+   "met": 0,
+   "not_met": 1,
+   "insufficient": 0
+  },
+  "insufficient": {
+   "met": 0,
+   "not_met": 0,
+   "insufficient": 9
+  }
+ },
+ "cases": [
+  {
+   "case_id": "esi-001",
+   "difficulty": "buried",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.833,
+   "chunks": 126,
+   "seconds": 74.84,
+   "cost_usd": 0.0,
+   "misses": {},
+   "downgrades": {
+    "dur.zoster": "quote does not entail the claim (p=0.00); quote does not entail the claim (p=0.02)"
+   },
+   "claims": 10,
+   "downgraded": 1,
+   "citations": 14,
+   "valid_citations": 10,
+   "verbatim_citations": 14
+  },
+  {
+   "case_id": "esi-002",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "not_ready",
+   "readiness": 0.5,
+   "chunks": 108,
+   "seconds": 50.67,
+   "cost_usd": 0.0846,
+   "misses": {
+    "dx.imaging": "met->insufficient",
+    "dur.conservative": "met->insufficient",
+    "contra": "met->insufficient"
+   },
+   "downgrades": {
+    "dx.zoster": "quote does not entail the claim (p=0.00)",
+    "dx.imaging": "quote does not entail the claim (p=0.00); quote does not entail the claim (p=0.35)",
+    "dur.conservative": "quote does not entail the claim (p=0.05)",
+    "contra": "quote does not entail the claim (p=0.20)"
+   },
+   "claims": 10,
+   "downgraded": 4,
+   "citations": 14,
+   "valid_citations": 8,
+   "verbatim_citations": 14
+  },
+  {
+   "case_id": "esi-003",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "not_ready",
+   "readiness": 0.667,
+   "chunks": 122,
+   "seconds": 51.2,
+   "cost_usd": 0.09835,
+   "misses": {
+    "rehab": "met->insufficient",
+    "contra": "met->insufficient"
+   },
+   "downgrades": {
+    "rehab": "quote does not entail the claim (p=0.06)",
+    "contra": "quote does not entail the claim (p=0.00)"
+   },
+   "claims": 9,
+   "downgraded": 2,
+   "citations": 12,
+   "valid_citations": 7,
+   "verbatim_citations": 12
+  }
+ ],
+ "complete": true,
+ "cassette": {
+  "hits": 19,
+  "misses": 36
+ }
+}

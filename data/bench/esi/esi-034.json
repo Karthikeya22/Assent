@@ -1,0 +1,156 @@
+{
+ "split": "dev",
+ "facts": {
+  "case_id": "esi-034",
+  "difficulty": "buried",
+  "order_date": "2026-09-24",
+  "patient": {
+   "fhir_id": "66c4e166-498f-0d63-3a0c-b4fc77af2e0e",
+   "name": "Verena Tillman",
+   "sex": "female",
+   "birth_date": "1943-04-17"
+  },
+  "condition": "radic",
+  "region": "lumbar",
+  "level": "L5-S1",
+  "side": "right",
+  "cpt": "64483",
+  "icd10": "M54.16",
+  "onset_date": "2026-09-10",
+  "pain_weeks": 2,
+  "pt_start": "2026-08-01",
+  "pt_weeks": 5,
+  "nsaid": "naproxen 500 mg BID",
+  "scale_name": "NRS",
+  "scale_value": "9/10",
+  "imaging_date": "2026-08-29",
+  "imaging_modality": "CT",
+  "prior_esi_dates": [
+   "2026-03-06"
+  ],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "not_met",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "not_met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "A/P: R L radic 2/2 L5-S1 HNP w/ foraminal stenosis.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.pls",
+    "gold": "not_met",
+    "text": "PSH: no spinal surgery.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "CT lumbar spine 08/29/2026: L5-S1 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Fx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Initial NRS 9/10.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "not_met",
+    "text": "LBP x2 wks w/ radiation to R LE.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "D/C from PT after 5 wks (08/01/2026-09/05/2026), sx unchanged. Failed naproxen 500 mg BID.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "HEP daily, compliant.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "ROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "Epidural steroid injection history: 1 lumbar injection in the past 12 months (03/06/2026).",
+    "slot": "pcp",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-09-19",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 09/19/2026\nPatient: Verena Tillman, 83 y/o F\n\nCC: L leg pain\n\nHPI: Pt c/o L leg radic pain. No new trauma or systemic symptoms.\n\nROS: ROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.\n\nPMH: Degenerative spine dz.\nPSH: no spinal surgery.\n\nMeds: NSAIDs prn.\n\nEpidural steroid injection history: 1 lumbar injection in the past 12 months (03/06/2026).\n\nPE: Neuro exam shows decreased sensation in L5 dermatome, mild weakness L foot dorsiflexion.\n\nImaging: Prior MRI shows L5-S1 HNP with foraminal stenosis.\n\nA/P: R L radic 2/2 L5-S1 HNP w/ foraminal stenosis.\nPlan: Continue conservative mgmt, consider PT, monitor neuro status, f/u in 4 wks.",
+   "source": "llm"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-09-05",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 09/05/2026\nPatient: Verena Tillman, 83 y/o F\n\nFx: can't walk >1 block, stopped volunteering d/t pain, poor sleep. Initial NRS 9/10. Pt presented with severe pain limiting ambulation and daily activities.\n\nD/C from PT after 5 wks (08/01/2026-09/05/2026), sx unchanged. Failed naproxen 500 mg BID. Despite therapy, no improvement in pain or function noted.\n\nHEP daily, compliant. Exercises focused on mobility and pain management were performed as instructed.\n\nPlan: Continue medical management; consider alternative pain control strategies. Follow-up with MD recommended.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-29",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/29/2026\nPatient: Verena Tillman, 83 y/o F\n\nExam: CT lumbar spine\n\nFindings: CT lumbar spine 08/29/2026: L5-S1 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root. No evidence of fracture or destructive osseous lesions. Vertebral alignment preserved. No significant central canal stenosis noted.\n\nImpression: L5-S1 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root. Recommend clinical correlation.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-22",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/22/2026\nPatient: Verena Tillman, 83 y/o F\n\nCC: LBP x2 wks w/ radiation to R LE.\n\nHPI: Pt c/o low back pain for 2 weeks, radiating down right lower extremity. No hx of trauma or recent illness. Denies rash or skin changes.\n\nPE: Tenderness over lumbar paraspinals. Neuro exam: RLE strength 4/5, decreased sensation along L5 dermatome. Reflexes diminished at right ankle.\n\nAssessment: LBP x2 wks w/ radiation to R LE consistent with radiculopathy.\n\nPlan: Initiate conservative mgmt with NSAIDs, PT referral. Consider imaging if no improvement. Follow-up in 2 wks.",
+   "source": "llm"
+  }
+ ]
+}

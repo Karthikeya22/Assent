@@ -1,0 +1,28 @@
+# Model routing. Code asks for a tier name, never a model ID (ARCHITECTURE §6.4).
+# Loaded by assent_agents via litellm.Router in dev; same file works for the LiteLLM proxy.
+model_list:
+  - model_name: reasoning
+    litellm_params: { model: openai/gpt-4.1, temperature: 0 }
+  - model_name: fast
+    litellm_params: { model: openai/gpt-4.1-mini, temperature: 0.2 }
+  # Adversary is a different vendor from the Advocate (ARCHITECTURE §6.4): shared blind spots
+  # are less likely across model families.
+  - model_name: adversary
+    litellm_params: { model: gemini/gemini-3.1-pro-preview, temperature: 0.3 }
+  - model_name: adversary_fast
+    litellm_params: { model: gemini/gemini-2.5-flash, temperature: 0.3 }
+  # - model_name: reasoning
+  #   litellm_params: { model: anthropic/claude-sonnet-5-5, temperature: 0 }
+
+router_settings:
+  num_retries: 2
+  timeout: 60
+  fallbacks:
+    - reasoning: [fast]
+    # Stay on Gemini if Pro is unavailable; last resort keeps runs alive. llm.usage["models"]
+    # records which model actually answered, so a fallback is never silent.
+    - adversary: [adversary_fast, reasoning]
+
+litellm_settings:
+  max_budget: 20.0       # USD, dev-wide hard cap
+  budget_duration: 30d

@@ -1,0 +1,75 @@
+[project]
+name = "assent"
+version = "0.0.0"
+requires-python = ">=3.12,<3.13"
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = ["apps/api", "apps/worker", "apps/mock_payer", "apps/cds", "packages/*"]
+
+[tool.uv.sources]
+assent-api = { workspace = true }
+assent-worker = { workspace = true }
+assent-agents = { workspace = true }
+assent-retrieval = { workspace = true }
+assent-fhir = { workspace = true }
+assent-phi = { workspace = true }
+assent-evals = { workspace = true }
+assent-mock-payer = { workspace = true }
+assent-cds = { workspace = true }
+
+[dependency-groups]
+dev = [
+  "assent-api",
+  "assent-worker",
+  "assent-agents",
+  "assent-retrieval",
+  "assent-fhir",
+  "assent-phi",
+  "assent-evals",
+  "pytest>=8.3",
+  "pytest-asyncio>=0.24",
+  "httpx>=0.27",
+  "ruff>=0.7",
+  "mypy>=1.13",
+  "types-pyyaml>=6.0",
+  "pre-commit>=4.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["apps/web", "**/migrations/versions", "*.md"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "ASYNC", "S", "RUF"]
+ignore = ["S101"]
+
+[tool.ruff.lint.per-file-ignores]
+"**/tests/**" = ["S105", "S106", "S311"]
+"packages/evals/**" = ["S311"]
+"**/synth/phrases.py" = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["assent_api", "assent_worker", "assent_agents", "assent_retrieval", "assent_fhir", "assent_phi", "assent_evals"]
+
+[tool.mypy]
+strict = true
+python_version = "3.12"
+plugins = ["pydantic.mypy"]
+mypy_path = "$MYPY_CONFIG_FILE_DIR/apps/api/src:$MYPY_CONFIG_FILE_DIR/apps/worker/src:$MYPY_CONFIG_FILE_DIR/apps/mock_payer/src:$MYPY_CONFIG_FILE_DIR/apps/cds/src"
+files = ["apps/api/src", "apps/worker/src", "apps/mock_payer/src", "apps/cds/src", "packages/*/src"]
+exclude = ["migrations/"]
+
+[[tool.mypy.overrides]]
+module = ["arq.*", "pgvector.*", "presidio_analyzer.*", "presidio_anonymizer.*", "spacy.*", "sentence_transformers.*", "torch.*", "sklearn.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
+asyncio_default_test_loop_scope = "session"
+testpaths = ["apps/api/tests", "apps/worker/tests", "packages"]
+addopts = "--import-mode=importlib"

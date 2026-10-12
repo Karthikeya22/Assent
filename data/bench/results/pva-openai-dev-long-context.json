@@ -1,0 +1,124 @@
+{
+ "run_at": "2026-10-12T18:44:59+00:00",
+ "split": "dev",
+ "llm": "openai",
+ "n_cases": 3,
+ "criterion_macro_f1": 1.0,
+ "criterion_accuracy": 1.0,
+ "case_accuracy": 1.0,
+ "citation_precision": 0.7308,
+ "downgrade_rate": 0.0,
+ "unsupported_claim_rate": 0.2174,
+ "latency_p50_s": 39.13,
+ "latency_p95_s": 103.35,
+ "cost_per_case_usd": 0.0201,
+ "per_difficulty_f1": {
+  "buried": 1.0,
+  "clean": 1.0
+ },
+ "confusion": {
+  "met": {
+   "met": 18,
+   "not_met": 0,
+   "insufficient": 0
+  },
+  "not_met": {
+   "met": 0,
+   "not_met": 5,
+   "insufficient": 0
+  },
+  "insufficient": {
+   "met": 0,
+   "not_met": 0,
+   "insufficient": 10
+  }
+ },
+ "cases": [
+  {
+   "case_id": "pva-002",
+   "difficulty": "buried",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.75,
+   "chunks": 56,
+   "seconds": 103.35,
+   "cost_usd": 0.01574,
+   "misses": {},
+   "downgrades": {},
+   "risk_features": {
+    "blocking_gaps": 1.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.2913833333333332,
+    "judged_share": 0.0
+   },
+   "final_claims": 7,
+   "unsupported": 1,
+   "claims": 7,
+   "downgraded": 0,
+   "citations": 8,
+   "valid_citations": 6,
+   "verbatim_citations": 8
+  },
+  {
+   "case_id": "pva-003",
+   "difficulty": "buried",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 98,
+   "seconds": 39.13,
+   "cost_usd": 0.02114,
+   "misses": {},
+   "downgrades": {},
+   "risk_features": {
+    "blocking_gaps": 0.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.487225,
+    "judged_share": 0.0
+   },
+   "final_claims": 9,
+   "unsupported": 3,
+   "claims": 9,
+   "downgraded": 0,
+   "citations": 10,
+   "valid_citations": 6,
+   "verbatim_citations": 10
+  },
+  {
+   "case_id": "pva-004",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "ready",
+   "readiness": 1.0,
+   "chunks": 108,
+   "seconds": 35.17,
+   "cost_usd": 0.02349,
+   "misses": {},
+   "downgrades": {},
+   "risk_features": {
+    "blocking_gaps": 0.0,
+    "conceded_high": 0.0,
+    "conceded_other": 0.0,
+    "weak_support": 0.11701428571428563,
+    "judged_share": 0.0
+   },
+   "final_claims": 7,
+   "unsupported": 1,
+   "claims": 7,
+   "downgraded": 0,
+   "citations": 8,
+   "valid_citations": 7,
+   "verbatim_citations": 8
+  }
+ ],
+ "family": "pva",
+ "variant": "long-context",
+ "inject": false,
+ "complete": true,
+ "cassette": {
+  "hits": 0,
+  "misses": 3
+ }
+}

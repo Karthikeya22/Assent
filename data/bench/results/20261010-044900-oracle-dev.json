@@ -1,0 +1,129 @@
+{
+ "run_at": "2026-10-10T04:49:00+00:00",
+ "split": "dev",
+ "llm": "oracle",
+ "n_cases": 3,
+ "criterion_macro_f1": 0.6369,
+ "criterion_accuracy": 0.4722,
+ "case_accuracy": 0.3333,
+ "citation_precision": 0.2963,
+ "downgrade_rate": 0.7037,
+ "latency_p50_s": 52.91,
+ "latency_p95_s": 110.72,
+ "per_difficulty_f1": {
+  "buried": 0.6333,
+  "clean": 0.4574
+ },
+ "confusion": {
+  "met": {
+   "met": 7,
+   "not_met": 0,
+   "insufficient": 19
+  },
+  "not_met": {
+   "met": 0,
+   "not_met": 1,
+   "insufficient": 0
+  },
+  "insufficient": {
+   "met": 0,
+   "not_met": 0,
+   "insufficient": 9
+  }
+ },
+ "cassette": null,
+ "cases": [
+  {
+   "case_id": "esi-001",
+   "difficulty": "buried",
+   "gold_decision": "not_ready",
+   "decision": "not_ready",
+   "readiness": 0.167,
+   "chunks": 126,
+   "seconds": 110.72,
+   "misses": {
+    "dx.radic": "met->insufficient",
+    "dx.imaging": "met->insufficient",
+    "sev.impact": "met->insufficient",
+    "sev.baseline": "met->insufficient",
+    "dur.conservative": "met->insufficient",
+    "freq": "met->insufficient"
+   },
+   "downgrades": {
+    "dx.radic": "no verbatim quote reached entailment support 0.7",
+    "dx.imaging": "no verbatim quote reached entailment support 0.7",
+    "sev.impact": "no verbatim quote reached entailment support 0.7",
+    "sev.baseline": "no verbatim quote reached entailment support 0.7",
+    "dur.conservative": "no verbatim quote reached entailment support 0.7",
+    "freq": "no verbatim quote reached entailment support 0.7"
+   },
+   "claims": 9,
+   "downgraded": 6,
+   "citations": 9,
+   "valid_citations": 3,
+   "verbatim_citations": 9
+  },
+  {
+   "case_id": "esi-002",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "not_ready",
+   "readiness": 0.167,
+   "chunks": 108,
+   "seconds": 41.65,
+   "misses": {
+    "dx.radic": "met->insufficient",
+    "sev.impact": "met->insufficient",
+    "sev.baseline": "met->insufficient",
+    "dur.conservative": "met->insufficient",
+    "rehab": "met->insufficient",
+    "freq": "met->insufficient"
+   },
+   "downgrades": {
+    "dx.radic": "no verbatim quote reached entailment support 0.7",
+    "sev.impact": "no verbatim quote reached entailment support 0.7",
+    "sev.baseline": "no verbatim quote reached entailment support 0.7",
+    "dur.conservative": "no verbatim quote reached entailment support 0.7",
+    "rehab": "no verbatim quote reached entailment support 0.7",
+    "freq": "no verbatim quote reached entailment support 0.7"
+   },
+   "claims": 9,
+   "downgraded": 6,
+   "citations": 9,
+   "valid_citations": 3,
+   "verbatim_citations": 9
+  },
+  {
+   "case_id": "esi-003",
+   "difficulty": "clean",
+   "gold_decision": "ready",
+   "decision": "not_ready",
+   "readiness": 0.167,
+   "chunks": 122,
+   "seconds": 52.91,
+   "misses": {
+    "dx.radic": "met->insufficient",
+    "dx.imaging": "met->insufficient",
+    "sev.impact": "met->insufficient",
+    "sev.baseline": "met->insufficient",
+    "dur.conservative": "met->insufficient",
+    "rehab": "met->insufficient",
+    "freq": "met->insufficient"
+   },
+   "downgrades": {
+    "dx.radic": "no verbatim quote reached entailment support 0.7",
+    "dx.imaging": "no verbatim quote reached entailment support 0.7",
+    "sev.impact": "no verbatim quote reached entailment support 0.7",
+    "sev.baseline": "no verbatim quote reached entailment support 0.7",
+    "dur.conservative": "no verbatim quote reached entailment support 0.7",
+    "rehab": "no verbatim quote reached entailment support 0.7",
+    "freq": "no verbatim quote reached entailment support 0.7"
+   },
+   "claims": 9,
+   "downgraded": 7,
+   "citations": 9,
+   "valid_citations": 2,
+   "verbatim_citations": 9
+  }
+ ]
+}

@@ -1,0 +1,157 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-020",
+  "difficulty": "buried",
+  "order_date": "2026-09-02",
+  "patient": {
+   "fhir_id": "70f3a3b3-4779-ab7e-b0eb-97c89ba5423e",
+   "name": "Ja Hand",
+   "sex": "female",
+   "birth_date": "1957-11-22"
+  },
+  "condition": "cpap_failure",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-04-30",
+   "psg": "2025-11-27",
+   "sleepmd": "2026-07-18",
+   "ent": "2026-08-31"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 25.1,
+    "unit": "kg/m2",
+    "date": "2026-07-18"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 19.6,
+    "unit": "/h",
+    "date": "2025-11-27"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "met",
+   "dise": "met",
+   "anatomy": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "68yo W referred for HGNS eval.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "Wt stable, BMI 25.1.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Attended PSG 11/27/2025.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "AHI 19.6/h.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "CA+MA 6% of total AHI.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "cpap",
+    "gold": "met",
+    "text": "CPAP 13 cmH2O, residual AHI 28.0 despite nightly use = failure.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "met",
+    "text": "DISE 08/13/2026: AP velum collapse, no CCC.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Tonsils 1+, no other obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No NM dz, no NYHA III/IV CHF, no MRI need, can use remote.",
+    "slot": "pcp",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-04-30",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 04/30/2026\nPatient: Ja Hand, 69 y/o F\n\nWt stable, BMI 25.1. Vitals WNL. No acute distress. PE: CV RRR, no m/r/g; lungs clear; abd soft, nontender; neuro grossly intact.\n\nNo NM dz, no NYHA III/IV CHF, no MRI need, can use remote. Labs pending, will review CBC, CMP.\n\nPlan: Continue current meds, monitor BP and glucose. Follow-up in 3 mo or PRN. Advise flu vaccine next visit.\n\nPt education on lifestyle, diet, exercise reinforced. No new complaints.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2025-11-27",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 11/27/2025\nPatient: Ja Hand, 68 y/o F\n\nAttended PSG 11/27/2025. Sleep latency 15 min, TST 360 min, SE 85%. REM 18%, N3 20%. AHI 19.6/h. CA+MA 6% of total AHI. ODI 15/h. SpO2 nadir 88%. Periodic limb movements index 5/h. No significant arrhythmias noted. CPAP titration recommended based on findings.\n\nSummary: Moderate OSA with mixed apneas present. Further clinical correlation advised.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-07-18",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation\nDate: 07/18/2026\nPatient: Ja Hand, 69F\n\nHx: Pt with OSA on CPAP therapy.\n\nCurrent Tx: CPAP 13 cmH2O, residual AHI 28.0 despite nightly use = failure.\n\nAssessment: Persistent elevated AHI despite adherence to CPAP at 13 cmH2O.\n\nPlan: Consider alternative therapies or advanced titration studies. Monitor compliance and symptoms closely. Discuss options including BiPAP or adjunctive treatments at next visit.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-08-31",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation\nDate: 08/31/2026\nPatient: Ja Hand, 69yo F\n\nHx: 68yo W referred for HGNS eval.\n\nExam: Tonsils 1+, no other obstruction.\n\nProcedure: DISE 08/13/2026: AP velum collapse, no CCC.\n\nAssessment: Findings consistent with isolated AP velum collapse, suitable for HGNS consideration.\n\nPlan: Proceed with HGNS candidacy workup and discuss options with patient.",
+   "source": "llm"
+  }
+ ]
+}

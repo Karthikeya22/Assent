@@ -1,0 +1,1058 @@
+{
+ "n_seeded": 60,
+ "catch_rate": 1.0,
+ "catch_rate_high": 1.0,
+ "catch_rate_by_defect": {
+  "none": 1.0,
+  "weak": 1.0,
+  "wrong": 1.0
+ },
+ "catch_rate_by_family": {
+  "esi": 1.0,
+  "hgns": 1.0,
+  "pva": 1.0
+ },
+ "n_controls": 15,
+ "objections_per_clean_packet": 3.067,
+ "cassette": {
+  "hits": 0,
+  "misses": 75
+ },
+ "cost_usd": 1.3945,
+ "rows": [
+  {
+   "family": "esi",
+   "case_id": "esi-042",
+   "defect": "weak",
+   "seeded_key": "dur.conservative",
+   "objected": [
+    "dur.conservative"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 1
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-013",
+   "defect": "wrong",
+   "seeded_key": "dx.imaging",
+   "objected": [
+    "dx.imaging",
+    "dx.zoster",
+    "rehab"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-013",
+   "defect": "none",
+   "seeded_key": "freq",
+   "objected": [
+    "dur.zoster",
+    "dx.imaging",
+    "freq",
+    "rehab"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 4
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-048",
+   "defect": "weak",
+   "seeded_key": "contra",
+   "objected": [
+    "contra",
+    "sev.impact"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 2
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-049",
+   "defect": "wrong",
+   "seeded_key": "contra",
+   "objected": [
+    "contra",
+    "sev.baseline"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 2
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-048",
+   "defect": "none",
+   "seeded_key": "contra",
+   "objected": [
+    "contra",
+    "sev.baseline",
+    "sev.impact"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-042",
+   "defect": "weak",
+   "seeded_key": "sev.impact",
+   "objected": [
+    "contra",
+    "sev.impact"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 2
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-038",
+   "defect": "wrong",
+   "seeded_key": "rehab",
+   "objected": [
+    "dx.radic",
+    "rehab",
+    "sev.baseline"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-048",
+   "defect": "none",
+   "seeded_key": "sev.impact",
+   "objected": [
+    "dx.radic",
+    "sev.baseline",
+    "sev.impact"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-002",
+   "defect": "weak",
+   "seeded_key": "contra",
+   "objected": [
+    "contra"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 1
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-046",
+   "defect": "wrong",
+   "seeded_key": "dur.pain",
+   "objected": [
+    "dur.pain",
+    "dx.radic",
+    "rehab",
+    "sev.baseline",
+    "sev.impact"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 5
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-022",
+   "defect": "none",
+   "seeded_key": "dx.imaging",
+   "objected": [
+    "dx.imaging",
+    "freq"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 2
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-019",
+   "defect": "weak",
+   "seeded_key": "dx.imaging",
+   "objected": [
+    "contra",
+    "dx.imaging",
+    "rehab"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-038",
+   "defect": "wrong",
+   "seeded_key": "rehab",
+   "objected": [
+    "dx.radic",
+    "rehab",
+    "sev.baseline"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-003",
+   "defect": "none",
+   "seeded_key": "freq",
+   "objected": [
+    "contra",
+    "freq",
+    "sev.baseline",
+    "sev.impact"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 4
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-048",
+   "defect": "weak",
+   "seeded_key": "sev.impact",
+   "objected": [
+    "sev.impact"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 1
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-047",
+   "defect": "wrong",
+   "seeded_key": "sev.impact",
+   "objected": [
+    "dur.conservative",
+    "sev.impact"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 2
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-050",
+   "defect": "none",
+   "seeded_key": "dx.imaging",
+   "objected": [
+    "contra",
+    "dx.imaging"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 2
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-016",
+   "defect": "weak",
+   "seeded_key": "rehab",
+   "objected": [
+    "rehab",
+    "sev.baseline",
+    "sev.impact"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-049",
+   "defect": "wrong",
+   "seeded_key": "freq",
+   "objected": [
+    "contra",
+    "dx.radic",
+    "freq",
+    "sev.baseline"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 4
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-020",
+   "defect": "control",
+   "seeded_key": null,
+   "objected": [
+    "contra",
+    "rehab",
+    "sev.baseline"
+   ],
+   "caught": null,
+   "caught_high": null,
+   "n_objections": 3
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-002",
+   "defect": "control",
+   "seeded_key": null,
+   "objected": [
+    "contra",
+    "dur.conservative",
+    "dx.radic",
+    "freq"
+   ],
+   "caught": null,
+   "caught_high": null,
+   "n_objections": 4
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-016",
+   "defect": "control",
+   "seeded_key": null,
+   "objected": [
+    "contra",
+    "sev.baseline",
+    "sev.impact"
+   ],
+   "caught": null,
+   "caught_high": null,
+   "n_objections": 3
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-038",
+   "defect": "control",
+   "seeded_key": null,
+   "objected": [
+    "dx.radic",
+    "rehab",
+    "sev.baseline"
+   ],
+   "caught": null,
+   "caught_high": null,
+   "n_objections": 3
+  },
+  {
+   "family": "esi",
+   "case_id": "esi-008",
+   "defect": "control",
+   "seeded_key": null,
+   "objected": [
+    "contra",
+    "dur.zoster",
+    "dx.imaging",
+    "rehab"
+   ],
+   "caught": null,
+   "caught_high": null,
+   "n_objections": 4
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-011",
+   "defect": "weak",
+   "seeded_key": "contra",
+   "objected": [
+    "contra",
+    "cpap",
+    "psg"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-016",
+   "defect": "wrong",
+   "seeded_key": "cpap",
+   "objected": [
+    "cpap",
+    "psg"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 2
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-025",
+   "defect": "none",
+   "seeded_key": "bmi",
+   "objected": [
+    "bmi",
+    "contra",
+    "cpap",
+    "psg"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 4
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-002",
+   "defect": "weak",
+   "seeded_key": "central",
+   "objected": [
+    "central",
+    "contra",
+    "psg"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-011",
+   "defect": "wrong",
+   "seeded_key": "central",
+   "objected": [
+    "central",
+    "cpap",
+    "psg"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-038",
+   "defect": "none",
+   "seeded_key": "bmi",
+   "objected": [
+    "bmi",
+    "cpap",
+    "psg"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-014",
+   "defect": "weak",
+   "seeded_key": "ahi",
+   "objected": [
+    "ahi",
+    "cpap",
+    "psg"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-005",
+   "defect": "wrong",
+   "seeded_key": "ahi",
+   "objected": [
+    "ahi",
+    "contra",
+    "psg"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-008",
+   "defect": "none",
+   "seeded_key": "cpap",
+   "objected": [
+    "cpap",
+    "psg"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 2
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-032",
+   "defect": "weak",
+   "seeded_key": "age",
+   "objected": [
+    "age",
+    "cpap",
+    "psg"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-049",
+   "defect": "wrong",
+   "seeded_key": "contra",
+   "objected": [
+    "contra",
+    "psg"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 2
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-020",
+   "defect": "none",
+   "seeded_key": "anatomy",
+   "objected": [
+    "anatomy",
+    "contra",
+    "cpap",
+    "psg"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 4
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-016",
+   "defect": "weak",
+   "seeded_key": "contra",
+   "objected": [
+    "contra",
+    "psg"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 2
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-008",
+   "defect": "wrong",
+   "seeded_key": "dise",
+   "objected": [
+    "dise",
+    "psg"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 2
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-014",
+   "defect": "none",
+   "seeded_key": "psg",
+   "objected": [
+    "cpap",
+    "dise",
+    "psg"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-020",
+   "defect": "weak",
+   "seeded_key": "cpap",
+   "objected": [
+    "contra",
+    "cpap",
+    "psg"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-014",
+   "defect": "wrong",
+   "seeded_key": "central",
+   "objected": [
+    "central",
+    "cpap",
+    "psg"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-013",
+   "defect": "none",
+   "seeded_key": "bmi",
+   "objected": [
+    "bmi",
+    "contra",
+    "cpap",
+    "psg"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 4
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-013",
+   "defect": "weak",
+   "seeded_key": "anatomy",
+   "objected": [
+    "anatomy",
+    "cpap",
+    "psg"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-016",
+   "defect": "wrong",
+   "seeded_key": "contra",
+   "objected": [
+    "contra",
+    "psg"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 2
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-035",
+   "defect": "control",
+   "seeded_key": null,
+   "objected": [
+    "central",
+    "contra",
+    "cpap",
+    "psg"
+   ],
+   "caught": null,
+   "caught_high": null,
+   "n_objections": 4
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-025",
+   "defect": "control",
+   "seeded_key": null,
+   "objected": [
+    "contra",
+    "cpap",
+    "psg"
+   ],
+   "caught": null,
+   "caught_high": null,
+   "n_objections": 3
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-012",
+   "defect": "control",
+   "seeded_key": null,
+   "objected": [
+    "contra",
+    "cpap",
+    "psg"
+   ],
+   "caught": null,
+   "caught_high": null,
+   "n_objections": 3
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-049",
+   "defect": "control",
+   "seeded_key": null,
+   "objected": [
+    "contra",
+    "cpap",
+    "psg"
+   ],
+   "caught": null,
+   "caught_high": null,
+   "n_objections": 3
+  },
+  {
+   "family": "hgns",
+   "case_id": "hgns-002",
+   "defect": "control",
+   "seeded_key": null,
+   "objected": [
+    "contra",
+    "cpap",
+    "psg"
+   ],
+   "caught": null,
+   "caught_high": null,
+   "n_objections": 3
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-047",
+   "defect": "weak",
+   "seeded_key": "care.osteo",
+   "objected": [
+    "care.osteo",
+    "contra",
+    "sym.moderate"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-035",
+   "defect": "wrong",
+   "seeded_key": "sym.worsening",
+   "objected": [
+    "contra",
+    "sym.worsening"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 2
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-040",
+   "defect": "none",
+   "seeded_key": "fx.acute",
+   "objected": [
+    "contra",
+    "fx.acute"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 2
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-045",
+   "defect": "weak",
+   "seeded_key": "sym.moderate",
+   "objected": [
+    "sym.moderate"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 1
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-049",
+   "defect": "wrong",
+   "seeded_key": "care.osteo",
+   "objected": [
+    "care.osteo",
+    "fx.acute",
+    "sym.moderate"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-030",
+   "defect": "none",
+   "seeded_key": "fx.imaging",
+   "objected": [
+    "contra",
+    "fx.acute",
+    "fx.imaging",
+    "sym.moderate"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 4
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-047",
+   "defect": "weak",
+   "seeded_key": "care.osteo",
+   "objected": [
+    "care.osteo",
+    "contra",
+    "fx.acute",
+    "sym.moderate"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 4
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-022",
+   "defect": "wrong",
+   "seeded_key": "fx.imaging",
+   "objected": [
+    "contra",
+    "fx.acute",
+    "fx.imaging"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-050",
+   "defect": "none",
+   "seeded_key": "contra",
+   "objected": [
+    "contra",
+    "feat.progression",
+    "sym.moderate"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-049",
+   "defect": "weak",
+   "seeded_key": "feat.progression",
+   "objected": [
+    "feat.progression",
+    "fx.acute",
+    "sym.moderate"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-033",
+   "defect": "wrong",
+   "seeded_key": "contra",
+   "objected": [
+    "contra",
+    "fx.acute"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 2
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-035",
+   "defect": "none",
+   "seeded_key": "care.osteo",
+   "objected": [
+    "care.osteo",
+    "contra",
+    "sym.moderate"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-030",
+   "defect": "weak",
+   "seeded_key": "feat.rdq",
+   "objected": [
+    "contra",
+    "feat.rdq",
+    "fx.acute",
+    "sym.moderate"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 4
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-022",
+   "defect": "wrong",
+   "seeded_key": "feat.rdq",
+   "objected": [
+    "contra",
+    "feat.rdq"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 2
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-015",
+   "defect": "none",
+   "seeded_key": "sym.hosp",
+   "objected": [
+    "contra",
+    "sym.hosp"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 2
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-033",
+   "defect": "weak",
+   "seeded_key": "contra",
+   "objected": [
+    "contra",
+    "fx.acute"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 2
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-027",
+   "defect": "wrong",
+   "seeded_key": "fx.acute",
+   "objected": [
+    "contra",
+    "fx.acute"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 2
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-007",
+   "defect": "none",
+   "seeded_key": "fx.imaging",
+   "objected": [
+    "contra",
+    "fx.acute",
+    "fx.imaging",
+    "sym.moderate"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 4
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-005",
+   "defect": "weak",
+   "seeded_key": "contra",
+   "objected": [
+    "contra",
+    "fx.acute",
+    "sym.moderate"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 3
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-036",
+   "defect": "wrong",
+   "seeded_key": "care.osteo",
+   "objected": [
+    "care.osteo",
+    "fx.acute"
+   ],
+   "caught": true,
+   "caught_high": true,
+   "n_objections": 2
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-033",
+   "defect": "control",
+   "seeded_key": null,
+   "objected": [
+    "contra",
+    "fx.acute"
+   ],
+   "caught": null,
+   "caught_high": null,
+   "n_objections": 2
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-043",
+   "defect": "control",
+   "seeded_key": null,
+   "objected": [
+    "contra",
+    "sym.moderate",
+    "sym.worsening"
+   ],
+   "caught": null,
+   "caught_high": null,
+   "n_objections": 3
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-030",
+   "defect": "control",
+   "seeded_key": null,
+   "objected": [
+    "contra",
+    "fx.acute",
+    "sym.moderate"
+   ],
+   "caught": null,
+   "caught_high": null,
+   "n_objections": 4
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-027",
+   "defect": "control",
+   "seeded_key": null,
+   "objected": [
+    "contra"
+   ],
+   "caught": null,
+   "caught_high": null,
+   "n_objections": 1
+  },
+  {
+   "family": "pva",
+   "case_id": "pva-005",
+   "defect": "control",
+   "seeded_key": null,
+   "objected": [
+    "contra",
+    "fx.acute",
+    "sym.moderate"
+   ],
+   "caught": null,
+   "caught_high": null,
+   "n_objections": 3
+  }
+ ]
+}

@@ -1,0 +1,147 @@
+{
+ "split": "test",
+ "facts": {
+  "case_id": "esi-029",
+  "difficulty": "clean",
+  "order_date": "2026-09-07",
+  "patient": {
+   "fhir_id": "b3940b58-fe0b-e7ed-bb73-c0cdd13adb52",
+   "name": "Edmond Corwin",
+   "sex": "male",
+   "birth_date": "1948-07-30"
+  },
+  "condition": "radic",
+  "region": "lumbar",
+  "level": "L4-L5",
+  "side": "right",
+  "cpt": "64483",
+  "icd10": "M54.16",
+  "onset_date": "2026-05-18",
+  "pain_weeks": 16,
+  "pt_start": "2026-05-25",
+  "pt_weeks": 7,
+  "nsaid": "ibuprofen 600 mg TID",
+  "scale_name": "ODI",
+  "scale_value": "59%",
+  "imaging_date": "2026-08-21",
+  "imaging_modality": "MRI",
+  "prior_esi_dates": [],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "insufficient",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "Assessment: right lumbar radiculopathy at L4-L5 due to disc herniation with foraminal stenosis.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "MRI lumbar spine 08/21/2026: L4-L5 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Function: unable to stand long enough to cook a meal, has stopped driving because of the pain.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Baseline ODI prior to any intervention: 59%.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "Reports low back pain radiating to the right leg for 16 weeks.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "PT discharge summary: completed 7 weeks of physical therapy (05/25/2026 to 07/13/2026) without meaningful improvement; ibuprofen 600 mg TID for the same period without relief.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "Continues the daily home exercise program taught in PT.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No red flags: afebrile, no unexplained weight loss, no history of malignancy, no saddle anesthesia.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "No prior epidural steroid injections.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-05-27",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 05/27/2026\nPatient: Edmond Corwin, 78-year-old male\n\nSubjective:\nMr. Corwin presents for his routine follow-up visit. He reports generally feeling well with no new complaints today.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no abnormalities. Cardiovascular, respiratory, abdominal, and neurological exams are unremarkable.\n\nAssessment:\n78-year-old male with no acute issues at this time.\n\nPlan:\nContinue current management and routine monitoring. Encourage healthy lifestyle habits including balanced diet and regular physical activity. Follow up in 6 months or sooner if any new symptoms arise.",
+   "source": "llm"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-07-13",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 07/13/2026\nPatient: Edmond Corwin, 78-year-old male\n\nReason for Referral:\nPatient was referred for physical therapy to address ongoing musculoskeletal complaints.\n\nCourse of Treatment:\nPT discharge summary: completed 7 weeks of physical therapy (05/25/2026 to 07/13/2026) without meaningful improvement; ibuprofen 600 mg TID for the same period without relief.\n\nInterventions Provided:\nThe therapy program included therapeutic exercises, manual therapy techniques, and patient education focused on improving mobility and function.\n\nOutcome:\nDespite adherence to the prescribed physical therapy regimen and medication, the patient did not experience significant symptom relief or functional gains.\n\nRecommendations:\nFurther evaluation by the referring physician is advised to consider alternative management strategies or additional diagnostic assessments.\n\nPhysical Therapist:\n[Name], PT",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-21",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/21/2026\nPatient: Edmond Corwin, 78-year-old male\n\nExamination: MRI Lumbar Spine\n\nFindings:\nMRI lumbar spine 08/21/2026: L4-L5 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.\n\nImpression:\nThere is a herniated disc at the L4-L5 level causing moderate narrowing of the right neural foramen and impinging on the exiting nerve root. No other significant abnormalities are noted in the lumbar spine.\n\nRecommendations:\nClinical correlation is advised to assess symptoms related to the nerve root compression. Further management should be guided by the referring physician.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-05",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/05/2026\nPatient: Edmond Corwin, 78-year-old male\nAuthor: Pain medicine physician\n\nNo prior epidural steroid injections.\nNo red flags: afebrile, no unexplained weight loss, no history of malignancy, no saddle anesthesia.\nContinues the daily home exercise program taught in PT.\nReports low back pain radiating to the right leg for 16 weeks.\nBaseline ODI prior to any intervention: 59%.\nFunction: unable to stand long enough to cook a meal, has stopped driving because of the pain.\nAssessment: right lumbar radiculopathy at L4-L5 due to disc herniation with foraminal stenosis.\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\n",
+   "source": "template"
+  }
+ ]
+}

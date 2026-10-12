@@ -1,0 +1,157 @@
+{
+ "split": "test",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-004",
+  "difficulty": "clean",
+  "order_date": "2026-09-29",
+  "patient": {
+   "fhir_id": "66d5fab8-965d-d654-e97d-db0b3b256f73",
+   "name": "Valentine Altenwerth",
+   "sex": "male",
+   "birth_date": "1939-09-08"
+  },
+  "condition": "cpap_intolerance",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-05-18",
+   "psg": "2025-09-17",
+   "sleepmd": "2026-08-22",
+   "ent": "2026-09-27"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 33.9,
+    "unit": "kg/m2",
+    "date": "2026-08-22"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 29.8,
+    "unit": "/h",
+    "date": "2025-09-17"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "met",
+   "dise": "met",
+   "anatomy": "met",
+   "contra": "not_met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "87-year-old man referred for hypoglossal nerve stimulation evaluation.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "BMI 33.9 kg/m2.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Diagnostic in-laboratory polysomnography performed 09/17/2025.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "Total apnea-hypopnea index (AHI) 29.8 events/hour.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "Central and mixed apneas comprised 4% of all events.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "cpap",
+    "gold": "met",
+    "text": "CPAP intolerance: download shows average use 3.0 hours per night on 27% of nights despite mask refitting; shared decision-making with the patient documented that CPAP is not tolerated.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "met",
+    "text": "Drug-induced sleep endoscopy 09/19/2026: anteroposterior collapse at the velum without complete concentric collapse.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Oropharynx: tonsils size 1, no other anatomic obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "not_met",
+    "text": "History of myasthenia gravis with bulbar weakness.",
+    "slot": "ent",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-05-18",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 05/18/2026\nPatient: Valentine Altenwerth, 87-year-old male\n\nSubjective:\nMr. Altenwerth presents for his routine follow-up visit. He reports feeling generally well with no new complaints. He denies any recent changes in his health status.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no acute abnormalities. Cardiovascular, respiratory, abdominal, and neurological exams are unremarkable.\n\nAssessment:\nMr. Altenwerth remains in stable condition with no new issues identified during today's visit.\n\nPlan:\nContinue current management and medications. Encourage regular exercise and balanced diet. Schedule next routine follow-up in 6 months or sooner if any concerns arise.\n\nPatient education provided regarding maintaining health and monitoring for any new symptoms.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2025-09-17",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 09/17/2025\nPatient: Valentine Altenwerth, 86-year-old male\n\nDiagnostic in-laboratory polysomnography performed 09/17/2025. Total apnea-hypopnea index (AHI) 29.8 events/hour. Central and mixed apneas comprised 4% of all events. The study showed intermittent oxygen desaturations corresponding with respiratory events. Sleep stages were fragmented with decreased REM sleep duration.\n\nImpression: Moderate severity sleep apnea with predominantly obstructive events. Treatment with positive airway pressure therapy is recommended. Follow-up in sleep clinic is advised for therapy titration and monitoring.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-08-22",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation Note\nDate: 08/22/2026\nPatient: Valentine Altenwerth, 87-year-old male\n\nReason for Consultation:\nEvaluation and management of sleep-disordered breathing.\n\nHistory:\nMr. Altenwerth is an 87-year-old male referred for assessment of sleep apnea management. He has a history of obstructive sleep apnea diagnosed several years ago.\n\nPhysical Examination:\nBMI 33.9 kg/m2.\n\nSleep Study and Treatment:\nCPAP intolerance: download shows average use 3.0 hours per night on 27% of nights despite mask refitting; shared decision-making with the patient documented that CPAP is not tolerated.\n\nPlan:\nDiscuss alternative therapies for sleep apnea management including oral appliance therapy and positional therapy. Recommend follow-up sleep study to assess current severity. Continue monitoring symptoms and oxygenation.\n\nSummary:\nMr. Altenwerth has significant CPAP intolerance despite efforts to optimize mask fit and usage. Alternative treatment options will be explored to improve his sleep quality and reduce apnea events.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-27",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation Note\nDate: 09/27/2026\nPatient: Valentine Altenwerth, 87-year-old male\n\nReason for Consultation:\n87-year-old man referred for hypoglossal nerve stimulation evaluation.\n\nHistory:\nHistory of myasthenia gravis with bulbar weakness.\n\nExamination:\nOropharynx: tonsils size 1, no other anatomic obstruction.\n\nProcedures:\nDrug-induced sleep endoscopy 09/19/2026: anteroposterior collapse at the velum without complete concentric collapse.\n\nAssessment and Plan:\nThe patient demonstrates anteroposterior collapse at the velum on sleep endoscopy, without complete concentric collapse. Tonsillar size is minimal, and no other anatomic obstructions are noted. Given the history of myasthenia gravis with bulbar weakness, careful consideration is warranted for hypoglossal nerve stimulation therapy. Further multidisciplinary evaluation will be pursued to optimize management.",
+   "source": "llm"
+  }
+ ]
+}

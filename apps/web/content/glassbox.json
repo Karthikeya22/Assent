@@ -1,0 +1,40 @@
+{
+ "case_id": "esi-002",
+ "note": "Pain Management Consultation\nDate: 09/06/2026\nPatient: Adrian McLaughlin, 67-year-old male\n\nSubjective:\nReports low back pain radiating to the right leg for 22 weeks. Function: unable to stand long enough to cook a meal, has stopped driving because of the pain.\n\nObjective:\nNo red flags: afebrile, no unexplained weight loss, no history of malignancy, no saddle anesthesia.\n\nAssessment:\nAssessment: right lumbar radiculopathy at L5-S1 due to disc herniation with foraminal stenosis.\n\nPlan:\nBaseline NRS prior to any intervention: 9/10. Epidural steroid injection history: 2 lumbar injections in the past 12 months (10/16/2025, 01/02/2026). Continues the daily home exercise program taught in PT. Will consider further interventional options and continue conservative management with physical therapy and pain control.",
+ "rows": [
+  {
+   "key": "dx.radic",
+   "label": "Radiculopathy, radicular pain or neurogenic claudication from disc herniation, osteophyte or severe DDD producing foraminal or central stenosis",
+   "gold": "met",
+   "quote": "Assessment: right lumbar radiculopathy at L5-S1 due to disc herniation with foraminal stenosis."
+  },
+  {
+   "key": "sev.impact",
+   "label": "Pain greatly impacts quality of life or function",
+   "gold": "met",
+   "quote": "Function: unable to stand long enough to cook a meal, has stopped driving because of the pain."
+  },
+  {
+   "key": "sev.baseline",
+   "label": "Objective pain scale or functional assessment recorded at baseline",
+   "gold": "met",
+   "quote": "Baseline NRS prior to any intervention: 9/10."
+  },
+  {
+   "key": "dur.pain",
+   "label": "Pain duration of at least 4 weeks",
+   "gold": "met",
+   "quote": "Reports low back pain radiating to the right leg for 22 weeks."
+  },
+  {
+   "key": "rehab",
+   "label": "Enrolled in active rehabilitation, home exercise or functional restoration program",
+   "gold": "met",
+   "quote": "Continues the daily home exercise program taught in PT."
+  }
+ ],
+ "missing": {
+  "key": "dur.conservative",
+  "label": "Failure of 4 weeks of noninvasive conservative care, or inability to tolerate it"
+ }
+}

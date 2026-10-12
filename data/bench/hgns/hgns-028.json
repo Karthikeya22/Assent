@@ -1,0 +1,150 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-028",
+  "difficulty": "missing",
+  "order_date": "2026-09-30",
+  "patient": {
+   "fhir_id": "6b162832-2183-b273-72cd-0788721ad91a",
+   "name": "Bradly Thiel",
+   "sex": "male",
+   "birth_date": "1950-11-24"
+  },
+  "condition": "cpap_intolerance",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-06-25",
+   "psg": "2025-06-03",
+   "sleepmd": "2026-08-26",
+   "ent": "2026-09-28"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 32.4,
+    "unit": "kg/m2",
+    "date": "2026-08-26"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 22.4,
+    "unit": "/h",
+    "date": "2025-06-03"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "insufficient",
+   "dise": "met",
+   "anatomy": "met",
+   "contra": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "75-year-old man referred for hypoglossal nerve stimulation evaluation.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "BMI 32.4 kg/m2.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Diagnostic in-laboratory polysomnography performed 06/03/2025.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "Total apnea-hypopnea index (AHI) 22.4 events/hour.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "Central and mixed apneas comprised 8% of all events.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "met",
+    "text": "Drug-induced sleep endoscopy 09/09/2026: anteroposterior collapse at the velum without complete concentric collapse.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Oropharynx: tonsils size 1, no other anatomic obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.",
+    "slot": "ent",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-06-25",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 06/25/2026\nPatient: Bradly Thiel, 76-year-old male\n\nSubjective:\nMr. Thiel presents today for his routine follow-up. He reports feeling generally well with no new complaints. He denies any respiratory difficulties or sleep disturbances.\n\nObjective:\nVital signs are stable. Physical examination reveals no abnormalities. Cardiovascular, respiratory, and neurological exams are within normal limits.\n\nAssessment:\nMr. Thiel remains in good health for his age. No new issues identified.\n\nPlan:\nContinue current management and routine monitoring. Encourage healthy lifestyle and regular follow-up visits.\n\nNo additional interventions are necessary at this time.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2025-06-03",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 06/03/2025\nPatient: Bradly Thiel, 75-year-old male\n\nDiagnostic in-laboratory polysomnography performed 06/03/2025. The study included continuous monitoring of brain activity, eye movements, muscle activity, heart rhythm, respiratory effort, airflow, and oxygen saturation throughout the night.\n\nTotal apnea-hypopnea index (AHI) 22.4 events/hour. Central and mixed apneas comprised 8% of all events. Oxygen saturation levels showed intermittent drops corresponding to respiratory events, with a nadir of 88%.\n\nSleep architecture was preserved with normal distribution of sleep stages and no significant periodic limb movements detected.\n\nIn summary, the polysomnography confirms moderate sleep apnea with a predominance of obstructive events and a smaller proportion of central and mixed apneas. Clinical correlation and appropriate management are advised.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-08-26",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation\nDate: 08/26/2026\nPatient: Bradly Thiel, 76-year-old male\n\nReason for Consultation:\nEvaluation for sleep-related concerns.\n\nHistory:\nMr. Thiel is a 76-year-old male presenting for assessment of his sleep patterns and quality. He reports difficulty maintaining restful sleep and frequent awakenings during the night. There is no history of significant daytime sleepiness or other sleep disorders reported.\n\nPhysical Examination:\nGeneral: Alert and oriented.\nBMI 32.4 kg/m2.\nNo other significant physical findings noted.\n\nAssessment:\nThe patient exhibits features consistent with sleep disruption possibly related to underlying medical or lifestyle factors. His BMI places him in the obese category, which may contribute to sleep difficulties.\n\nPlan:\nRecommend sleep hygiene education and consideration of further diagnostic evaluation including polysomnography if symptoms persist or worsen. Follow-up appointment to review progress and any new findings.\n\nSummary:\nMr. Thiel's sleep concerns warrant ongoing monitoring and supportive management to improve sleep quality and overall health.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-28",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation Note\nDate: 09/28/2026\nPatient: Bradly Thiel, 76-year-old male\n\nReason for Consultation:\nEvaluation for hypoglossal nerve stimulation.\n\nHistory:\n75-year-old man referred for hypoglossal nerve stimulation evaluation.\n\nExamination:\nDrug-induced sleep endoscopy 09/09/2026: anteroposterior collapse at the velum without complete concentric collapse.\nOropharynx: tonsils size 1, no other anatomic obstruction.\n\nAssessment:\nNo neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.\n\nPlan:\nProceed with evaluation for hypoglossal nerve stimulation therapy given the absence of contraindications and suitable anatomy as noted on endoscopy and oropharyngeal exam.",
+   "source": "llm"
+  }
+ ]
+}

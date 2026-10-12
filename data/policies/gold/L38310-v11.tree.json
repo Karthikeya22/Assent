@@ -1,0 +1,105 @@
+{
+  "source_id": "L38310",
+  "version": 11,
+  "root": {
+    "key": "hgns",
+    "kind": "AND",
+    "label": "Hypoglossal nerve stimulation for moderate to severe OSA is medically reasonable and necessary",
+    "source_quote": "hypoglossal nerve neurostimulation is considered medically reasonable and necessary for the treatment of moderate to severe obstructive sleep apnea when all of the following criteria are met",
+    "children": [
+      {
+        "key": "age",
+        "kind": "LEAF",
+        "label": "Beneficiary is 22 years of age or older",
+        "evidence_type": "assessment",
+        "threshold": {
+          "min_years": 22
+        },
+        "source_quote": "22 years of age or older"
+      },
+      {
+        "key": "bmi",
+        "kind": "LEAF",
+        "label": "Body mass index under 35 kg/m2",
+        "evidence_type": "assessment",
+        "threshold": {
+          "max_exclusive": 35
+        },
+        "source_quote": "Body mass index (BMI) is less than 35"
+      },
+      {
+        "key": "psg",
+        "kind": "LEAF",
+        "label": "Polysomnography within 24 months of the first HGNS consultation",
+        "evidence_type": "procedure_history",
+        "threshold": {
+          "window_months": 24
+        },
+        "source_quote": "A polysomnography (PSG) is performed within 24 months of first consultation for HGNS implant"
+      },
+      {
+        "key": "central",
+        "kind": "LEAF",
+        "label": "Predominantly obstructive events: central + mixed apneas under 25% of AHI",
+        "evidence_type": "assessment",
+        "threshold": {
+          "max_central_mixed_pct": 25
+        },
+        "source_quote": "predominantly obstructive events (defined as central and mixed apneas less than 25% of the total AHI)"
+      },
+      {
+        "key": "ahi",
+        "kind": "LEAF",
+        "label": "AHI 15 to 65 events per hour",
+        "evidence_type": "assessment",
+        "threshold": {
+          "min": 15,
+          "max": 65
+        },
+        "source_quote": "AHI is 15 to 65 events per hour"
+      },
+      {
+        "key": "cpap",
+        "kind": "LEAF",
+        "label": "Documented CPAP failure (AHI > 15 on CPAP) or intolerance (< 4 h/night, 5 nights/wk, or returned), with shared decision making",
+        "evidence_type": "prior_therapy",
+        "source_quote": "documentation that demonstrates CPAP failure (defined as AHI greater than 15 despite CPAP usage) or CPAP intolerance (defined as less than 4 hours per night, 5 nights per week or the CPAP has been returned) including shared decision making that the patient was intolerant of CPAP despite consultation with a sleep expert"
+      },
+      {
+        "key": "dise",
+        "kind": "LEAF",
+        "label": "No complete concentric collapse at the soft palate on drug-induced sleep endoscopy",
+        "evidence_type": "imaging_finding",
+        "source_quote": "Absence of complete concentric collapse at the soft palate level as seen on a drug-induced sleep endoscopy (DISE) procedure"
+      },
+      {
+        "key": "anatomy",
+        "kind": "LEAF",
+        "label": "No anatomical findings that would compromise the device (e.g. tonsil size 3 or 4)",
+        "evidence_type": "assessment",
+        "source_quote": "No other anatomical findings that would compromise performance of device (e.g., tonsil size 3 or 4 per standardized tonsillar hypertrophy grading scale)"
+      },
+      {
+        "key": "contra",
+        "kind": "LEAF",
+        "label": "No contraindication (neuromuscular disease, hypoglossal palsy, severe pulmonary or cardiac disease, NYHA III/IV, recent MI, pregnancy, MRI need, cannot operate remote)",
+        "evidence_type": "contraindication",
+        "source_quote": "when any of the following contraindications are present"
+      }
+    ]
+  },
+  "excluded": [
+    {
+      "quote": "Non-FDA-approved hypoglossal nerve neurostimulation",
+      "reason": "Device attribute on the order, not chart evidence."
+    },
+    {
+      "quote": "the inserting provider shall be certified",
+      "reason": "Provider credentialing, not patient chart evidence."
+    },
+    {
+      "quote": "must be performed by a qualified physician (MD or DO)",
+      "reason": "Provider qualification."
+    }
+  ]
+}

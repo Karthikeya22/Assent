@@ -1,0 +1,36 @@
+# Full stack from ARCHITECTURE.md §3. Needs ~16 GB RAM. Use on a bigger machine or as the deploy reference.
+# Usage: docker compose -f infra/docker-compose.yml -f infra/docker-compose.full.yml up -d
+name: assent
+
+services:
+  hapi-fhir:
+    image: hapiproject/hapi:v7.4.0
+    ports: ["8080:8080"]
+    environment:
+      JAVA_TOOL_OPTIONS: "-Xmx768m"
+      hapi.fhir.fhir_version: R4
+
+  litellm:
+    image: ghcr.io/berriai/litellm:main-stable
+    ports: ["4000:4000"]
+    volumes: ["./litellm.yaml:/app/config.yaml:ro"]
+    command: ["--config", "/app/config.yaml", "--port", "4000"]
+    env_file: [../.env]
+
+  tei-embed:
+    image: ghcr.io/huggingface/text-embeddings-inference:cpu-1.5
+    ports: ["8081:80"]
+    command: ["--model-id", "BAAI/bge-m3"]
+
+  tei-rerank:
+    image: ghcr.io/huggingface/text-embeddings-inference:cpu-1.5
+    ports: ["8082:80"]
+    command: ["--model-id", "BAAI/bge-reranker-v2-m3"]
+
+  minio:
+    image: minio/minio:latest
+    command: ["server", "/data", "--console-address", ":9001"]
+    ports: ["9000:9000", "9001:9001"]
+    environment:
+      MINIO_ROOT_USER: assent
+      MINIO_ROOT_PASSWORD: assent-dev-secret

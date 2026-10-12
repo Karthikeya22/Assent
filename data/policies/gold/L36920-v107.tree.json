@@ -1,0 +1,200 @@
+{
+  "source_id": "L36920",
+  "version": 107,
+  "root": {
+    "key": "esi",
+    "kind": "AND",
+    "label": "Initial epidural steroid injection is medically reasonable and necessary",
+    "source_quote": "Epidural steroid injection (ESI) will be considered medically reasonable and necessary when the following requirements are met",
+    "children": [
+      {
+        "key": "dx",
+        "kind": "AND",
+        "label": "Qualifying condition supported by history, exam and concordant imaging",
+        "source_quote": "History, physical examination, and concordant radiological image-based diagnostic testing that supports one of the following",
+        "children": [
+          {
+            "key": "dx.condition",
+            "kind": "OR",
+            "label": "One qualifying condition",
+            "children": [
+              {
+                "key": "dx.radic",
+                "kind": "LEAF",
+                "label": "Radiculopathy, radicular pain or neurogenic claudication from disc herniation, osteophyte or severe DDD producing foraminal or central stenosis",
+                "evidence_type": "diagnosis",
+                "source_quote": "Lumbar, cervical or thoracic radiculopathy, radicular pain and/or neurogenic claudication due to disc herniation, osteophyte or osteophyte complexes, severe degenerative disc disease, producing foraminal or central spinal stenosis"
+              },
+              {
+                "key": "dx.pls",
+                "kind": "LEAF",
+                "label": "Post-laminectomy syndrome",
+                "evidence_type": "diagnosis",
+                "source_quote": "Post-laminectomy syndrome"
+              },
+              {
+                "key": "dx.zoster",
+                "kind": "LEAF",
+                "label": "Acute herpes zoster associated pain",
+                "evidence_type": "diagnosis",
+                "source_quote": "Acute herpes zoster associated pain"
+              }
+            ]
+          },
+          {
+            "key": "dx.imaging",
+            "kind": "LEAF",
+            "label": "Imaging concordant with the qualifying condition",
+            "evidence_type": "imaging_finding",
+            "source_quote": "concordant radiological image-based diagnostic testing"
+          }
+        ]
+      },
+      {
+        "key": "sev",
+        "kind": "AND",
+        "label": "Severity documented with a baseline objective scale",
+        "children": [
+          {
+            "key": "sev.impact",
+            "kind": "LEAF",
+            "label": "Pain greatly impacts quality of life or function",
+            "evidence_type": "assessment",
+            "source_quote": "severe enough to greatly impact quality of life or function"
+          },
+          {
+            "key": "sev.baseline",
+            "kind": "LEAF",
+            "label": "Objective pain scale or functional assessment recorded at baseline",
+            "evidence_type": "assessment",
+            "threshold": {
+              "accepted_scales": [
+                "NRS",
+                "VAS",
+                "VRS",
+                "ODI",
+                "PDAS",
+                "OSW",
+                "QUE",
+                "Roland Morris",
+                "BPFS",
+                "PROMIS"
+              ]
+            },
+            "source_quote": "An objective pain scale or functional assessment must be performed at baseline (prior to interventions)"
+          }
+        ]
+      },
+      {
+        "key": "dur",
+        "kind": "OR",
+        "label": "Duration and conservative care requirement",
+        "source_quote": "Pain duration of at least four (4) weeks, and the inability to tolerate noninvasive conservative care or medical documentation of failure to respond to four (4) weeks of noninvasive conservative care or acute herpes zoster refractory to conservative management where a four (4) week wait is not required",
+        "children": [
+          {
+            "key": "dur.standard",
+            "kind": "AND",
+            "label": "Four weeks of pain and failed or intolerable conservative care",
+            "children": [
+              {
+                "key": "dur.pain",
+                "kind": "LEAF",
+                "label": "Pain duration of at least 4 weeks",
+                "evidence_type": "duration",
+                "threshold": {
+                  "min_weeks": 4
+                },
+                "source_quote": "Pain duration of at least four (4) weeks"
+              },
+              {
+                "key": "dur.conservative",
+                "kind": "LEAF",
+                "label": "Failure of 4 weeks of noninvasive conservative care, or inability to tolerate it",
+                "evidence_type": "prior_therapy",
+                "threshold": {
+                  "min_weeks": 4
+                },
+                "source_quote": "the inability to tolerate noninvasive conservative care or medical documentation of failure to respond to four (4) weeks of noninvasive conservative care"
+              }
+            ]
+          },
+          {
+            "key": "dur.zoster",
+            "kind": "LEAF",
+            "label": "Acute herpes zoster refractory to conservative management (4-week wait not required)",
+            "evidence_type": "prior_therapy",
+            "source_quote": "acute herpes zoster refractory to conservative management"
+          }
+        ]
+      },
+      {
+        "key": "rehab",
+        "kind": "LEAF",
+        "label": "Enrolled in active rehabilitation, home exercise or functional restoration program",
+        "evidence_type": "prior_therapy",
+        "source_quote": "should be part of an active rehabilitation program, home exercise program or functional restoration program"
+      },
+      {
+        "key": "contra",
+        "kind": "LEAF",
+        "label": "No contraindication (spinal or systemic infection, cord/conus/cauda equina compression, cancer risk)",
+        "evidence_type": "contraindication",
+        "source_quote": "Suspected or active localized spinal infection, significant systemic infection, compressive lesions of the spinal cord, conus medullaris or cauda equina, suspicion or major risk factors for cancer"
+      },
+      {
+        "key": "freq",
+        "kind": "LEAF",
+        "label": "No more than 4 ESI sessions in this spinal region in the past 12 months",
+        "evidence_type": "procedure_history",
+        "threshold": {
+          "max_sessions": 4,
+          "window_days": 365
+        },
+        "lookback_days": 365,
+        "source_quote": "ESIs are limited to a maximum of four (4) sessions per spinal region in a rolling twelve (12) month period"
+      }
+    ]
+  },
+  "excluded": [
+    {
+      "quote": "The ESIs must be performed under computed tomography (CT) or fluoroscopy image guidance with contrast",
+      "reason": "Procedure technique, specified on the order; not chart evidence."
+    },
+    {
+      "quote": "Transforaminal ESIs (TFESIs) involving a maximum of two (2) levels in one spinal region",
+      "reason": "Order attribute (levels)."
+    },
+    {
+      "quote": "Caudal ESIs and interlaminar ESIs (ILESIs) involving a maximum of one level",
+      "reason": "Order attribute (levels)."
+    },
+    {
+      "quote": "It is considered medically reasonable and necessary to perform TFESIs bilaterally only when clinically indicated.",
+      "reason": "Order attribute (laterality)."
+    },
+    {
+      "quote": "Repeat ESI when the first injection directly and significantly provided improvement",
+      "reason": "Applies to repeat injections; the v1 benchmark covers initial requests."
+    },
+    {
+      "quote": "An initial injection of contrast is required to confirm epidural placement",
+      "reason": "Procedure technique."
+    },
+    {
+      "quote": "The ESIs should be performed in conjunction with conservative treatments.",
+      "reason": "Covered by the rehab and dur.conservative leaves."
+    },
+    {
+      "quote": "ESIs to treat non-specific low back pain (LBP), axial spine pain",
+      "reason": "Exclusion enforced by the dx.condition leaves requiring a specific qualifying condition."
+    },
+    {
+      "quote": "Use of Moderate or Deep Sedation, General Anesthesia, or Monitored Anesthesia Care (MAC)",
+      "reason": "Procedure technique."
+    },
+    {
+      "quote": "It generally would not be considered medically reasonable and necessary for treatment with ESI to extend beyond 12 months.",
+      "reason": "Applies to continuation beyond 12 months; v1 covers initial requests."
+    }
+  ]
+}

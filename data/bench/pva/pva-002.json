@@ -1,0 +1,131 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "pva",
+  "case_id": "pva-002",
+  "difficulty": "buried",
+  "order_date": "2026-09-02",
+  "patient": {
+   "fhir_id": "bfc9945a-0277-0b39-6d0f-cea74f9dbeef",
+   "name": "Samara Runolfsdottir",
+   "sex": "female",
+   "birth_date": "1947-09-25"
+  },
+  "condition": "worsening:T12",
+  "cpt": "22513",
+  "cpt_text": "Percutaneous vertebral augmentation (kyphoplasty), thoracic",
+  "icd10": "M80.08XA",
+  "icd10_text": "Age-related osteoporosis with current pathological fracture, vertebra(e), initial encounter",
+  "dates": {
+   "pcp": "2026-07-13",
+   "inpatient": "2026-08-29",
+   "radiology": "2026-08-29",
+   "consult": "2026-09-01",
+   "onset": "2026-07-08",
+   "xray": "2026-07-13"
+  },
+  "observations": [
+   {
+    "code": "72514-3",
+    "system": "http://loinc.org",
+    "display": "Pain severity 0-10 numeric rating",
+    "value": 7.0,
+    "unit": "{score}",
+    "date": "2026-09-01"
+   }
+  ],
+  "gold": {
+   "fx.acute": "met",
+   "fx.imaging": "met",
+   "sym.hosp": "not_met",
+   "sym.moderate": "met",
+   "sym.worsening": "met",
+   "feat.progression": "insufficient",
+   "feat.height": "insufficient",
+   "feat.kyphosis": "insufficient",
+   "feat.rdq": "insufficient",
+   "care.osteo": "met",
+   "contra": "not_met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "fx.acute",
+    "gold": "met",
+    "text": "Back pain since 07/08/2026 after lifting a laundry basket.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "fx.imaging",
+    "gold": "met",
+    "text": "MRI 08/29/2026: T12 compression fx, marrow edema on STIR.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sym.hosp",
+    "gold": "not_met",
+    "text": "Outpt, not admitted.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.moderate",
+    "gold": "met",
+    "text": "NRS 7/10 despite 7 wks NSM (acetaminophen and calcitonin nasal spray, TLSO brace).",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.worsening",
+    "gold": "met",
+    "text": "Pain worse x2 wks despite brace.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "care.osteo",
+    "gold": "met",
+    "text": "Referred for DEXA + osteoporosis program.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "not_met",
+    "text": "Back pain is primarily from lumbar spinal stenosis rather than the fracture.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-07-13",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 07/13/2026\nPatient: Samara Runolfsdottir, 79 y/o F\n\nCC: Back pain\n\nHPI: Back pain since 07/08/2026 after lifting a laundry basket. No radiculopathy or numbness reported. No bowel/bladder dysfunction.\n\nPE: Tenderness over lumbar paraspinals. No step-offs or deformities noted. Neuro exam intact.\n\nAssessment: Acute mechanical back pain likely muscular strain.\n\nPlan: Conservative mgmt with NSAIDs, rest, and gradual return to activity. Follow-up prn.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-29",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/29/2026\nPatient: Samara Runolfsdottir, 79 y/o F\n\nMRI 08/29/2026: T12 compression fx, marrow edema on STIR.\n\nNo other acute fractures identified. No paraspinal soft tissue mass or abnormal enhancement. Disc spaces preserved without significant bulge or herniation. No cord signal abnormality or compression noted.\n\nImpression: T12 compression fracture with marrow edema consistent with acute/subacute injury. No additional acute osseous abnormalities.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-01",
+   "title": "Spine Intervention Consultation",
+   "author": "Interventional radiologist",
+   "text": "Spine Intervention Consultation\nDate: 09/01/2026\nPatient: Samara Runolfsdottir, 79 y/o F\n\nOutpt, not admitted. Pt c/o persistent back pain. NRS 7/10 despite 7 wks NSM (acetaminophen and calcitonin nasal spray, TLSO brace). Pain worse x2 wks despite brace. Exam: tenderness over lumbar spine, no neuro deficits.\n\nImaging reviewed: lumbar spinal stenosis evident. Back pain is primarily from lumbar spinal stenosis rather than the fracture. Referred for DEXA + osteoporosis program.\n\nPlan: Consider interventional options targeting stenosis. Continue current meds and brace. Monitor response.",
+   "source": "llm"
+  }
+ ]
+}

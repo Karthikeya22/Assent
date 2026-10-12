@@ -1,0 +1,23 @@
+# python
+.venv/
+__pycache__/
+*.pyc
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# js
+node_modules/
+.next/
+.turbo/
+storybook-static/
+*.tsbuildinfo
+next-env.d.ts
+
+# local data / secrets
+.env
+.env.*
+!.env.example
+.data/
+mlruns/
+*.log

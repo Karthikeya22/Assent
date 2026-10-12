@@ -1,0 +1,147 @@
+{
+ "split": "test",
+ "facts": {
+  "case_id": "esi-045",
+  "difficulty": "clean",
+  "order_date": "2026-09-22",
+  "patient": {
+   "fhir_id": "ba2f1c13-c0ba-f6da-bcd5-5cfab2b0f5f8",
+   "name": "Salvatore Mosciski",
+   "sex": "male",
+   "birth_date": "1950-01-08"
+  },
+  "condition": "radic",
+  "region": "lumbar",
+  "level": "L5-S1",
+  "side": "right",
+  "cpt": "64483",
+  "icd10": "M54.16",
+  "onset_date": "2026-04-07",
+  "pain_weeks": 24,
+  "pt_start": "2026-04-18",
+  "pt_weeks": 7,
+  "nsaid": "naproxen 500 mg BID",
+  "scale_name": "NRS",
+  "scale_value": "7/10",
+  "imaging_date": "2026-08-22",
+  "imaging_modality": "MRI",
+  "prior_esi_dates": [],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "insufficient",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "Impression: right-sided lumbar radiculopathy secondary to L5-S1 disc herniation causing foraminal stenosis.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "MRI lumbar spine 08/22/2026: L5-S1 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Function: unable to stand long enough to cook a meal, has stopped driving because of the pain.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Baseline NRS prior to any intervention: 7/10.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "Symptoms began on 04/07/2026, 24 weeks before this visit.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "Completed physical therapy from 04/18/2026 to 06/06/2026 (7 weeks) with no lasting benefit, and failed naproxen 500 mg BID.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "Continues the daily home exercise program taught in PT.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Denies fever, chills, weight loss, or bowel or bladder changes; no history of cancer.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "No prior epidural steroid injections.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-04-16",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 04/16/2026\nPatient: Salvatore Mosciski, 76-year-old male\n\nSubjective:\nMr. Mosciski presents today for routine follow-up. He reports no new complaints or changes in his health status since his last visit. He denies any recent trauma, fever, or other systemic symptoms.\n\nObjective:\nVital signs are within normal limits. Physical examination reveals no abnormalities. Cardiovascular, respiratory, abdominal, and neurological exams are unremarkable.\n\nAssessment:\nStable health status in a 76-year-old male with no new issues.\n\nPlan:\nContinue current management and routine monitoring. Encourage healthy lifestyle habits including diet and exercise. Follow up in 6 months or sooner if any concerns arise.",
+   "source": "llm"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-06-06",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 06/06/2026\nPatient: Salvatore Mosciski, 76-year-old male\n\nReason for Referral:\nPatient was referred for physical therapy to address ongoing musculoskeletal complaints.\n\nCourse of Treatment:\nCompleted physical therapy from 04/18/2026 to 06/06/2026 (7 weeks) with no lasting benefit, and failed naproxen 500 mg BID.\n\nInterventions Provided:\nTherapeutic exercises, manual therapy techniques, and patient education were administered throughout the treatment period.\n\nOutcome:\nDespite adherence to the prescribed physical therapy regimen and medication, the patient did not experience significant improvement in symptoms.\n\nRecommendations:\nFurther evaluation by the referring physician is advised to explore alternative management strategies.\n\nPhysical Therapist:\n[Name], PT\nLicense Number: [Number]\n\nEnd of Summary.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-22",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/22/2026\nPatient: Salvatore Mosciski, 76-year-old male\n\nExamination: MRI Lumbar Spine\n\nFindings:\nMRI lumbar spine 08/22/2026: L5-S1 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.\n\nImpression:\nThere is a herniated disc at the L5-S1 level causing moderate right foraminal stenosis and contacting the exiting nerve root. No other significant abnormalities are noted.\n\nRecommendation:\nClinical correlation is advised to assess for symptoms related to the findings. Further evaluation or treatment should be guided by the patient's clinical presentation.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-20",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/20/2026\nPatient: Salvatore Mosciski, 76-year-old male\n\nChief Complaint:\nPatient presents with right-sided lumbar radiculopathy.\n\nHistory of Present Illness:\nSymptoms began on 04/07/2026, 24 weeks before this visit. Patient reports persistent right-sided lumbar pain radiating down the leg.\n\nReview of Systems:\nDenies fever, chills, weight loss, or bowel or bladder changes; no history of cancer.\n\nPhysical Examination:\nNeurological exam reveals decreased sensation in the right L5 dermatome and mild weakness in right foot dorsiflexion.\n\nImpression:\nImpression: right-sided lumbar radiculopathy secondary to L5-S1 disc herniation causing foraminal stenosis.\n\nFunction:\nFunction: unable to stand long enough to cook a meal, has stopped driving because of the pain.\n\nPain Assessment:\nBaseline NRS prior to any intervention: 7/10.\n\nTreatment Plan:\nContinues the daily home exercise program taught in PT. No prior epidural steroid injections. Will consider interventional pain management options if symptoms persist.",
+   "source": "llm"
+  }
+ ]
+}

@@ -1,0 +1,125 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "pva",
+  "case_id": "pva-025",
+  "difficulty": "buried",
+  "order_date": "2026-09-14",
+  "patient": {
+   "fhir_id": "85c8a30a-9849-6cb6-5183-7db61f2cd84c",
+   "name": "Candelaria Greenholt",
+   "sex": "female",
+   "birth_date": "1956-06-19"
+  },
+  "condition": "hosp:T12",
+  "cpt": "22513",
+  "cpt_text": "Percutaneous vertebral augmentation (kyphoplasty), thoracic",
+  "icd10": "M80.08XA",
+  "icd10_text": "Age-related osteoporosis with current pathological fracture, vertebra(e), initial encounter",
+  "dates": {
+   "pcp": "2026-06-18",
+   "inpatient": "2026-09-12",
+   "radiology": "2026-09-09",
+   "consult": "2026-09-13",
+   "onset": "2026-08-24",
+   "xray": "2026-08-27"
+  },
+  "observations": [
+   {
+    "code": "72514-3",
+    "system": "http://loinc.org",
+    "display": "Pain severity 0-10 numeric rating",
+    "value": 9.0,
+    "unit": "{score}",
+    "date": "2026-09-12"
+   }
+  ],
+  "gold": {
+   "fx.acute": "met",
+   "fx.imaging": "met",
+   "sym.hosp": "met",
+   "sym.moderate": "insufficient",
+   "sym.worsening": "insufficient",
+   "feat.progression": "insufficient",
+   "feat.height": "insufficient",
+   "feat.kyphosis": "insufficient",
+   "feat.rdq": "insufficient",
+   "care.osteo": "met",
+   "contra": "not_met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "fx.acute",
+    "gold": "met",
+    "text": "Back pain since 08/24/2026 after a fall from standing height.",
+    "slot": "inpatient",
+    "stale": false
+   },
+   {
+    "leaf": "fx.imaging",
+    "gold": "met",
+    "text": "MRI 09/09/2026: T12 compression fx, marrow edema on STIR.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sym.hosp",
+    "gold": "met",
+    "text": "Adm 09/12/2026 intractable back pain, NRS 9/10 on IV opioids.",
+    "slot": "inpatient",
+    "stale": false
+   },
+   {
+    "leaf": "care.osteo",
+    "gold": "met",
+    "text": "Referred for DEXA + osteoporosis program.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "not_met",
+    "text": "Fever to 38.9 C with elevated CRP; discitis at the fracture level is suspected.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-06-18",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 06/18/2026\nPatient: Candelaria Greenholt, 70 y/o F\n\nCC: Follow-up visit\n\nHPI: Pt presents for routine follow-up. No new complaints reported.\n\nPMH: Hypertension, hyperlipidemia.\n\nMeds: Lisinopril 10 mg daily, Atorvastatin 20 mg nightly.\n\nPE: Vitals stable. Cardiopulmonary exam WNL. No focal neurological deficits.\n\nAssessment: Stable chronic conditions.\n\nPlan: Continue current meds. Routine labs next visit. Follow-up in 6 months or PRN.\n\nNo mention of pain duration, prior treatments, imaging, pain scores, function, prior injections, surgery, infection or cancer as per instructions.",
+   "source": "llm"
+  },
+  {
+   "slot": "inpatient",
+   "date": "2026-09-12",
+   "title": "Hospital Admission History and Physical",
+   "author": "Hospitalist",
+   "text": "Hospital Admission History and Physical\nDate: 09/12/2026\nPatient: Candelaria Greenholt, 70 y/o F\n\nChief Complaint: Severe back pain\n\nHPI: Back pain since 08/24/2026 after a fall from standing height. Patient reports persistent severe discomfort.\n\nAdmission Details: Adm 09/12/2026 intractable back pain, NRS 9/10 on IV opioids.\n\nPMH: HTN, DM2\n\nPE: Vitals stable. Tenderness over lumbar spine. No focal neuro deficits.\n\nAssessment: Severe back pain post fall, requiring IV opioids for pain control.\n\nPlan: Admit for pain management and further evaluation.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-09-09",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 09/09/2026\nPatient: Candelaria Greenholt, 70 y/o F\n\nExam: MRI spine\n\nFindings: MRI 09/09/2026: T12 compression fx, marrow edema on STIR. No other acute fractures identified. No paraspinal soft tissue mass or abnormal enhancement. Spinal canal and neural foramina patent at all levels.\n\nImpression: T12 compression fracture with marrow edema consistent with acute/subacute injury. No additional acute abnormalities detected.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-13",
+   "title": "Spine Intervention Consultation",
+   "author": "Interventional radiologist",
+   "text": "Spine Intervention Consultation\nDate: 09/13/2026\nPatient: Candelaria Greenholt, 70 y/o F\n\nHx: Compression fx noted on imaging. Referred for DEXA + osteoporosis program.\n\nExam: Tenderness localized to fracture site. No neuro deficits.\n\nLabs: Fever to 38.9 C with elevated CRP; discitis at the fracture level is suspected.\n\nPlan: Admit for IV abx, MRI spine to evaluate discitis extent. Consider biopsy if no improvement. Continue osteoporosis workup and management per DEXA results.\n\nIR to be consulted for possible intervention if abscess or instability identified.",
+   "source": "llm"
+  }
+ ]
+}

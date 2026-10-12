@@ -1,0 +1,149 @@
+{
+ "split": "dev",
+ "facts": {
+  "case_id": "esi-012",
+  "difficulty": "buried",
+  "order_date": "2026-09-28",
+  "patient": {
+   "fhir_id": "d2e8c6b6-d849-8f98-f4b2-f4e97422fb3b",
+   "name": "Russel Bernier",
+   "sex": "male",
+   "birth_date": "1954-09-24"
+  },
+  "condition": "nonspecific",
+  "region": "lumbar",
+  "level": "L5-S1",
+  "side": "right",
+  "cpt": "64483",
+  "icd10": "M54.50",
+  "onset_date": "2026-08-03",
+  "pain_weeks": 8,
+  "pt_start": "2026-08-15",
+  "pt_weeks": 5,
+  "nsaid": "meloxicam 15 mg daily",
+  "scale_name": "ODI",
+  "scale_value": "47%",
+  "imaging_date": "2026-08-19",
+  "imaging_modality": "MRI",
+  "prior_esi_dates": [
+   "2025-11-19"
+  ],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "not_met",
+   "dx.pls": "insufficient",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "not_met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "not_met",
+    "text": "Exam: axial low back pain without radicular features; straight leg raise negative bilaterally.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "not_met",
+    "text": "MRI lumbar spine 08/19/2026: mild multilevel spondylosis without central or foraminal stenosis.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Fx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Initial ODI 47%.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "LBP x8 wks w/ radiation to R LE.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "D/C from PT after 5 wks (08/15/2026-09/19/2026), sx unchanged. Failed meloxicam 15 mg daily.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "HEP daily, compliant.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "ROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "Epidural steroid injection history: 1 lumbar injection in the past 12 months (11/19/2025).",
+    "slot": "pcp",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-08-12",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 08/12/2026\nPatient: Russel Bernier, 72 y/o M\n\nCC: Follow-up\n\nHPI: Pt presents for routine f/u. Reports stable condition. No new complaints.\n\nROS: ROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.\n\nPMH: HTN, hyperlipidemia.\n\nMeds: Lisinopril 10 mg daily, Atorvastatin 20 mg qhs.\n\nEpidural steroid injection history: 1 lumbar injection in the past 12 months (11/19/2025).\n\nPE: Vitals stable. Cardiopulmonary exam WNL. Neuro exam grossly intact.\n\nAssessment: Stable chronic conditions.\n\nPlan: Continue current meds. Routine labs next visit. Monitor symptoms.\n\nF/U: Return in 3 months or PRN.",
+   "source": "llm"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-09-19",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 09/19/2026\nPatient: Russel Bernier, 72 y/o M\n\nFx: can't walk >1 block, stopped volunteering d/t pain, poor sleep. Initial ODI 47%. Pt presented with persistent sx despite conservative mgmt. D/C from PT after 5 wks (08/15/2026-09/19/2026), sx unchanged. Failed meloxicam 15 mg daily.\n\nTherapy focused on mobility and pain modulation. HEP daily, compliant. No improvement in functional status noted. Further medical eval recommended.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-19",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/19/2026\nPatient: Russel Bernier, 72 y/o M\n\nExam: MRI lumbar spine\n\nFindings: MRI lumbar spine 08/19/2026: mild multilevel spondylosis without central or foraminal stenosis. No evidence of acute fracture or marrow edema. Vertebral body heights preserved. Intervertebral discs show mild desiccation, no significant bulge or herniation noted. Spinal cord and conus medullaris normal in signal and caliber.\n\nImpression: Mild multilevel spondylosis without central or foraminal stenosis. No acute abnormality identified.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-26",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/26/2026\nPatient: Russel Bernier, 72 y/o M\n\nHPI: LBP x8 wks w/ radiation to R LE. No hx of trauma or recent illness. No bowel/bladder changes reported.\n\nExam: axial low back pain without radicular features; straight leg raise negative bilaterally. No motor deficits noted. Sensory exam intact.\n\nAssessment: Chronic low back pain with radicular symptoms to R LE, no signs of nerve root compression on exam.\n\nPlan: Recommend MRI lumbar spine to evaluate for possible disc pathology. Initiate NSAIDs and consider PT. Follow-up in 4 wks or sooner if symptoms worsen.",
+   "source": "llm"
+  }
+ ]
+}

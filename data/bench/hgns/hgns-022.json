@@ -1,0 +1,157 @@
+{
+ "split": "test",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-022",
+  "difficulty": "buried",
+  "order_date": "2026-09-26",
+  "patient": {
+   "fhir_id": "7e3fa440-1832-f17d-34dc-6605ab1f98a2",
+   "name": "Casey Schiller",
+   "sex": "male",
+   "birth_date": "1948-10-03"
+  },
+  "condition": "cpap_intolerance",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-05-11",
+   "psg": "2025-04-18",
+   "sleepmd": "2026-08-25",
+   "ent": "2026-09-24"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 34.1,
+    "unit": "kg/m2",
+    "date": "2026-08-25"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 32.4,
+    "unit": "/h",
+    "date": "2025-04-18"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "met",
+   "dise": "met",
+   "anatomy": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "77yo M referred for HGNS eval.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "Wt stable, BMI 34.1.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Attended PSG 04/18/2025.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "AHI 32.4/h.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "CA+MA 16% of total AHI.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "cpap",
+    "gold": "met",
+    "text": "CPAP dl avg 3.2 h/night, 41% nights despite mask refit; SDM w/ pt: CPAP intolerant.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "met",
+    "text": "DISE 09/09/2026: AP velum collapse, no CCC.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Tonsils 1+, no other obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No NM dz, no NYHA III/IV CHF, no MRI need, can use remote.",
+    "slot": "pcp",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-05-11",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 05/11/2026\nPatient: Casey Schiller, 78 y/o M\n\nVitals: Wt stable, BMI 34.1.\nPE: No acute distress. CV: RRR, no m/r/g. Resp: Clear bilat. Abd: Soft, nontender.\nNeuro: Alert, oriented x3. No focal deficits.\n\nAssessment: Stable chronic conditions. No NM dz, no NYHA III/IV CHF, no MRI need, can use remote.\n\nPlan: Continue current meds. Monitor labs q6mo. Follow-up in 3 mo or prn.\n\nNo changes to lifestyle recommendations at this time.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2025-04-18",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 04/18/2025\nPatient: Casey Schiller, 77 y/o M\n\nAttended PSG 04/18/2025. Study completed without complications. Sleep efficiency 78%. Total sleep time 345 min. REM latency 110 min. AHI 32.4/h. CA+MA 16% of total AHI. Oxygen nadir 84%. Periodic limb movements index 5/h. No significant arrhythmias noted. CPAP titration recommended given severity of obstructive events. Further clinical correlation advised.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-08-25",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation\nDate: 08/25/2026\nPatient: Casey Schiller, 78 y.o. M\n\nHx: OSA dx 2018, CPAP tx started 2019. Pt reports persistent daytime fatigue, nonrestorative sleep.\n\nCPAP dl avg 3.2 h/night, 41% nights despite mask refit; SDM w/ pt: CPAP intolerant.\n\nNocturnal oximetry shows intermittent desats to 85%. Pt uses CPAP sporadically, reports mask discomfort and nasal congestion.\n\nPlan: Consider alternative therapies including oral appliance or positional therapy. Sleep hygiene reinforced. Follow-up PSG to reassess severity and response to new interventions.\n\nPt advised on risks of untreated OSA. Next appt in 3 months or sooner if symptoms worsen.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-24",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation\nDate: 09/24/2026\nPatient: Casey Schiller, 78yo M\n\n77yo M referred for HGNS eval. Pt c/o snoring, witnessed apnea. PMH noncontributory. Exam: Tonsils 1+, no other obstruction. Nasal passages patent. Oral cavity unremarkable.\n\nDISE 09/09/2026: AP velum collapse, no CCC. Hypopharynx patent. No tongue base obstruction.\n\nPlan: Consider HGNS candidacy. Discussed potential benefits and risks. Will arrange sleep study follow-up and coordinate with pulmonology for further management.",
+   "source": "llm"
+  }
+ ]
+}

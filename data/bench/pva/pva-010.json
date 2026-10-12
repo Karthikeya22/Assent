@@ -1,0 +1,125 @@
+{
+ "split": "test",
+ "facts": {
+  "family": "pva",
+  "case_id": "pva-010",
+  "difficulty": "buried",
+  "order_date": "2026-09-26",
+  "patient": {
+   "fhir_id": "7914dd2d-9732-95f1-1ff9-0559668dd585",
+   "name": "Eladia Walker",
+   "sex": "female",
+   "birth_date": "1958-03-28"
+  },
+  "condition": "hosp:L2",
+  "cpt": "22514",
+  "cpt_text": "Percutaneous vertebral augmentation (kyphoplasty), lumbar",
+  "icd10": "M80.08XA",
+  "icd10_text": "Age-related osteoporosis with current pathological fracture, vertebra(e), initial encounter",
+  "dates": {
+   "pcp": "2026-08-04",
+   "inpatient": "2026-09-22",
+   "radiology": "2026-09-12",
+   "consult": "2026-09-25",
+   "onset": "2026-09-05",
+   "xray": "2026-09-07"
+  },
+  "observations": [
+   {
+    "code": "72514-3",
+    "system": "http://loinc.org",
+    "display": "Pain severity 0-10 numeric rating",
+    "value": 9.0,
+    "unit": "{score}",
+    "date": "2026-09-22"
+   }
+  ],
+  "gold": {
+   "fx.acute": "met",
+   "fx.imaging": "met",
+   "sym.hosp": "met",
+   "sym.moderate": "insufficient",
+   "sym.worsening": "insufficient",
+   "feat.progression": "insufficient",
+   "feat.height": "insufficient",
+   "feat.kyphosis": "insufficient",
+   "feat.rdq": "insufficient",
+   "care.osteo": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "fx.acute",
+    "gold": "met",
+    "text": "Back pain since 09/05/2026 after bending to pick up a grandchild.",
+    "slot": "inpatient",
+    "stale": false
+   },
+   {
+    "leaf": "fx.imaging",
+    "gold": "met",
+    "text": "MRI 09/12/2026: L2 compression fx, marrow edema on STIR.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sym.hosp",
+    "gold": "met",
+    "text": "Adm 09/22/2026 intractable back pain, NRS 9/10 on IV opioids.",
+    "slot": "inpatient",
+    "stale": false
+   },
+   {
+    "leaf": "care.osteo",
+    "gold": "met",
+    "text": "Referred for DEXA + osteoporosis program.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Pain at fx level; afebrile, no infx signs.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-08-04",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 08/04/2026\nPatient: Eladia Walker, 68 y/o F\n\nCC: Follow-up visit\n\nHPI: Pt presents for routine follow-up. No new complaints reported.\n\nPMH: HTN, DM2, hyperlipidemia.\n\nMeds: Lisinopril 10 mg daily, Metformin 500 mg BID, Atorvastatin 20 mg qhs.\n\nPE: Vitals stable. Cardiovascular and respiratory exams unremarkable. MSK exam shows no acute distress.\n\nAssessment: Stable chronic conditions.\n\nPlan: Continue current meds. Routine labs next visit. Advise annual flu vaccine.\n\nNo additional imaging or referrals at this time.",
+   "source": "llm"
+  },
+  {
+   "slot": "inpatient",
+   "date": "2026-09-22",
+   "title": "Hospital Admission History and Physical",
+   "author": "Hospitalist",
+   "text": "Hospital Admission History and Physical\nDate: 09/22/2026\nPatient: Eladia Walker, 68 y/o F\n\nChief Complaint: Back pain\n\nHPI: Back pain since 09/05/2026 after bending to pick up a grandchild. Pain severe, localized to lower thoracic region.\n\nAdmission: Adm 09/22/2026 intractable back pain, NRS 9/10 on IV opioids.\n\nPMH: HTN, DM2\n\nPE: Tenderness over lower thoracic spine, limited ROM due to pain. No focal neuro deficits.\n\nLabs: WNL\n\nImaging: Pending\n\nPlan: Admit for pain control and further evaluation. Monitor neuro status closely.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-09-12",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 09/12/2026\nPatient: Eladia Walker, 68 y/o F\n\nExam: MRI lumbar spine\n\nFindings: MRI 09/12/2026: L2 compression fx, marrow edema on STIR. No other acute fractures identified. No paraspinal soft tissue mass or abnormal enhancement. Intervertebral discs show mild degenerative changes without significant herniation or canal stenosis. Neural foramina patent bilaterally.\n\nImpression: L2 compression fracture with marrow edema consistent with acute/subacute injury. No additional acute osseous abnormalities.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-25",
+   "title": "Spine Intervention Consultation",
+   "author": "Interventional radiologist",
+   "text": "Spine Intervention Consult - 09/25/2026\nPt: Eladia Walker, 68 y/o F\n\nHx: Referred for DEXA + osteoporosis program.\nExam: Pain at fx level; afebrile, no infx signs.\n\nImaging reviewed: Vertebral compression fracture noted at T12.\nPlan: Proceed with vertebroplasty after confirming bone density results. Monitor for any new neuro deficits.\n\nNo contraindications to intervention identified. Will coordinate with osteoporosis program for comprehensive management.\n\nIR consult complete.",
+   "source": "llm"
+  }
+ ]
+}

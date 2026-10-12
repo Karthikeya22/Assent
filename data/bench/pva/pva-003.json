@@ -1,0 +1,145 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "pva",
+  "case_id": "pva-003",
+  "difficulty": "buried",
+  "order_date": "2026-09-22",
+  "patient": {
+   "fhir_id": "51e907cd-d163-1c08-48c1-370237905dfb",
+   "name": "Stanley O'Conner",
+   "sex": "male",
+   "birth_date": "1942-04-30"
+  },
+  "condition": "stable:L3",
+  "cpt": "22514",
+  "cpt_text": "Percutaneous vertebral augmentation (kyphoplasty), lumbar",
+  "icd10": "M80.08XA",
+  "icd10_text": "Age-related osteoporosis with current pathological fracture, vertebra(e), initial encounter",
+  "dates": {
+   "pcp": "2026-08-07",
+   "inpatient": "2026-09-17",
+   "radiology": "2026-09-11",
+   "consult": "2026-09-21",
+   "onset": "2026-07-28",
+   "xray": "2026-07-30"
+  },
+  "observations": [
+   {
+    "code": "72514-3",
+    "system": "http://loinc.org",
+    "display": "Pain severity 0-10 numeric rating",
+    "value": 5.0,
+    "unit": "{score}",
+    "date": "2026-09-21"
+   }
+  ],
+  "gold": {
+   "fx.acute": "met",
+   "fx.imaging": "met",
+   "sym.hosp": "not_met",
+   "sym.moderate": "met",
+   "sym.worsening": "not_met",
+   "feat.progression": "met",
+   "feat.height": "insufficient",
+   "feat.kyphosis": "met",
+   "feat.rdq": "insufficient",
+   "care.osteo": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "fx.acute",
+    "gold": "met",
+    "text": "Back pain since 07/28/2026 after lifting a laundry basket.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "fx.imaging",
+    "gold": "met",
+    "text": "MRI 09/11/2026: L3 compression fx, marrow edema on STIR.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sym.hosp",
+    "gold": "not_met",
+    "text": "Outpt, not admitted.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.moderate",
+    "gold": "met",
+    "text": "NRS 5/10 despite 7 wks NSM (oxycodone 5 mg as needed, TLSO brace).",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.worsening",
+    "gold": "not_met",
+    "text": "Pain stable/slightly better.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "feat.progression",
+    "gold": "met",
+    "text": "Interval increase in L3 vertebral body height loss compared with radiographs from 07/30/2026.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "feat.kyphosis",
+    "gold": "met",
+    "text": "Focal kyphosis L3 26 deg.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "care.osteo",
+    "gold": "met",
+    "text": "Referred for DEXA + osteoporosis program.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Pain at fx level; afebrile, no infx signs.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-08-07",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 08/07/2026\nPatient: Stanley O'Conner, 84 y/o M\n\nCC: Back pain\n\nHPI: Back pain since 07/28/2026 after lifting a laundry basket. No radicular sx noted. Denies numbness or weakness.\n\nPE: Tenderness over lumbar paraspinals. No step-offs or deformities. Neuro exam intact.\n\nAssessment: Acute mechanical back pain.\n\nPlan: Advise activity modification, NSAIDs prn. Follow-up prn worsening or new sx.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-09-11",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 09/11/2026\nPatient: Stanley O'Conner, 84 y/o M\n\nMRI 09/11/2026: L3 compression fx, marrow edema on STIR.\nInterval increase in L3 vertebral body height loss compared with radiographs from 07/30/2026.\nFocal kyphosis L3 26 deg.\n\nNo other acute abnormalities identified on imaging.\n\nRecommend clinical correlation and follow-up imaging as needed.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-21",
+   "title": "Spine Intervention Consultation",
+   "author": "Interventional radiologist",
+   "text": "Spine Intervention Consultation\nDate: 09/21/2026\nPatient: Stanley O'Conner, 84 y/o M\n\nHPI: Outpt, not admitted. NRS 5/10 despite 7 wks NSM (oxycodone 5 mg as needed, TLSO brace). Pain stable/slightly better.\n\nExam: Pain at fx level; afebrile, no infx signs.\n\nPlan: Referred for DEXA + osteoporosis program. Consider vertebral augmentation if pain worsens or fails to improve further.\n\nSummary: Patient with vertebral compression fracture managed conservatively with analgesics and bracing. Close follow-up advised.",
+   "source": "llm"
+  }
+ ]
+}

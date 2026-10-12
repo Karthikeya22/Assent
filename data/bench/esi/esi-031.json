@@ -1,0 +1,149 @@
+{
+ "split": "dev",
+ "facts": {
+  "case_id": "esi-031",
+  "difficulty": "buried",
+  "order_date": "2026-09-22",
+  "patient": {
+   "fhir_id": "0c4093c0-b67a-8b04-4816-09fb3865ae8b",
+   "name": "Laurette Brown",
+   "sex": "female",
+   "birth_date": "1937-12-29"
+  },
+  "condition": "radic",
+  "region": "lumbar",
+  "level": "L4-L5",
+  "side": "left",
+  "cpt": "64483",
+  "icd10": "M54.16",
+  "onset_date": "2026-05-12",
+  "pain_weeks": 19,
+  "pt_start": "2026-05-20",
+  "pt_weeks": 4,
+  "nsaid": "naproxen 500 mg BID",
+  "scale_name": "VAS",
+  "scale_value": "63 mm",
+  "imaging_date": "2026-08-13",
+  "imaging_modality": "MRI",
+  "prior_esi_dates": [
+   "2026-05-15"
+  ],
+  "contra_detail": null,
+  "gold": {
+   "dx.radic": "met",
+   "dx.pls": "insufficient",
+   "dx.zoster": "insufficient",
+   "dx.imaging": "met",
+   "sev.impact": "met",
+   "sev.baseline": "met",
+   "dur.pain": "met",
+   "dur.conservative": "met",
+   "dur.zoster": "insufficient",
+   "rehab": "met",
+   "contra": "met",
+   "freq": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "dx.radic",
+    "gold": "met",
+    "text": "A/P: L L radic 2/2 L4-L5 HNP w/ foraminal stenosis.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "dx.imaging",
+    "gold": "met",
+    "text": "MRI lumbar spine 08/13/2026: L4-L5 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sev.impact",
+    "gold": "met",
+    "text": "Fx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "sev.baseline",
+    "gold": "met",
+    "text": "Initial VAS 63 mm.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "dur.pain",
+    "gold": "met",
+    "text": "LBP x19 wks w/ radiation to L LE.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "dur.conservative",
+    "gold": "met",
+    "text": "D/C from PT after 4 wks (05/20/2026-06/17/2026), sx unchanged. Failed naproxen 500 mg BID.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "rehab",
+    "gold": "met",
+    "text": "HEP daily, compliant.",
+    "slot": "pt",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "ROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "freq",
+    "gold": "met",
+    "text": "Epidural steroid injection history: 1 lumbar injection in the past 12 months (05/15/2026).",
+    "slot": "pcp",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-05-21",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 05/21/2026\nPatient: Laurette Brown, 89 y/o F\n\nCC: L leg radic.\n\nHPI: Pt c/o L leg radic symptoms. No new complaints. ROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.\n\nPE: Neuro exam shows decreased sensation in L L4-L5 dermatomes. Strength 4/5 in L leg. Reflexes diminished at L4.\n\nAssessment/Plan:\nA/P: L L radic 2/2 L4-L5 HNP w/ foraminal stenosis.\nEpidural steroid injection history: 1 lumbar injection in the past 12 months (05/15/2026).\nContinue conservative mgmt. Monitor neuro status. Follow-up prn.",
+   "source": "llm"
+  },
+  {
+   "slot": "pt",
+   "date": "2026-06-17",
+   "title": "Physical Therapy Discharge Summary",
+   "author": "Physical therapist",
+   "text": "Physical Therapy Discharge Summary\nDate: 06/17/2026\nPatient: Laurette Brown, 89 y/o F\n\nFx: can't walk >1 block, stopped volunteering d/t pain, poor sleep. Initial VAS 63 mm.\n\nTx course: PT from 05/20/2026 to 06/17/2026. D/C from PT after 4 wks (05/20/2026-06/17/2026), sx unchanged. Failed naproxen 500 mg BID.\n\nPt educated on HEP daily, compliant. No improvement in functional mobility or pain levels noted.\n\nPlan: Continue monitoring, consider alternative pain management strategies.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-13",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/13/2026\nPatient: Laurette Brown, 89 y/o F\n\nMRI lumbar spine 08/13/2026: L4-L5 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.\n\nFindings: The lumbar spine shows degenerative changes consistent with age. No evidence of fracture or marrow edema. The L4-L5 level demonstrates a disc herniation causing moderate left foraminal stenosis. The stenosis contacts the exiting nerve root on the left side. No significant central canal stenosis noted. Other levels show mild to moderate degenerative disc disease without significant neural impingement.\n\nImpression: L4-L5 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root. No acute osseous abnormality.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-09-20",
+   "title": "Pain Management Consultation",
+   "author": "Pain medicine physician",
+   "text": "Pain Management Consultation\nDate: 09/20/2026\nPatient: Laurette Brown, 89 y/o F\n\nCC: LBP x19 wks w/ radiation to L LE.\n\nHPI: Pt reports persistent low back pain for 19 weeks, radiating to left lower extremity. No hx of trauma or recent illness. Denies numbness or bowel/bladder changes.\n\nPE: Limited lumbar ROM due to pain. Tenderness over lower lumbar paraspinals. Neuro exam: L LE strength 4/5, sensation decreased along L lateral leg.\n\nAssessment: Chronic LBP x19 wks w/ radiation to L LE, likely radiculopathy.\n\nPlan: Recommend MRI lumbar spine to evaluate nerve root involvement. Initiate conservative mgmt with NSAIDs and PT. Consider epidural steroid injection if no improvement.\n\nFollow-up in 4 weeks or sooner if symptoms worsen.",
+   "source": "llm"
+  }
+ ]
+}

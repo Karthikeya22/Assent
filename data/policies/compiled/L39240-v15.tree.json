@@ -1,0 +1,135 @@
+{
+  "source_id": "L39240",
+  "version": 15,
+  "root": {
+    "key": "root",
+    "kind": "AND",
+    "label": "Initial ESI request criteria",
+    "children": [
+      {
+        "key": "dx",
+        "kind": "OR",
+        "label": "Covered diagnosis",
+        "source_quote": "History, physical examination, and concordant radiological image-based diagnostic testing supporting one of the following:",
+        "children": [
+          {
+            "key": "dx.radic",
+            "kind": "LEAF",
+            "label": "Radiculopathy, radicular pain, or neurogenic claudication due to disc herniation, osteophyte, or severe degenerative disc disease causing foraminal or central spinal stenosis",
+            "evidence_type": "diagnosis",
+            "source_quote": "Lumbar, cervical or thoracic radiculopathy, radicular pain and/or neurogenic claudication due to disc herniation, osteophyte or osteophyte complexes, severe degenerative disc disease, producing foraminal or central spinal stenosis;",
+            "children": []
+          },
+          {
+            "key": "dx.postlam",
+            "kind": "LEAF",
+            "label": "Post-laminectomy syndrome",
+            "evidence_type": "diagnosis",
+            "source_quote": "Post-laminectomy syndrome;",
+            "children": []
+          },
+          {
+            "key": "dx.herpesz",
+            "kind": "LEAF",
+            "label": "Acute herpes zoster associated pain",
+            "evidence_type": "diagnosis",
+            "source_quote": "Acute herpes zoster associated pain",
+            "children": []
+          }
+        ]
+      },
+      {
+        "key": "assess.severity",
+        "kind": "LEAF",
+        "label": "Pain or neurogenic claudication is severe enough to greatly impact quality of life or function, with baseline objective pain or functional assessment documented",
+        "evidence_type": "assessment",
+        "source_quote": "Radiculopathy, radicular pain and/or neurogenic claudication is severe enough to greatly impact quality of life or function. An objective pain scale or functional assessment must be performed at baseline (prior to interventions).",
+        "children": []
+      },
+      {
+        "key": "dur.pain",
+        "kind": "OR",
+        "label": "Pain duration and conservative care",
+        "source_quote": "Pain duration of at least four (4) weeks, and the inability to tolerate noninvasive conservative care or medical documentation of failure to respond to four (4) weeks of noninvasive conservative care or acute herpes zoster refractory to conservative management where a four (4) week wait is not required.",
+        "children": [
+          {
+            "key": "dur.pain.4w_fail",
+            "kind": "LEAF",
+            "label": "Pain duration at least 4 weeks and failure or intolerance of 4 weeks of noninvasive conservative care",
+            "evidence_type": "duration",
+            "threshold": {
+              "min_weeks": 4
+            },
+            "source_quote": "Pain duration of at least four (4) weeks, and the inability to tolerate noninvasive conservative care or medical documentation of failure to respond to four (4) weeks of noninvasive conservative care",
+            "children": []
+          },
+          {
+            "key": "dur.herpesz",
+            "kind": "LEAF",
+            "label": "Acute herpes zoster refractory to conservative management (no 4 week wait required)",
+            "evidence_type": "prior_therapy",
+            "source_quote": "acute herpes zoster refractory to conservative management where a four (4) week wait is not required.",
+            "children": []
+          }
+        ]
+      },
+      {
+        "key": "contraindications",
+        "kind": "LEAF",
+        "label": "No contraindications to ESI (infection, compressive lesions, cancer suspicion/risk, etc.)",
+        "evidence_type": "contraindication",
+        "source_quote": "ESIs should not be performed when contraindicated including but not limited to: suspected or active localized spinal infection, significant systemic infection, compressive lesions of the spinal cord, conus medullaris or cauda equina, suspicion or major risk factors for cancer.",
+        "children": []
+      },
+      {
+        "key": "limit.nonspecific",
+        "kind": "LEAF",
+        "label": "Not for non-specific low back pain, axial spine pain, CRPS, widespread diffuse pain, neuropathy from other causes, or cervicogenic headaches",
+        "evidence_type": "diagnosis",
+        "source_quote": "ESIs to treat non-specific low back pain (LBP), axial spine pain, complex regional pain syndrome, widespread diffuse pain, pain from neuropathy from other causes, cervicogenic headaches are considered investigational and therefore are not considered medically reasonable and necessary.",
+        "children": []
+      },
+      {
+        "key": "limit.freq",
+        "kind": "LEAF",
+        "label": "No more than 4 ESI sessions per spinal region in a rolling 12 month period",
+        "evidence_type": "procedure_history",
+        "threshold": {
+          "max_sessions": 4,
+          "window_days": 365
+        },
+        "lookback_days": 365,
+        "source_quote": "ESIs are limited to a maximum of four (4) sessions per spinal region in a rolling twelve (12) month period.",
+        "children": []
+      },
+      {
+        "key": "limit.multiregion",
+        "kind": "LEAF",
+        "label": "No more than one spinal region injected in the same session",
+        "evidence_type": "procedure_history",
+        "threshold": {
+          "max_regions": 1
+        },
+        "source_quote": "It is not considered medically reasonable and necessary for more than one spinal region to be injected in the same session.",
+        "children": []
+      },
+      {
+        "key": "conservative.tx",
+        "kind": "LEAF",
+        "label": "ESI performed in conjunction with conservative treatments",
+        "evidence_type": "prior_therapy",
+        "source_quote": "The ESIs should be performed in conjunction with conservative treatments.",
+        "children": []
+      },
+      {
+        "key": "rehab.program",
+        "kind": "LEAF",
+        "label": "Patient is part of an active rehabilitation, home exercise, or functional restoration program",
+        "evidence_type": "assessment",
+        "source_quote": "Patient’s should be part of an active rehabilitation program, home exercise program or functional restoration program.",
+        "children": []
+      }
+    ]
+  },
+  "excluded": []
+}

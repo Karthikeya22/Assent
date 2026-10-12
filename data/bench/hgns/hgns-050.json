@@ -1,0 +1,157 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "hgns",
+  "case_id": "hgns-050",
+  "difficulty": "clean",
+  "order_date": "2026-09-04",
+  "patient": {
+   "fhir_id": "b3940b58-fe0b-e7ed-bb73-c0cdd13adb52",
+   "name": "Edmond Corwin",
+   "sex": "male",
+   "birth_date": "1948-07-30"
+  },
+  "condition": "cpap_intolerance",
+  "cpt": "64582",
+  "cpt_text": "Implantation of hypoglossal nerve neurostimulator array, pulse generator and respiratory sensor",
+  "icd10": "G47.33",
+  "icd10_text": "Obstructive sleep apnea (adult) (pediatric)",
+  "dates": {
+   "pcp": "2026-04-10",
+   "psg": "2025-12-04",
+   "sleepmd": "2026-07-11",
+   "ent": "2026-09-02"
+  },
+  "observations": [
+   {
+    "code": "39156-5",
+    "system": "http://loinc.org",
+    "display": "Body mass index",
+    "value": 30.1,
+    "unit": "kg/m2",
+    "date": "2026-07-11"
+   },
+   {
+    "code": "ahi",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Apnea-hypopnea index",
+    "value": 47.5,
+    "unit": "/h",
+    "date": "2025-12-04"
+   }
+  ],
+  "gold": {
+   "age": "met",
+   "bmi": "met",
+   "psg": "met",
+   "central": "met",
+   "ahi": "met",
+   "cpap": "met",
+   "dise": "met",
+   "anatomy": "met",
+   "contra": "met"
+  },
+  "decision": "ready",
+  "statements": [
+   {
+    "leaf": "age",
+    "gold": "met",
+    "text": "78-year-old man referred for hypoglossal nerve stimulation evaluation.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "bmi",
+    "gold": "met",
+    "text": "BMI 30.1 kg/m2.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "psg",
+    "gold": "met",
+    "text": "Diagnostic in-laboratory polysomnography performed 12/04/2025.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "ahi",
+    "gold": "met",
+    "text": "Total apnea-hypopnea index (AHI) 47.5 events/hour.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "central",
+    "gold": "met",
+    "text": "Central and mixed apneas comprised 13% of all events.",
+    "slot": "psg",
+    "stale": false
+   },
+   {
+    "leaf": "cpap",
+    "gold": "met",
+    "text": "CPAP intolerance: download shows average use 2.9 hours per night on 41% of nights despite mask refitting; shared decision-making with the patient documented that CPAP is not tolerated.",
+    "slot": "sleepmd",
+    "stale": false
+   },
+   {
+    "leaf": "dise",
+    "gold": "met",
+    "text": "Drug-induced sleep endoscopy 08/21/2026: anteroposterior collapse at the velum without complete concentric collapse.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "anatomy",
+    "gold": "met",
+    "text": "Oropharynx: tonsils size 1, no other anatomic obstruction.",
+    "slot": "ent",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.",
+    "slot": "ent",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": true
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-04-10",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 04/10/2026\nPatient: Edmond Corwin, 78-year-old male\n\nSubjective:\nMr. Corwin presents for his routine follow-up appointment. He reports feeling generally well with no new complaints. He denies any recent illnesses or changes in his health status.\n\nObjective:\nVital signs are within normal limits. Physical examination reveals no abnormalities. Cardiovascular, respiratory, abdominal, and neurological exams are unremarkable.\n\nAssessment:\nMr. Corwin remains stable with no acute issues. Chronic conditions are well controlled.\n\nPlan:\nContinue current medications and lifestyle. Routine labs and screenings will be scheduled as per guidelines. Patient advised to report any new symptoms promptly.\n\nFollow-up in 6 months or sooner if needed.",
+   "source": "llm"
+  },
+  {
+   "slot": "psg",
+   "date": "2025-12-04",
+   "title": "Polysomnography Report",
+   "author": "Sleep medicine physician",
+   "text": "Polysomnography Report\nDate: 12/04/2025\nPatient: Edmond Corwin, 77-year-old male\n\nDiagnostic in-laboratory polysomnography performed 12/04/2025. The study demonstrated significant sleep-disordered breathing. Total apnea-hypopnea index (AHI) 47.5 events/hour. Central and mixed apneas comprised 13% of all events. Sleep architecture was disrupted with frequent arousals related to respiratory events. Oxygen saturation showed intermittent desaturations corresponding to apneas and hypopneas.\n\nIn summary, the patient has severe sleep apnea with a predominance of obstructive events and a notable proportion of central and mixed apneas. These findings suggest the need for clinical evaluation and consideration of treatment options.",
+   "source": "llm"
+  },
+  {
+   "slot": "sleepmd",
+   "date": "2026-07-11",
+   "title": "Sleep Medicine Consultation",
+   "author": "Sleep medicine physician",
+   "text": "Sleep Medicine Consultation Note\nDate: 07/11/2026\nPatient: Edmond Corwin, 78-year-old male\n\nReason for Consultation:\nEvaluation and management of sleep-disordered breathing.\n\nHistory:\nMr. Corwin has a history of obstructive sleep apnea diagnosed several years ago. He reports difficulty tolerating CPAP therapy.\n\nPhysical Examination:\nBMI 30.1 kg/m2.\n\nAssessment:\nObstructive sleep apnea with documented CPAP intolerance.\n\nPlan:\nCPAP intolerance: download shows average use 2.9 hours per night on 41% of nights despite mask refitting; shared decision-making with the patient documented that CPAP is not tolerated. Alternative therapies will be considered, including possible oral appliance therapy or positional therapy. Follow-up sleep study may be scheduled to reassess severity and treatment options. Patient education provided regarding sleep hygiene and symptom monitoring.\n\nFollow-up:\nPatient to return in 3 months or sooner if symptoms worsen.",
+   "source": "llm"
+  },
+  {
+   "slot": "ent",
+   "date": "2026-09-02",
+   "title": "Otolaryngology Consultation",
+   "author": "Otolaryngologist",
+   "text": "Otolaryngology Consultation Note\nDate: 09/02/2026\nPatient: Edmond Corwin, 78-year-old male\n\nThis 78-year-old man referred for hypoglossal nerve stimulation evaluation. Drug-induced sleep endoscopy 08/21/2026: anteroposterior collapse at the velum without complete concentric collapse. Oropharynx: tonsils size 1, no other anatomic obstruction. No neuromuscular disease, hypoglossal palsy, severe cardiopulmonary disease or planned MRI; able to operate the sleep remote.\n\nPlan is to proceed with hypoglossal nerve stimulation evaluation and discuss further management options with the patient.",
+   "source": "llm"
+  }
+ ]
+}

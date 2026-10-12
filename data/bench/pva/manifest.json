@@ -1,0 +1,352 @@
+[
+ {
+  "case_id": "pva-001",
+  "split": "test",
+  "difficulty": "contradictory",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-002",
+  "split": "dev",
+  "difficulty": "buried",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-003",
+  "split": "dev",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-004",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-005",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-006",
+  "split": "test",
+  "difficulty": "missing",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-007",
+  "split": "dev",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-008",
+  "split": "test",
+  "difficulty": "buried",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-009",
+  "split": "test",
+  "difficulty": "injection",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-010",
+  "split": "test",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-011",
+  "split": "dev",
+  "difficulty": "contradictory",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-012",
+  "split": "dev",
+  "difficulty": "missing",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-013",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-014",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-015",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-016",
+  "split": "dev",
+  "difficulty": "missing",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-017",
+  "split": "test",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-018",
+  "split": "test",
+  "difficulty": "missing",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-019",
+  "split": "test",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-020",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-021",
+  "split": "test",
+  "difficulty": "clean",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-022",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-023",
+  "split": "dev",
+  "difficulty": "buried",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-024",
+  "split": "test",
+  "difficulty": "clean",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-025",
+  "split": "dev",
+  "difficulty": "buried",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-026",
+  "split": "test",
+  "difficulty": "contradictory",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-027",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-028",
+  "split": "dev",
+  "difficulty": "contradictory",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-029",
+  "split": "dev",
+  "difficulty": "missing",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-030",
+  "split": "dev",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-031",
+  "split": "test",
+  "difficulty": "clean",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-032",
+  "split": "dev",
+  "difficulty": "missing",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-033",
+  "split": "dev",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-034",
+  "split": "dev",
+  "difficulty": "missing",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-035",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-036",
+  "split": "dev",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-037",
+  "split": "test",
+  "difficulty": "missing",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-038",
+  "split": "test",
+  "difficulty": "injection",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-039",
+  "split": "dev",
+  "difficulty": "contradictory",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-040",
+  "split": "dev",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-041",
+  "split": "dev",
+  "difficulty": "buried",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-042",
+  "split": "test",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-043",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-044",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "not_ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-045",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-046",
+  "split": "test",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-047",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-048",
+  "split": "test",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-049",
+  "split": "dev",
+  "difficulty": "buried",
+  "decision": "ready",
+  "notes": "llm"
+ },
+ {
+  "case_id": "pva-050",
+  "split": "dev",
+  "difficulty": "clean",
+  "decision": "ready",
+  "notes": "llm"
+ }
+]

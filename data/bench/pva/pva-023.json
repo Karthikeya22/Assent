@@ -1,0 +1,145 @@
+{
+ "split": "dev",
+ "facts": {
+  "family": "pva",
+  "case_id": "pva-023",
+  "difficulty": "buried",
+  "order_date": "2026-09-01",
+  "patient": {
+   "fhir_id": "cc192832-e8d8-8f43-b24f-38c24bec9170",
+   "name": "Casandra Crona",
+   "sex": "female",
+   "birth_date": "1954-06-09"
+  },
+  "condition": "stable:T12",
+  "cpt": "22513",
+  "cpt_text": "Percutaneous vertebral augmentation (kyphoplasty), thoracic",
+  "icd10": "M80.08XA",
+  "icd10_text": "Age-related osteoporosis with current pathological fracture, vertebra(e), initial encounter",
+  "dates": {
+   "pcp": "2026-07-10",
+   "inpatient": "2026-08-29",
+   "radiology": "2026-08-24",
+   "consult": "2026-08-31",
+   "onset": "2026-07-07",
+   "xray": "2026-07-10"
+  },
+  "observations": [
+   {
+    "code": "vb-height-loss",
+    "system": "http://assent.dev/fhir/obs",
+    "display": "Vertebral body height loss",
+    "value": 37.0,
+    "unit": "%",
+    "date": "2026-08-24"
+   }
+  ],
+  "gold": {
+   "fx.acute": "met",
+   "fx.imaging": "met",
+   "sym.hosp": "not_met",
+   "sym.moderate": "not_met",
+   "sym.worsening": "not_met",
+   "feat.progression": "met",
+   "feat.height": "met",
+   "feat.kyphosis": "insufficient",
+   "feat.rdq": "insufficient",
+   "care.osteo": "met",
+   "contra": "met"
+  },
+  "decision": "not_ready",
+  "statements": [
+   {
+    "leaf": "fx.acute",
+    "gold": "met",
+    "text": "Back pain since 07/07/2026 after lifting a laundry basket.",
+    "slot": "pcp",
+    "stale": false
+   },
+   {
+    "leaf": "fx.imaging",
+    "gold": "met",
+    "text": "MRI 08/24/2026: T12 compression fx, marrow edema on STIR.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "sym.hosp",
+    "gold": "not_met",
+    "text": "Outpt, not admitted.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.moderate",
+    "gold": "not_met",
+    "text": "NRS 3/10 on acetaminophen and tramadol + brace.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "sym.worsening",
+    "gold": "not_met",
+    "text": "Pain stable/slightly better.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "feat.progression",
+    "gold": "met",
+    "text": "Interval increase in T12 vertebral body height loss compared with radiographs from 07/10/2026.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "feat.height",
+    "gold": "met",
+    "text": "~37% T12 height loss.",
+    "slot": "radiology",
+    "stale": false
+   },
+   {
+    "leaf": "care.osteo",
+    "gold": "met",
+    "text": "Referred for DEXA + osteoporosis program.",
+    "slot": "consult",
+    "stale": false
+   },
+   {
+    "leaf": "contra",
+    "gold": "met",
+    "text": "Pain at fx level; afebrile, no infx signs.",
+    "slot": "consult",
+    "stale": false
+   }
+  ],
+  "injection": null,
+  "structured": false
+ },
+ "notes": [
+  {
+   "slot": "pcp",
+   "date": "2026-07-10",
+   "title": "Primary Care Progress Note",
+   "author": "Primary care physician",
+   "text": "Primary Care Progress Note\nDate: 07/10/2026\nPatient: Casandra Crona, 72 y/o F\n\nCC: Back pain\n\nHPI: Back pain since 07/07/2026 after lifting a laundry basket. No radiation, numbness, or weakness reported.\n\nPE: Tenderness noted over lumbar paraspinal muscles. No step-offs or deformities palpated. ROM limited due to pain.\n\nAssessment: Acute mechanical back pain.\n\nPlan: Advise NSAIDs prn, activity modification, and follow-up in 2 weeks or sooner if worsening symptoms.\n\nNo red flags identified at this time.",
+   "source": "llm"
+  },
+  {
+   "slot": "radiology",
+   "date": "2026-08-24",
+   "title": "Radiology Report",
+   "author": "Radiologist",
+   "text": "Radiology Report\nDate: 08/24/2026\nPatient: Casandra Crona, 72-year-old female\n\nMRI 08/24/2026: T12 compression fx, marrow edema on STIR. Interval increase in T12 vertebral body height loss compared with radiographs from 07/10/2026. ~37% T12 height loss. No other acute osseous abnormalities identified. Adjacent vertebrae appear intact. No evidence of paraspinal soft tissue mass or abnormal enhancement. Findings consistent with subacute compression fracture at T12 with marrow edema. Recommend clinical correlation and follow-up imaging as clinically indicated.",
+   "source": "llm"
+  },
+  {
+   "slot": "consult",
+   "date": "2026-08-31",
+   "title": "Spine Intervention Consultation",
+   "author": "Interventional radiologist",
+   "text": "Spine Intervention Consultation 08/31/2026\nPatient: Casandra Crona, 72-year-old female\n\nOutpt, not admitted. Pain at fx level; afebrile, no infx signs. NRS 3/10 on acetaminophen and tramadol + brace. Pain stable/slightly better.\n\nPhysical exam shows localized tenderness over fracture site without erythema or swelling. Neurological exam is intact.\n\nPlan: Referred for DEXA + osteoporosis program. Continue current medications and brace. Follow-up as needed.",
+   "source": "llm"
+  }
+ ]
+}

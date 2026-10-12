@@ -44,5 +44,23 @@ def evaluate(root: Node, leaves: dict[str, State]) -> LogicResult:
     return LogicResult(state=state, states=states, deciding=deciding)
 
 
+def gap_keys(root: Node, states: dict[str, State]) -> list[str]:
+    """Leaves that block the decision: not met, with no satisfied ancestor (an unchosen OR
+    alternative is not a gap). Mirrors apps/web/lib/run/logic.ts gapKeys."""
+    out: list[str] = []
+
+    def walk(n: Node, covered: bool) -> None:
+        done = covered or states.get(n.key) == "met"
+        if n.kind == "LEAF":
+            if not done:
+                out.append(n.key)
+            return
+        for c in n.children:
+            walk(c, done)
+
+    walk(root, False)
+    return out
+
+
 def _flat(groups: list[list[str]]) -> list[str]:
     return [k for g in groups for k in g]

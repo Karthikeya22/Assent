@@ -16,11 +16,13 @@ from langgraph.graph import END, START, StateGraph
 from langgraph.types import Send
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
+from assent_agents.adversary import Objection, run_adversary, run_rebuttal
 from assent_agents.events import Emit, event, no_emit
 from assent_agents.evidence.agent import CaseContext, run_evidence
 from assent_agents.evidence.models import Verdict
+from assent_agents.gaps import GapTaskOut, denial_risk, gap_inputs, plan_gaps
 from assent_agents.llm import StructuredLLM
-from assent_agents.logic import LogicResult, evaluate
+from assent_agents.logic import LogicResult, evaluate, gap_keys
 from assent_agents.policy.tree import CriteriaTree, Node
 from assent_agents.verify import NLI, judge_downgrade, verify
 from assent_fhir.source import FhirSource
@@ -75,6 +77,11 @@ class CaseResult:
     n_chunks: int
     seconds: float
     timings: dict[str, float] = field(default_factory=dict)
+    objections: list[Objection] = field(default_factory=list)
+    gaps: list[GapTaskOut] = field(default_factory=list)
+    denial_risk: float | None = None
+    risk_factors: list[str] = field(default_factory=list)
+    review_error: str | None = None
 
 
 class _State(TypedDict, total=False):
@@ -102,6 +109,7 @@ def build_graph(
     nli: NLI = models.nli,
     concurrency: int = 4,
     emit: Emit = no_emit,
+    review: bool = False,
 ) -> Any:
     gate = asyncio.Semaphore(concurrency)
     t0: dict[str, float] = {}
@@ -220,15 +228,6 @@ def build_graph(
         for n in reversed(inp.tree.nodes()):  # children before parents: the UI fills bottom-up
             if n.kind != "LEAF":
                 await emit(event("logic_update", node_id=n.key, state=result.states[n.key]))
-        await emit(
-            event(
-                "run_finished",
-                state=result.state,
-                deciding=result.deciding,
-                readiness=readiness(inp.tree, result),
-                denial_risk=None,
-            )
-        )
         end = time.perf_counter()
         return {
             "result": CaseResult(
@@ -241,14 +240,110 @@ def build_graph(
             )
         }
 
+    async def review_node(state: _State) -> dict[str, Any]:
+        """Adversary -> rebuttals -> gaps -> risk (PRODUCT §4.5-4.6), then the human decides."""
+        inp, res = state["inp"], state["result"]
+        verdicts = {k: r.verdict for k, r in res.leaves.items()}
+        if review:
+            t = time.perf_counter()
+            guarded = phi_guard(llm, inp.patient_names)
+            headers: dict[str, str] = {}
+
+            async def search(queries: list[str]) -> Any:
+                async with sessions() as s:
+                    hits = await hybrid_search(s, inp.case_id, queries)
+                headers.update(
+                    {
+                        str(h.chunk_id): f"{h.resource_type} {h.date:%m/%d/%Y}"
+                        if h.date
+                        else h.resource_type
+                        for h in hits
+                    }
+                )
+                return hits
+
+            try:
+                await emit(event("node_started", node="payer_adversary"))
+                res.objections = await run_adversary(inp.tree, verdicts, res.logic.state, guarded)
+                for ob in res.objections:
+                    await emit(
+                        event(
+                            "objection",
+                            id=ob.id,
+                            criterion_id=ob.criterion_key,
+                            text=ob.text,
+                            severity=ob.severity,
+                        )
+                    )
+
+                async def rebut(ob: Objection) -> Objection:
+                    async with gate:
+                        done = await run_rebuttal(ob, inp.tree, search, guarded, nli, headers)
+                    await emit(
+                        event(
+                            "objection_update",
+                            id=done.id,
+                            status=done.status,
+                            rebuttal=done.rebuttal,
+                            citations=[
+                                {
+                                    "chunk_id": c.chunk_id,
+                                    "quote": c.quote,
+                                    "start": c.start,
+                                    "end": c.end,
+                                    "verified": c.verbatim_ok and (c.support or 0) >= 0.7,
+                                }
+                                for c in done.citations
+                            ],
+                        )
+                    )
+                    return done
+
+                res.objections = list(await asyncio.gather(*(rebut(o) for o in res.objections)))
+            except Exception as e:  # a vendor outage must not erase a finished evidence pass
+                res.review_error = f"adversary: {type(e).__name__}: {e}"[:300]
+                await emit(event("node_failed", node="payer_adversary", error=res.review_error))
+            blocking = gap_keys(inp.tree.root, res.logic.states)
+            try:
+                res.gaps = await plan_gaps(
+                    inp.tree, gap_inputs(blocking, verdicts, res.objections), guarded
+                )
+            except Exception as e:
+                res.review_error = (res.review_error or "") + f" gaps: {type(e).__name__}"
+            for g in res.gaps:
+                await emit(
+                    event(
+                        "gap",
+                        criterion_id=g.criterion_key,
+                        title=g.title,
+                        detail=g.detail,
+                        assignee_role=g.assignee_role,
+                    )
+                )
+            res.denial_risk, res.risk_factors = denial_risk(len(blocking), res.objections, verdicts)
+            res.timings["review"] = time.perf_counter() - t
+        await emit(
+            event(
+                "run_finished",
+                state=res.logic.state,
+                deciding=res.logic.deciding,
+                readiness=res.readiness,
+                denial_risk=res.denial_risk,
+                risk_factors=res.risk_factors,
+            )
+        )
+        return {"result": res}
+
     g = StateGraph(_State)
     g.add_node("load_and_index", load_and_index)
     g.add_node("evidence", evidence)
     g.add_node("logic", logic)
+    g.add_node("review", review_node)
     g.add_edge(START, "load_and_index")
     g.add_conditional_edges("load_and_index", fan_out, ["evidence"])
     g.add_edge("evidence", "logic")
-    g.add_edge("logic", END)
+    g.add_edge("logic", "review")
+    g.add_edge("review", END)
     return g.compile()
 
 
@@ -259,7 +354,9 @@ async def run_case(
     llm: StructuredLLM,
     nli: NLI = models.nli,
     emit: Emit = no_emit,
+    review: bool = False,
 ) -> CaseResult:
-    out = await build_graph(sessions, source, llm, nli, emit=emit).ainvoke({"inp": inp})
+    graph = build_graph(sessions, source, llm, nli, emit=emit, review=review)
+    out = await graph.ainvoke({"inp": inp})
     result: CaseResult = out["result"]
     return result

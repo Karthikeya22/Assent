@@ -125,32 +125,32 @@
    "date": "2026-05-19",
    "title": "Primary Care Progress Note",
    "author": "Primary care physician",
-   "text": "Primary Care Progress Note\nDate: 05/19/2026\nPatient: Cecil Jacobs, 84-year-old male\nAuthor: Primary care physician\n\nPast surgical history: no prior spine surgery.\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
-   "source": "template"
+   "text": "Primary Care Progress Note\nDate: 05/19/2026\nPatient: Cecil Jacobs, 84-year-old male\n\nSubjective:\nMr. Jacobs presents today for routine follow-up. He reports general well-being with no new complaints. No issues related to his musculoskeletal system were mentioned.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no abnormalities. Neurological exam is intact.\n\nAssessment:\nOverall, Mr. Jacobs is doing well. There are no signs of acute illness or deterioration.\n\nPlan:\nContinue current management and routine monitoring. Encourage regular physical activity and balanced nutrition.\n\nPast surgical history: no prior spine surgery.\n\nFollow-up in 6 months or sooner if any concerns arise.",
+   "source": "llm"
   },
   {
    "slot": "pt",
    "date": "2026-07-10",
    "title": "Physical Therapy Discharge Summary",
    "author": "Physical therapist",
-   "text": "Physical Therapy Discharge Summary\nDate: 07/10/2026\nPatient: Cecil Jacobs, 84-year-old male\nAuthor: Physical therapist\n\nCompleted physical therapy from 05/22/2026 to 07/10/2026 (7 weeks) with no lasting benefit, and failed ibuprofen 600 mg TID.\nTreatment included manual therapy, core stabilization and gait training.\nPatient attended sessions as scheduled.\nGoals reviewed with patient.\n",
-   "source": "template"
+   "text": "Physical Therapy Discharge Summary\nDate: 07/10/2026\nPatient: Cecil Jacobs, 84-year-old male\n\nReason for Referral:\nPatient was referred for physical therapy to address ongoing musculoskeletal complaints.\n\nCourse of Treatment:\nCompleted physical therapy from 05/22/2026 to 07/10/2026 (7 weeks) with no lasting benefit, and failed ibuprofen 600 mg TID.\n\nInterventions Provided:\nTherapeutic exercises, manual therapy techniques, and patient education were administered throughout the treatment period.\n\nOutcome:\nDespite adherence to the prescribed therapy regimen, the patient did not experience significant improvement in symptoms or function.\n\nRecommendations:\nFurther medical evaluation is advised to explore alternative management strategies. Continued monitoring and supportive care are recommended.",
+   "source": "llm"
   },
   {
    "slot": "radiology",
    "date": "2026-08-20",
    "title": "Radiology Report",
    "author": "Radiologist",
-   "text": "Radiology Report\nDate: 08/20/2026\nPatient: Cecil Jacobs, 84-year-old male\nAuthor: Radiologist\n\nMRI lumbar spine 08/20/2026: L3-L4 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\n",
-   "source": "template"
+   "text": "Radiology Report\nDate: 08/20/2026\nPatient: Cecil Jacobs, 84-year-old male\n\nExamination: MRI Lumbar Spine\n\nFindings:\nMRI lumbar spine 08/20/2026: L3-L4 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.\n\nImpression:\nThere is a herniated disc at the L3-L4 level causing moderate narrowing of the left neural foramen and impinging on the exiting nerve root. No other significant abnormalities are noted in the lumbar spine.\n\nRecommendations:\nClinical correlation is advised to assess symptoms related to the L3-L4 nerve root involvement. Further management should be guided by the referring physician.",
+   "source": "llm"
   },
   {
    "slot": "consult",
    "date": "2026-09-04",
    "title": "Pain Management Consultation",
    "author": "Pain medicine physician",
-   "text": "Pain Management Consultation\nDate: 09/04/2026\nPatient: Cecil Jacobs, 84-year-old male\nAuthor: Pain medicine physician\n\nEpidural steroid injection history: 1 lumbar injection in the past 12 months (05/21/2026).\nNo red flags: afebrile, no unexplained weight loss, no history of malignancy, no saddle anesthesia.\nContinues the daily home exercise program taught in PT.\nSymptoms began on 05/10/2026, 17 weeks before this visit.\nBaseline ODI prior to any intervention: 40%.\nFunction: unable to stand long enough to cook a meal, has stopped driving because of the pain.\nAssessment: left lumbar radiculopathy at L3-L4 due to disc herniation with foraminal stenosis.\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\n",
-   "source": "template"
+   "text": "Pain Management Consultation\nDate: 09/04/2026\nPatient: Cecil Jacobs, 84-year-old male\n\nSubjective:\nMr. Jacobs reports persistent left-sided lower back pain radiating to the anterior thigh. Symptoms began on 05/10/2026, 17 weeks before this visit. He describes the pain as sharp and limiting his daily activities.\n\nObjective:\nPhysical examination reveals decreased sensation in the left L3 dermatome and mild weakness in left quadriceps strength. Reflexes are diminished at the left patellar tendon. No signs of infection or systemic illness.\n\nAssessment:\nAssessment: left lumbar radiculopathy at L3-L4 due to disc herniation with foraminal stenosis.\n\nPlan:\nDiscussed conservative management options including continuation of physical therapy. Continues the daily home exercise program taught in PT. Epidural steroid injection history: 1 lumbar injection in the past 12 months (05/21/2026). No red flags: afebrile, no unexplained weight loss, no history of malignancy, no saddle anesthesia.\n\nFunction:\nFunction: unable to stand long enough to cook a meal, has stopped driving because of the pain.\n\nBaseline ODI prior to any intervention: 40%.\n\nWe will monitor progress and consider further interventional treatments if symptoms persist or worsen.",
+   "source": "llm"
   }
  ]
 }

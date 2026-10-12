@@ -119,32 +119,32 @@
    "date": "2026-08-13",
    "title": "Primary Care Progress Note",
    "author": "Primary care physician",
-   "text": "Primary Care Progress Note\nDate: 08/13/2026\nPatient: Shaunna McClure, 67-year-old female\nAuthor: Primary care physician\n\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
-   "source": "template"
+   "text": "Primary Care Progress Note\nDate: 08/13/2026\nPatient: Shaunna McClure, 67-year-old female\n\nSubjective:\nMs. McClure presents for routine follow-up. She reports no new complaints today and feels generally well.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no abnormalities. Cardiovascular, respiratory, abdominal, and neurological exams are unremarkable.\n\nAssessment:\nMs. McClure is a 67-year-old female in stable condition with no acute issues at this time.\n\nPlan:\nContinue current management and routine health maintenance. Encourage regular exercise and balanced diet. Follow up in 6 months or sooner if any new concerns arise.",
+   "source": "llm"
   },
   {
    "slot": "pt",
    "date": "2026-09-17",
    "title": "Physical Therapy Discharge Summary",
    "author": "Physical therapist",
-   "text": "Physical Therapy Discharge Summary\nDate: 09/17/2026\nPatient: Shaunna McClure, 67-year-old female\nAuthor: Physical therapist\n\nCompleted physical therapy from 07/30/2026 to 09/17/2026 (7 weeks) with no lasting benefit, and failed ibuprofen 600 mg TID.\nTreatment included manual therapy, core stabilization and gait training.\nPatient attended sessions as scheduled.\nGoals reviewed with patient.\n",
-   "source": "template"
+   "text": "Physical Therapy Discharge Summary\nDate: 09/17/2026\nPatient: Shaunna McClure, 67-year-old female\n\nReason for Referral:\nPatient was referred for physical therapy to address ongoing symptoms.\n\nCourse of Treatment:\nCompleted physical therapy from 07/30/2026 to 09/17/2026 (7 weeks) with no lasting benefit, and failed ibuprofen 600 mg TID.\n\nSummary:\nDespite adherence to the prescribed physical therapy regimen, the patient did not experience sustained improvement in her condition. The use of ibuprofen at 600 mg three times daily was also ineffective in providing relief.\n\nRecommendations:\nFurther evaluation by the referring physician is advised to consider alternative management strategies. Continued monitoring and supportive care are recommended.\n\nPhysical Therapist: [Name], PT",
+   "source": "llm"
   },
   {
    "slot": "radiology",
    "date": "2026-09-10",
    "title": "Radiology Report",
    "author": "Radiologist",
-   "text": "Radiology Report\nDate: 09/10/2026\nPatient: Shaunna McClure, 67-year-old female\nAuthor: Radiologist\n\nCT lumbar spine 09/10/2026: L4-L5 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\n",
-   "source": "template"
+   "text": "Radiology Report\nDate: 09/10/2026\nPatient: Shaunna McClure, 67-year-old female\n\nExamination: CT Lumbar Spine\n\nFindings:\nCT lumbar spine 09/10/2026: L4-L5 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.\n\nNo other significant abnormalities are noted in the visualized lumbar vertebrae and surrounding soft tissues.\n\nImpression:\nL4-L5 disc herniation causing moderate left foraminal stenosis with contact on the exiting nerve root. This finding may correlate with clinical symptoms if present.\n\nRecommendations:\nClinical correlation is advised. Further evaluation or management should be guided by the referring physician based on the patient's symptoms and clinical presentation.",
+   "source": "llm"
   },
   {
    "slot": "consult",
    "date": "2026-09-20",
    "title": "Pain Management Consultation",
    "author": "Pain medicine physician",
-   "text": "Pain Management Consultation\nDate: 09/20/2026\nPatient: Shaunna McClure, 67-year-old female\nAuthor: Pain medicine physician\n\nEpidural steroid injection history: 2 lumbar injections in the past 12 months (11/28/2025, 01/23/2026).\nDenies fever, chills, weight loss, or bowel or bladder changes; no history of cancer.\nContinues the daily home exercise program taught in PT.\nSymptoms began on 08/04/2026, 7 weeks before this visit.\nODI at baseline today: 38%.\nFunction: unable to stand long enough to cook a meal, has stopped driving because of the pain.\nImpression: left-sided lumbar radiculopathy secondary to L4-L5 disc herniation causing foraminal stenosis.\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\n",
-   "source": "template"
+   "text": "Pain Management Consultation\nDate: 09/20/2026\nPatient: Shaunna McClure, 67-year-old female\n\nHistory of Present Illness:\nSymptoms began on 08/04/2026, 7 weeks before this visit. The patient reports persistent left-sided lumbar radicular pain.\n\nReview of Systems:\nDenies fever, chills, weight loss, or bowel or bladder changes; no history of cancer.\n\nPhysical Examination:\nNeurological exam reveals decreased sensation in the left L4-L5 dermatome with mild weakness in left ankle dorsiflexion.\n\nImpression:\nImpression: left-sided lumbar radiculopathy secondary to L4-L5 disc herniation causing foraminal stenosis.\n\nFunction:\nFunction: unable to stand long enough to cook a meal, has stopped driving because of the pain.\n\nTreatment History:\nEpidural steroid injection history: 2 lumbar injections in the past 12 months (11/28/2025, 01/23/2026).\n\nCurrent Management:\nContinues the daily home exercise program taught in PT.\n\nAssessment:\nODI at baseline today: 38%.\n\nPlan:\nContinue conservative management with physical therapy and home exercises. Consider repeat epidural steroid injection if symptoms persist or worsen. Monitor functional status and pain levels closely.",
+   "source": "llm"
   }
  ]
 }

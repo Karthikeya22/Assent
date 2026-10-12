@@ -116,24 +116,24 @@
    "date": "2026-07-04",
    "title": "Primary Care Progress Note",
    "author": "Primary care physician",
-   "text": "Primary Care Progress Note\nDate: 07/04/2026\nPatient: Joannie Kiehn, 74-year-old female\nAuthor: Primary care physician\n\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
-   "source": "template"
+   "text": "Primary Care Progress Note\nDate: 07/04/2026\nPatient: Joannie Kiehn, 74-year-old female\n\nSubjective:\nMs. Kiehn presents today for routine follow-up. She reports feeling generally well with no new complaints. There are no issues related to her musculoskeletal system or neurological symptoms at this time.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no abnormalities. Cardiovascular, respiratory, abdominal, and neurological exams are unremarkable.\n\nAssessment:\nMs. Kiehn is a 74-year-old female in stable condition. No new concerns noted.\n\nPlan:\nContinue current management and routine monitoring. Encourage healthy lifestyle and regular exercise. Follow up in 6 months or sooner if any new symptoms arise.",
+   "source": "llm"
   },
   {
    "slot": "pt",
    "date": "2026-08-10",
    "title": "Physical Therapy Discharge Summary",
    "author": "Physical therapist",
-   "text": "Physical Therapy Discharge Summary\nDate: 08/10/2026\nPatient: Joannie Kiehn, 74-year-old female\nAuthor: Physical therapist\n\nCompleted physical therapy from 07/06/2026 to 08/10/2026 (5 weeks) with no lasting benefit, and failed ibuprofen 600 mg TID.\nTreatment included manual therapy, core stabilization and gait training.\nPatient attended sessions as scheduled.\nGoals reviewed with patient.\n",
-   "source": "template"
+   "text": "Physical Therapy Discharge Summary\nDate: 08/10/2026\nPatient: Joannie Kiehn, 74-year-old female\n\nReason for Referral:\nPatient was referred for physical therapy to address ongoing musculoskeletal complaints.\n\nCourse of Treatment:\nCompleted physical therapy from 07/06/2026 to 08/10/2026 (5 weeks) with no lasting benefit, and failed ibuprofen 600 mg TID.\n\nInterventions Provided:\nTherapeutic exercises, manual therapy, and patient education were administered during the treatment period.\n\nOutcome:\nDespite adherence to the prescribed therapy regimen, the patient did not experience significant improvement in symptoms or function.\n\nRecommendations:\nFurther medical evaluation is advised to explore alternative management options given the lack of response to physical therapy and NSAID treatment.\n\nPhysical Therapist: [Name], PT",
+   "source": "llm"
   },
   {
    "slot": "radiology",
    "date": "2026-09-08",
    "title": "Radiology Report",
    "author": "Radiologist",
-   "text": "Radiology Report\nDate: 09/08/2026\nPatient: Joannie Kiehn, 74-year-old female\nAuthor: Radiologist\n\nMRI cervical spine 09/08/2026: C5-C6 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\n",
-   "source": "template"
+   "text": "Radiology Report\nDate: 09/08/2026\nPatient: Joannie Kiehn, 74-year-old female\n\nExamination: MRI Cervical Spine\n\nFindings:\nMRI cervical spine 09/08/2026: C5-C6 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.\n\nNo other significant abnormalities are noted in the cervical spine.\n\nImpression:\nThere is a disc herniation at the C5-C6 level causing moderate right foraminal stenosis with contact on the exiting nerve root. This finding may correlate with clinical symptoms.\n\nRecommendations:\nClinical correlation is advised. Further evaluation by the referring physician is recommended for appropriate management.",
+   "source": "llm"
   },
   {
    "slot": "consult",

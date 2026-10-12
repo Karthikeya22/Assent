@@ -126,16 +126,16 @@
    "date": "2026-08-26",
    "title": "Radiology Report",
    "author": "Radiologist",
-   "text": "Radiology Report\nDate: 08/26/2026\nPatient: Cary Hintz, 68-year-old male\nAuthor: Radiologist\n\nMRI thoracolumbar spine 08/26/2026: no compressive lesion; enhancement of the left L1 nerve root consistent with zoster radiculitis.\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\n",
-   "source": "template"
+   "text": "Radiology Report\nDate: 08/26/2026\nPatient: Cary Hintz, 68-year-old male\n\nExamination: MRI thoracolumbar spine\n\nFindings:\nMRI thoracolumbar spine 08/26/2026: no compressive lesion; enhancement of the left L1 nerve root consistent with zoster radiculitis.\n\nImpression:\nNo compressive lesions identified. The enhancement of the left L1 nerve root suggests zoster radiculitis.\n\nRecommendations:\nClinical correlation is advised to guide further management.",
+   "source": "llm"
   },
   {
    "slot": "consult",
    "date": "2026-09-16",
    "title": "Pain Management Consultation",
    "author": "Pain medicine physician",
-   "text": "Pain Management Consultation\nDate: 09/16/2026\nPatient: Cary Hintz, 68-year-old male\nAuthor: Pain medicine physician\n\nEpidural steroid injection history: 1 lumbar injection in the past 12 months (02/27/2026).\nDenies fever, chills, weight loss, or bowel or bladder changes; no history of cancer.\nRemains engaged in a home exercise program five days a week.\nPain persists despite valacyclovir and gabapentin titrated to 900 mg daily; refractory to conservative management.\nReports low back pain radiating to the left leg for 3 weeks.\nBaseline VAS prior to any intervention: 63 mm.\nFunction: unable to stand long enough to cook a meal, has stopped driving because of the pain.\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\n",
-   "source": "template"
+   "text": "Pain Management Consultation\nDate: 09/16/2026\nPatient: Cary Hintz, 68-year-old male\n\nHistory of Present Illness:\nReports low back pain radiating to the left leg for 3 weeks. Pain persists despite valacyclovir and gabapentin titrated to 900 mg daily; refractory to conservative management.\n\nFunctional Status:\nFunction: unable to stand long enough to cook a meal, has stopped driving because of the pain.\n\nPain Assessment:\nBaseline VAS prior to any intervention: 63 mm.\n\nTreatment History:\nEpidural steroid injection history: 1 lumbar injection in the past 12 months (02/27/2026).\n\nCurrent Management:\nRemains engaged in a home exercise program five days a week.\n\nReview of Systems:\nDenies fever, chills, weight loss, or bowel or bladder changes; no history of cancer.\n\nPlan:\nContinue monitoring pain and functional status. Consider further interventional options if pain persists or worsens. Maintain home exercise program and reassess in follow-up.",
+   "source": "llm"
   }
  ]
 }

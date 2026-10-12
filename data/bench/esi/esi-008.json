@@ -124,16 +124,16 @@
    "date": "2026-09-03",
    "title": "Radiology Report",
    "author": "Radiologist",
-   "text": "Radiology Report\nDate: 09/03/2026\nPatient: Janyce Wintheiser, 71-year-old female\nAuthor: Radiologist\n\nMRI thoracolumbar spine 09/03/2026: no compressive lesion; enhancement of the left L1 nerve root consistent with zoster radiculitis.\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\n",
-   "source": "template"
+   "text": "Radiology Report\nDate: 09/03/2026\nPatient: Janyce Wintheiser, 71-year-old female\n\nExamination: MRI thoracolumbar spine\n\nFindings:\nMRI thoracolumbar spine 09/03/2026: no compressive lesion; enhancement of the left L1 nerve root consistent with zoster radiculitis.\n\nImpression:\nNo evidence of compressive lesions in the thoracolumbar spine. The enhancement of the left L1 nerve root is consistent with zoster radiculitis.\n\nRecommendations:\nClinical correlation is advised to guide further management.",
+   "source": "llm"
   },
   {
    "slot": "consult",
    "date": "2026-09-28",
    "title": "Pain Management Consultation",
    "author": "Pain medicine physician",
-   "text": "Pain Management Consultation\nDate: 09/28/2026\nPatient: Janyce Wintheiser, 71-year-old female\nAuthor: Pain medicine physician\n\nNo prior epidural steroid injections.\nNo red flags: afebrile, no unexplained weight loss, no history of malignancy, no saddle anesthesia.\nRemains engaged in a home exercise program five days a week.\nPain persists despite valacyclovir and gabapentin titrated to 900 mg daily; refractory to conservative management.\nSymptoms began on 09/16/2026, 2 weeks before this visit.\nBaseline VAS prior to any intervention: 73 mm.\nPain limits walking to about one block and has forced the patient to stop volunteering; sleep is disrupted most nights.\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\n",
-   "source": "template"
+   "text": "Pain Management Consultation\nDate: 09/28/2026\nPatient: Janyce Wintheiser, 71-year-old female\n\nChief Complaint:\nPatient presents with persistent pain affecting daily activities.\n\nHistory of Present Illness:\nSymptoms began on 09/16/2026, 2 weeks before this visit. Pain limits walking to about one block and has forced the patient to stop volunteering; sleep is disrupted most nights. Pain persists despite valacyclovir and gabapentin titrated to 900 mg daily; refractory to conservative management.\n\nReview of Systems:\nNo red flags: afebrile, no unexplained weight loss, no history of malignancy, no saddle anesthesia.\n\nPhysical Examination:\nGeneral: Patient appears in mild distress due to pain.\nNeurological: No focal deficits noted.\nMusculoskeletal: Tenderness noted in affected areas without deformity.\n\nAssessment:\nChronic pain with significant impact on function and sleep. Baseline VAS prior to any intervention: 73 mm.\n\nPlan:\nContinue current medications. Remains engaged in a home exercise program five days a week. No prior epidural steroid injections. Will consider further interventional options if symptoms persist or worsen. Monitor closely for any new symptoms or red flags.",
+   "source": "llm"
   }
  ]
 }

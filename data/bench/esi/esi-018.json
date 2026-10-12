@@ -119,24 +119,24 @@
    "date": "2026-04-22",
    "title": "Primary Care Progress Note",
    "author": "Primary care physician",
-   "text": "Primary Care Progress Note\nDate: 04/22/2026\nPatient: Taylor Kunde, 71-year-old male\nAuthor: Primary care physician\n\nPast surgical history: no prior spine surgery.\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
-   "source": "template"
+   "text": "Primary Care Progress Note\nDate: 04/22/2026\nPatient: Taylor Kunde, 71-year-old male\n\nSubjective:\nMr. Kunde presents for routine follow-up. He reports general well-being with no new complaints. No issues with mobility or daily activities were noted.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no abnormalities. Neurological exam is intact.\n\nAssessment:\nThe patient is stable with no acute concerns. Past surgical history: no prior spine surgery.\n\nPlan:\nContinue current management. Routine monitoring and follow-up in 6 months or sooner if new symptoms arise.",
+   "source": "llm"
   },
   {
    "slot": "pt",
    "date": "2026-06-08",
    "title": "Physical Therapy Discharge Summary",
    "author": "Physical therapist",
-   "text": "Physical Therapy Discharge Summary\nDate: 06/08/2026\nPatient: Taylor Kunde, 71-year-old male\nAuthor: Physical therapist\n\nPT discharge summary: completed 7 weeks of physical therapy (04/20/2026 to 06/08/2026) without meaningful improvement; meloxicam 15 mg daily for the same period without relief.\nTreatment included manual therapy, core stabilization and gait training.\nPatient attended sessions as scheduled.\nGoals reviewed with patient.\n",
-   "source": "template"
+   "text": "Physical Therapy Discharge Summary\nDate: 06/08/2026\nPatient: Taylor Kunde, 71-year-old male\n\nReason for Referral:\nPatient was referred for physical therapy to address ongoing musculoskeletal complaints.\n\nCourse of Treatment:\nPT discharge summary: completed 7 weeks of physical therapy (04/20/2026 to 06/08/2026) without meaningful improvement; meloxicam 15 mg daily for the same period without relief.\n\nInterventions Provided:\nTherapeutic exercises, manual therapy techniques, and patient education were administered throughout the treatment period.\n\nOutcome:\nDespite adherence to the prescribed physical therapy regimen and medication, the patient did not experience significant symptom relief or functional gains.\n\nRecommendations:\nFurther evaluation by the referring physician is advised to consider alternative management strategies or diagnostic assessments.\n\nTherapist:\n[Physical Therapist's Name]\nPhysical Therapist\n[Facility Name]",
+   "source": "llm"
   },
   {
    "slot": "radiology",
    "date": "2026-07-30",
    "title": "Radiology Report",
    "author": "Radiologist",
-   "text": "Radiology Report\nDate: 07/30/2026\nPatient: Taylor Kunde, 71-year-old male\nAuthor: Radiologist\n\nMRI lumbar spine 07/30/2026: L4-L5 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\n",
-   "source": "template"
+   "text": "Radiology Report\nDate: 07/30/2026\nPatient: Taylor Kunde, 71-year-old male\n\nExamination: MRI Lumbar Spine\n\nFindings:\nMRI lumbar spine 07/30/2026: L4-L5 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.\n\nNo other significant abnormalities are noted in the lumbar spine.\n\nImpression:\nThere is a disc herniation at L4-L5 causing moderate left foraminal stenosis with contact on the exiting nerve root. This finding may correlate with clinical symptoms.\n\nRecommendations:\nClinical correlation is advised. Further evaluation or treatment should be based on the patient's symptoms and clinical findings.",
+   "source": "llm"
   },
   {
    "slot": "consult",

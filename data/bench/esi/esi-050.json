@@ -118,24 +118,24 @@
    "date": "2026-07-24",
    "title": "Primary Care Progress Note",
    "author": "Primary care physician",
-   "text": "Primary Care Progress Note\nDate: 07/24/2026\nPatient: Ricki Gottlieb, 77-year-old female\nAuthor: Primary care physician\n\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
-   "source": "template"
+   "text": "Primary Care Progress Note\nDate: 07/24/2026\nPatient: Ricki Gottlieb, 77-year-old female\n\nSubjective:\nMs. Gottlieb presents for her routine follow-up visit. She reports feeling generally well with no new complaints. She denies any recent changes in her health status.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no abnormalities. Cardiovascular, respiratory, and abdominal exams are unremarkable.\n\nAssessment:\nMs. Gottlieb is a 77-year-old female in stable condition. No acute issues identified at this time.\n\nPlan:\nContinue current management and routine monitoring. Encourage healthy lifestyle habits and regular follow-up visits.\n\nNo additional interventions are required at this visit.",
+   "source": "llm"
   },
   {
    "slot": "pt",
    "date": "2026-08-31",
    "title": "Physical Therapy Discharge Summary",
    "author": "Physical therapist",
-   "text": "Physical Therapy Discharge Summary\nDate: 08/31/2026\nPatient: Ricki Gottlieb, 77-year-old female\nAuthor: Physical therapist\n\nCompleted physical therapy from 07/27/2026 to 08/31/2026 (5 weeks) with no lasting benefit, and failed naproxen 500 mg BID.\nTreatment included manual therapy, core stabilization and gait training.\nPatient attended sessions as scheduled.\nGoals reviewed with patient.\n",
-   "source": "template"
+   "text": "Physical Therapy Discharge Summary\nDate: 08/31/2026\nPatient: Ricki Gottlieb, 77-year-old female\n\nReason for Referral:\nRicki Gottlieb was referred for physical therapy to address her ongoing musculoskeletal complaints.\n\nCourse of Treatment:\nCompleted physical therapy from 07/27/2026 to 08/31/2026 (5 weeks) with no lasting benefit, and failed naproxen 500 mg BID.\n\nInterventions:\nTherapy included a combination of manual therapy, therapeutic exercises, and patient education aimed at improving mobility and function.\n\nOutcome:\nDespite adherence to the prescribed therapy regimen, the patient did not experience significant improvement in symptoms or functional status.\n\nRecommendations:\nFurther evaluation by the referring physician is advised to explore alternative management strategies.",
+   "source": "llm"
   },
   {
    "slot": "radiology",
    "date": "2026-09-10",
    "title": "Radiology Report",
    "author": "Radiologist",
-   "text": "Radiology Report\nDate: 09/10/2026\nPatient: Ricki Gottlieb, 77-year-old female\nAuthor: Radiologist\n\nMRI lumbar spine 09/10/2026: L4-L5 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\n",
-   "source": "template"
+   "text": "Radiology Report\nDate: 09/10/2026\nPatient: Ricki Gottlieb, 77-year-old female\n\nExamination: MRI Lumbar Spine\n\nFindings:\nMRI lumbar spine 09/10/2026: L4-L5 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.\n\nNo other significant abnormalities are noted in the lumbar spine.\n\nImpression:\nL4-L5 disc herniation causing moderate right foraminal stenosis with contact on the exiting nerve root.\n\nRecommendations:\nClinical correlation is advised to assess for symptoms related to the findings. Further management should be guided by the referring physician.",
+   "source": "llm"
   },
   {
    "slot": "consult",

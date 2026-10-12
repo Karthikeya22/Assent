@@ -111,16 +111,16 @@
    "date": "2026-06-23",
    "title": "Primary Care Progress Note",
    "author": "Primary care physician",
-   "text": "Primary Care Progress Note\nDate: 06/23/2026\nPatient: Natalie Boehm, 83-year-old female\nAuthor: Primary care physician\n\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
-   "source": "template"
+   "text": "Primary Care Progress Note\nDate: 06/23/2026\nPatient: Natalie Boehm, 83-year-old female\n\nSubjective:\nMs. Boehm presents for her routine follow-up visit. She reports feeling generally well with no new complaints today. She denies any recent changes in her health status.\n\nObjective:\nVital signs are within normal limits. Physical examination reveals no abnormalities. Cardiovascular, respiratory, abdominal, and neurological exams are unremarkable.\n\nAssessment:\nMs. Boehm is an elderly female in stable condition. No acute issues identified at this time.\n\nPlan:\nContinue current management and routine monitoring. Encourage regular physical activity and balanced nutrition. Follow up in 6 months or sooner if any new symptoms arise.\n\nNo additional interventions are necessary at this visit.",
+   "source": "llm"
   },
   {
    "slot": "pt",
    "date": "2026-07-26",
    "title": "Physical Therapy Discharge Summary",
    "author": "Physical therapist",
-   "text": "Physical Therapy Discharge Summary\nDate: 07/26/2026\nPatient: Natalie Boehm, 83-year-old female\nAuthor: Physical therapist\n\nCompleted physical therapy from 06/28/2026 to 07/26/2026 (4 weeks) with no lasting benefit, and failed meloxicam 15 mg daily.\nTreatment included manual therapy, core stabilization and gait training.\nPatient attended sessions as scheduled.\nGoals reviewed with patient.\n",
-   "source": "template"
+   "text": "Physical Therapy Discharge Summary\nDate: 07/26/2026\nPatient: Natalie Boehm, 83-year-old female\n\nReason for Referral:\nPatient was referred for physical therapy to address ongoing musculoskeletal complaints.\n\nTherapy Course:\nCompleted physical therapy from 06/28/2026 to 07/26/2026 (4 weeks) with no lasting benefit, and failed meloxicam 15 mg daily.\n\nInterventions Provided:\nTherapy included a combination of therapeutic exercises, manual therapy techniques, and patient education focused on improving mobility and function.\n\nOutcome:\nDespite adherence to the therapy program and medication regimen, the patient did not experience significant improvement in symptoms.\n\nRecommendations:\nFurther evaluation by the primary care provider or specialist is advised to explore alternative management options.\n\nTherapist:\n[Physical Therapist's Name]\nPhysical Therapist",
+   "source": "llm"
   },
   {
    "slot": "consult",

@@ -109,16 +109,16 @@
    "date": "2026-05-10",
    "title": "Primary Care Progress Note",
    "author": "Primary care physician",
-   "text": "Primary Care Progress Note\nDate: 05/10/2026\nPatient: Kazuko Howe, 83-year-old female\nAuthor: Primary care physician\n\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
-   "source": "template"
+   "text": "Primary Care Progress Note\nDate: 05/10/2026\nPatient: Kazuko Howe, 83-year-old female\n\nSubjective:\nMs. Howe presents for her routine follow-up visit. She reports generally feeling well with no new complaints today. She denies any recent changes in her health status.\n\nObjective:\nVital signs are within normal limits. Physical examination reveals no abnormalities. Cardiovascular, respiratory, and abdominal exams are unremarkable. Neurological exam shows intact cranial nerves and normal motor and sensory function.\n\nAssessment:\nMs. Howe remains stable with no acute issues identified during this visit.\n\nPlan:\nContinue current management and routine monitoring. Encourage maintaining a healthy lifestyle and adherence to prescribed medications. Follow up as scheduled or sooner if any new symptoms arise.",
+   "source": "llm"
   },
   {
    "slot": "pt",
    "date": "2026-06-16",
    "title": "Physical Therapy Discharge Summary",
    "author": "Physical therapist",
-   "text": "Physical Therapy Discharge Summary\nDate: 06/16/2026\nPatient: Kazuko Howe, 83-year-old female\nAuthor: Physical therapist\n\nPT discharge summary: completed 5 weeks of physical therapy (05/12/2026 to 06/16/2026) without meaningful improvement; ibuprofen 600 mg TID for the same period without relief.\nTreatment included manual therapy, core stabilization and gait training.\nPatient attended sessions as scheduled.\nGoals reviewed with patient.\n",
-   "source": "template"
+   "text": "Physical Therapy Discharge Summary\nDate: 06/16/2026\nPatient: Kazuko Howe, 83-year-old female\n\nReason for Referral:\nPatient was referred for physical therapy to address ongoing symptoms.\n\nTreatment Course:\nPT discharge summary: completed 5 weeks of physical therapy (05/12/2026 to 06/16/2026) without meaningful improvement; ibuprofen 600 mg TID for the same period without relief.\n\nInterventions Provided:\nTherapeutic exercises and manual therapy techniques were applied during sessions.\n\nOutcome:\nDespite adherence to the prescribed therapy regimen and medication, the patient did not experience significant symptom relief.\n\nRecommendations:\nFurther evaluation by the referring physician is advised to consider alternative management strategies.\n\nTherapist:\n[Physical Therapist's Name], PT",
+   "source": "llm"
   },
   {
    "slot": "consult",

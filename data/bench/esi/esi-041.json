@@ -125,24 +125,24 @@
    "date": "2026-04-11",
    "title": "Primary Care Progress Note",
    "author": "Primary care physician",
-   "text": "Primary Care Progress Note\nDate: 04/11/2026\nPatient: Valery Erdman, 88-year-old female\nAuthor: Primary care physician\n\nPast surgical history: no prior spine surgery.\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
-   "source": "template"
+   "text": "Primary Care Progress Note\nDate: 04/11/2026\nPatient: Valery Erdman, 88-year-old female\n\nSubjective:\nMs. Erdman presents for routine follow-up. She reports no new complaints today and feels generally well. No issues with mobility or daily activities were noted.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no abnormalities. Neurological exam is intact with normal strength and sensation.\n\nAssessment:\nThe patient remains stable with no new concerns. Past surgical history: no prior spine surgery.\n\nPlan:\nContinue current management and routine monitoring. Encourage regular physical activity and balanced nutrition. Follow-up in 6 months or sooner if new symptoms arise.",
+   "source": "llm"
   },
   {
    "slot": "pt",
    "date": "2026-05-14",
    "title": "Physical Therapy Discharge Summary",
    "author": "Physical therapist",
-   "text": "Physical Therapy Discharge Summary\nDate: 05/14/2026\nPatient: Valery Erdman, 88-year-old female\nAuthor: Physical therapist\n\nCompleted physical therapy from 04/09/2026 to 05/14/2026 (5 weeks) with no lasting benefit, and failed ibuprofen 600 mg TID.\nTreatment included manual therapy, core stabilization and gait training.\nPatient attended sessions as scheduled.\nGoals reviewed with patient.\n",
-   "source": "template"
+   "text": "Physical Therapy Discharge Summary\nDate: 05/14/2026\nPatient: Valery Erdman, 88-year-old female\n\nReason for Referral:\nPatient was referred for physical therapy to address ongoing symptoms.\n\nCourse of Treatment:\nCompleted physical therapy from 04/09/2026 to 05/14/2026 (5 weeks) with no lasting benefit, and failed ibuprofen 600 mg TID.\n\nSummary:\nDespite adherence to the prescribed physical therapy regimen and medication, the patient did not experience improvement in her condition. Further evaluation and alternative management strategies are recommended.\n\nRecommendations:\nConsider referral to a specialist for additional assessment and treatment options. Continue monitoring and supportive care as needed.\n\nPhysical Therapist: [Name], PT",
+   "source": "llm"
   },
   {
    "slot": "radiology",
    "date": "2026-08-22",
    "title": "Radiology Report",
    "author": "Radiologist",
-   "text": "Radiology Report\nDate: 08/22/2026\nPatient: Valery Erdman, 88-year-old female\nAuthor: Radiologist\n\nCT lumbar spine 08/22/2026: L3-L4 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\n",
-   "source": "template"
+   "text": "Radiology Report\nDate: 08/22/2026\nPatient: Valery Erdman, 88-year-old female\n\nExamination: CT Lumbar Spine\n\nFindings:\nCT lumbar spine 08/22/2026: L3-L4 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.\n\nNo other significant abnormalities are noted in the lumbar spine.\n\nImpression:\nL3-L4 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root, which may correlate with clinical symptoms.\n\nRecommendations:\nClinical correlation is advised. Further evaluation or management should be guided by the referring physician based on the patient's symptoms and clinical findings.",
+   "source": "llm"
   },
   {
    "slot": "consult",

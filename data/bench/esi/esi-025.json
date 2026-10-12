@@ -118,32 +118,32 @@
    "date": "2026-05-29",
    "title": "Primary Care Progress Note",
    "author": "Primary care physician",
-   "text": "Primary Care Progress Note\nDate: 05/29/2026\nPatient: Lean Stanton, 65-year-old female\nAuthor: Primary care physician\n\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
-   "source": "template"
+   "text": "Primary Care Progress Note\nDate: 05/29/2026\nPatient: Lean Stanton, 65-year-old female\n\nSubjective:\nThe patient presents for routine follow-up. She reports no new complaints today and feels generally well.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no abnormalities. Cardiovascular, respiratory, abdominal, and neurological exams are unremarkable.\n\nAssessment:\nLean Stanton is a 65-year-old female in stable condition with no acute issues at this time.\n\nPlan:\nContinue current management and routine health maintenance. Recommend annual screening and vaccinations as appropriate. Patient advised to report any new symptoms promptly.\n\nFollow-up in 6 months or sooner if needed.",
+   "source": "llm"
   },
   {
    "slot": "pt",
    "date": "2026-07-07",
    "title": "Physical Therapy Discharge Summary",
    "author": "Physical therapist",
-   "text": "Physical Therapy Discharge Summary\nDate: 07/07/2026\nPatient: Lean Stanton, 65-year-old female\nAuthor: Physical therapist\n\nPT discharge summary: completed 5 weeks of physical therapy (06/02/2026 to 07/07/2026) without meaningful improvement; meloxicam 15 mg daily for the same period without relief.\nTreatment included manual therapy, core stabilization and gait training.\nPatient attended sessions as scheduled.\nGoals reviewed with patient.\n",
-   "source": "template"
+   "text": "Physical Therapy Discharge Summary\nDate: 07/07/2026\nPatient: Lean Stanton, 65-year-old female\n\nReason for Referral:\nPatient was referred for physical therapy to address ongoing musculoskeletal complaints.\n\nTherapy Course:\nPT discharge summary: completed 5 weeks of physical therapy (06/02/2026 to 07/07/2026) without meaningful improvement; meloxicam 15 mg daily for the same period without relief.\n\nInterventions Provided:\nThe therapy program included a combination of therapeutic exercises, manual therapy techniques, and patient education aimed at improving mobility and function.\n\nOutcome:\nDespite adherence to the prescribed therapy regimen and medication, the patient did not experience significant symptom relief or functional gains.\n\nRecommendations:\nFurther evaluation and alternative management strategies should be considered to address the patient's ongoing symptoms.\n\nPhysical Therapist: [Name], PT",
+   "source": "llm"
   },
   {
    "slot": "radiology",
    "date": "2026-08-18",
    "title": "Radiology Report",
    "author": "Radiologist",
-   "text": "Radiology Report\nDate: 08/18/2026\nPatient: Lean Stanton, 65-year-old female\nAuthor: Radiologist\n\nMRI lumbar spine 08/18/2026: L5-S1 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\n",
-   "source": "template"
+   "text": "Radiology Report\nDate: 08/18/2026\nPatient: Lean Stanton, 65-year-old female\n\nExamination: MRI Lumbar Spine\n\nFindings:\nMRI lumbar spine 08/18/2026: L5-S1 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.\n\nImpression:\nThere is a herniated disc at the L5-S1 level causing moderate right foraminal stenosis and contact with the exiting nerve root. No other significant abnormalities are noted in the lumbar spine.\n\nRecommendations:\nClinical correlation is advised to assess for symptoms related to nerve root involvement. Further management should be guided by the referring physician based on clinical findings.",
+   "source": "llm"
   },
   {
    "slot": "consult",
    "date": "2026-09-14",
    "title": "Pain Management Consultation",
    "author": "Pain medicine physician",
-   "text": "Pain Management Consultation\nDate: 09/14/2026\nPatient: Lean Stanton, 65-year-old female\nAuthor: Pain medicine physician\n\nEpidural steroid injection history: 1 lumbar injection in the past 12 months (05/24/2026).\nDenies fever, chills, weight loss, or bowel or bladder changes; no history of cancer.\nContinues the daily home exercise program taught in PT.\nSymptoms began on 05/20/2026, 17 weeks before this visit.\nVAS at baseline today: 89 mm.\nPain limits walking to about one block and has forced the patient to stop volunteering; sleep is disrupted most nights.\nAssessment: right lumbar radiculopathy at L5-S1 due to disc herniation with foraminal stenosis.\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\n",
-   "source": "template"
+   "text": "Pain Management Consultation Note\nDate: 09/14/2026\nPatient: Lean Stanton, 65-year-old female\n\nChief Complaint:\nRight-sided lower back and leg pain.\n\nHistory of Present Illness:\nSymptoms began on 05/20/2026, 17 weeks before this visit. Pain limits walking to about one block and has forced the patient to stop volunteering; sleep is disrupted most nights.\n\nPast Medical History:\nDenies fever, chills, weight loss, or bowel or bladder changes; no history of cancer.\n\nMedications:\nContinues the daily home exercise program taught in PT.\n\nProcedures:\nEpidural steroid injection history: 1 lumbar injection in the past 12 months (05/24/2026).\n\nPhysical Examination:\nNeurological exam reveals decreased sensation in the right L5 dermatome and mild weakness in right foot dorsiflexion.\n\nAssessment:\nAssessment: right lumbar radiculopathy at L5-S1 due to disc herniation with foraminal stenosis.\n\nPain Assessment:\nVAS at baseline today: 89 mm.\n\nPlan:\nContinue current home exercise program. Consider repeat epidural steroid injection if symptoms persist. Monitor neurological status closely and reassess pain control at follow-up.",
+   "source": "llm"
   }
  ]
 }

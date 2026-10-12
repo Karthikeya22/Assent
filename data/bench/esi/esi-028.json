@@ -119,32 +119,32 @@
    "date": "2026-04-16",
    "title": "Primary Care Progress Note",
    "author": "Primary care physician",
-   "text": "Primary Care Progress Note\nDate: 04/16/2026\nPatient: Lance Morar, 72-year-old male\nAuthor: Primary care physician\n\nPast surgical history: no prior spine surgery.\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
-   "source": "template"
+   "text": "Primary Care Progress Note\nDate: 04/16/2026\nPatient: Lance Morar, 72-year-old male\n\nSubjective:\nMr. Morar presents today for routine follow-up. He reports general well-being with no new complaints. No issues related to pain or neurological symptoms were mentioned.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no abnormalities. Neurological exam is intact.\n\nAssessment:\nPatient is stable with no new concerns. Past surgical history: no prior spine surgery.\n\nPlan:\nContinue current management and routine monitoring. Encourage healthy lifestyle and regular exercise. Follow-up in 6 months or sooner if any new symptoms arise.",
+   "source": "llm"
   },
   {
    "slot": "pt",
    "date": "2026-05-19",
    "title": "Physical Therapy Discharge Summary",
    "author": "Physical therapist",
-   "text": "Physical Therapy Discharge Summary\nDate: 05/19/2026\nPatient: Lance Morar, 72-year-old male\nAuthor: Physical therapist\n\nCompleted physical therapy from 04/21/2026 to 05/19/2026 (4 weeks) with no lasting benefit, and failed naproxen 500 mg BID.\nTreatment included manual therapy, core stabilization and gait training.\nPatient attended sessions as scheduled.\nGoals reviewed with patient.\n",
-   "source": "template"
+   "text": "Physical Therapy Discharge Summary\nDate: 05/19/2026\nPatient: Lance Morar, 72-year-old male\n\nReason for Referral:\nPatient was referred for physical therapy to address ongoing musculoskeletal complaints.\n\nTreatment Course:\nCompleted physical therapy from 04/21/2026 to 05/19/2026 (4 weeks) with no lasting benefit, and failed naproxen 500 mg BID.\n\nSummary:\nDespite adherence to the prescribed physical therapy regimen and medication, the patient did not experience significant improvement in symptoms. Further evaluation and alternative management strategies may be necessary.\n\nRecommendations:\nConsider referral to a specialist for additional assessment and possible alternative treatments. Continue monitoring and supportive care as appropriate.",
+   "source": "llm"
   },
   {
    "slot": "radiology",
    "date": "2026-09-02",
    "title": "Radiology Report",
    "author": "Radiologist",
-   "text": "Radiology Report\nDate: 09/02/2026\nPatient: Lance Morar, 72-year-old male\nAuthor: Radiologist\n\nMRI cervical spine 09/02/2026: C5-C6 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\n",
-   "source": "template"
+   "text": "Radiology Report\nDate: 09/02/2026\nPatient: Lance Morar, 72-year-old male\n\nExamination: MRI Cervical Spine\n\nFindings:\nMRI cervical spine 09/02/2026: C5-C6 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.\n\nNo other significant abnormalities are noted in the cervical spine.\n\nImpression:\nThere is a disc herniation at the C5-C6 level causing moderate right foraminal stenosis and contact with the exiting nerve root. This may correlate with clinical symptoms.\n\nRecommendations:\nClinical correlation is advised. Further evaluation by the referring physician is recommended for appropriate management.",
+   "source": "llm"
   },
   {
    "slot": "consult",
    "date": "2026-09-13",
    "title": "Pain Management Consultation",
    "author": "Pain medicine physician",
-   "text": "Pain Management Consultation\nDate: 09/13/2026\nPatient: Lance Morar, 72-year-old male\nAuthor: Pain medicine physician\n\nEpidural steroid injection history: 2 cervical injections in the past 12 months (11/12/2025, 01/16/2026).\nContinues the daily home exercise program taught in PT.\nSymptoms began on 04/07/2026, 23 weeks before this visit.\nBaseline NRS prior to any intervention: 8/10.\nPain limits walking to about one block and has forced the patient to stop volunteering; sleep is disrupted most nights.\nImpression: right-sided cervical radiculopathy secondary to C5-C6 disc herniation causing foraminal stenosis.\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\n",
-   "source": "template"
+   "text": "Pain Management Consultation\nDate: 09/13/2026\nPatient: Lance Morar, 72-year-old male\n\nSubjective:\nMr. Morar presents with right-sided neck and arm pain. Symptoms began on 04/07/2026, 23 weeks before this visit. Pain limits walking to about one block and has forced the patient to stop volunteering; sleep is disrupted most nights. Baseline NRS prior to any intervention: 8/10.\n\nPast Interventions:\nEpidural steroid injection history: 2 cervical injections in the past 12 months (11/12/2025, 01/16/2026). Continues the daily home exercise program taught in PT.\n\nAssessment:\nImpression: right-sided cervical radiculopathy secondary to C5-C6 disc herniation causing foraminal stenosis.\n\nPlan:\nDiscussed options including continued conservative management and possible repeat epidural steroid injection. Will monitor symptoms and functional status closely. Patient advised to maintain home exercise program and report any worsening symptoms promptly.",
+   "source": "llm"
   }
  ]
 }

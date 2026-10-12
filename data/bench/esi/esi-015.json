@@ -128,24 +128,24 @@
    "date": "2026-08-06",
    "title": "Primary Care Progress Note",
    "author": "Primary care physician",
-   "text": "Primary Care Progress Note\nDate: 08/06/2026\nPatient: Valentine Altenwerth, 87-year-old male\nAuthor: Primary care physician\n\nPast surgical history: no prior spine surgery.\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
-   "source": "template"
+   "text": "Primary Care Progress Note\nDate: 08/06/2026\nPatient: Valentine Altenwerth, 87-year-old male\n\nSubjective:\nMr. Altenwerth presents for routine follow-up. He reports general well-being with no new complaints today.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no abnormalities. Neurological exam is intact.\n\nAssessment:\nPatient is an 87-year-old male with no acute issues at this time.\n\nPlan:\nContinue current management and routine monitoring. Encourage regular physical activity and balanced nutrition.\n\nPast surgical history: no prior spine surgery.\n\nFollow-up in 6 months or sooner if any concerns arise.",
+   "source": "llm"
   },
   {
    "slot": "pt",
    "date": "2026-09-10",
    "title": "Physical Therapy Discharge Summary",
    "author": "Physical therapist",
-   "text": "Physical Therapy Discharge Summary\nDate: 09/10/2026\nPatient: Valentine Altenwerth, 87-year-old male\nAuthor: Physical therapist\n\nCompleted physical therapy from 08/06/2026 to 09/10/2026 (5 weeks) with no lasting benefit, and failed naproxen 500 mg BID.\nTreatment included manual therapy, core stabilization and gait training.\nPatient attended sessions as scheduled.\nGoals reviewed with patient.\n",
-   "source": "template"
+   "text": "Physical Therapy Discharge Summary\nDate: 09/10/2026\nPatient: Valentine Altenwerth, 87-year-old male\n\nReason for Referral:\nPatient was referred for physical therapy to address ongoing musculoskeletal concerns.\n\nTherapy Course:\nCompleted physical therapy from 08/06/2026 to 09/10/2026 (5 weeks) with no lasting benefit, and failed naproxen 500 mg BID.\n\nInterventions Provided:\nTherapy included a combination of manual therapy, therapeutic exercises, and patient education aimed at improving mobility and function.\n\nOutcome:\nDespite adherence to the prescribed therapy regimen, the patient did not experience significant improvement in symptoms or functional status.\n\nRecommendations:\nFurther evaluation by the primary care provider or specialist is advised to explore alternative management options.\n\nPhysical Therapist:\n[Name], PT\nLicense Number: [Number]",
+   "source": "llm"
   },
   {
    "slot": "radiology",
    "date": "2026-08-13",
    "title": "Radiology Report",
    "author": "Radiologist",
-   "text": "Radiology Report\nDate: 08/13/2026\nPatient: Valentine Altenwerth, 87-year-old male\nAuthor: Radiologist\n\nCT cervical spine 08/13/2026: C5-C6 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\n",
-   "source": "template"
+   "text": "Radiology Report\nDate: 08/13/2026\nPatient: Valentine Altenwerth, 87-year-old male\n\nExamination: CT Cervical Spine\n\nFindings:\nCT cervical spine 08/13/2026: C5-C6 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.\n\nNo other significant abnormalities are noted in the cervical spine.\n\nImpression:\nModerate left foraminal stenosis at C5-C6 due to disc herniation, with contact on the exiting nerve root. Clinical correlation is recommended.",
+   "source": "llm"
   },
   {
    "slot": "consult",

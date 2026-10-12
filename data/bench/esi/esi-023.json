@@ -128,32 +128,32 @@
    "date": "2026-07-25",
    "title": "Primary Care Progress Note",
    "author": "Primary care physician",
-   "text": "Primary Care Progress Note\nDate: 07/25/2026\nPatient: Darron Hegmann, 72-year-old male\nAuthor: Primary care physician\n\nVitals: BP 134/80, HR 74, T 36.8 C.\nPSH: no spinal surgery.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\nEpidural steroid injection history: 4 lumbar injections in the past 12 months (12/14/2025, 12/28/2025, 12/30/2025, 05/08/2026).\nA/P: L L radic 2/2 L5-S1 HNP w/ foraminal stenosis.\nROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.\n",
-   "source": "template"
+   "text": "Primary Care Progress Note\nDate: 07/25/2026\nPatient: Darron Hegmann, 72 y/o M\n\nCC: L leg radic.\n\nHPI: Pt c/o L leg radic pain. No new trauma. Denies fevers or chills.\n\nPMH: Chronic L5-S1 HNP with foraminal stenosis.\nPSH: no spinal surgery.\n\nMeds: NSAIDs prn.\n\nROS neg fevers/chills/wt loss, no B/B sx, no h/o CA.\n\nEpidural steroid injection history: 4 lumbar injections in the past 12 months (12/14/2025, 12/28/2025, 12/30/2025, 05/08/2026).\n\nPE: Neuro exam shows decreased sensation L5 dermatome, mild weakness L ankle dorsiflexion.\n\nA/P: L L radic 2/2 L5-S1 HNP w/ foraminal stenosis.\nPlan: Continue conservative mgmt, consider PT, monitor symptoms.",
+   "source": "llm"
   },
   {
    "slot": "pt",
    "date": "2026-08-29",
    "title": "Physical Therapy Discharge Summary",
    "author": "Physical therapist",
-   "text": "Physical Therapy Discharge Summary\nDate: 08/29/2026\nPatient: Darron Hegmann, 72-year-old male\nAuthor: Physical therapist\n\nTreatment included manual therapy, core stabilization and gait training.\nInitial VAS 75 mm.\nFx: can't walk >1 block, stopped volunteering d/t pain, poor sleep.\nPatient attended sessions as scheduled.\nD/C from PT after 8 wks (07/04/2026-08/29/2026), sx unchanged. Failed ibuprofen 600 mg TID.\nHEP daily, compliant.\nGoals reviewed with patient.\n",
-   "source": "template"
+   "text": "Physical Therapy Discharge Summary\nDate: 08/29/2026\nPatient: Darron Hegmann, 72 y/o M\n\nSubjective: Fx: can't walk >1 block, stopped volunteering d/t pain, poor sleep. Initial VAS 75 mm.\n\nObjective: Limited mobility noted, no improvement in sx over course of tx.\n\nAssessment: D/C from PT after 8 wks (07/04/2026-08/29/2026), sx unchanged. Failed ibuprofen 600 mg TID.\n\nPlan: HEP daily, compliant. Recommend further medical evaluation for pain management and functional limitations.",
+   "source": "llm"
   },
   {
    "slot": "radiology",
    "date": "2026-07-31",
    "title": "Radiology Report",
    "author": "Radiologist",
-   "text": "Radiology Report\nDate: 07/31/2026\nPatient: Darron Hegmann, 72-year-old male\nAuthor: Radiologist\n\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nMRI lumbar spine 07/31/2026: L5-S1 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root.\nVertebral body heights are maintained.\n",
-   "source": "template"
+   "text": "Radiology Report\nDate: 07/31/2026\nPatient: Darron Hegmann, 72 y/o M\n\nExam: MRI lumbar spine\n\nFindings: MRI lumbar spine 07/31/2026: L5-S1 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root. No other significant abnormalities noted. Vertebral alignment preserved. No evidence of fracture or marrow edema. Paraspinal soft tissues unremarkable.\n\nImpression: L5-S1 disc herniation with moderate left foraminal stenosis contacting the exiting nerve root. Recommend clinical correlation.",
+   "source": "llm"
   },
   {
    "slot": "consult",
    "date": "2026-09-01",
    "title": "Pain Management Consultation",
    "author": "Pain medicine physician",
-   "text": "Pain Management Consultation\nDate: 09/01/2026\nPatient: Darron Hegmann, 72-year-old male\nAuthor: Pain medicine physician\n\nReferred by primary care for evaluation of spine-related pain.\nMedications and allergies reviewed.\nPlan: request prior authorization for the ordered injection; follow up after the procedure.\nLBP x7 wks w/ radiation to L LE.\n",
-   "source": "template"
+   "text": "Pain Management Consultation\nDate: 09/01/2026\nPatient: Darron Hegmann, 72 y/o M\n\nCC: LBP\n\nHPI: LBP x7 wks w/ radiation to L LE. No hx of trauma. Denies numbness or bowel/bladder dysfunction.\n\nPE: Limited lumbar ROM. Tenderness over lower lumbar paraspinals. Neuro exam: intact motor strength, sensation preserved in L LE.\n\nAssessment: Chronic LBP with radicular component.\n\nPlan: Consider imaging if no improvement. Initiate conservative mgmt with PT and NSAIDs. Follow-up in 4 wks to assess response.",
+   "source": "llm"
   }
  ]
 }

@@ -116,24 +116,24 @@
    "date": "2026-05-21",
    "title": "Primary Care Progress Note",
    "author": "Primary care physician",
-   "text": "Primary Care Progress Note\nDate: 05/21/2026\nPatient: Gwyn Runolfsson, 71-year-old female\nAuthor: Primary care physician\n\nPast surgical history: no prior spine surgery.\nVitals: BP 134/80, HR 74, T 36.8 C.\nMedications reconciled.\nHypertension stable on current regimen.\nReturn in 3 months for chronic care.\n",
-   "source": "template"
+   "text": "Primary Care Progress Note\nDate: 05/21/2026\nPatient: Gwyn Runolfsson, 71-year-old female\n\nSubjective:\nThe patient presents for routine follow-up. She reports no new complaints or concerns today.\n\nObjective:\nVital signs are stable and within normal limits. Physical examination reveals no acute abnormalities.\n\nAssessment:\nThe patient remains in stable condition with no new issues identified.\n\nPlan:\nContinue current management and routine monitoring. Encourage regular exercise and balanced diet.\n\nPast surgical history: no prior spine surgery.",
+   "source": "llm"
   },
   {
    "slot": "pt",
    "date": "2026-06-16",
    "title": "Physical Therapy Discharge Summary",
    "author": "Physical therapist",
-   "text": "Physical Therapy Discharge Summary\nDate: 06/16/2026\nPatient: Gwyn Runolfsson, 71-year-old female\nAuthor: Physical therapist\n\nCompleted physical therapy from 05/19/2026 to 06/16/2026 (4 weeks) with no lasting benefit, and failed ibuprofen 600 mg TID.\nTreatment included manual therapy, core stabilization and gait training.\nPatient attended sessions as scheduled.\nGoals reviewed with patient.\n",
-   "source": "template"
+   "text": "Physical Therapy Discharge Summary\nDate: 06/16/2026\nPatient: Gwyn Runolfsson, 71-year-old female\n\nReason for Referral:\nPatient was referred for physical therapy to address ongoing musculoskeletal complaints.\n\nTherapy Course:\nCompleted physical therapy from 05/19/2026 to 06/16/2026 (4 weeks) with no lasting benefit, and failed ibuprofen 600 mg TID.\n\nInterventions:\nTreatment included therapeutic exercises, manual therapy, and patient education focused on improving mobility and function.\n\nOutcome:\nDespite adherence to the prescribed therapy regimen, the patient did not experience sustained improvement in symptoms.\n\nRecommendations:\nFurther evaluation by the primary care provider or specialist is advised to explore alternative management options.",
+   "source": "llm"
   },
   {
    "slot": "radiology",
    "date": "2026-08-10",
    "title": "Radiology Report",
    "author": "Radiologist",
-   "text": "Radiology Report\nDate: 08/10/2026\nPatient: Gwyn Runolfsson, 71-year-old female\nAuthor: Radiologist\n\nMRI cervical spine 08/10/2026: C5-C6 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.\nTechnique: multiplanar sequences without contrast.\nComparison: none available.\nVertebral body heights are maintained.\n",
-   "source": "template"
+   "text": "Radiology Report\nDate: 08/10/2026\nPatient: Gwyn Runolfsson, 71-year-old female\n\nExamination: MRI Cervical Spine\n\nFindings:\nMRI cervical spine 08/10/2026: C5-C6 disc herniation with moderate right foraminal stenosis contacting the exiting nerve root.\n\nImpression:\nThere is a disc herniation at the C5-C6 level causing moderate right foraminal stenosis and contact with the exiting nerve root. No other significant abnormalities are noted.\n\nRecommendations:\nClinical correlation is advised to assess for symptoms related to the findings. Further evaluation or management should be guided by the referring physician.",
+   "source": "llm"
   },
   {
    "slot": "consult",

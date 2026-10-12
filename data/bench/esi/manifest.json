@@ -4,349 +4,349 @@
   "split": "dev",
   "difficulty": "buried",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-002",
   "split": "dev",
   "difficulty": "clean",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-003",
   "split": "dev",
   "difficulty": "clean",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-004",
   "split": "dev",
   "difficulty": "injection",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-005",
   "split": "dev",
   "difficulty": "clean",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-006",
   "split": "test",
   "difficulty": "buried",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-007",
   "split": "dev",
   "difficulty": "contradictory",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-008",
   "split": "dev",
   "difficulty": "clean",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-009",
   "split": "test",
   "difficulty": "clean",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-010",
   "split": "test",
   "difficulty": "buried",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-011",
   "split": "test",
   "difficulty": "clean",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-012",
   "split": "dev",
   "difficulty": "buried",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-013",
   "split": "dev",
   "difficulty": "buried",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-014",
   "split": "dev",
   "difficulty": "injection",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-015",
   "split": "test",
   "difficulty": "clean",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-016",
   "split": "dev",
   "difficulty": "clean",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-017",
   "split": "dev",
   "difficulty": "clean",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-018",
   "split": "test",
   "difficulty": "missing",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-019",
   "split": "dev",
   "difficulty": "clean",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-020",
   "split": "dev",
   "difficulty": "clean",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-021",
   "split": "dev",
   "difficulty": "missing",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-022",
   "split": "dev",
   "difficulty": "contradictory",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-023",
   "split": "test",
   "difficulty": "buried",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-024",
   "split": "dev",
   "difficulty": "buried",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-025",
   "split": "test",
   "difficulty": "clean",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-026",
   "split": "test",
   "difficulty": "missing",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-027",
   "split": "test",
   "difficulty": "missing",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-028",
   "split": "test",
   "difficulty": "missing",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-029",
   "split": "test",
   "difficulty": "clean",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-030",
   "split": "dev",
   "difficulty": "clean",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-031",
   "split": "dev",
   "difficulty": "buried",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-032",
   "split": "test",
   "difficulty": "clean",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-033",
   "split": "dev",
   "difficulty": "missing",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-034",
   "split": "dev",
   "difficulty": "buried",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-035",
   "split": "dev",
   "difficulty": "contradictory",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-036",
   "split": "test",
   "difficulty": "buried",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-037",
   "split": "dev",
   "difficulty": "contradictory",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-038",
   "split": "dev",
   "difficulty": "buried",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-039",
   "split": "dev",
   "difficulty": "missing",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-040",
   "split": "dev",
   "difficulty": "missing",
   "decision": "not_ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-041",
   "split": "dev",
   "difficulty": "clean",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-042",
   "split": "dev",
   "difficulty": "clean",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-043",
   "split": "dev",
   "difficulty": "contradictory",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-044",
   "split": "test",
   "difficulty": "buried",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-045",
   "split": "test",
   "difficulty": "clean",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-046",
   "split": "dev",
   "difficulty": "buried",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-047",
   "split": "dev",
   "difficulty": "clean",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-048",
   "split": "dev",
   "difficulty": "buried",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-049",
   "split": "dev",
   "difficulty": "buried",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  },
  {
   "case_id": "esi-050",
   "split": "dev",
   "difficulty": "clean",
   "decision": "ready",
-  "notes": "template"
+  "notes": "llm"
  }
 ]

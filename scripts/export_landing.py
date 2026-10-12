@@ -86,11 +86,18 @@ def glassbox() -> dict:  # type: ignore[type-arg]
         f = rec["facts"]
         if f["difficulty"] != "clean" or rec["split"] != "dev":
             continue
-        note = next((n for n in rec["notes"] if n["slot"] == "consult" and n["source"] == "llm"), None)
+        note = next(
+            (n for n in rec["notes"] if n["slot"] == "consult" and n["source"] == "llm"), None
+        )
         if note is None:
             continue
         rows = [
-            {"key": st["leaf"], "label": labels[st["leaf"]], "gold": st["gold"], "quote": st["text"]}
+            {
+                "key": st["leaf"],
+                "label": labels[st["leaf"]],
+                "gold": st["gold"],
+                "quote": st["text"],
+            }
             for st in f["statements"]
             if st["slot"] == "consult" and not st["stale"] and st["text"] in note["text"]
         ]

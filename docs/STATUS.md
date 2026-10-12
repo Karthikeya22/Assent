@@ -3,8 +3,8 @@
 Read this first in a new session. Specs: PRODUCT.md, ARCHITECTURE.md, FRONTEND.md, BUILD_PLAN.md. Phase plans: `docs/superpowers/plans/`. The master roadmap is in `C:\Users\karth\.claude\plans\okay-lets-start-the-abundant-marshmallow.md`.
 
 ## Where things are
-- Repo `D:\Projects\assent`. Stacked branches: `phase-0-foundations` → `phase-1-esi-policy-data` → `phase-2-core-agent` → `phase-4-adversary` (contains Phase 3) → `phase-5-breadth` → `phase-6-packet-payer` (current). **No GitHub remote and nothing pushed.** Ask the user before creating a remote.
-- **Phases 0–4 are done and verified live in the browser. Phase 5 and Phase 6 are done.** Next is Phase 7 (landing page, /demo, /evals, deploy).
+- Repo `D:\Projects\assent`. Stacked branches: `phase-0-foundations` → `phase-1-esi-policy-data` → `phase-2-core-agent` → `phase-4-adversary` (contains Phase 3) → `phase-5-breadth` → `phase-6-packet-payer` → `phase-7-launch` (current). **No GitHub remote and nothing pushed.** Ask the user before creating a remote.
+- **Phases 0–4 are done and verified live in the browser. Phases 5, 6 and 7 (site) are done.** Remaining: deployment (needs the user: GitHub repo + hosting accounts), README, demo video.
 
 ## How to run (Windows, everything on D:)
 ```powershell
@@ -45,8 +45,16 @@ Pieces: `assent_fhir.pas` (build/validate/bundle_evidence), `apps/mock_payer` (:
 Lean substitutions: fpdf2 instead of WeasyPrint; `validate_pas` instead of HAPI `$validate`; a templated cover letter (the appeal letter is LLM-drafted and verified); a textarea editor instead of Tiptap.
 Lesson: the appeal must exclude by quote, not by chunk. One chunk can hold several independent facts; excluding whole chunks hid the second CPAP fact.
 
+## Phase 7 (branch `phase-7-launch`)
+- Landing `/` (FRONTEND §5.1): Evidence Lattice hero (React Three Fiber, real L39240 tree, procedural pages shader, particle ribbons, logic rings filling from leaf state, adversary scanner sweep), pinned 5-step scroll story (GSAP scrub → zustand → useFrame), and these sections: ledger, glass box, two agents, standards, benchmark, architecture, CTA, sources. Pure `components/lattice/timeline.ts` + `layout.ts` are unit-tested.
+- Facts verified 2026-10-12: AMA press release 2026-05-13 (40/wk, 13 h, 95% delays care); CMS WISeR page (6 states, from Jan 1, 2026); ASA WISeR CPT list (ESI/HGNS/PVA). The spec's "13 service families" could not be sourced, so it was not used.
+- `/evals`: an editorial report from `apps/web/public/evals/latest.json` (exported by `scripts/export_landing.py`).
+- `/demo`: no login. The read-only Case Workspace replays `content/demo.json` (`record_fixture --llm openai` with review on, then `scripts/export_demo.py`).
+- Budgets: landing first load 159 KB (three.js lazy, after paint); `/demo` 174 KB, case page 171 KB (ELK lazy). Reduced motion swaps in SVG stills and static numbers. No overflow at 390 px. Dark mode works.
+- Landing, `/evals` and `/demo` are static, so the marketing site can deploy without the backend.
+
 ## Known gaps / small fixes
-15-minute session with no refresh token; appeal drafting is polled (no SSE); the PDF has no evidence table (letter only); the criteria graph renders small (wide tree); the case page bundle is 597 kB (ELK); CI is written but has never run (no remote); `/policies/[id]` is read-only (no editor yet); no Storybook stories for the case components.
+15-minute session with no refresh token; appeal drafting is polled (no SSE); the PDF has no evidence table (letter only); the criteria graph renders small (wide tree);  CI is written but has never run (no remote); `/policies/[id]` is read-only (no editor yet); no Storybook stories for the case components.
 
 ## Machine gotchas
 7 GB RAM: run benches resumably; Claude Code may reap background shells under memory pressure. Nothing new on C:. The Playwright MCP writes only under `C:\Users\karth`, so move screenshots to `.data/screens`. Postgres may need crash recovery after a reboot: `dev.ps1 up`, then wait for "accepting connections".

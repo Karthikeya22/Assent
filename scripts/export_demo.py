@@ -25,7 +25,9 @@ def main(case_ref: str) -> None:
     detail = httpx.get(f"{API}/cases/{case['id']}", headers=h).json()
     run_started = next(
         json.loads(line)
-        for line in (ROOT / "data" / "fixtures" / f"run_{case_ref}.jsonl").read_text("utf-8").splitlines()
+        for line in (ROOT / "data" / "fixtures" / f"run_{case_ref}.jsonl")
+        .read_text("utf-8")
+        .splitlines()
         if '"run_started"' in line
     )
     source_id = run_started["policy"].split()[0]  # the policy the recorded run used, e.g. L39240
@@ -35,7 +37,9 @@ def main(case_ref: str) -> None:
     timeline = httpx.get(f"{API}/cases/{case['id']}/timeline", headers=h).json()
     events = [
         json.loads(line)
-        for line in (ROOT / "data" / "fixtures" / f"run_{case_ref}.jsonl").read_text("utf-8").splitlines()
+        for line in (ROOT / "data" / "fixtures" / f"run_{case_ref}.jsonl")
+        .read_text("utf-8")
+        .splitlines()
         if line.strip()
     ]
     bundle = {
@@ -43,14 +47,19 @@ def main(case_ref: str) -> None:
         "service_family": detail["service_family"],
         "cpt_codes": detail["cpt_codes"],
         "icd10_codes": detail["icd10_codes"],
-        "policy": {"sourceId": pv["policy"]["source_id"], "version": pv["version"], "title": pv["policy"]["title"]},
+        "policy": {
+            "sourceId": pv["policy"]["source_id"],
+            "version": pv["version"],
+            "title": pv["policy"]["title"],
+        },
         "root": pv["criteria"],
         "chunks": timeline,
         "events": events,
     }
     out = ROOT / "apps" / "web" / "content" / "demo.json"
     out.write_text(json.dumps(bundle) + "\n", "utf-8")
-    print(f"{out.relative_to(ROOT)}: {len(events)} events, {len(timeline)} chunks, {out.stat().st_size // 1024} KB")
+    kb = out.stat().st_size // 1024
+    print(f"{out.relative_to(ROOT)}: {len(events)} events, {len(timeline)} chunks, {kb} KB")
 
 
 if __name__ == "__main__":

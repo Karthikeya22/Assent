@@ -23,7 +23,9 @@ PROMPT = "evidence_v1"
 MAX_STEPS = 4
 Search = Callable[[list[str]], Awaitable[list[Hit]]]
 
-SYNONYMS = {
+# Per-family search hints appended to the criterion label (ESI's are the original set).
+SYNONYMS: dict[str, dict[str, str]] = {}
+SYNONYMS["esi"] = {
     "diagnosis": "assessment impression diagnosis",
     "imaging_finding": "MRI CT imaging findings stenosis herniation nerve root",
     "assessment": "pain score scale NRS VAS ODI function daily activities",
@@ -32,6 +34,26 @@ SYNONYMS = {
     "contraindication": "fever infection cancer weight loss bowel bladder red flags",
     "procedure_history": "prior epidural steroid injection history past 12 months",
 }
+SYNONYMS["hgns"] = {
+    "assessment": "polysomnography AHI apnea-hypopnea index central mixed apneas BMI tonsils",
+    "imaging_finding": "drug-induced sleep endoscopy DISE concentric collapse velum",
+    "procedure_history": "polysomnography PSG sleep study performed date",
+    "prior_therapy": "CPAP use hours per night intolerance failure residual AHI",
+    "contraindication": "neuromuscular disease heart failure NYHA MRI remote pulmonary",
+}
+SYNONYMS["pva"] = {
+    "duration": "back pain began weeks ago fracture onset",
+    "imaging_finding": "MRI STIR bone marrow edema compression fracture vertebral height kyphosis",
+    "assessment": "NRS pain score hospitalized admitted Roland Morris RDQ worsening stable",
+    "prior_therapy": "non-surgical management brace analgesics DEXA osteoporosis program",
+    "contraindication": "fever infection discitis osteomyelitis pregnancy pain not from fracture",
+}
+# Partial evidence (e.g. "pain is from the fracture") must not prove "no contraindication".
+CONTRA_RULE = (
+    "\nFor this contraindication criterion, answer met only if the chart explicitly documents "
+    "the absence of every listed contraindication; evidence about only some of them is "
+    "insufficient."
+)
 
 
 class AgentStep(BaseModel):
@@ -48,10 +70,12 @@ class CaseContext(BaseModel):
     service: str
     cpt: str
     icd10: str
+    family: str = "esi"  # picks the search hints; never shown to the model
 
 
-def queries_for(c: Node) -> list[str]:
-    return [c.label, f"{c.label} {SYNONYMS.get(c.evidence_type or '', '')}".strip()]
+def queries_for(c: Node, family: str = "esi") -> list[str]:
+    hint = SYNONYMS.get(family, SYNONYMS["esi"]).get(c.evidence_type or "", "")
+    return [c.label, f"{c.label} {hint}".strip()]
 
 
 def compute_duration(start: str, end: str) -> str:
@@ -96,7 +120,7 @@ async def run_evidence(
 ) -> tuple[Verdict, dict[str, str], list[str]]:
     """Returns (verdict with real chunk ids, chunk texts by real id for the verifier, trace)."""
     reg = _Chunks()
-    first = reg.add(await search(queries_for(criterion)))
+    first = reg.add(await search(queries_for(criterion, ctx.family)))
     threshold = f"\nThreshold: {json.dumps(criterion.threshold)}" if criterion.threshold else ""
     msgs = [
         {"role": "system", "content": prompts.load(PROMPT)},
@@ -104,7 +128,8 @@ async def run_evidence(
             "role": "user",
             "content": (
                 f"Criterion: {criterion.label}\n"
-                f"Evidence type: {criterion.evidence_type}{threshold}\n"
+                f"Evidence type: {criterion.evidence_type}{threshold}"
+                f"{CONTRA_RULE if criterion.evidence_type == 'contraindication' else ''}\n"
                 f"Policy text: {criterion.source_quote or '(n/a)'}\n\n"
                 f"Request: {ctx.service}, CPT {ctx.cpt}, ICD-10 {ctx.icd10}. "
                 f"Today (date of request): {ctx.order_date:%m/%d/%Y}.\n\n"

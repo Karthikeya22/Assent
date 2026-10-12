@@ -257,6 +257,7 @@ async def main(
             ctx=CaseContext(
                 order_date=date.fromisoformat(facts["order_date"]),
                 service=fam.service,
+                family=fam.name,
                 cpt=facts["cpt"],
                 icd10=facts["icd10"],
             ),

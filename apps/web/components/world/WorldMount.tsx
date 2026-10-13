@@ -59,11 +59,11 @@ export function WorldMount() {
           alt=""
           loading={i === 0 ? "eager" : "lazy"}
           fetchPriority={i === 0 ? "high" : "low"}
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[var(--dur-4)] ${!live && i === index ? "opacity-100" : "opacity-0"}`}
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[400ms] ease-[var(--ease-out)] ${!live && i === index ? "opacity-100" : "opacity-0"} ${live ? "!transition-none" : ""}`}
         />
       ))}
       {tier && armed && (
-        <div className={`absolute inset-0 transition-opacity duration-[var(--dur-4)] ${ready ? "opacity-100" : "opacity-0"}`}>
+        <div className={`absolute inset-0 transition-opacity duration-[var(--dur-4)] ease-[var(--ease-out)] ${ready ? "opacity-100" : "opacity-0"}`}>
           <World tier={tier} onReady={() => setReady(true)} />
         </div>
       )}

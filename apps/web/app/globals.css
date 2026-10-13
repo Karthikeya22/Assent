@@ -18,7 +18,7 @@
   --adversary: #5b3fa8; /* Payer Adversary voice only: the only purple in the product */
   --focus: #1f5fd1;
 
-  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
   --dur-1: 120ms;
   --dur-2: 220ms;
@@ -134,14 +134,6 @@
     outline: 2px solid var(--focus);
     outline-offset: 2px;
   }
-  @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      transition-duration: 0.01ms !important;
-    }
-  }
 }
 
 /* Evidence agent working on a criterion: a rotating dashed outline, CSS only (FRONTEND §6.3). */
@@ -168,14 +160,12 @@
   }
 }
 
-/* Cited span inside the note viewer: its width grows in from the left (dur-2). */
+/* Cited span inside the note viewer: the highlight fades in once (interruptible, no repaint loop). */
 .cite-mark {
-  background: linear-gradient(var(--signal-soft), var(--signal-soft)) no-repeat left / 100% 100%;
-  animation: cite-in var(--dur-2) var(--ease-out);
-}
-@keyframes cite-in {
-  from {
-    background-size: 0% 100%;
+  background-color: var(--signal-soft);
+  transition: background-color 120ms var(--ease-out);
+  @starting-style {
+    background-color: transparent;
   }
 }
 
@@ -252,14 +242,14 @@
     color: var(--paper-raised);
     transition:
       background-color var(--dur-2) var(--ease-out),
-      transform var(--dur-1) var(--ease-out);
+      transform 160ms var(--ease-out);
     touch-action: manipulation;
   }
   .btn-primary:hover {
     background: var(--signal-deep);
   }
   .btn-primary:active {
-    transform: translateY(1px);
+    transform: scale(0.97);
   }
 
   .link-quiet {

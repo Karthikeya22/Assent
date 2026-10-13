@@ -13,7 +13,7 @@ import { POLICY, layout, type LNode } from "@/components/lattice/layout";
 import { ringFill, storyFrame, type Frame } from "@/components/lattice/timeline";
 import { createMagnifier } from "../objects/magnifier";
 import type { WorldMaterials } from "../objects/materials";
-import { pointer } from "../pointer";
+import { damp, pointer } from "../pointer";
 import { span, type Palette } from "../shared";
 import { useWorld } from "../store";
 import { FOLDER } from "./FolderScene";
@@ -150,7 +150,7 @@ export function LatticeScene({ mats, pal }: { mats: WorldMaterials; pal: Palette
 
   const mag = useMemo(() => createMagnifier(mats), [mats]);
   const labels = {
-    root: useLabel("pointer-events-none fixed top-0 left-0 z-[5] -translate-x-1/2 font-mono text-xs tracking-wide text-ink-2 transition-opacity duration-300"),
+    root: useLabel("pointer-events-none fixed top-0 left-0 z-[5] -translate-x-1/2 font-mono text-xs tracking-wide text-ink-2"), // opacity is written per frame; a CSS transition would trail it
     status: useLabel("pointer-events-none fixed top-0 left-0 z-[5] whitespace-nowrap rounded-[var(--radius-control)] bg-paper-raised/90 px-2 py-1 font-mono text-xs text-gap shadow-[var(--shadow-float)]"),
     hover: useLabel("pointer-events-none fixed top-0 left-0 z-[5] max-w-[240px] -translate-x-1/2 rounded-[var(--radius-control)] border border-rule bg-paper-raised px-2.5 py-1.5 text-xs leading-snug text-ink shadow-[var(--shadow-float)]"),
   };
@@ -196,7 +196,8 @@ export function LatticeScene({ mats, pal }: { mats: WorldMaterials; pal: Palette
   );
   const { camera, size } = useThree();
 
-  useFrame((state) => {
+  useFrame((state, delta) => {
+    const dt = Math.min(delta, 0.05);
     const { t } = useWorld.getState();
     const g = group.current;
     if (!g) return;
@@ -235,7 +236,7 @@ export function LatticeScene({ mats, pal }: { mats: WorldMaterials; pal: Palette
         const mat = ringFill_.get(n.key);
         if (!r || !mat) continue;
         r.scale.setScalar(grow * (n.parent === null ? 0.2 : 0.12));
-        mat.uniforms.uFill.value += (ringFill(nodes, f.leaves, n.key) - mat.uniforms.uFill.value) * 0.06;
+        mat.uniforms.uFill.value = damp(mat.uniforms.uFill.value, ringFill(nodes, f.leaves, n.key), 4, dt);
       }
     }
 
@@ -255,7 +256,8 @@ export function LatticeScene({ mats, pal }: { mats: WorldMaterials; pal: Palette
       const target = aimed ? tmp.hit : fan5;
       target.x = THREE.MathUtils.clamp(target.x, LATTICE.x - 0.35, LATTICE.x + 3.0);
       target.y = THREE.MathUtils.clamp(target.y, 0.15, 1.2);
-      mag.group.position.lerp(tmp.v.set(target.x, target.y + 0.05, -0.75), 0.12);
+      const p = mag.group.position;
+      p.set(damp(p.x, target.x, 10, dt), damp(p.y, target.y + 0.05, 10, dt), damp(p.z, -0.75, 10, dt));
       mag.group.rotation.set(-0.15, -0.2, 0.25);
       const u = Math.round((mag.group.position.x - LATTICE.x + 0.35) / 0.3);
       if (u >= 0 && u < PAGES) {

@@ -33,7 +33,7 @@ export function RailNav() {
   return (
     <nav
       aria-label="Primary"
-      className="flex shrink-0 flex-col border-r border-rule bg-paper-sunk/60 transition-[width] duration-[var(--dur-2)] ease-[var(--ease-out)]"
+      className="flex shrink-0 flex-col border-r border-rule bg-paper-sunk/60"
       style={{ width: open ? 220 : 56 }}
     >
       <Link href="/app/worklist" className="wordmark flex h-12 items-center px-[18px] text-xl">

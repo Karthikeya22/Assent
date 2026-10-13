@@ -8,7 +8,7 @@ export function Nav() {
   const scrolled = useWorld((s) => s.t > 0.02);
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 h-16 border-b transition-[background-color,border-color] duration-[var(--dur-2)] ${
+      className={`fixed inset-x-0 top-0 z-50 h-16 border-b transition-[background-color,border-color,backdrop-filter] duration-[var(--dur-2)] ease-[var(--ease-out)] ${
         scrolled ? "border-rule bg-paper/80 backdrop-blur-[10px]" : "border-transparent"
       }`}
     >

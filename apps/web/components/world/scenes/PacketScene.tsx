@@ -63,9 +63,13 @@ export function PacketScene({ mats }: { mats: WorldMaterials }) {
     stamp.position.set(PACKET.x + 0.05 + 0.6 * rest, y * (1 - rest), PACKET.z + 0.12 - 0.35 * rest);
     const free = (1 - press) * (1 - rest) + lift * (1 - rest);
     stamp.rotation.set(pointer.y * 0.2 * free, 0, -pointer.x * 0.25 * free);
-    stamp.scale.set(0.55, 0.55 * (1 - 0.08 * (press - lift > 0.9 ? 1 : 0)), 0.55);
+    // Squash eases in and out with the press instead of snapping for one frame.
+    const squash = 0.08 * Math.sin(Math.PI * span(t, 7.2, 7.34));
+    stamp.scale.set(0.55 * (1 + squash * 0.5), 0.55 * (1 - squash), 0.55 * (1 + squash * 0.5));
 
-    seal.scale.setScalar(span(t, 7.25, 7.3) * 0.62);
+    // The seal exists, full size, from the moment of contact; the lifting stamp uncovers it.
+    seal.visible = t >= 7.26;
+    seal.scale.setScalar(0.62);
     const approve = span(t, 7.42, 7.55);
     const m = ring.material as THREE.MeshBasicMaterial;
     ring.scale.setScalar(0.6 + approve * 0.8);

@@ -47,7 +47,7 @@ flowchart LR
   API -- PAS Bundle --> PAY[mock-payer]
 ```
 
-- `apps/web`: Next.js 15, React Flow + ELK case workspace, React Three Fiber landing page, `/demo` replay, `/evals` report
+- `apps/web`: Next.js 15, React Flow + ELK case workspace, a scroll-told React Three Fiber landing (one porcelain 3D world flown by Lenis, see [DESIGN.md](DESIGN.md)), `/demo` replay, `/evals` report
 - `apps/api`: FastAPI, JWT + RBAC, hash-chained audit log, SSE run streams, packets / submissions / appeals
 - `apps/worker`: arq jobs for case runs and appeals
 - `apps/mock_payer`, `apps/cds`: the external payer and the CDS Hooks service

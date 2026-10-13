@@ -53,8 +53,17 @@ Lesson: the appeal must exclude by quote, not by chunk. One chunk can hold sever
 - Budgets: landing first load 159 KB (three.js lazy, after paint); `/demo` 174 KB, case page 171 KB (ELK lazy). Reduced motion swaps in SVG stills and static numbers. No overflow at 390 px. Dark mode works.
 - Landing, `/evals` and `/demo` are static, so the marketing site can deploy without the backend.
 
+## UI revamp (2026-10-13, PRs #4, #6, #7; replaces the Phase 7 landing above)
+- Design system: `DESIGN.md` (porcelain neutrals + one signal green, Geist display, wordmark kept in Instrument Serif; every text token passes AA). Audit, storyboard and object record in `docs/design/`.
+- Landing: one fixed React Three Fiber world behind 11 `data-chapter` sections, flown by **Lenis** scroll (`components/world/`). Pure, tested `chapters.ts` / `camera.ts` / `pointer.ts`; scenes read `useWorld.getState().t` in `useFrame`. Cursor: folder tilt, pile repel, magnifier on the timeline, scales/stamp/screens lean.
+- 3D objects: generated reference images (`scripts/gen_reference_images.py`, gpt-image) rebuilt with img2threejs. The folder used the full gated pipeline (`scripts/i2t/folder`), the others its method. Review harness: `scripts/i2t`.
+- Fallbacks: per-chapter posters in `public/world/posters` (re-render with the capture snippet in the PR) for reduced motion, no WebGL or low-end devices; three.js loads on first engagement (desktop: idle).
+- Budgets: landing first load 109 KB (GSAP removed); the 3D chunk is lazy (~235 KB gz). Lighthouse (local prod build): desktop 95, mobile ~80, a11y/best-practices/SEO 100. Simulated mobile LCP is ~2.8 s while real paint is ~0.5 s; the gap is the fixed React/Next runtime under 4x CPU throttling.
+- App: sunk rail, raised top bar, citation chips without side borders, explicit disabled Approve, criteria-graph loading state, light-only `/login`, `/demo`, marketing.
+- Not done: the 3D criteria-graph toggle in the app; the magnifier highlights rather than optically magnifies; `/review-animations` must be run by the user.
+
 ## Known gaps / small fixes
-15-minute session with no refresh token; appeal drafting is polled (no SSE); the PDF has no evidence table (letter only); the criteria graph renders small (wide tree);  CI is written but has never run (no remote); `/policies/[id]` is read-only (no editor yet); no Storybook stories for the case components.
+15-minute session with no refresh token; appeal drafting is polled (no SSE); the PDF has no evidence table (letter only); the criteria graph renders small (wide tree); `/policies/[id]` is read-only (no editor yet); no Storybook stories for the case components.
 
 ## Machine gotchas
 7 GB RAM: run benches resumably; Claude Code may reap background shells under memory pressure. Nothing new on C:. The Playwright MCP writes only under `C:\Users\karth`, so move screenshots to `.data/screens`. Postgres may need crash recovery after a reboot: `dev.ps1 up`, then wait for "accepting connections".

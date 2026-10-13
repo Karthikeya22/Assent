@@ -59,7 +59,7 @@ export function EhrSim({ patients }: { patients: P[] }) {
         <span className="font-semibold">OpenChart EHR</span>
         <span style={{ opacity: 0.7 }}>Simulated EHR · synthetic patients · Assent connects via CDS Hooks</span>
       </header>
-      <main className="mx-auto grid max-w-5xl gap-4 p-4 md:grid-cols-[1fr_1.1fr]">
+      <main id="main" className="mx-auto grid max-w-5xl gap-4 p-4 md:grid-cols-[1fr_1.1fr]">
         <section style={{ background: "#fff", border: "1px solid #cbd5e0" }} className="p-4 text-sm">
           <h1 className="mb-3 text-base font-semibold">New order</h1>
           <label className="mb-3 block">

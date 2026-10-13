@@ -19,7 +19,7 @@ export function Nav() {
       }`}
     >
       <nav aria-label="Main" className="mx-auto flex h-full max-w-6xl items-center gap-8 px-6">
-        <Link href="/" className="display text-2xl leading-none text-ink">
+        <Link href="/" className="wordmark text-2xl leading-none text-ink">
           Assent
         </Link>
         <div className="hidden gap-6 text-sm text-ink-2 md:flex">

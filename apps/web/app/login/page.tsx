@@ -30,9 +30,9 @@ export default async function LoginPage({
     "mt-1.5 h-10 w-full rounded-[var(--radius-control)] border border-rule bg-paper-raised px-3 text-md text-ink placeholder:text-ink-3";
 
   return (
-    <main className="grid min-h-dvh place-items-center px-6">
+    <main id="main" className="grid min-h-dvh place-items-center px-6">
       <div className="w-full max-w-sm">
-        <Link href="/" className="display text-2xl">
+        <Link href="/" className="wordmark text-2xl">
           Assent
         </Link>
         <p className="mt-2 text-ink-2">Sign in to the coordinator workspace.</p>

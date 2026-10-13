@@ -18,7 +18,7 @@ export function AppShell({
       <RailNav />
       <div className="flex min-w-0 flex-1 flex-col">
         <TopBar breadcrumb={breadcrumb} user={user} signOut={signOut} />
-        <main className="min-h-0 flex-1 overflow-auto">{children}</main>
+        <main id="main" className="min-h-0 flex-1 overflow-auto">{children}</main>
       </div>
     </div>
   );

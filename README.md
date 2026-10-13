@@ -1,24 +1,48 @@
 # Assent
 
-**Prior authorization, argued with evidence.** Assent reads a patient's chart, proves every Medicare coverage criterion with a cited sentence, stress-tests the packet against a simulated payer, and drafts the appeal when a request is denied. Every claim it makes points at a verbatim quote; a separate verifier throws out the ones that don't hold.
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=24&duration=2200&pause=900&center=true&vCenter=true&width=900&lines=Prior+authorization%2C+argued+with+evidence.;Every+decision+must+be+cited.;Every+citation+must+be+verified." alt="Assent animated intro" />
+</p>
 
-Synthetic patients only. No PHI.
+<p align="center">
+  <img src="https://img.shields.io/badge/Stack-FastAPI%20%7C%20Next.js%20%7C%20LangGraph-0ea5e9?style=for-the-badge" alt="stack badge" />
+  <img src="https://img.shields.io/badge/Focus-Medicare%20Prior%20Auth-0284c7?style=for-the-badge" alt="focus badge" />
+  <img src="https://img.shields.io/badge/Safety-Synthetic%20Patients%20Only-16a34a?style=for-the-badge" alt="safety badge" />
+</p>
 
-## What it does
+Assent reads a patient's chart, proves each Medicare coverage criterion with exact chart evidence, stress-tests the packet against a simulated payer, and drafts an appeal when denied.
 
-1. **Compiles the coverage policy.** A Medicare LCD (e.g. L39240, epidural steroid injections) becomes a typed AND/OR/N-of-M tree of atomic criteria, each linked to its exact policy sentence.
-2. **Reads the chart.** FHIR resources and notes are de-identified, chunked and indexed for hybrid search (Postgres full-text + pgvector + reranking).
-3. **Proves each criterion.** One evidence agent per criterion answers met / not met / insufficient, citing chunk quotes.
-4. **Verifies every citation.** Each quote must exist verbatim and entail its claim (local NLI plus an LLM judge on `met`); otherwise the verdict is downgraded to *insufficient* rather than guessed.
-5. **Argues with the payer.** A payer adversary on a different model vendor attacks the packet; an advocate rebuts with new citations or concedes, and concessions become gap tasks for a human.
-6. **Submits and appeals.** A human approves; Assent builds a Da Vinci PAS-style FHIR Bundle plus PDF letter, submits it to a mock payer with hidden rules, and on denial re-searches the chart and drafts a cited appeal.
-7. **Shows up in the EHR.** A CDS Hooks `order-sign` service flags the prior-auth requirement and open gaps when a clinician signs the order.
+> **Important:** Synthetic patients only. No PHI.
 
-Service families: epidural steroid injections, hypoglossal nerve stimulation, and percutaneous vertebral augmentation, all of them in Medicare's 2026 WISeR prior-authorization model.
+---
 
-## Results
+## ✨ What Assent Does
 
-Locked test split, run once (6 cases per family, trimmed for API cost; full details and failures in the `/evals` page and [PRODUCT.md §6](PRODUCT.md)):
+1. **Compiles policy into logic**  
+   Turns Medicare LCDs (for example, L39240) into typed AND/OR/N-of-M criterion trees with source links.
+2. **Reads and indexes chart data**  
+   Uses de-identified FHIR + notes and hybrid retrieval (Postgres full-text + pgvector + reranking).
+3. **Builds criterion-level evidence**  
+   One evidence agent per criterion returns `met`, `not met`, or `insufficient` with citations.
+4. **Verifies citations before trust**  
+   Quotes must match verbatim and entail claims (local NLI + LLM judge for `met` claims).
+5. **Runs payer challenge simulation**  
+   A payer adversary attacks the packet; an advocate rebuts or concedes and generates gap tasks.
+6. **Submits and drafts appeals**  
+   Produces PAS-style FHIR bundles + letters and drafts a cited appeal on denial.
+7. **Integrates into clinical workflow**  
+   CDS Hooks `order-sign` flags prior-auth needs and open evidence gaps.
+
+Supported service families:
+- Epidural steroid injections
+- Hypoglossal nerve stimulation
+- Percutaneous vertebral augmentation
+
+---
+
+## 📊 Results Snapshot
+
+Locked test split (6 cases per family; details in `/evals` and [PRODUCT.md](PRODUCT.md)):
 
 | Family | Decisions correct | Wrongly marked ready | Criterion F1 | Unsupported claims | Cost / case |
 |---|---|---|---|---|---|
@@ -27,12 +51,15 @@ Locked test split, run once (6 cases per family, trimmed for API cost; full deta
 | Vertebral augmentation | 5 / 6 | 0 | 0.86 | 0% | $0.081 |
 | **All** | **16 / 18 (89%)** | **0** | **0.81** | **0%** | **$0.079** |
 
-- Every error held a ready case back for a human; none sent an unproven one.
-- A long-context single prompt on the same cases decided more cases correctly but made **28% unsupported claims** (Assent: 0%).
-- The payer adversary caught **60 / 60** seeded packet defects (and over-objects on clean packets: 3.1 per packet).
-- **0 / 6** prompt-injection attacks flipped a decision.
+Key outcomes:
+- No unproven case was incorrectly marked ready.
+- Long-context single-prompt baseline had higher unsupported claims (28% vs Assent 0%).
+- Payer adversary caught 60/60 seeded packet defects.
+- 0/6 prompt-injection attacks flipped a decision.
 
-## Architecture
+---
+
+## 🧠 Architecture
 
 ```mermaid
 flowchart LR
@@ -47,45 +74,70 @@ flowchart LR
   API -- PAS Bundle --> PAY[mock-payer]
 ```
 
-- `apps/web`: Next.js 15, React Flow + ELK case workspace, a scroll-told React Three Fiber landing (one porcelain 3D world flown by Lenis, see [DESIGN.md](DESIGN.md)), `/demo` replay, `/evals` report
-- `apps/api`: FastAPI, JWT + RBAC, hash-chained audit log, SSE run streams, packets / submissions / appeals
-- `apps/worker`: arq jobs for case runs and appeals
-- `apps/mock_payer`, `apps/cds`: the external payer and the CDS Hooks service
-- `packages/agents`: policy compiler, evidence agent, verifier, adversary, gap planner, appeal agent, logic engine
-- `packages/retrieval`, `packages/fhir`, `packages/phi`, `packages/evals`: search, FHIR + PAS bundles, de-identification, benchmark
+Core apps and packages:
+- `apps/web`: Next.js UI; a scroll-told React Three Fiber landing (one porcelain 3D world flown by Lenis, see [DESIGN.md](DESIGN.md)), `/demo` replay, `/evals` report
+- `apps/api`: FastAPI backend, auth/RBAC, audit log, SSE run streams
+- `apps/worker`: arq job workers for runs and appeals
+- `apps/mock_payer`, `apps/cds`: payer simulator + CDS Hooks service
+- `packages/agents`: policy, evidence, verifier, adversary, appeals
+- `packages/retrieval`, `packages/fhir`, `packages/phi`, `packages/evals`
 
-Full design: [PRODUCT.md](PRODUCT.md), [ARCHITECTURE.md](ARCHITECTURE.md), [FRONTEND.md](FRONTEND.md), [BUILD_PLAN.md](BUILD_PLAN.md). Build log and decisions: [docs/STATUS.md](docs/STATUS.md).
+Deep dive docs:
+- [PRODUCT.md](PRODUCT.md)
+- [ARCHITECTURE.md](ARCHITECTURE.md)
+- [FRONTEND.md](FRONTEND.md)
+- [BUILD_PLAN.md](BUILD_PLAN.md)
+- [docs/STATUS.md](docs/STATUS.md)
 
-## Run it locally (Windows, PowerShell)
+---
+
+## 🚀 Quick Start (Windows + PowerShell)
 
 ```powershell
-. .\scripts\env.ps1          # routes all tools/caches to D:
-Copy-Item .env.example .env  # then fill in OPENAI_API_KEY (and GEMINI_API_KEY for the adversary)
+. .\scripts\env.ps1
+Copy-Item .env.example .env
 uv sync --all-packages
 pnpm install
-.\scripts\dev.ps1 all        # postgres+redis, migrate, seed, api, worker, web
+.\scripts\dev.ps1 all
 uv run uvicorn assent_mock_payer.main:app --port 8020
 uv run uvicorn assent_cds.main:app --port 8010
 ```
 
-Log in at http://localhost:3000/login as `coordinator@assent.dev` / `assent-dev`. The EHR simulator is at `/ehr-sim`; the public pages (`/`, `/demo`, `/evals`) need no backend.
+After startup:
+- Web app: http://localhost:3000
+- Login: `coordinator@assent.dev` / `assent-dev`
+- EHR simulator: `/ehr-sim`
+- Public pages: `/`, `/demo`, `/evals` (no backend needed)
 
-One-time machine setup (no Docker): Postgres 16 + pgvector via `micromamba create -p D:\DevTools\pg16 -c conda-forge postgresql=16 pgvector`, `initdb -D D:\DevTools\pgdata -U assent`, portable Redis in `D:\DevTools\redis`, Node 22 via fnm, Python 3.12 via `uv python install`. `infra/docker-compose.yml` is the equivalent elsewhere.
+---
 
-| Command | What it does |
+## 🛠️ Useful Commands
+
+| Command | Purpose |
 |---|---|
-| `.\scripts\dev.ps1 test` | pytest + vitest |
-| `uv run python -m assent_api.policy_load` | Load the 9 LCD snapshots + gold criteria trees |
-| `uv run python -m assent_evals.synth.build --family esi\|hgns\|pva --notes llm` | Build a family's benchmark (fact sheets, notes, FHIR bundles) |
-| `uv run python -m assent_evals.bench --family hgns --split dev --llm openai` | Score the pipeline against gold (resumable, `--max-usd` cap) |
+| `.\scripts\dev.ps1 test` | Run pytest + vitest |
+| `uv run python -m assent_api.policy_load` | Load LCD snapshots + criteria trees |
+| `uv run python -m assent_evals.synth.build --family esi\|hgns\|pva --notes llm` | Build synthetic benchmark data |
+| `uv run python -m assent_evals.bench --family hgns --split dev --llm openai` | Run benchmark evaluation |
 | `uv run python -m assent_evals.bench ... --variant long-context\|naive-rag\|no-verify` | Baselines and ablations |
-| `uv run python -m assent_evals.adversary_eval` | Seeded-defect catch rate for the payer adversary |
-| `uv run python -m assent_evals.report --split test` | The eval table |
+| `uv run python -m assent_evals.adversary_eval` | Evaluate adversary defect detection |
+| `uv run python -m assent_evals.report --split test` | Generate eval table report |
 
-Every LLM call is recorded to `data/fixtures/cassettes/`, so re-running a benchmark with unchanged prompts costs nothing. `--llm oracle` is a perfect reviewer that only sees what retrieval shows it, for testing without an API key.
+All LLM calls are cached in `data/fixtures/cassettes/` for reproducible reruns.
 
-## Status
+---
 
-Phases 0 to 7 of the build plan are done: the agent pipeline, review, packets, payer and appeal loop, CDS Hooks, the landing page, demo and evals. Not yet done: cloud deployment of the backend, a live (non-replay) public demo, and the full 150-case benchmark run. Known gaps are listed in [docs/STATUS.md](docs/STATUS.md).
+## 📌 Project Status
+
+Phases 0–7 are complete: end-to-end agent pipeline, review, packets, payer + appeals loop, CDS Hooks, landing page, demo, and eval reporting.
+
+Open items:
+- Cloud backend deployment
+- Live (non-replay) public demo
+- Full 150-case benchmark run
+
+See [docs/STATUS.md](docs/STATUS.md) for current handoff details.
+
+---
 
 Built by Karthikeya Moturi.

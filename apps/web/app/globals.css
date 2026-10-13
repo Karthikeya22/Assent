@@ -1,16 +1,19 @@
 @import "tailwindcss";
 
-/* Design tokens: FRONTEND.md §2. Paper and ink, one signal color. Values are exact; don't drift. */
+/* Design tokens: DESIGN.md (2026-10 revamp). Porcelain and ink, one signal color; every text token passes AA. */
 :root {
-  --paper: #f6f4ef;
-  --paper-raised: #ffffff;
-  --ink: #14171a;
-  --ink-2: #4a5058;
-  --ink-3: #8a9097;
-  --rule: #e2ded6;
+  --paper: #f3f5f4;
+  --paper-raised: #fbfcfc;
+  --paper-sunk: #e9edeb;
+  --ink: #111715;
+  --ink-2: #46514d;
+  --ink-3: #5f6a66;
+  --rule: #dbe1de;
   --signal: #0f6e5c;
-  --signal-soft: #dcefea;
-  --gap: #b26b00;
+  --signal-deep: #0a5547;
+  --signal-soft: #d6ece6;
+  --gap: #8f5400; /* text; --gap-fill for shapes */
+  --gap-fill: #e8a33d;
   --fail: #b3261e;
   --adversary: #5b3fa8; /* Payer Adversary voice only: the only purple in the product */
   --focus: #1f5fd1;
@@ -22,7 +25,7 @@
   --dur-3: 420ms;
   --dur-4: 900ms;
 
-  --shadow-float: 0 12px 32px -12px rgb(0 0 0 / 0.25);
+  --shadow-float: 0 18px 40px -16px rgb(17 23 21 / 0.18);
   color-scheme: light;
 }
 
@@ -35,8 +38,11 @@
     --ink-3: #6b7178;
     --rule: #24282c;
     --signal: #3fbf9f;
+    --paper-sunk: #0a0c0d;
+    --signal-deep: #2fa085;
     --signal-soft: #123a32;
     --gap: #f0a93b;
+    --gap-fill: #f0a93b;
     --fail: #f2766b;
     --adversary: #a992f0;
     --focus: #7aa8ff;
@@ -52,8 +58,11 @@
   --ink-3: #6b7178;
   --rule: #24282c;
   --signal: #3fbf9f;
+  --paper-sunk: #0a0c0d;
+  --signal-deep: #2fa085;
   --signal-soft: #123a32;
   --gap: #f0a93b;
+  --gap-fill: #f0a93b;
   --fail: #f2766b;
   --adversary: #a992f0;
   --focus: #7aa8ff;
@@ -63,13 +72,16 @@
 @theme inline {
   --color-paper: var(--paper);
   --color-paper-raised: var(--paper-raised);
+  --color-paper-sunk: var(--paper-sunk);
   --color-ink: var(--ink);
   --color-ink-2: var(--ink-2);
   --color-ink-3: var(--ink-3);
   --color-rule: var(--rule);
   --color-signal: var(--signal);
+  --color-signal-deep: var(--signal-deep);
   --color-signal-soft: var(--signal-soft);
   --color-gap: var(--gap);
+  --color-gap-fill: var(--gap-fill);
   --color-fail: var(--fail);
   --color-adversary: var(--adversary);
   --color-focus: var(--focus);
@@ -89,8 +101,8 @@
   --text-3xl: 4rem;
   --text-hero: 6rem;
 
-  --radius-control: 6px;
-  --radius-panel: 10px;
+  --radius-control: 10px;
+  --radius-panel: 16px;
 }
 
 @layer base {
@@ -104,6 +116,14 @@
     font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
     font-size: 0.875rem;
     -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
   }
   :focus-visible {
     outline: 2px solid var(--focus);
@@ -158,7 +178,15 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* Headlines: Geist display (DESIGN.md: hierarchy by weight and tracking, not by mixing families). */
 @utility display {
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.035em;
+  font-weight: 560;
+}
+
+/* The wordmark keeps Instrument Serif: the logo is unchanged. */
+@utility wordmark {
   font-family: var(--font-instrument-serif), ui-serif, Georgia, serif;
   letter-spacing: -0.01em;
   font-weight: 400;

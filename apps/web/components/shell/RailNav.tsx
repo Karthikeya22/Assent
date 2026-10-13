@@ -36,7 +36,7 @@ export function RailNav() {
       className="flex shrink-0 flex-col border-r border-rule bg-paper transition-[width] duration-[var(--dur-2)] ease-[var(--ease-out)]"
       style={{ width: open ? 220 : 56 }}
     >
-      <Link href="/app/worklist" className="display flex h-12 items-center px-[18px] text-xl">
+      <Link href="/app/worklist" className="wordmark flex h-12 items-center px-[18px] text-xl">
         {open ? "Assent" : "A"}
       </Link>
       <ul className="flex flex-1 flex-col gap-0.5 py-2">

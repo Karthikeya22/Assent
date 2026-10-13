@@ -11,7 +11,7 @@ import { TwoAgents } from "@/components/marketing/TwoAgents";
 
 export default function Home() {
   return (
-    <main>
+    <main id="main">
       <Hero />
       <Ledger />
       <Story poster={<LatticePoster title="The criteria graph after review: proven criteria in green, one downgraded to insufficient." />} />

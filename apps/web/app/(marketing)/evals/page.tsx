@@ -57,7 +57,7 @@ export default function EvalsPage() {
   const all = test.find((r) => r.family === "all")!;
   const [assent, lc] = cmp;
   return (
-    <main className="mx-auto max-w-4xl px-6 pt-32 pb-24">
+    <main id="main" className="mx-auto max-w-4xl px-6 pt-32 pb-24">
       <p className="font-mono text-xs tracking-wide text-ink-3">BENCHMARK · OCTOBER 2026</p>
       <h1 className="display mt-4 text-[clamp(2.75rem,6vw,4.5rem)] leading-[1]">How well does it work?</h1>
       <p className="mt-6 text-lg text-ink-2">

@@ -51,6 +51,7 @@ ignore = ["S101"]
 "**/tests/**" = ["S105", "S106", "S311"]
 "packages/evals/**" = ["S311"]
 "**/synth/phrases.py" = ["E501"]
+"scripts/i2t/**" = ["E501"]  # img2threejs authoring records: long literal profiles and review text
 
 [tool.ruff.lint.isort]
 known-first-party = ["assent_api", "assent_worker", "assent_agents", "assent_retrieval", "assent_fhir", "assent_phi", "assent_evals"]

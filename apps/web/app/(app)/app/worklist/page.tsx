@@ -22,7 +22,7 @@ export default async function WorklistPage() {
   return (
     <div className="px-6 py-5">
       <div className="flex items-baseline justify-between">
-        <h1 className="display text-xl">Worklist</h1>
+        <h1 className="display text-2xl">Worklist</h1>
         <span className="font-mono text-xs text-ink-3 tabular">{data ? `${data.items.length} cases` : ""}</span>
       </div>
 
@@ -40,7 +40,7 @@ export default async function WorklistPage() {
         </div>
       ) : (
         <table className="mt-4 w-full border-collapse text-left">
-          <thead className="text-xs text-ink-3">
+          <thead className="sticky top-0 z-10 bg-paper text-xs text-ink-3">
             <tr className="border-b border-rule">
               <th className="h-8 pr-4 font-normal">Patient</th>
               <th className="pr-4 font-normal">Service</th>
@@ -71,7 +71,7 @@ export default async function WorklistPage() {
                           <div className={`h-full rounded-full ${r >= 1 ? "bg-signal" : "bg-gap"}`} style={{ width: `${Math.round(r * 100)}%` }} />
                         )}
                       </div>
-                      <span className="font-mono text-xs text-ink-2 tabular">{r == null ? "—" : `${Math.round(r * 100)}%`}</span>
+                      <span className="font-mono text-xs text-ink-2 tabular">{r == null ? "Not run" : `${Math.round(r * 100)}%`}</span>
                     </div>
                   </td>
                   <td className="pr-4 text-sm">

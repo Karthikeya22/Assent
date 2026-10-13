@@ -63,10 +63,10 @@ function AppealEditor({ caseId, appeal }: { caseId: string; appeal: Appeal }) {
       <ul aria-label="New evidence for the appeal" className="space-y-1.5">
         {cites.flatMap(([key, list]) =>
           list.map((c, i) => (
-            <li key={`${key}-${i}`} className="rounded-[var(--radius-control)] border-l-2 border-signal/50 bg-paper py-1 pr-2 pl-2.5">
+            <li key={`${key}-${i}`} className="rounded-[var(--radius-control)] bg-paper-raised px-2.5 py-1 ring-1 ring-rule">
               <span className="block text-[10px] text-ink-3 uppercase">{String(c.criterion_label ?? key)}</span>
-              <span className="font-mono text-[12px] text-ink">“{String(c.quote)}”</span>
-              <span className="mt-0.5 block text-[11px] text-signal">✓ Verbatim in chart · grounded</span>
+              <span className="font-mono text-xs text-ink underline decoration-signal/45 underline-offset-[3px]">“{String(c.quote)}”</span>
+              <span className="mt-0.5 block text-xs text-signal">✓ Verbatim in chart · grounded</span>
             </li>
           )),
         )}

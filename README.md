@@ -75,7 +75,7 @@ flowchart LR
 ```
 
 Core apps and packages:
-- `apps/web`: Next.js UI, landing page, `/demo` replay, `/evals` report
+- `apps/web`: Next.js UI; a scroll-told React Three Fiber landing (one porcelain 3D world flown by Lenis, see [DESIGN.md](DESIGN.md)), `/demo` replay, `/evals` report
 - `apps/api`: FastAPI backend, auth/RBAC, audit log, SSE run streams
 - `apps/worker`: arq job workers for runs and appeals
 - `apps/mock_payer`, `apps/cds`: payer simulator + CDS Hooks service

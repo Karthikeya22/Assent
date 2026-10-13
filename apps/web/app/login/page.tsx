@@ -27,11 +27,11 @@ export default async function LoginPage({
 }) {
   const { error } = await searchParams;
   const field =
-    "mt-1.5 h-10 w-full rounded-[var(--radius-control)] border border-rule bg-paper-raised px-3 text-md text-ink placeholder:text-ink-3";
+    "mt-1.5 h-11 w-full rounded-[var(--radius-control)] border border-rule bg-paper-raised px-3 text-md text-ink placeholder:text-ink-3 transition-colors duration-[var(--dur-1)] hover:border-ink-3/60 focus-visible:border-signal";
 
   return (
-    <main id="main" className="grid min-h-dvh place-items-center px-6">
-      <div className="w-full max-w-sm">
+    <main id="main" className="theme-light grid min-h-dvh lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
+      <div className="mx-auto flex w-full max-w-sm flex-col justify-center px-6 py-16">
         <Link href="/" className="wordmark text-2xl">
           Assent
         </Link>
@@ -66,7 +66,7 @@ export default async function LoginPage({
           )}
           <button
             type="submit"
-            className="h-10 w-full rounded-[var(--radius-control)] bg-signal font-medium text-paper transition-opacity duration-[var(--dur-1)] hover:opacity-90"
+            className="btn-primary h-11 w-full justify-center"
           >
             Sign in
           </button>
@@ -75,6 +75,11 @@ export default async function LoginPage({
         <p className="mt-8 font-mono text-xs text-ink-3">
           Synthetic patients only. No PHI. Demo password: assent-dev
         </p>
+      </div>
+      {/* The landing's opening still: the chart folder in porcelain light. */}
+      <div aria-hidden="true" className="relative hidden overflow-hidden border-l border-rule bg-paper-sunk lg:block">
+        {/* eslint-disable-next-line @next/next/no-img-element -- decorative still, sized by its container */}
+        <img src="/world/posters/hero.webp" alt="" className="absolute inset-0 h-full w-full object-cover object-[70%_50%]" />
       </div>
     </main>
   );

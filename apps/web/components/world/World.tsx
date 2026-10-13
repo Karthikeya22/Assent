@@ -38,12 +38,13 @@ function Rig() {
     const bz = pose.look[2] + (pose.pos[2] - pose.look[2]) * back;
     // Pointer parallax: a few degrees of orbit, so the world answers the cursor everywhere.
     camera.position.set(
-      damp(camera.position.x, bx + pointer.x * 0.22, 6, d),
-      damp(camera.position.y, by + pointer.y * 0.12, 6, d),
-      damp(camera.position.z, bz, 6, d),
+      // Lenis already smooths scroll; keep this light so the world does not trail the copy.
+      damp(camera.position.x, bx + pointer.x * 0.22, 10, d),
+      damp(camera.position.y, by + pointer.y * 0.12, 10, d),
+      damp(camera.position.z, bz, 10, d),
     );
     target.set(...pose.look);
-    look.set(damp(look.x, target.x, 6, d), damp(look.y, target.y, 6, d), damp(look.z, target.z, 6, d));
+    look.set(damp(look.x, target.x, 10, d), damp(look.y, target.y, 10, d), damp(look.z, target.z, 10, d));
     camera.lookAt(look);
     // Desktop: shift the film so the subject sits opposite the copy. Narrow screens stack the
     // copy under the scene, so the film lifts the subject into the upper half instead.

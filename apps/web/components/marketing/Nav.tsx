@@ -8,7 +8,7 @@ export function Nav() {
   const scrolled = useWorld((s) => s.t > 0.02);
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 h-16 border-b transition-[background-color,border-color] duration-[var(--dur-2)] ${
+      className={`fixed inset-x-0 top-0 z-50 h-16 border-b transition-[background-color,border-color,backdrop-filter] duration-[var(--dur-2)] ease-[var(--ease-out)] ${
         scrolled ? "border-rule bg-paper/80 backdrop-blur-[10px]" : "border-transparent"
       }`}
     >
@@ -25,7 +25,7 @@ export function Nav() {
           <Link href="/login" className="py-2 text-ink-2 hover:text-ink">
             Sign in
           </Link>
-          <Link href="/demo" className="btn-primary !h-10 !px-4 text-sm">
+          <Link href="/demo" className="btn-primary h-10 px-4 text-sm">
             Run a live case
           </Link>
         </div>

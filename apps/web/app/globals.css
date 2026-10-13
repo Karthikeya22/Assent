@@ -18,7 +18,7 @@
   --adversary: #5b3fa8; /* Payer Adversary voice only: the only purple in the product */
   --focus: #1f5fd1;
 
-  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
   --dur-1: 120ms;
   --dur-2: 220ms;
@@ -125,17 +125,14 @@
   p {
     text-wrap: pretty;
   }
+  /* Thin themed scrollbars (the chart list and panes used to show native arrows). */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--rule) transparent;
+  }
   :focus-visible {
     outline: 2px solid var(--focus);
     outline-offset: 2px;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      transition-duration: 0.01ms !important;
-    }
   }
 }
 
@@ -163,14 +160,12 @@
   }
 }
 
-/* Cited span inside the note viewer: its width grows in from the left (dur-2). */
+/* Cited span inside the note viewer: the highlight fades in once (interruptible, no repaint loop). */
 .cite-mark {
-  background: linear-gradient(var(--signal-soft), var(--signal-soft)) no-repeat left / 100% 100%;
-  animation: cite-in var(--dur-2) var(--ease-out);
-}
-@keyframes cite-in {
-  from {
-    background-size: 0% 100%;
+  background-color: var(--signal-soft);
+  transition: background-color 120ms var(--ease-out);
+  @starting-style {
+    background-color: transparent;
   }
 }
 
@@ -234,37 +229,40 @@
   }
 }
 
-.btn-primary {
-  display: inline-flex;
-  height: 3rem;
-  align-items: center;
-  border-radius: var(--radius-control);
-  background: var(--signal);
-  padding: 0 1.375rem;
-  font-weight: 500;
-  color: var(--paper-raised);
-  transition:
-    background-color var(--dur-2) var(--ease-out),
-    transform var(--dur-1) var(--ease-out);
-  touch-action: manipulation;
-}
-.btn-primary:hover {
-  background: var(--signal-deep);
-}
-.btn-primary:active {
-  transform: translateY(1px);
-}
+/* Components, layered so utilities (h-*, px-*) can still adjust them. */
+@layer components {
+  .btn-primary {
+    display: inline-flex;
+    height: 3rem;
+    align-items: center;
+    border-radius: var(--radius-control);
+    background: var(--signal);
+    padding: 0 1.375rem;
+    font-weight: 500;
+    color: var(--paper-raised);
+    transition:
+      background-color var(--dur-2) var(--ease-out),
+      transform 160ms var(--ease-out);
+    touch-action: manipulation;
+  }
+  .btn-primary:hover {
+    background: var(--signal-deep);
+  }
+  .btn-primary:active {
+    transform: scale(0.97);
+  }
 
-.link-quiet {
-  color: var(--ink-2);
-  text-decoration: underline;
-  text-decoration-color: var(--rule);
-  text-underline-offset: 4px;
-  transition: color var(--dur-2) var(--ease-out), text-decoration-color var(--dur-2) var(--ease-out);
-}
-.link-quiet:hover {
-  color: var(--ink);
-  text-decoration-color: var(--ink-3);
+  .link-quiet {
+    color: var(--ink-2);
+    text-decoration: underline;
+    text-decoration-color: var(--rule);
+    text-underline-offset: 4px;
+    transition: color var(--dur-2) var(--ease-out), text-decoration-color var(--dur-2) var(--ease-out);
+  }
+  .link-quiet:hover {
+    color: var(--ink);
+    text-decoration-color: var(--ink-3);
+  }
 }
 
 /* Paper grain: fixed, non-interactive, above the world and below nothing that matters. */
@@ -275,5 +273,5 @@
   z-index: 60;
   pointer-events: none;
   opacity: 0.035;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-image: url("/world/grain.png"); /* static tile: an SVG feTurbulence filter re-rasterised the whole viewport */
 }

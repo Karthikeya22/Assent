@@ -90,7 +90,12 @@ function Graph({ root, sourceId, title, selected, onSelect }: Props) {
 
   // Mount React Flow only once ELK has placed the nodes, and let its built-in fitView (which
   // waits for measurement) frame them; fitting from an effect raced the layout.
-  if (!nodes.length) return null;
+  if (!nodes.length)
+    return (
+      <p role="status" className="grid h-full place-items-center text-sm text-ink-3">
+        Laying out {raw.filter((n) => n.type === "leaf").length} criteria…
+      </p>
+    );
   return (
     <ReactFlow
       nodes={nodes}

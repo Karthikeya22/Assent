@@ -29,7 +29,25 @@ export function WorldMount() {
   const index = useWorld((s) => s.index);
   const [tier, setTier] = useState<Tier | null | undefined>(undefined);
   const [ready, setReady] = useState(false);
+  const [armed, setArmed] = useState(false);
   useEffect(() => setTier(pickTier()), []);
+  // Load three.js when the reader engages (or, on desktop, once the main thread is idle). The
+  // poster is the same frame, so nothing is lost by waiting, and phones skip the parse/compile cost
+  // until they scroll.
+  useEffect(() => {
+    if (!tier) return;
+    const go = () => setArmed(true);
+    const events = ["pointerdown", "pointermove", "wheel", "touchstart", "keydown"] as const;
+    events.forEach((e) => window.addEventListener(e, go, { once: true, passive: true }));
+    const unsub = useWorld.subscribe((s) => s.t > 0.01 && go());
+    const desktop = window.innerWidth >= 768;
+    const idle = desktop ? (window.requestIdleCallback?.(go, { timeout: 2500 }) ?? window.setTimeout(go, 1500)) : 0;
+    return () => {
+      events.forEach((e) => window.removeEventListener(e, go));
+      unsub();
+      if (desktop) (window.cancelIdleCallback ?? window.clearTimeout)(idle);
+    };
+  }, [tier]);
   const live = !!tier && ready;
   return (
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0">
@@ -41,11 +59,11 @@ export function WorldMount() {
           alt=""
           loading={i === 0 ? "eager" : "lazy"}
           fetchPriority={i === 0 ? "high" : "low"}
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[var(--dur-4)] ${!live && i === index ? "opacity-100" : "opacity-0"}`}
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[400ms] ease-[var(--ease-out)] ${!live && i === index ? "opacity-100" : "opacity-0"} ${live ? "!transition-none" : ""}`}
         />
       ))}
-      {tier && (
-        <div className={`absolute inset-0 transition-opacity duration-[var(--dur-4)] ${ready ? "opacity-100" : "opacity-0"}`}>
+      {tier && armed && (
+        <div className={`absolute inset-0 transition-opacity duration-[var(--dur-4)] ease-[var(--ease-out)] ${ready ? "opacity-100" : "opacity-0"}`}>
           <World tier={tier} onReady={() => setReady(true)} />
         </div>
       )}

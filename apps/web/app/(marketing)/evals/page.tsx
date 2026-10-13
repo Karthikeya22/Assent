@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: "Benchmark", description: "How well A
 type Fam = { family: string; n_cases: number; criterion_macro_f1: number; case_accuracy: number; citation_precision: number | null; unsupported_claim_rate: number | null; latency_p50_s: number; cost_per_case_usd: number; false_ready: number; false_not_ready: number };
 type Cmp = Omit<Fam, "family"> & { system: string };
 
-const pct = (x: number | null | undefined, d = 0) => (x == null ? "—" : `${(x * 100).toFixed(d)}%`);
+const pct = (x: number | null | undefined, d = 0) => (x == null ? "n/a" : `${(x * 100).toFixed(d)}%`);
 const NAME: Record<string, string> = { esi: "Epidural steroid injection", hgns: "Hypoglossal nerve stimulation", pva: "Vertebral augmentation", all: "All three" };
 
 function FamilyTable({ rows, caption }: { rows: Fam[]; caption: string }) {
@@ -65,6 +65,20 @@ export default function EvalsPage() {
         and marked <strong className="text-ink">{all.false_ready}</strong> unproven cases ready to submit. Every mistake it made held a case back for
         a human instead of sending a weak one. Below are the method, the numbers, and the failures.
       </p>
+      <dl className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 border-y border-rule py-8 sm:grid-cols-4">
+        {[
+          { v: `${Math.round(all.case_accuracy * all.n_cases)} / ${all.n_cases}`, l: "decisions correct" },
+          { v: String(all.false_ready), l: "unproven cases marked ready" },
+          { v: pct(all.unsupported_claim_rate), l: "unsupported claims" },
+          { v: `$${all.cost_per_case_usd.toFixed(3)}`, l: "per case" },
+        ].map((f) => (
+          <div key={f.l}>
+            <dt className="sr-only">{f.l}</dt>
+            <dd className="display text-[2rem] leading-none tabular">{f.v}</dd>
+            <dd className="mt-2 text-sm text-ink-2">{f.l}</dd>
+          </div>
+        ))}
+      </dl>
 
       <h2 className={H2}>Method</h2>
       <div className="mt-4 space-y-4 text-ink-2">

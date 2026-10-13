@@ -11,9 +11,10 @@ export const metadata: Metadata = {
 // No login: a real recorded run replays through the same workspace components the app uses.
 export default function DemoPage() {
   return (
-    <>
+    // Public page: light only, like the rest of the marketing site (DESIGN.md).
+    <div className="theme-light min-h-dvh">
       <Nav />
       <DemoWorkspace demo={demo as unknown as DemoBundle} />
-    </>
+    </div>
   );
 }

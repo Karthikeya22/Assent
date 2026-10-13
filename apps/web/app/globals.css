@@ -125,6 +125,11 @@
   p {
     text-wrap: pretty;
   }
+  /* Thin themed scrollbars (the chart list and panes used to show native arrows). */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--rule) transparent;
+  }
   :focus-visible {
     outline: 2px solid var(--focus);
     outline-offset: 2px;
@@ -234,37 +239,40 @@
   }
 }
 
-.btn-primary {
-  display: inline-flex;
-  height: 3rem;
-  align-items: center;
-  border-radius: var(--radius-control);
-  background: var(--signal);
-  padding: 0 1.375rem;
-  font-weight: 500;
-  color: var(--paper-raised);
-  transition:
-    background-color var(--dur-2) var(--ease-out),
-    transform var(--dur-1) var(--ease-out);
-  touch-action: manipulation;
-}
-.btn-primary:hover {
-  background: var(--signal-deep);
-}
-.btn-primary:active {
-  transform: translateY(1px);
-}
+/* Components, layered so utilities (h-*, px-*) can still adjust them. */
+@layer components {
+  .btn-primary {
+    display: inline-flex;
+    height: 3rem;
+    align-items: center;
+    border-radius: var(--radius-control);
+    background: var(--signal);
+    padding: 0 1.375rem;
+    font-weight: 500;
+    color: var(--paper-raised);
+    transition:
+      background-color var(--dur-2) var(--ease-out),
+      transform var(--dur-1) var(--ease-out);
+    touch-action: manipulation;
+  }
+  .btn-primary:hover {
+    background: var(--signal-deep);
+  }
+  .btn-primary:active {
+    transform: translateY(1px);
+  }
 
-.link-quiet {
-  color: var(--ink-2);
-  text-decoration: underline;
-  text-decoration-color: var(--rule);
-  text-underline-offset: 4px;
-  transition: color var(--dur-2) var(--ease-out), text-decoration-color var(--dur-2) var(--ease-out);
-}
-.link-quiet:hover {
-  color: var(--ink);
-  text-decoration-color: var(--ink-3);
+  .link-quiet {
+    color: var(--ink-2);
+    text-decoration: underline;
+    text-decoration-color: var(--rule);
+    text-underline-offset: 4px;
+    transition: color var(--dur-2) var(--ease-out), text-decoration-color var(--dur-2) var(--ease-out);
+  }
+  .link-quiet:hover {
+    color: var(--ink);
+    text-decoration-color: var(--ink-3);
+  }
 }
 
 /* Paper grain: fixed, non-interactive, above the world and below nothing that matters. */

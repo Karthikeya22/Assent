@@ -19,7 +19,7 @@ const items: { href: string; label: string; icon: LucideIcon }[] = [
   { href: "/app/worklist", label: "Worklist", icon: Inbox },
   { href: "/app/policies", label: "Policies", icon: ScrollText },
   { href: "/app/analytics", label: "Analytics", icon: BarChart3 },
-  { href: "/app/evals", label: "Evals", icon: FlaskConical },
+  { href: "/evals", label: "Evals", icon: FlaskConical },
   { href: "/app/audit", label: "Audit", icon: ShieldCheck },
   { href: "/app/settings", label: "Settings", icon: Settings },
 ];
@@ -33,7 +33,7 @@ export function RailNav() {
   return (
     <nav
       aria-label="Primary"
-      className="flex shrink-0 flex-col border-r border-rule bg-paper transition-[width] duration-[var(--dur-2)] ease-[var(--ease-out)]"
+      className="flex shrink-0 flex-col border-r border-rule bg-paper-sunk/60 transition-[width] duration-[var(--dur-2)] ease-[var(--ease-out)]"
       style={{ width: open ? 220 : 56 }}
     >
       <Link href="/app/worklist" className="wordmark flex h-12 items-center px-[18px] text-xl">

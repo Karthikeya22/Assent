@@ -6,6 +6,7 @@ import path from "node:path";
 // loaded (and cached) apps/web's env by now, so without it this call silently does nothing.
 loadEnvConfig(path.resolve(__dirname, "../.."), process.env.NODE_ENV !== "production", console, true);
 
-const nextConfig: NextConfig = {};
+// No dev badge: scripted screenshots (posters, product screens) are taken from the dev server.
+const nextConfig: NextConfig = { devIndicators: false };
 
 export default nextConfig;

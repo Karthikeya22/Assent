@@ -365,13 +365,13 @@ export function DecisionPane({
                 <button
                   type="button"
                   onClick={() => onCite(c.chunk_id, sel.key)}
-                  className="w-full rounded-[var(--radius-control)] border-l-2 border-signal/50 bg-paper py-1.5 pr-2 pl-2.5 text-left hover:bg-signal-soft/40"
+                  className="w-full rounded-[var(--radius-control)] bg-paper-raised px-2.5 py-1.5 text-left ring-1 ring-rule transition-colors duration-[var(--dur-1)] hover:bg-signal-soft/40 hover:ring-signal/40"
                 >
-                  <span className="font-mono text-[12px] leading-snug text-ink">
+                  <span className="font-mono text-xs leading-snug text-ink underline decoration-signal/45 underline-offset-[3px]">
                     “{c.quote}”
                   </span>
                   <span
-                    className={`mt-1 block text-[11px] ${c.verified ? "text-signal" : "text-fail"}`}
+                    className={`mt-1 block text-xs ${c.verified ? "text-signal" : "text-fail"}`}
                   >
                     {c.verified
                       ? "✓ Verbatim in chart · grounded"
@@ -522,7 +522,7 @@ export function DecisionPane({
                   ? setAck(true)
                   : act("approve")
               }
-              className="h-9 flex-1 rounded-[var(--radius-control)] bg-signal font-medium text-paper disabled:opacity-40"
+              className="h-9 flex-1 rounded-[var(--radius-control)] bg-signal font-medium text-paper-raised transition-colors duration-[var(--dur-1)] hover:bg-signal-deep disabled:cursor-not-allowed disabled:bg-paper-sunk disabled:text-ink-3"
             >
               {decided ? "Approved" : "Approve for packet"}
             </button>
@@ -530,11 +530,12 @@ export function DecisionPane({
               type="button"
               disabled={!finished || pending || decided}
               onClick={() => act("reject")}
-              className="h-9 rounded-[var(--radius-control)] border border-rule px-3 text-ink-2 disabled:opacity-40"
+              className="h-9 rounded-[var(--radius-control)] border border-rule px-3 text-ink-2 hover:text-ink disabled:cursor-not-allowed disabled:text-ink-3/70"
             >
               Reject
             </button>
           </div>
+          {!finished && !decided && <p className="text-xs text-ink-3">Run the case to approve or reject it.</p>}
         </div>
       )}
     </div>

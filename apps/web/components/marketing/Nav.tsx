@@ -25,7 +25,7 @@ export function Nav() {
           <Link href="/login" className="py-2 text-ink-2 hover:text-ink">
             Sign in
           </Link>
-          <Link href="/demo" className="btn-primary !h-10 !px-4 text-sm">
+          <Link href="/demo" className="btn-primary h-10 px-4 text-sm">
             Run a live case
           </Link>
         </div>

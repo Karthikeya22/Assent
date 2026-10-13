@@ -1,0 +1,13 @@
+node_modules/
+.venv/
+.data/
+.next/
+.turbo/
+mlruns/
+data/fixtures/
+data/bench/
+data/synthea/
+.claude/
+**/*.jsonl
+**/pnpm-lock.yaml
+uv.lock

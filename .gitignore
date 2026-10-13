@@ -25,3 +25,7 @@ mlruns/
 .vercel
 .vercel
 .env*
+
+# graphify
+graphify-out/
+.claude/worktrees/

@@ -39,7 +39,7 @@ export function createMagnifier(mats: WorldMaterials): Magnifier {
   const lens = new THREE.Mesh(
     roundedDisc(0.375, 0.04, 0.015).rotateX(Math.PI / 2),
     new THREE.MeshPhysicalMaterial({
-      color: "#dfece7",
+      color: "#d6ece6", // signal-soft
       roughness: 0.04,
       clearcoat: 1,
       clearcoatRoughness: 0.02,

@@ -3,6 +3,8 @@ name: Assent
 description: Prior authorization, argued with evidence. A porcelain-and-signal-green clinical world, told in one continuous 3D scene.
 colors:
   porcelain: "#f3f5f4"
+  porcelain-3d: "#e2e7e4"
+  paper-3d: "#ebefed"
   surface: "#fbfcfc"
   surface-sunk: "#e9edeb"
   rule: "#dbe1de"
@@ -35,11 +37,32 @@ typography:
     fontWeight: 540
     lineHeight: 1.1
     letterSpacing: "-0.025em"
+  figure:
+    fontFamily: "Geist, system-ui, sans-serif"
+    fontSize: "2rem"
+    fontWeight: 560
+    lineHeight: 1
+    letterSpacing: "-0.035em"
   body:
     fontFamily: "Geist, system-ui, sans-serif"
     fontSize: "1.0625rem"
     fontWeight: 400
     lineHeight: 1.6
+  body-sm:
+    fontFamily: "Geist, system-ui, sans-serif"
+    fontSize: "0.9375rem"
+    fontWeight: 400
+    lineHeight: 1.6
+  ui:
+    fontFamily: "Geist, system-ui, sans-serif"
+    fontSize: "0.875rem"
+    fontWeight: 400
+    lineHeight: 1.45
+  caption:
+    fontFamily: "Geist, system-ui, sans-serif"
+    fontSize: "0.75rem"
+    fontWeight: 400
+    lineHeight: 1.4
   mono:
     fontFamily: "Geist Mono, ui-monospace, monospace"
     fontSize: "0.8125rem"
@@ -95,7 +118,7 @@ The world is **porcelain and evidence**. Soft white ceramic objects sit in diffu
   - `signal` is 5.6:1 against porcelain, and white on signal is 6.2:1.
   - `gap` is 5.6:1. Use `gap` for text and `gap-fill` only for shapes.
 - **One accent:** signal green. Semantic colours never appear as decoration.
-- **3D materials take colour from the same tokens:**
+- **3D materials take colour from the same tokens.** Under the world's key light, `porcelain-3d` (#e2e7e4) and `paper-3d` (#ebefed) render as the page's porcelain; a lighter albedo washes out to white.
   - porcelain: a matte ceramic with a slight sheen
   - frosted glass for policy sheets
   - signal as an emissive colour for evidence threads only

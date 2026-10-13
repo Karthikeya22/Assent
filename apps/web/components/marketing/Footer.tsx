@@ -3,7 +3,7 @@ import { SOURCES } from "./sources";
 
 export function Footer() {
   return (
-    <footer className="border-t border-rule">
+    <footer className="relative z-10 border-t border-rule bg-paper">
       <div className="mx-auto max-w-6xl px-6 py-16">
         <h2 id="sources" className="font-mono text-xs tracking-wide text-ink-3 uppercase">
           Sources

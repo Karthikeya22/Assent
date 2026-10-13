@@ -28,3 +28,4 @@ mlruns/
 
 # graphify
 graphify-out/
+.claude/worktrees/
